@@ -49,11 +49,15 @@ filetype off
 
 set rtp+=~/.vim/vimfiles/vundle.git/
 call vundle#rc()
+
+"Plugin list
 Bundle 'Shougo/neocomplcache'
 Bundle 'Shougo/unite.vim'
 Bundle 'thinca/vim-ref'
 Bundle 'thinca/vim-quickrun'
-filetype plugin indent on     " required!
+Bundle 'git://github.com/Shougo/vimshell.git'
+
+filetype plugin indent on
 
 "-------------------------------------------------------------------------------
 " ステータスライン StatusLine
