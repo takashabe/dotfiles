@@ -1,3 +1,27 @@
+"-------------------------------------------------------------------------------
+" vundle.vim
+"-------------------------------------------------------------------------------
+set nocompatible
+filetype off
+
+set rtp+=~/.vim/Bundle/vundle.git/
+call vundle#rc()
+
+"Plugin list
+Bundle 'Align'
+
+Bundle 'Shougo/neocomplcache'
+Bundle 'Shougo/unite.vim'
+Bundle 'Shougo/vimshell.git'
+Bundle 'Shougo/vimproc.git'
+Bundle 'thinca/vim-ref'
+Bundle 'thinca/vim-quickrun'
+Bundle 'yuroyoro/vim-scala'
+
+Bundle 'gmarik/vundle'
+
+filetype plugin indent on
+
 
 "-------------------------------------------------------------------------------
 " 基本設定 Basics
@@ -40,24 +64,6 @@ command! Rv source $MYVIMRC
 command! Egv edit $MYGVIMRC
 command! Rgv source $MYGVIMRC
 
-
-"-------------------------------------------------------------------------------
-" vundle.vim
-"-------------------------------------------------------------------------------
-set nocompatible
-filetype off
-
-set rtp+=~/.vim/Bundle/vundle.git/
-call vundle#rc()
-
-"Plugin list
-Bundle 'Shougo/neocomplcache'
-Bundle 'Shougo/unite.vim'
-Bundle 'thinca/vim-ref'
-Bundle 'thinca/vim-quickrun'
-Bundle 'git://github.com/Shougo/vimshell.git'
-
-filetype plugin indent on
 
 "-------------------------------------------------------------------------------
 " ステータスライン StatusLine
