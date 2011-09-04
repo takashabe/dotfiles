@@ -47,7 +47,7 @@ command! Rgv source $MYGVIMRC
 set nocompatible
 filetype off
 
-set rtp+=~/.vim/vimfiles/vundle.git/
+set rtp+=~/.vim/Bundle/vundle.git/
 call vundle#rc()
 
 "Plugin list
