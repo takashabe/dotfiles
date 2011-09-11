@@ -17,6 +17,7 @@ Bundle 'Shougo/vimproc.git'
 Bundle 'thinca/vim-ref'
 Bundle 'thinca/vim-quickrun'
 Bundle 'yuroyoro/vim-scala'
+Bundle 'TwitVim'
 
 Bundle 'gmarik/vundle'
 
