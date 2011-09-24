@@ -18,6 +18,7 @@ Bundle 'thinca/vim-ref'
 Bundle 'thinca/vim-quickrun'
 Bundle 'yuroyoro/vim-scala'
 Bundle 'TwitVim'
+Bundle 'ref.vim'
 
 Bundle 'gmarik/vundle'
 
