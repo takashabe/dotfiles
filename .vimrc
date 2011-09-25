@@ -4,7 +4,7 @@
 set nocompatible
 filetype off
 
-set rtp+=~/.vim/Bundle/vundle.git/
+set rtp+=~/.vim/Bundle/vundle/
 call vundle#rc()
 
 "Plugin list
