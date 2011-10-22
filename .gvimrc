@@ -1,4 +1,4 @@
 colorscheme wombat256
 
 set guifont=Ricty:h16
-set transparency=25
+set transparency=15
