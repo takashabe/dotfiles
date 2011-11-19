@@ -9,16 +9,19 @@ call vundle#rc()
 
 "Plugin list
 Bundle 'Align'
+Bundle 'The-NERD-Commenter'
 
 Bundle 'Shougo/neocomplcache'
 Bundle 'Shougo/unite.vim'
 Bundle 'Shougo/vimshell.git'
 Bundle 'Shougo/vimproc.git'
+Bundle 'Shougo/vimfiler.git'
 Bundle 'thinca/vim-ref'
 Bundle 'thinca/vim-quickrun'
 Bundle 'yuroyoro/vim-scala'
 Bundle 'TwitVim'
 Bundle 'ref.vim'
+Bundle 'proc.vim'
 
 Bundle 'gmarik/vundle'
 
@@ -371,15 +374,15 @@ command! Sjis Cp932
 "-------------------------------------------------------------------------------
 
 " ターミナルタイプによるカラー設定
-"if &term =~ "xterm-debian" || &term =~ "xterm-xfree86" || &term =~ "xterm-256color"
- "set t_Co=16
- "set t_Sf=[3%dm
- "set t_Sb=[4%dm
-"elseif &term =~ "xterm-color"
- "set t_Co=8
- "set t_Sf=[3%dm
- "set t_Sb=[4%dm
-"endif
+" if &term =~ "xterm-debian" || &term =~ "xterm-xfree86" || &term =~ "xterm-256color"
+ " set t_Co=16
+ " set t_Sf=[3%dm
+ " set t_Sb=[4%dm
+" elseif &term =~ "xterm-color"
+ " set t_Co=8
+ " set t_Sf=[3%dm
+ " set t_Sb=[4%dm
+" endif
 
 if &t_Co >= 256
   colorscheme wombat256
@@ -442,3 +445,31 @@ noremap : ;
 " Plugin settings
 "-------------------------------------------------------------------------------
 
+"------------------------------------
+" neocomplecache.vim
+"------------------------------------
+" Define dictionary.
+let g:neocomplcache_dictionary_filetype_lists = {
+    \ 'default' : '',
+    \ 'vimshell' : $HOME.'/.vimshell_hist',
+    \ 'scala' : $HOME.'/.vim/bundle/vim-scala/dict/scala.dict',
+    \ 'java' : $HOME.'/.vim/dict/java.dict',
+    \ 'c' : $HOME.'/.vim/dict/c.dict',
+    \ 'cpp' : $HOME.'/.vim/dict/cpp.dict',
+    \ 'javascript' : $HOME.'/.vim/dict/javascript.dict',
+    \ 'ocaml' : $HOME.'/.vim/dict/ocaml.dict',
+    \ 'perl' : $HOME.'/.vim/dict/perl.dict',
+    \ 'php' : $HOME.'/.vim/dict/php.dict',
+    \ 'scheme' : $HOME.'/.vim/dict/scheme.dict',
+    \ 'vm' : $HOME.'/.vim/dict/vim.dict'
+    \ }
+
+"------------------------------------
+" NERD_commenter.vim
+"------------------------------------
+" コメントの間にスペースを空ける
+let NERDSpaceDelims = 1
+"<Leader>xでコメントをトグル(NERD_commenter.vim)
+map <Leader>x, c<space>
+""未対応ファイルタイプのエラーメッセージを表示しない
+let NERDShutUp=1

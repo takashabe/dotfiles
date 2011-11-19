@@ -63,5 +63,3 @@ hi Todo      ctermfg=245    cterm=none    guifg=#8f8f8f  gui=italic
 " Links
 hi! link FoldColumn    Folded
 hi! link CursorColumn  CursorLine
-
-" vim:set ts=4 sw=4 noet:
