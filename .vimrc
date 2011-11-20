@@ -22,6 +22,9 @@ Bundle 'yuroyoro/vim-scala'
 Bundle 'TwitVim'
 Bundle 'ref.vim'
 Bundle 'proc.vim'
+Bundle 'EasyMotion'
+Bundle 'ManPageView'
+Bundle 'calendar.vim'
 
 Bundle 'gmarik/vundle'
 
@@ -444,6 +447,15 @@ noremap : ;
 "-------------------------------------------------------------------------------
 " Plugin settings
 "-------------------------------------------------------------------------------
+
+"------------------------------------
+" Align.vim
+"------------------------------------
+" for japanese string
+let g:Align_xstrlen = 3
+" remove 'DrChip' menu
+let g:DrChipTopLvlMenu = ''
+
 
 "------------------------------------
 " neocomplecache.vim
