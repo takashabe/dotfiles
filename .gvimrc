@@ -9,5 +9,5 @@ set transparency=15
 " ツールバー非表示
 set guioptions-=T
 
-set lines=100
-set columns=200
+set lines=50
+set columns=160

@@ -7,7 +7,7 @@ filetype off
 set rtp+=~/.vim/Bundle/vundle/
 call vundle#rc()
 
-"Plugin list
+" Plugin list
 Bundle 'Align'
 Bundle 'The-NERD-Commenter'
 
@@ -20,11 +20,11 @@ Bundle 'thinca/vim-ref'
 Bundle 'thinca/vim-quickrun'
 Bundle 'yuroyoro/vim-scala'
 Bundle 'TwitVim'
-Bundle 'ref.vim'
-Bundle 'proc.vim'
 Bundle 'EasyMotion'
-Bundle 'ManPageView'
 Bundle 'calendar.vim'
+Bundle 'smartchr'
+
+Bundle 'haskell.vim'
 
 Bundle 'gmarik/vundle'
 
@@ -52,7 +52,7 @@ set showmode                     " 現在のモードを表示
 set viminfo='50,<1000,s100,\"50  " viminfoファイルの設定
 set modelines=0                  " モードラインは無効
 
-"環境変数
+" 環境変数
 let $MYVIMRC="$HOME/.vimrc"
 let $MYGVIMRC="$HOME/.gvimrc"
 
@@ -63,7 +63,7 @@ set mouse=a
 set guioptions+=a
 set ttymouse=xterm2
 
-"ヤンクした文字は、システムのクリップボードに入れる"
+" ヤンクした文字は、システムのクリップボードに入れる"
 set clipboard=unnamed
 
 " Ev/Rvでvimrcの編集と反映
@@ -71,7 +71,6 @@ command! Ev edit $MYVIMRC
 command! Rv source $MYVIMRC
 command! Egv edit $MYGVIMRC
 command! Rgv source $MYGVIMRC
-
 
 "-------------------------------------------------------------------------------
 " ステータスライン StatusLine
@@ -91,9 +90,13 @@ endif
 "入力モード時、ステータスラインのカラーを変更
 augroup InsertHook
 autocmd!
-autocmd InsertEnter * highlight StatusLine guifg=#ccdc90 guibg=#2E4340
-autocmd InsertLeave * highlight StatusLine guifg=#2E4340 guibg=#ccdc90
+autocmd InsertEnter * highlight StatusLine guifg=#ccdc90 guibg=#2E4340 ctermfg=cyan
+autocmd InsertLeave * highlight StatusLine guifg=#2E4340 guibg=#ccdc90 ctermfg=white
 augroup END
+
+"自動的に QuickFix リストを表示する
+autocmd QuickfixCmdPost make,grep,grepadd,vimgrep,vimgrepadd cwin
+autocmd QuickfixCmdPost lmake,lgrep,lgrepadd,lvimgrep,lvimgrepadd lwin
 
 function! GetB()
   let c = matchstr(getline('.'), '.', col('.') - 1)
@@ -133,8 +136,8 @@ set listchars=tab:>.,trail:_,extends:>,precedes:< " 不可視文字の表示形�
 set display=uhex      " 印字不可能文字を16進数で表示
 
 " 全角スペースの表示
-"highlight ZenkakuSpace cterm=underline ctermfg=lightblue guibg=darkgray
-"match ZenkakuSpace /　/
+" highlight ZenkakuSpace cterm=underline ctermfg=lightblue guibg=darkgray
+" match ZenkakuSpace /　/
 
 " カーソル行をハイライト
 set cursorline
@@ -187,10 +190,10 @@ set history=1000           " コマンド・検索パターンの履歴数
 set complete+=k            " 補完に辞書ファイル追加
 
 
-"<c-space>でomni補完
-imap <c-space> <c-x><c-o>
+" <c-space>でomni補完
+" imap <c-space> <c-x><c-o>
 
-" -- tabでオムニ補完
+" -- tabでomni補完
 function! InsertTabWrapper()
   if pumvisible()
     return "\<c-n>"
@@ -279,10 +282,14 @@ set virtualedit+=block
 vnoremap v $h
 
 " CTRL-hjklでウィンドウ移動
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-k>j
-nnoremap <C-l> <C-l>j
-nnoremap <C-h> <C-h>j
+" nnoremap <C-j> <C-w>j
+" nnoremap <C-k> <C-w>k
+" nnoremap <C-l> <C-w>l
+" nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>J
+nnoremap <C-k> <C-w>K
+nnoremap <C-l> <C-w>L
+nnoremap <C-h> <C-w>H
 
 
 "-------------------------------------------------------------------------------
@@ -379,12 +386,12 @@ command! Sjis Cp932
 " ターミナルタイプによるカラー設定
 " if &term =~ "xterm-debian" || &term =~ "xterm-xfree86" || &term =~ "xterm-256color"
  " set t_Co=16
- " set t_Sf=[3%dm
- " set t_Sb=[4%dm
+ " set t_Sf=3%dm
+ " set t_Sb=4%dm
 " elseif &term =~ "xterm-color"
  " set t_Co=8
- " set t_Sf=[3%dm
- " set t_Sb=[4%dm
+ " set t_Sf=3%dm
+ " set t_Sb=4%dm
 " endif
 
 if &t_Co >= 256
@@ -392,9 +399,9 @@ if &t_Co >= 256
 endif
 
 "ポップアップメニューのカラーを設定
-"hi Pmenu guibg=#666666
-"hi PmenuSel guibg=#8cd0d3 guifg=#666666
-"hi PmenuSbar guibg=#333333
+hi Pmenu guibg=#666666
+hi PmenuSel guibg=#8cd0d3 guifg=#666666
+hi PmenuSbar guibg=#333333
 
 " ハイライト on
 syntax enable
@@ -448,18 +455,26 @@ noremap : ;
 " Plugin settings
 "-------------------------------------------------------------------------------
 
-"------------------------------------
+"-------------------------------------------------------------------------------
 " Align.vim
-"------------------------------------
+"-------------------------------------------------------------------------------
 " for japanese string
 let g:Align_xstrlen = 3
 " remove 'DrChip' menu
 let g:DrChipTopLvlMenu = ''
 
 
-"------------------------------------
+"-------------------------------------------------------------------------------
 " neocomplecache.vim
-"------------------------------------
+"-------------------------------------------------------------------------------
+" neocomplcache enable with startup.
+let g:neocomplcache_enable_at_startup = 1
+" camel case complete.
+" ex. FA -> F*A*
+let g:neocomplcache_enable_camel_case_completion = 1
+" underbar case complete.
+let g:neocomplcache_enable_underbar_completion = 1
+
 " Define dictionary.
 let g:neocomplcache_dictionary_filetype_lists = {
     \ 'default' : '',
@@ -476,12 +491,144 @@ let g:neocomplcache_dictionary_filetype_lists = {
     \ 'vm' : $HOME.'/.vim/dict/vim.dict'
     \ }
 
-"------------------------------------
+"-------------------------------------------------------------------------------
 " NERD_commenter.vim
-"------------------------------------
+"-------------------------------------------------------------------------------
 " コメントの間にスペースを空ける
 let NERDSpaceDelims = 1
 "<Leader>xでコメントをトグル(NERD_commenter.vim)
 map <Leader>x, c<space>
 ""未対応ファイルタイプのエラーメッセージを表示しない
 let NERDShutUp=1
+
+
+"-------------------------------------------------------------------------------
+" smartchar.vim
+"-------------------------------------------------------------------------------
+" inoremap <expr> = smartchr#loop('=',  ' = ',  ' == ', ' => ')
+" inoremap <expr> . smartchr#loop('.',  '->', '=>')
+
+" " 演算子の間に空白を入れる
+" inoremap <buffer><expr> + smartchr#one_of(' + ', ' ++ ', '+')
+" inoremap <buffer><expr> +=  smartchr#one_of(' += ')
+" " inoremap <buffer><expr> - smartchr#one_of(' - ', ' -- ', '-')
+" inoremap <buffer><expr> -=  smartchr#one_of(' -= ')
+" " inoremap <buffer><expr> / smartchr#one_of(' / ', ' // ', '/')
+" inoremap <buffer><expr> /=  smartchr#one_of(' /= ')
+" inoremap <buffer><expr> * smartchr#one_of(' * ', ' ** ', '*')
+" inoremap <buffer><expr> *=  smartchr#one_of(' *= ')
+" inoremap <buffer><expr> & smartchr#one_of(' & ', ' && ', '&')
+" inoremap <buffer><expr> % smartchr#one_of(' % ', '%')
+" inoremap <buffer><expr> =>  smartchr#one_of(' => ')
+" inoremap <buffer><expr> <-   smartchr#one_of(' <-  ')
+" inoremap <buffer><expr> <Bar> smartchr#one_of(' <Bar> ', ' <Bar><Bar> ', '<Bar>')
+" inoremap <buffer><expr> , smartchr#one_of(', ', ',')
+" " 3項演算子の場合は、後ろのみ空白を入れる
+" inoremap <buffer><expr> ? smartchr#one_of('? ', '?')
+" " inoremap <buffer><expr> : smartchr#one_of(': ', '::', ':')
+
+" " =の場合、単純な代入や比較演算子として入力する場合は前後にスペースをいれる。
+" " 複合演算代入としての入力の場合は、直前のスペースを削除して=を入力
+" inoremap <buffer><expr> = search('¥(&¥<bar><bar>¥<bar>+¥<bar>-¥<bar>/¥<bar>>¥<bar><¥) ¥%#', 'bcn')? '<bs>= '  : search('¥(*¥<bar>!¥)¥%#', 'bcn') ? '= '  : smartchr#one_of(' = ', ' == ', '=')
+
+" " 下記の文字は連続して現れることがまれなので、二回続けて入力したら改行する
+" inoremap <buffer><expr> } smartchr#one_of('}', '}<cr>')
+" inoremap <buffer><expr> ; smartchr#one_of(';', ';<cr>')
+" "()は空白入れる
+" inoremap <buffer><expr> ( smartchr#one_of('( ')
+" inoremap <buffer><expr> ) smartchr#one_of(' )')
+
+" " if文直後の(は自動で間に空白を入れる
+" inoremap <buffer><expr> ( search('¥<¥if¥%#', 'bcn')? ' (': '('
+
+
+"-------------------------------------------------------------------------------
+" vimshell.vim
+"-------------------------------------------------------------------------------
+let g:vimshell_user_prompt = 'fnamemodify(getcwd(), ":~")'
+let g:vimshell_right_prompt = 'vimshell#vcs#info("(%s)-[%b]", "(%s)-[%b|%a]")'
+let g:vimshell_enable_smart_case = 1
+
+if has('win32') || has('win64')
+  " Display user name on Windows.
+  let g:vimshell_prompt = $USERNAME."% "
+else
+  " Display user name on Linux.
+  let g:vimshell_prompt = $USER."% "
+
+  call vimshell#set_execute_file('bmp,jpg,png,gif', 'gexe eog')
+  call vimshell#set_execute_file('mp3,m4a,ogg', 'gexe amarok')
+  let g:vimshell_execute_file_list['zip'] = 'zipinfo'
+  call vimshell#set_execute_file('tgz,gz', 'gzcat')
+  call vimshell#set_execute_file('tbz,bz2', 'bzcat')
+endif
+
+function! g:my_chpwd(args, context)
+  call vimshell#execute('echo "chpwd"')
+endfunction
+function! g:my_emptycmd(cmdline, context)
+  call vimshell#execute('echo "emptycmd"')
+  return a:cmdline
+endfunction
+function! g:my_preprompt(args, context)
+  call vimshell#execute('echo "preprompt"')
+endfunction
+function! g:my_preexec(cmdline, context)
+  call vimshell#execute('echo "preexec"')
+
+  if a:cmdline =~# '^\s*diff\>'
+    call vimshell#set_syntax('diff')
+  endif
+  return a:cmdline
+endfunction
+
+autocmd FileType vimshell
+\ call vimshell#altercmd#define('g', 'git')
+\| call vimshell#altercmd#define('i', 'iexe')
+\| call vimshell#altercmd#define('l', 'll')
+\| call vimshell#altercmd#define('ll', 'ls -al')
+\| call vimshell#hook#set('chpwd', ['g:my_chpwd'])
+\| call vimshell#hook#set('emptycmd', ['g:my_emptycmd'])
+\| call vimshell#hook#set('preprompt', ['g:my_preprompt'])
+\| call vimshell#hook#set('preexec', ['g:my_preexec'])
+
+command! Vs :VimShell
+
+
+
+"-------------------------------------------------------------------------------
+" unite.vim
+"-------------------------------------------------------------------------------
+" " The prefix key.
+" nnoremap    [unite]   <Nop>
+" nmap    f [unite]
+
+" nnoremap [unite]u  :<C-u>Unite<Space>
+" nnoremap <silent> [unite]a  :<C-u>UniteWithCurrentDir -buffer-name=files buffer file_mru bookmark file<CR>
+" nnoremap <silent> [unite]f  :<C-u>Unite -buffer-name=files file<CR>
+" nnoremap <silent> [unite]b  :<C-u>Unite buffer<CR>
+" nnoremap <silent> [unite]t  :<C-u>Unite buffer_tab<CR>
+" nnoremap <silent> [unite]m  :<C-u>Unite file_mru<CR>
+
+" " nnoremap <silent> [unite]b  :<C-u>UniteWithBufferDir -buffer-name=files buffer file_mru bookmark file<CR>
+
+" autocmd FileType unite call s:unite_my_settings()
+" function! s:unite_my_settings()"{{{
+  " " Overwrite settings.
+  " imap <buffer> jj      <Plug>(unite_insert_leave)
+  " nnoremap <silent><buffer> <C-k> :<C-u>call unite#mappings#do_action('preview')<CR>
+  " imap <buffer> <C-w>     <Plug>(unite_delete_backward_path)
+  " " Start insert.
+  " let g:unite_enable_start_insert = 1
+" endfunction"}}}
+
+" autocmd FileType unite nnoremap <silent> <buffer> <ESC><ESC> :<C-q>q<CR>
+
+" let g:unite_source_file_mru_limit = 200
+
+
+"-------------------------------------------------------------------------------
+" vimfiler.vim
+"-------------------------------------------------------------------------------
+
+let g:vimfiler_safe_mode_by_default = 0
