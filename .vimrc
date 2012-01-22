@@ -21,8 +21,10 @@ Bundle 'thinca/vim-quickrun'
 Bundle 'yuroyoro/vim-scala'
 Bundle 'TwitVim'
 Bundle 'EasyMotion'
-Bundle 'calendar.vim'
 Bundle 'smartchr'
+Bundle 'Source-Explorer-srcexpl.vim'
+Bundle 'trinity.vim'
+Bundle 'taglist.vim'
 
 Bundle 'haskell.vim'
 
@@ -286,11 +288,14 @@ vnoremap v $h
 " nnoremap <C-k> <C-w>k
 " nnoremap <C-l> <C-w>l
 " nnoremap <C-h> <C-w>h
+
+" C-hkjlでカレントウィンドウを上下左右端に移動
 nnoremap <C-j> <C-w>J
 nnoremap <C-k> <C-w>K
 nnoremap <C-l> <C-w>L
 nnoremap <C-h> <C-w>H
 
+" 編集中のファイルのディレクトリに自動的に移動
 
 "-------------------------------------------------------------------------------
 " エンコーディング関連 Encoding
@@ -378,6 +383,20 @@ command! Iso2022jp edit ++enc=iso-2022-jp
 command! Utf8 edit ++enc=utf-8
 command! Jis Iso2022jp
 command! Sjis Cp932
+
+"-------------------------------------------------------------------------------
+" タグ関連 Tags
+"-------------------------------------------------------------------------------
+" set tags
+if has("autochdir")
+  " 編集しているファイルのディレクトリに自動で移動
+  set autochdir
+  set tags=tags;
+else
+  set tags=./tags,./../tags,./*/tags,./../../tags,./../../../tags,./../../../../tags,./../../../../../tags
+endif
+
+set notagbsearch
 
 "-------------------------------------------------------------------------------
 " カラー関連 Colors
@@ -599,32 +618,32 @@ command! Vs :VimShell
 "-------------------------------------------------------------------------------
 " unite.vim
 "-------------------------------------------------------------------------------
-" " The prefix key.
-" nnoremap    [unite]   <Nop>
-" nmap    f [unite]
+" The prefix key.
+nnoremap    [unite]   <Nop>
+nmap    f [unite]
 
-" nnoremap [unite]u  :<C-u>Unite<Space>
-" nnoremap <silent> [unite]a  :<C-u>UniteWithCurrentDir -buffer-name=files buffer file_mru bookmark file<CR>
-" nnoremap <silent> [unite]f  :<C-u>Unite -buffer-name=files file<CR>
-" nnoremap <silent> [unite]b  :<C-u>Unite buffer<CR>
-" nnoremap <silent> [unite]t  :<C-u>Unite buffer_tab<CR>
-" nnoremap <silent> [unite]m  :<C-u>Unite file_mru<CR>
+nnoremap [unite]u  :<C-u>Unite<Space>
+nnoremap <silent> [unite]a  :<C-u>UniteWithCurrentDir -buffer-name=files buffer file_mru bookmark file<CR>
+nnoremap <silent> [unite]f  :<C-u>Unite -buffer-name=files file<CR>
+nnoremap <silent> [unite]b  :<C-u>Unite buffer<CR>
+nnoremap <silent> [unite]t  :<C-u>Unite buffer_tab<CR>
+nnoremap <silent> [unite]m  :<C-u>Unite file_mru<CR>
 
-" " nnoremap <silent> [unite]b  :<C-u>UniteWithBufferDir -buffer-name=files buffer file_mru bookmark file<CR>
+" nnoremap <silent> [unite]b  :<C-u>UniteWithBufferDir -buffer-name=files buffer file_mru bookmark file<CR>
 
-" autocmd FileType unite call s:unite_my_settings()
-" function! s:unite_my_settings()"{{{
-  " " Overwrite settings.
-  " imap <buffer> jj      <Plug>(unite_insert_leave)
-  " nnoremap <silent><buffer> <C-k> :<C-u>call unite#mappings#do_action('preview')<CR>
-  " imap <buffer> <C-w>     <Plug>(unite_delete_backward_path)
-  " " Start insert.
-  " let g:unite_enable_start_insert = 1
-" endfunction"}}}
+autocmd FileType unite call s:unite_my_settings()
+function! s:unite_my_settings()"{{{
+  " Overwrite settings.
+  imap <buffer> jj      <Plug>(unite_insert_leave)
+  nnoremap <silent><buffer> <C-k> :<C-u>call unite#mappings#do_action('preview')<CR>
+  imap <buffer> <C-w>     <Plug>(unite_delete_backward_path)
+  " Start insert.
+  let g:unite_enable_start_insert = 1
+endfunction"}}}
 
-" autocmd FileType unite nnoremap <silent> <buffer> <ESC><ESC> :<C-q>q<CR>
+autocmd FileType unite nnoremap <silent> <buffer> <ESC><ESC> :<C-q>q<CR>
 
-" let g:unite_source_file_mru_limit = 200
+let g:unite_source_file_mru_limit = 200
 
 
 "-------------------------------------------------------------------------------
@@ -632,3 +651,11 @@ command! Vs :VimShell
 "-------------------------------------------------------------------------------
 
 let g:vimfiler_safe_mode_by_default = 0
+let g:vimfiler_as_default_explorer = 1
+
+
+
+"-------------------------------------------------------------------------------
+" taglist.vim
+"-------------------------------------------------------------------------------
+

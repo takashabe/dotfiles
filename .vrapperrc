@@ -37,6 +37,11 @@ nnoremap gb :GoLastEditPosition<C-m>
 nnoremap [ %
 nnoremap ] %
 
+" コンマの後に自動的にスペースを挿入
+inoremap , ,<Space>
+
+" Tabキー押し下げ時の挿入される空白の量
+:set tabstop=2 shiftwidth=2 softtabstop=0
 
 "次のメンバ(フィールド,メソッド)
 eclipseaction GoNextMember org.eclipse.jdt.ui.edit.text.java.goto.next.member
