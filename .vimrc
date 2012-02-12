@@ -1,36 +1,38 @@
 "-------------------------------------------------------------------------------
-" vundle.vim
+" neobundle.vim
 "-------------------------------------------------------------------------------
 set nocompatible
 filetype off
 
-set rtp+=~/.vim/Bundle/vundle/
-call vundle#rc()
+if has('vim_starting')
+  set runtimepath+=~/.vim/bundle/neobundle.vim
+  call neobundle#rc(expand('~/.vim/bundle'))
+endif
 
 " Plugin list
-Bundle 'Align'
-Bundle 'The-NERD-Commenter'
+NeoBundle 'Align'
+NeoBundle 'The-NERD-Commenter'
+NeoBundle 'Shougo/neocomplcache'
+NeoBundle 'Shougo/unite.vim'
+NeoBundle 'Shougo/vimshell.git'
+NeoBundle 'Shougo/vimproc.git'
+NeoBundle 'Shougo/vimfiler.git'
+NeoBundle 'thinca/vim-ref'
+NeoBundle 'thinca/vim-quickrun'
+NeoBundle 'yuroyoro/vim-scala'
+NeoBundle 'TwitVim'
+NeoBundle 'EasyMotion'
+NeoBundle 'smartchr'
+NeoBundle 'Source-Explorer-srcexpl.vim'
+NeoBundle 'trinity.vim'
+NeoBundle 'taglist.vim'
+NeoBundle 'haskell.vim'
+NeoBundle 'Lokaltog/vim-powerline'
 
-Bundle 'Shougo/neocomplcache'
-Bundle 'Shougo/unite.vim'
-Bundle 'Shougo/vimshell.git'
-Bundle 'Shougo/vimproc.git'
-Bundle 'Shougo/vimfiler.git'
-Bundle 'thinca/vim-ref'
-Bundle 'thinca/vim-quickrun'
-Bundle 'yuroyoro/vim-scala'
-Bundle 'TwitVim'
-Bundle 'EasyMotion'
-Bundle 'smartchr'
-Bundle 'Source-Explorer-srcexpl.vim'
-Bundle 'trinity.vim'
-Bundle 'taglist.vim'
+NeoBundle 'Shougo/neobundle.vim'
 
-Bundle 'haskell.vim'
-
-Bundle 'gmarik/vundle'
-
-filetype plugin indent on
+filetype plugin on
+filetype indent on
 
 
 "-------------------------------------------------------------------------------
@@ -153,6 +155,8 @@ augroup END
 :hi clear CursorLine
 :hi CursorLine gui=underline
 highlight CursorLine ctermbg=black guibg=black
+" highlight CursorLine cterm=NONE ctermfg=black ctermbg=black
+" highlight CursorLine gui=NONE guifg=black guibg=black
 
 " コマンド実行中は再描画しない
 :set lazyredraw
@@ -250,13 +254,11 @@ nnoremap k gk
 nnoremap <Down> gj
 nnoremap <Up>   gk
 
-" spaceで次のbufferへ。back-spaceで前のbufferへ
-nmap <Space> ;MBEbn<CR>
-nmap <BS> ;MBEbp<CR>
-
-"フレームサイズを怠惰に変更する
-map <kPlus> <C-W>+
-map <kMinus> <C-W>-
+" ウィンドウサイズの変更
+nnoremap + <C-w>+
+nnoremap - <C-w>-
+nnoremap < <C-w><
+nnoremap > <C-w>>
 
 " 前回終了したカーソル行に移動
 autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal g`\"" | endif
@@ -388,39 +390,43 @@ command! Sjis Cp932
 " タグ関連 Tags
 "-------------------------------------------------------------------------------
 " set tags
-if has("autochdir")
-  " 編集しているファイルのディレクトリに自動で移動
-  set autochdir
-  set tags=tags;
-else
-  set tags=./tags,./../tags,./*/tags,./../../tags,./../../../tags,./../../../../tags,./../../../../../tags
-endif
+" if has("autochdir")
+  " " 編集しているファイルのディレクトリに自動で移動
+  " set autochdir
+  " set tags=tags;
+" else
+set tags=/Users/takashabe/dotfiles/common_ctags/tags,./tags,./../tags,./*/tags,./../../tags,./../../../tags,./../../../../tags,./../../../../../tags
+" endif
 
-set notagbsearch
+" set notagbsearch
 
 "-------------------------------------------------------------------------------
 " カラー関連 Colors
 "-------------------------------------------------------------------------------
 
+" colorscheme wombat256
+colorscheme yuroyoro256
+
 " ターミナルタイプによるカラー設定
-" if &term =~ "xterm-debian" || &term =~ "xterm-xfree86" || &term =~ "xterm-256color"
- " set t_Co=16
- " set t_Sf=3%dm
- " set t_Sb=4%dm
+" if &term =~ "xterm-256color" || "screen-256color"
+  " " 256色
+  " set t_Co=256
+  " set t_Sf=[3%dm
+  " set t_Sb=[4%dm
+" elseif &term =~ "xterm-debian" || &term =~ "xterm-xfree86"
+  " set t_Co=16
+  " set t_Sf=[3%dm
+  " set t_Sb=[4%dm
 " elseif &term =~ "xterm-color"
- " set t_Co=8
- " set t_Sf=3%dm
- " set t_Sb=4%dm
+  " set t_Co=8
+  " set t_Sf=[3%dm
+  " set t_Sb=[4%dm
 " endif
 
-if &t_Co >= 256
-  colorscheme wombat256
-endif
-
 "ポップアップメニューのカラーを設定
-hi Pmenu guibg=#666666
-hi PmenuSel guibg=#8cd0d3 guifg=#666666
-hi PmenuSbar guibg=#333333
+"hi Pmenu guibg=#666666
+"hi PmenuSel guibg=#8cd0d3 guifg=#666666
+"hi PmenuSbar guibg=#333333
 
 " ハイライト on
 syntax enable
@@ -429,6 +435,7 @@ syntax enable
 hi Pmenu ctermbg=white ctermfg=darkgray
 hi PmenuSel ctermbg=blue ctermfg=white
 hi PmenuSbar ctermbg=0 ctermfg=9
+
 
 "-------------------------------------------------------------------------------
 " 編集関連 Edit
@@ -489,7 +496,6 @@ let g:DrChipTopLvlMenu = ''
 " neocomplcache enable with startup.
 let g:neocomplcache_enable_at_startup = 1
 " camel case complete.
-" ex. FA -> F*A*
 let g:neocomplcache_enable_camel_case_completion = 1
 " underbar case complete.
 let g:neocomplcache_enable_underbar_completion = 1
@@ -623,7 +629,7 @@ nnoremap    [unite]   <Nop>
 nmap    f [unite]
 
 nnoremap [unite]u  :<C-u>Unite<Space>
-nnoremap <silent> [unite]a  :<C-u>UniteWithCurrentDir -buffer-name=files buffer file_mru bookmark file<CR>
+nnoremap <silent> [unite]a  :<C-u>UniteWithCurrentDir -buffer-name=files bookmark buffer file_mru file<CR>
 nnoremap <silent> [unite]f  :<C-u>Unite -buffer-name=files file<CR>
 nnoremap <silent> [unite]b  :<C-u>Unite buffer<CR>
 nnoremap <silent> [unite]t  :<C-u>Unite buffer_tab<CR>
@@ -650,12 +656,26 @@ let g:unite_source_file_mru_limit = 200
 " vimfiler.vim
 "-------------------------------------------------------------------------------
 
+nnoremap <Space>f :<C-u>VimFiler<CR>
 let g:vimfiler_safe_mode_by_default = 0
 let g:vimfiler_as_default_explorer = 1
+let g:vimfiler_directory_display_top = 1
 
-
+let g:vimfiler_split_action = "left"
 
 "-------------------------------------------------------------------------------
 " taglist.vim
 "-------------------------------------------------------------------------------
 
+let g:Tlist_Auto_Highlight_Tag=1
+let g:Tlist_Show_Menu=1
+
+"-------------------------------------------------------------------------------
+" srcexpl.vim
+"-------------------------------------------------------------------------------
+let g:SrcExpl_isUpdateTags=0
+
+"-------------------------------------------------------------------------------
+" srcexpl.vim
+"-------------------------------------------------------------------------------
+let g:Powerline_symbols = 'fancy'
