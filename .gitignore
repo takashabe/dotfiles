@@ -1,3 +1,4 @@
 ./.vim/bundle/
 doc/tags
 doc/tags-ja
+./common_ctags/
