@@ -140,3 +140,6 @@ alias tmux='tmuxx'
 alias tm='tmuxx'
 alias tma='tmux attach'
 alias tml='tmux list-window'
+
+# Anddoird
+export ANDROID_HOME=/usr/local/Cellar/android-sdk/r16

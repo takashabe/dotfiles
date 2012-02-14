@@ -342,7 +342,7 @@ function cwaf() {
 
 ## Completion configuration
 #
-fpath=(~/.zsh/functions/Completion ${fpath})
+fpath=(~/.zsh/zsh-completions ${fpath})
 autoload -U compinit
 compinit -u
 
