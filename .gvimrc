@@ -1,3 +1,5 @@
+colorscheme yuroyoro256
+
 set guifont=Ricty_Regular_for_Powerline:h16
 
 " 表示設定

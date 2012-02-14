@@ -404,24 +404,23 @@ set tags=/Users/takashabe/dotfiles/common_ctags/tags,./tags,./../tags,./*/tags,.
 " カラー関連 Colors
 "-------------------------------------------------------------------------------
 
-" colorscheme wombat256
 colorscheme yuroyoro256
 
 " ターミナルタイプによるカラー設定
-" if &term =~ "xterm-256color" || "screen-256color"
-  " " 256色
-  " set t_Co=256
-  " set t_Sf=[3%dm
-  " set t_Sb=[4%dm
-" elseif &term =~ "xterm-debian" || &term =~ "xterm-xfree86"
-  " set t_Co=16
-  " set t_Sf=[3%dm
-  " set t_Sb=[4%dm
-" elseif &term =~ "xterm-color"
-  " set t_Co=8
-  " set t_Sf=[3%dm
-  " set t_Sb=[4%dm
-" endif
+if &term =~ "xterm-256color" || "screen-256color"
+  " 256色
+  set t_Co=256
+  set t_Sf=[3%dm
+  set t_Sb=[4%dm
+elseif &term =~ "xterm-debian" || &term =~ "xterm-xfree86"
+  set t_Co=16
+  set t_Sf=[3%dm
+  set t_Sb=[4%dm
+elseif &term =~ "xterm-color"
+  set t_Co=8
+  set t_Sf=[3%dm
+  set t_Sb=[4%dm
+endif
 
 "ポップアップメニューのカラーを設定
 "hi Pmenu guibg=#666666
@@ -490,15 +489,53 @@ let g:Align_xstrlen = 3
 let g:DrChipTopLvlMenu = ''
 
 
-"-------------------------------------------------------------------------------
+" -------------------------------------------------------------------------------
 " neocomplecache.vim
-"-------------------------------------------------------------------------------
+" -------------------------------------------------------------------------------
 " neocomplcache enable with startup.
-let g:neocomplcache_enable_at_startup = 1
+" let g:neocomplcache_enable_at_startup = 1
 " camel case complete.
-let g:neocomplcache_enable_camel_case_completion = 1
+" let g:neocomplcache_enable_camel_case_completion = 1
 " underbar case complete.
+" let g:neocomplcache_enable_underbar_completion = 1
+
+" Define dictionary.
+" let g:neocomplcache_dictionary_filetype_lists = {
+    " \ 'default' : '',
+    " \ 'vimshell' : $HOME.'/.vimshell_hist',
+    " \ 'scala' : $HOME.'/.vim/bundle/vim-scala/dict/scala.dict',
+    " \ 'java' : $HOME.'/.vim/dict/java.dict',
+    " \ 'c' : $HOME.'/.vim/dict/c.dict',
+    " \ 'cpp' : $HOME.'/.vim/dict/cpp.dict',
+    " \ 'javascript' : $HOME.'/.vim/dict/javascript.dict',
+    " \ 'ocaml' : $HOME.'/.vim/dict/ocaml.dict',
+    " \ 'perl' : $HOME.'/.vim/dict/perl.dict',
+    " \ 'php' : $HOME.'/.vim/dict/php.dict',
+    " \ 'scheme' : $HOME.'/.vim/dict/scheme.dict',
+    " \ 'vm' : $HOME.'/.vim/dict/vim.dict'
+    " \ }
+
+"------------------------------------
+" neocomplecache.vim
+"------------------------------------
+" AutoComplPopを無効にする
+let g:acp_enableAtStartup = 0
+" NeoComplCacheを有効にする
+let g:neocomplcache_enable_at_startup = 1
+" smarrt case有効化。 大文字が入力されるまで大文字小文字の区別を無視する
+let g:neocomplcache_enable_smart_case = 1
+" camle caseを有効化。大文字を区切りとしたワイルドカードのように振る舞う
+let g:neocomplcache_enable_camel_case_completion = 1
+" _(アンダーバー)区切りの補完を有効化
 let g:neocomplcache_enable_underbar_completion = 1
+" シンタックスをキャッシュするときの最小文字長を3に
+let g:neocomplcache_min_syntax_length = 3
+" neocomplcacheを自動的にロックするバッファ名のパターン
+let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
+" -入力による候補番号の表示
+let g:neocomplcache_enable_quick_match = 1
+" 補完候補の一番先頭を選択状態にする(AutoComplPopと似た動作)
+let g:neocomplcache_enable_auto_select = 1
 
 " Define dictionary.
 let g:neocomplcache_dictionary_filetype_lists = {
@@ -515,6 +552,97 @@ let g:neocomplcache_dictionary_filetype_lists = {
     \ 'scheme' : $HOME.'/.vim/dict/scheme.dict',
     \ 'vm' : $HOME.'/.vim/dict/vim.dict'
     \ }
+
+" Define keyword.
+if !exists('g:neocomplcache_keyword_patterns')
+    let g:neocomplcache_keyword_patterns = {}
+endif
+let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
+
+" ユーザー定義スニペット保存ディレクトリ
+let g:neocomplcache_snippets_dir = $HOME.'/.vim/snippets'
+
+" スニペット
+imap <C-y> <Plug>(neocomplcache_snippets_expand)
+smap <C-k> <Plug>(neocomplcache_snippets_expand)
+
+" 補完を選択しpopupを閉じる
+" inoremap <expr><C-y> neocomplcache#close_popup()
+" 補完をキャンセルしpopupを閉じる
+" inoremap <expr><C-e> neocomplcache#cancel_popup()
+" TABで補完できるようにする
+inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
+" undo
+inoremap <expr><C-g>     neocomplcache#undo_completion()
+" 補完候補の共通部分までを補完する
+inoremap <expr><C-s> neocomplcache#complete_common_string()
+" SuperTab like snippets behavior.
+imap <expr><TAB> neocomplcache#sources#snippets_complete#expandable() ? "\<Plug>(neocomplcache_snippets_expand)" : pumvisible() ? "\<C-n>" : "\<TAB>"
+" C-kを押すと行末まで削除
+" inoremap <C-k> <C-o>D
+" C-nでneocomplcache補完
+inoremap <expr><C-n>  pumvisible() ? "\<C-n>" : "\<C-x>\<C-u>\<C-p>"
+" C-pでkeyword補完
+inoremap <expr><C-p> pumvisible() ? "\<C-p>" : "\<C-p>\<C-n>"
+" 補完候補が出ていたら確定、なければ改行
+inoremap <expr><CR>  pumvisible() ? neocomplcache#close_popup() : "<CR>"
+
+" <TAB>: completion.
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+" <C-h>, <BS>: close popup and delete backword char.
+inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
+inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
+inoremap <expr><C-x><C-o> &filetype == 'vim' ? "\<C-x><C-v><C-p>" : neocomplcache#manual_omni_complete()
+
+" buffer開いたらneoconでcache
+autocmd BufRead :NeoComplCacheCachingBuffer <buffer>
+
+" FileType毎のOmni補完を設定
+autocmd FileType python set omnifunc=pythoncomplete#Complete
+autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
+autocmd FileType css set omnifunc=csscomplete#CompleteCSS
+autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
+autocmd FileType php set omnifunc=phpcomplete#CompletePHP
+autocmd FileType c set omnifunc=ccomplete#Complete
+autocmd FileType ruby set omnifunc=rubycomplete#Complete
+
+" Enable heavy omni completion.
+" if !exists('g:neocomplcache_omni_patterns')
+  " let g:neocomplcache_omni_patterns = {}
+" endif
+" let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
+" let g:neocomplcache_omni_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
+
+let g:neocomplcache_plugin_disable = {
+  \ 'include_complete' : 1
+\ }
+
+"インクルードパスの指定
+" let g:neocomplcache_include_paths = {
+  " \ 'cpp'  : '.,/opt/local/include/gcc46/c++,/opt/local/include,/usr/include',
+  " \ 'c'    : '.,/usr/include',
+  " \ 'ruby' : '.,$HOME/.rvm/rubies/**/lib/ruby/1.8/',
+  " \ }
+" let g:neocomplcache_include_paths = {
+  " \ 'cpp'  : '.,/opt/local/include/gcc46/c++,/opt/local/include,/usr/include',
+  " \ 'c'    : '.,/usr/include',
+  " \ }
+"インクルード文のパターンを指定
+" let g:neocomplcache_include_patterns = {
+  " \ 'cpp' : '^\s*#\s*include',
+  " \ 'ruby' : '^\s*require',
+  " \ 'perl' : '^\s*use',
+  " \ }
+" let g:neocomplcache_include_patterns = {
+  " \ 'cpp' : '^\s*#\s*include',
+  " \ 'perl' : '^\s*use',
+  " \ }
+"インクルード先のファイル名の解析パターン
+" let g:neocomplcache_include_exprs = {
+  " \ 'ruby' : substitute(substitute(v:fname,'::','/','g'),'$','\.rb','')
+  " \ }
+
 
 "-------------------------------------------------------------------------------
 " NERD_commenter.vim
