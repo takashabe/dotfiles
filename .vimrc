@@ -10,7 +10,7 @@ if has('vim_starting')
 endif
 
 " Plugin list
-NeoBundle 'Align'
+NeoBundle 'h1mesuke/vim-alignta'
 NeoBundle 'The-NERD-Commenter'
 NeoBundle 'Shougo/neocomplcache'
 NeoBundle 'Shougo/unite.vim'
@@ -431,10 +431,10 @@ endif
 syntax enable
 
 " 補完候補の色づけ for vim7
-hi Pmenu ctermbg=white ctermfg=darkgray
-hi PmenuSel ctermbg=blue ctermfg=white
-hi PmenuSbar ctermbg=0 ctermfg=9
-
+" hi Pmenu ctermbg=white ctermfg=darkgray
+" hi PmenuSel ctermbg=blue ctermfg=white
+" hi PmenuSbar ctermbg=0 ctermfg=9
+hi PmenuSel cterm=reverse ctermfg=33 ctermbg=222 gui=reverse guifg=#3399ff guibg=#f0e68c
 
 "-------------------------------------------------------------------------------
 " 編集関連 Edit
