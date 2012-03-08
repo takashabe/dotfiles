@@ -286,18 +286,16 @@ set virtualedit+=block
 vnoremap v $h
 
 " CTRL-hjklでウィンドウ移動
-" nnoremap <C-j> <C-w>j
-" nnoremap <C-k> <C-w>k
-" nnoremap <C-l> <C-w>l
-" nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+nnoremap <C-h> <C-w>h
 
 " C-hkjlでカレントウィンドウを上下左右端に移動
-nnoremap <C-j> <C-w>J
-nnoremap <C-k> <C-w>K
-nnoremap <C-l> <C-w>L
-nnoremap <C-h> <C-w>H
-
-" 編集中のファイルのディレクトリに自動的に移動
+" nnoremap <C-j> <C-w>J
+" nnoremap <C-k> <C-w>K
+" nnoremap <C-l> <C-w>L
+" nnoremap <C-h> <C-w>H
 
 "-------------------------------------------------------------------------------
 " エンコーディング関連 Encoding
@@ -757,11 +755,11 @@ nnoremap    [unite]   <Nop>
 nmap    f [unite]
 
 nnoremap [unite]u  :<C-u>Unite<Space>
-nnoremap <silent> [unite]a  :<C-u>UniteWithCurrentDir -buffer-name=files bookmark buffer file_mru file<CR>
-nnoremap <silent> [unite]f  :<C-u>Unite -buffer-name=files file<CR>
-nnoremap <silent> [unite]b  :<C-u>Unite buffer<CR>
-nnoremap <silent> [unite]t  :<C-u>Unite buffer_tab<CR>
-nnoremap <silent> [unite]m  :<C-u>Unite file_mru<CR>
+nnoremap <silent> [unite]a  :<C-u>UniteWithCurrentDir -no-split -buffer-name=files bookmark buffer file_mru file<CR>
+nnoremap <silent> [unite]f  :<C-u>Unite -no-split -buffer-name=files file<CR>
+nnoremap <silent> [unite]b  :<C-u>Unite -no-split buffer<CR>
+nnoremap <silent> [unite]t  :<C-u>Unite -no-split buffer_tab<CR>
+nnoremap <silent> [unite]m  :<C-u>Unite -no-split file_mru<CR>
 
 " nnoremap <silent> [unite]b  :<C-u>UniteWithBufferDir -buffer-name=files buffer file_mru bookmark file<CR>
 
@@ -789,7 +787,8 @@ let g:vimfiler_safe_mode_by_default = 0
 let g:vimfiler_as_default_explorer = 1
 let g:vimfiler_directory_display_top = 1
 
-let g:vimfiler_split_action = "left"
+" let g:vimfiler_split_action = "left"
+let g:vimfiler_split_action = "right"
 
 "-------------------------------------------------------------------------------
 " taglist.vim
