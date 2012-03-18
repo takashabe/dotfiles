@@ -1,6 +1,8 @@
 管理対象のdotfile
+
 .vimrc
 .gvimrc
 .vim/
 .zshrc
 .tmux.conf
+.vrapperrc
