@@ -1,10 +1,10 @@
 colorscheme yuroyoro256
 
-set guifont=Ricty_Regular_for_Powerline:h16
+set guifont=Ricty_Regular_for_Powerline:h18
 
 " 表示設定
 " 透明度
-set transparency=15
+set transparency=25
 
 " guioptions
 " ツールバー非表示

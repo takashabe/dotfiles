@@ -28,6 +28,7 @@ NeoBundle 'trinity.vim'
 NeoBundle 'taglist.vim'
 NeoBundle 'haskell.vim'
 NeoBundle 'Lokaltog/vim-powerline'
+NeoBundle 'kana/vim-fakeclip'
 
 NeoBundle 'Shougo/neobundle.vim'
 
@@ -61,14 +62,16 @@ let $MYVIMRC="$HOME/.vimrc"
 let $MYGVIMRC="$HOME/.gvimrc"
 
 " OSのクリップボードを使用する
-set clipboard+=unnamed
+" set clipboard+=unnamed
+set clipboard=unnamed
+set clipboard+=autoselect
 " ターミナルでマウスを使用できるようにする
 set mouse=a
 set guioptions+=a
 set ttymouse=xterm2
 
 " ヤンクした文字は、システムのクリップボードに入れる"
-set clipboard=unnamed
+" set clipboard=unnamed
 
 " Ev/Rvでvimrcの編集と反映
 command! Ev edit $MYVIMRC
@@ -255,10 +258,10 @@ nnoremap <Down> gj
 nnoremap <Up>   gk
 
 " ウィンドウサイズの変更
-nnoremap + <C-w>+
-nnoremap - <C-w>-
-nnoremap < <C-w><
-nnoremap > <C-w>>
+" nnoremap + <C-w>+
+" nnoremap - <C-w>-
+" nnoremap < <C-w><
+" nnoremap > <C-w>>
 
 " 前回終了したカーソル行に移動
 autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal g`\"" | endif
@@ -462,6 +465,8 @@ inoremap <C-w>  <C-g>u<C-w>
 " :Ptでインデントモード切替
 command! Pt :set paste!
 
+" tabをスペースに変換して入力する
+set expandtab
 " 保存時に行末の空白を除去する
 autocmd BufWritePre * :%s/\s\+$//ge
 " 保存時にtabをスペースに変換する
