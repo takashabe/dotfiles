@@ -29,6 +29,7 @@ NeoBundle 'taglist.vim'
 NeoBundle 'haskell.vim'
 NeoBundle 'Lokaltog/vim-powerline'
 NeoBundle 'kana/vim-fakeclip'
+NeoBundle 'eagletmt/ghcmod-vim'
 
 NeoBundle 'Shougo/neobundle.vim'
 
@@ -63,7 +64,7 @@ let $MYGVIMRC="$HOME/.gvimrc"
 
 " OSのクリップボードを使用する
 " set clipboard+=unnamed
-set clipboard=unnamed
+set clipboard+=unnamed
 set clipboard+=autoselect
 " ターミナルでマウスを使用できるようにする
 set mouse=a
@@ -760,8 +761,8 @@ nnoremap    [unite]   <Nop>
 nmap    f [unite]
 
 nnoremap [unite]u  :<C-u>Unite<Space>
-nnoremap <silent> [unite]a  :<C-u>UniteWithCurrentDir -no-split -buffer-name=files bookmark buffer file_mru file<CR>
-nnoremap <silent> [unite]f  :<C-u>Unite -no-split -buffer-name=files file<CR>
+nnoremap <silent> [unite]a  :<C-u>UniteWithCurrentDir -no-split -buffer-name=files buffer file_mru file bookmark<CR>
+nnoremap <silent> [unite]f  :<C-u>Unite -no-split bookmark<CR>
 nnoremap <silent> [unite]b  :<C-u>Unite -no-split buffer<CR>
 nnoremap <silent> [unite]t  :<C-u>Unite -no-split buffer_tab<CR>
 nnoremap <silent> [unite]m  :<C-u>Unite -no-split file_mru<CR>
@@ -782,6 +783,7 @@ autocmd FileType unite nnoremap <silent> <buffer> <ESC><ESC> :<C-q>q<CR>
 
 let g:unite_source_file_mru_limit = 200
 
+call unite#custom_default_action('source/bookmark/directory', 'vimfiler')
 
 "-------------------------------------------------------------------------------
 " vimfiler.vim
