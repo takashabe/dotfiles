@@ -64,8 +64,8 @@ let $MYGVIMRC="$HOME/.gvimrc"
 
 " OSのクリップボードを使用する
 " set clipboard+=unnamed
-set clipboard+=unnamed
-set clipboard+=autoselect
+set clipboard=unnamed
+" set clipboard+=autoselect
 " ターミナルでマウスを使用できるようにする
 set mouse=a
 set guioptions+=a
@@ -166,6 +166,9 @@ highlight CursorLine ctermbg=black guibg=black
 :set lazyredraw
 " 高速ターミナル接続を行う
 :set ttyfast
+
+" コマンドラインの高さ
+:set cmdheight=2
 
 "-------------------------------------------------------------------------------
 " インデント Indent
