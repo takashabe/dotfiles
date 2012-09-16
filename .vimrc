@@ -30,6 +30,8 @@ NeoBundle 'haskell.vim'
 NeoBundle 'Lokaltog/vim-powerline'
 NeoBundle 'kana/vim-fakeclip'
 NeoBundle 'eagletmt/ghcmod-vim'
+NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'kana/vim-smartinput'
 
 NeoBundle 'Shougo/neobundle.vim'
 
@@ -63,9 +65,9 @@ let $MYVIMRC="$HOME/.vimrc"
 let $MYGVIMRC="$HOME/.gvimrc"
 
 " OSのクリップボードを使用する
-" set clipboard+=unnamed
-set clipboard=unnamed
-" set clipboard+=autoselect
+set clipboard+=unnamed
+" set clipboard=unnamed
+set clipboard+=autoselect
 " ターミナルでマウスを使用できるようにする
 set mouse=a
 set guioptions+=a
@@ -483,6 +485,9 @@ inoremap , ,<Space>
 noremap ; :
 noremap : ;
 
+" 範囲選択した箇所のxmlを整形
+map <Leader>x !/usr/local/bin/python -m BeautifulSoup<CR>
+
 "-------------------------------------------------------------------------------
 " Plugin settings
 "-------------------------------------------------------------------------------
@@ -797,9 +802,6 @@ let g:vimfiler_safe_mode_by_default = 0
 let g:vimfiler_as_default_explorer = 1
 let g:vimfiler_directory_display_top = 1
 
-" let g:vimfiler_split_action = "left"
-let g:vimfiler_split_action = "right"
-
 "-------------------------------------------------------------------------------
 " taglist.vim
 "-------------------------------------------------------------------------------
@@ -813,6 +815,6 @@ let g:Tlist_Show_Menu=1
 let g:SrcExpl_isUpdateTags=0
 
 "-------------------------------------------------------------------------------
-" srcexpl.vim
+" powerline.vim
 "-------------------------------------------------------------------------------
 let g:Powerline_symbols = 'fancy'
