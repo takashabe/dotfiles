@@ -31,7 +31,7 @@ NeoBundle 'Lokaltog/vim-powerline'
 NeoBundle 'kana/vim-fakeclip'
 NeoBundle 'eagletmt/ghcmod-vim'
 NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'kana/vim-smartinput'
+" NeoBundle 'kana/vim-smartinput'
 
 NeoBundle 'Shougo/neobundle.vim'
 
