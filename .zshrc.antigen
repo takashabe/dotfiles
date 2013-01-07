@@ -1,0 +1,17 @@
+source ~/antigen.zsh
+
+antigen-lib
+
+# plugins
+antigen-bundle git
+antigen-bundle heroku
+antigen-bundle rails
+antigen-bundle rvm
+antigen-bundle ruby
+antigen-bundle brew
+antigen-bundle zsh-users/zsh-syntax-highlighting
+
+# themes
+antigen-theme muse
+
+antigen-apply
