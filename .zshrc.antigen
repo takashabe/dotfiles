@@ -10,8 +10,9 @@ antigen-bundle rvm
 antigen-bundle ruby
 antigen-bundle brew
 antigen-bundle zsh-users/zsh-syntax-highlighting
+antigen-bundle rbenv
 
 # themes
-antigen-theme muse
+antigen-theme gentoo
 
 antigen-apply
