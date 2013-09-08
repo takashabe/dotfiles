@@ -15,7 +15,6 @@ NeoBundle 'The-NERD-Commenter'
 NeoBundle 'Shougo/neocomplcache'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/vimshell.git'
-NeoBundle 'Shougo/vimproc.git'
 NeoBundle 'Shougo/vimfiler.git'
 NeoBundle 'thinca/vim-ref'
 NeoBundle 'thinca/vim-quickrun'
@@ -32,6 +31,14 @@ NeoBundle 'kana/vim-fakeclip'
 NeoBundle 'eagletmt/ghcmod-vim'
 NeoBundle 'tpope/vim-fugitive'
 " NeoBundle 'kana/vim-smartinput'
+NeoBundle 'Shougo/vimproc', {
+      \ 'build' : {
+      \     'windows' : 'make -f make_mingw32.mak',
+      \     'cygwin' : 'make -f make_cygwin.mak',
+      \     'mac' : 'make -f make_mac.mak',
+      \     'unix' : 'make -f make_unix.mak',
+      \    },
+      \ }
 
 NeoBundle 'Shougo/neobundle.vim'
 
