@@ -1,6 +1,10 @@
-# antigen.zsh
-source ~/.zshrc.antigen
+# oh-my-zsh
+ZSH=$HOME/.oh-my-zsh
+ZSH_THEME="geoffgarside"
+plugins=(git github history brew scala sbt ruby rails)
+source $ZSH/oh-my-zsh.sh
 
+# general path
 export PATH=/usr/local/bin:/usr/local/sbin:$PATH
 export PATH=/opt/local/bin:/opt/local/sbin:~/bin:$PATH
 
