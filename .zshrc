@@ -1,6 +1,4 @@
-# antigen.zsh
-source ~/.zshrc.antigen
-
+# general path
 export PATH=/usr/local/bin:/usr/local/sbin:$PATH
 export PATH=/opt/local/bin:/opt/local/sbin:~/bin:$PATH
 
@@ -21,15 +19,31 @@ alias tm='tmuxx'
 export PATH=/Applications/android-sdk/tools:/Applications/android-sdk/platform-tools:$PATH
 export ANDROID_HOME=/Applications/android-sdk/
 
-# tmux自動起動
+# autoload tmux
 if [ -z "$TMUX" -a -z "$STY" ]; then
-  if type tmuxx >/dev/null 2>&1; then
-    tmuxx
+  if type tmuxx >/dev/null 2>&1; then tmuxx
   elif type tmux >/dev/null 2>&1; then
-    if tmux has-session && tmux list-sessions | /usr/bin/grep -qE '.*]$'; then
-      tmux attach && echo "tmux attached session "
-    else
-      tmux new-session && echo "tmux created new session"
+    if tmux has-session && tmux list-sessions | /usr/bin/grep -qE '.*]$'; then tmux attach && echo "tmux attached session "
+    else tmux new-session && echo "tmux created new session"
     fi
   fi
 fi
+
+# rbenv
+export PATH="/Users/takashabe/.rbenv/shims:${PATH}"
+source "/usr/local/Cellar/rbenv/0.4.0/libexec/../completions/rbenv.zsh"
+rbenv rehash 2>/dev/null
+rbenv() {
+  typeset command
+  command="$1"
+  if [ "$#" -gt 0 ]; then
+    shift
+  fi
+
+  case "$command" in
+  rehash|shell)
+    eval `rbenv "sh-$command" "$@"`;;
+  *)
+    command rbenv "$command" "$@";;
+  esac
+}
