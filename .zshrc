@@ -1,7 +1,7 @@
 # oh-my-zsh
 ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="geoffgarside"
-plugins=(git github history brew scala sbt ruby rails)
+plugins=(knife bundler git github history brew scala sbt ruby rails vagrant)
 source $ZSH/oh-my-zsh.sh
 
 # general path
@@ -37,3 +37,22 @@ if [ -z "$TMUX" -a -z "$STY" ]; then
     fi
   fi
 fi
+
+# rbenv
+export PATH="/Users/takashabe/.rbenv/shims:${PATH}"
+source "/usr/local/Cellar/rbenv/0.4.0/libexec/../completions/rbenv.zsh"
+rbenv rehash 2>/dev/null
+rbenv() {
+  typeset command
+  command="$1"
+  if [ "$#" -gt 0 ]; then
+    shift
+  fi
+
+  case "$command" in
+  rehash|shell)
+    eval `rbenv "sh-$command" "$@"`;;
+  *)
+    command rbenv "$command" "$@";;
+  esac
+}
