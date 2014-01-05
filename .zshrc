@@ -1,7 +1,7 @@
 # oh-my-zsh
 ZSH=$HOME/.oh-my-zsh
-ZSH_THEME="geoffgarside"
-plugins=(knife bundler git github history brew scala sbt ruby rails vagrant)
+ZSH_THEME="gentoo"
+plugins=(knife_ssh knife bundler git github history brew scala sbt ruby rails vagrant)
 source $ZSH/oh-my-zsh.sh
 
 # general path

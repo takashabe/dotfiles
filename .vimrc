@@ -10,27 +10,14 @@ if has('vim_starting')
 endif
 
 " Plugin list
-NeoBundle 'h1mesuke/vim-alignta'
 NeoBundle 'The-NERD-Commenter'
-NeoBundle 'Shougo/neocomplcache'
+NeoBundle 'alpaca-tc/alpaca_powertabline'
+NeoBundle 'Align'
+" NeoBundle 'Lokaltog/powerline', { 'rtp' : 'powerline/bindings/vim' }
+
+NeoBundle 'Shougo/neocomplete.vim'
+NeoBundle 'Shougo/vimfiler.vim'
 NeoBundle 'Shougo/unite.vim'
-NeoBundle 'Shougo/vimshell.git'
-NeoBundle 'Shougo/vimfiler.git'
-NeoBundle 'thinca/vim-ref'
-NeoBundle 'thinca/vim-quickrun'
-NeoBundle 'yuroyoro/vim-scala'
-NeoBundle 'TwitVim'
-NeoBundle 'EasyMotion'
-NeoBundle 'smartchr'
-NeoBundle 'Source-Explorer-srcexpl.vim'
-NeoBundle 'trinity.vim'
-NeoBundle 'taglist.vim'
-NeoBundle 'haskell.vim'
-NeoBundle 'Lokaltog/vim-powerline'
-NeoBundle 'kana/vim-fakeclip'
-NeoBundle 'eagletmt/ghcmod-vim'
-NeoBundle 'tpope/vim-fugitive'
-" NeoBundle 'kana/vim-smartinput'
 NeoBundle 'Shougo/vimproc', {
       \ 'build' : {
       \     'windows' : 'make -f make_mingw32.mak',
@@ -500,170 +487,6 @@ map <Leader>x !/usr/local/bin/python -m BeautifulSoup<CR>
 "-------------------------------------------------------------------------------
 
 "-------------------------------------------------------------------------------
-" Align.vim
-"-------------------------------------------------------------------------------
-" for japanese string
-let g:Align_xstrlen = 3
-" remove 'DrChip' menu
-let g:DrChipTopLvlMenu = ''
-
-
-" -------------------------------------------------------------------------------
-" neocomplecache.vim
-" -------------------------------------------------------------------------------
-" neocomplcache enable with startup.
-" let g:neocomplcache_enable_at_startup = 1
-" camel case complete.
-" let g:neocomplcache_enable_camel_case_completion = 1
-" underbar case complete.
-" let g:neocomplcache_enable_underbar_completion = 1
-
-" Define dictionary.
-" let g:neocomplcache_dictionary_filetype_lists = {
-    " \ 'default' : '',
-    " \ 'vimshell' : $HOME.'/.vimshell_hist',
-    " \ 'scala' : $HOME.'/.vim/bundle/vim-scala/dict/scala.dict',
-    " \ 'java' : $HOME.'/.vim/dict/java.dict',
-    " \ 'c' : $HOME.'/.vim/dict/c.dict',
-    " \ 'cpp' : $HOME.'/.vim/dict/cpp.dict',
-    " \ 'javascript' : $HOME.'/.vim/dict/javascript.dict',
-    " \ 'ocaml' : $HOME.'/.vim/dict/ocaml.dict',
-    " \ 'perl' : $HOME.'/.vim/dict/perl.dict',
-    " \ 'php' : $HOME.'/.vim/dict/php.dict',
-    " \ 'scheme' : $HOME.'/.vim/dict/scheme.dict',
-    " \ 'vm' : $HOME.'/.vim/dict/vim.dict'
-    " \ }
-
-"------------------------------------
-" neocomplecache.vim
-"------------------------------------
-" AutoComplPopを無効にする
-let g:acp_enableAtStartup = 0
-" NeoComplCacheを有効にする
-let g:neocomplcache_enable_at_startup = 1
-" smarrt case有効化。 大文字が入力されるまで大文字小文字の区別を無視する
-let g:neocomplcache_enable_smart_case = 1
-" camle caseを有効化。大文字を区切りとしたワイルドカードのように振る舞う
-let g:neocomplcache_enable_camel_case_completion = 1
-" _(アンダーバー)区切りの補完を有効化
-let g:neocomplcache_enable_underbar_completion = 1
-" シンタックスをキャッシュするときの最小文字長を3に
-let g:neocomplcache_min_syntax_length = 3
-" neocomplcacheを自動的にロックするバッファ名のパターン
-let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
-" -入力による候補番号の表示
-let g:neocomplcache_enable_quick_match = 1
-" 補完候補の一番先頭を選択状態にする(AutoComplPopと似た動作)
-let g:neocomplcache_enable_auto_select = 1
-
-" Define dictionary.
-let g:neocomplcache_dictionary_filetype_lists = {
-    \ 'default' : '',
-    \ 'vimshell' : $HOME.'/.vimshell_hist',
-    \ 'scala' : $HOME.'/.vim/bundle/vim-scala/dict/scala.dict',
-    \ 'java' : $HOME.'/.vim/dict/java.dict',
-    \ 'c' : $HOME.'/.vim/dict/c.dict',
-    \ 'cpp' : $HOME.'/.vim/dict/cpp.dict',
-    \ 'javascript' : $HOME.'/.vim/dict/javascript.dict',
-    \ 'ocaml' : $HOME.'/.vim/dict/ocaml.dict',
-    \ 'perl' : $HOME.'/.vim/dict/perl.dict',
-    \ 'php' : $HOME.'/.vim/dict/php.dict',
-    \ 'scheme' : $HOME.'/.vim/dict/scheme.dict',
-    \ 'vm' : $HOME.'/.vim/dict/vim.dict'
-    \ }
-
-" Define keyword.
-if !exists('g:neocomplcache_keyword_patterns')
-    let g:neocomplcache_keyword_patterns = {}
-endif
-let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
-
-" ユーザー定義スニペット保存ディレクトリ
-let g:neocomplcache_snippets_dir = $HOME.'/.vim/snippets'
-
-" スニペット
-imap <C-y> <Plug>(neocomplcache_snippets_expand)
-smap <C-k> <Plug>(neocomplcache_snippets_expand)
-
-" 補完を選択しpopupを閉じる
-" inoremap <expr><C-y> neocomplcache#close_popup()
-" 補完をキャンセルしpopupを閉じる
-" inoremap <expr><C-e> neocomplcache#cancel_popup()
-" TABで補完できるようにする
-inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
-" undo
-inoremap <expr><C-g>     neocomplcache#undo_completion()
-" 補完候補の共通部分までを補完する
-inoremap <expr><C-s> neocomplcache#complete_common_string()
-" SuperTab like snippets behavior.
-imap <expr><TAB> neocomplcache#sources#snippets_complete#expandable() ? "\<Plug>(neocomplcache_snippets_expand)" : pumvisible() ? "\<C-n>" : "\<TAB>"
-" C-kを押すと行末まで削除
-" inoremap <C-k> <C-o>D
-" C-nでneocomplcache補完
-inoremap <expr><C-n>  pumvisible() ? "\<C-n>" : "\<C-x>\<C-u>\<C-p>"
-" C-pでkeyword補完
-inoremap <expr><C-p> pumvisible() ? "\<C-p>" : "\<C-p>\<C-n>"
-" 補完候補が出ていたら確定、なければ改行
-inoremap <expr><CR>  pumvisible() ? neocomplcache#close_popup() : "<CR>"
-
-" <TAB>: completion.
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-" <C-h>, <BS>: close popup and delete backword char.
-inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
-inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
-inoremap <expr><C-x><C-o> &filetype == 'vim' ? "\<C-x><C-v><C-p>" : neocomplcache#manual_omni_complete()
-
-" buffer開いたらneoconでcache
-autocmd BufRead :NeoComplCacheCachingBuffer <buffer>
-
-" FileType毎のOmni補完を設定
-autocmd FileType python set omnifunc=pythoncomplete#Complete
-autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
-autocmd FileType css set omnifunc=csscomplete#CompleteCSS
-autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
-autocmd FileType php set omnifunc=phpcomplete#CompletePHP
-autocmd FileType c set omnifunc=ccomplete#Complete
-autocmd FileType ruby set omnifunc=rubycomplete#Complete
-
-" Enable heavy omni completion.
-" if !exists('g:neocomplcache_omni_patterns')
-  " let g:neocomplcache_omni_patterns = {}
-" endif
-" let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
-" let g:neocomplcache_omni_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
-
-let g:neocomplcache_plugin_disable = {
-  \ 'include_complete' : 1
-\ }
-
-"インクルードパスの指定
-" let g:neocomplcache_include_paths = {
-  " \ 'cpp'  : '.,/opt/local/include/gcc46/c++,/opt/local/include,/usr/include',
-  " \ 'c'    : '.,/usr/include',
-  " \ 'ruby' : '.,$HOME/.rvm/rubies/**/lib/ruby/1.8/',
-  " \ }
-" let g:neocomplcache_include_paths = {
-  " \ 'cpp'  : '.,/opt/local/include/gcc46/c++,/opt/local/include,/usr/include',
-  " \ 'c'    : '.,/usr/include',
-  " \ }
-"インクルード文のパターンを指定
-" let g:neocomplcache_include_patterns = {
-  " \ 'cpp' : '^\s*#\s*include',
-  " \ 'ruby' : '^\s*require',
-  " \ 'perl' : '^\s*use',
-  " \ }
-" let g:neocomplcache_include_patterns = {
-  " \ 'cpp' : '^\s*#\s*include',
-  " \ 'perl' : '^\s*use',
-  " \ }
-"インクルード先のファイル名の解析パターン
-" let g:neocomplcache_include_exprs = {
-  " \ 'ruby' : substitute(substitute(v:fname,'::','/','g'),'$','\.rb','')
-  " \ }
-
-
-"-------------------------------------------------------------------------------
 " NERD_commenter.vim
 "-------------------------------------------------------------------------------
 " コメントの間にスペースを空ける
@@ -673,155 +496,102 @@ map <Leader>x, c<space>
 ""未対応ファイルタイプのエラーメッセージを表示しない
 let NERDShutUp=1
 
-
 "-------------------------------------------------------------------------------
-" smartchar.vim
+" neocomplete.vim
 "-------------------------------------------------------------------------------
-" inoremap <expr> = smartchr#loop('=',  ' = ',  ' == ', ' => ')
-" inoremap <expr> . smartchr#loop('.',  '->', '=>')
+" Disable AutoComplPop.
+let g:acp_enableAtStartup = 0
+" Use neocomplete.
+let g:neocomplete#enable_at_startup = 1
+" Use smartcase.
+let g:neocomplete#enable_smart_case = 1
+" Set minimum syntax keyword length.
+let g:neocomplete#sources#syntax#min_keyword_length = 3
+let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
 
-" " 演算子の間に空白を入れる
-" inoremap <buffer><expr> + smartchr#one_of(' + ', ' ++ ', '+')
-" inoremap <buffer><expr> +=  smartchr#one_of(' += ')
-" " inoremap <buffer><expr> - smartchr#one_of(' - ', ' -- ', '-')
-" inoremap <buffer><expr> -=  smartchr#one_of(' -= ')
-" " inoremap <buffer><expr> / smartchr#one_of(' / ', ' // ', '/')
-" inoremap <buffer><expr> /=  smartchr#one_of(' /= ')
-" inoremap <buffer><expr> * smartchr#one_of(' * ', ' ** ', '*')
-" inoremap <buffer><expr> *=  smartchr#one_of(' *= ')
-" inoremap <buffer><expr> & smartchr#one_of(' & ', ' && ', '&')
-" inoremap <buffer><expr> % smartchr#one_of(' % ', '%')
-" inoremap <buffer><expr> =>  smartchr#one_of(' => ')
-" inoremap <buffer><expr> <-   smartchr#one_of(' <-  ')
-" inoremap <buffer><expr> <Bar> smartchr#one_of(' <Bar> ', ' <Bar><Bar> ', '<Bar>')
-" inoremap <buffer><expr> , smartchr#one_of(', ', ',')
-" " 3項演算子の場合は、後ろのみ空白を入れる
-" inoremap <buffer><expr> ? smartchr#one_of('? ', '?')
-" " inoremap <buffer><expr> : smartchr#one_of(': ', '::', ':')
+" Define dictionary.
+let g:neocomplete#sources#dictionary#dictionaries = {
+    \ 'default' : '',
+    \ 'vimshell' : $HOME.'/.vimshell_hist',
+    \ 'scheme' : $HOME.'/.gosh_completions'
+        \ }
 
-" " =の場合、単純な代入や比較演算子として入力する場合は前後にスペースをいれる。
-" " 複合演算代入としての入力の場合は、直前のスペースを削除して=を入力
-" inoremap <buffer><expr> = search('¥(&¥<bar><bar>¥<bar>+¥<bar>-¥<bar>/¥<bar>>¥<bar><¥) ¥%#', 'bcn')? '<bs>= '  : search('¥(*¥<bar>!¥)¥%#', 'bcn') ? '= '  : smartchr#one_of(' = ', ' == ', '=')
-
-" " 下記の文字は連続して現れることがまれなので、二回続けて入力したら改行する
-" inoremap <buffer><expr> } smartchr#one_of('}', '}<cr>')
-" inoremap <buffer><expr> ; smartchr#one_of(';', ';<cr>')
-" "()は空白入れる
-" inoremap <buffer><expr> ( smartchr#one_of('( ')
-" inoremap <buffer><expr> ) smartchr#one_of(' )')
-
-" " if文直後の(は自動で間に空白を入れる
-" inoremap <buffer><expr> ( search('¥<¥if¥%#', 'bcn')? ' (': '('
-
-
-"-------------------------------------------------------------------------------
-" vimshell.vim
-"-------------------------------------------------------------------------------
-let g:vimshell_user_prompt = 'fnamemodify(getcwd(), ":~")'
-let g:vimshell_right_prompt = 'vimshell#vcs#info("(%s)-[%b]", "(%s)-[%b|%a]")'
-let g:vimshell_enable_smart_case = 1
-
-if has('win32') || has('win64')
-  " Display user name on Windows.
-  let g:vimshell_prompt = $USERNAME."% "
-else
-  " Display user name on Linux.
-  let g:vimshell_prompt = $USER."% "
-
-  call vimshell#set_execute_file('bmp,jpg,png,gif', 'gexe eog')
-  call vimshell#set_execute_file('mp3,m4a,ogg', 'gexe amarok')
-  let g:vimshell_execute_file_list['zip'] = 'zipinfo'
-  call vimshell#set_execute_file('tgz,gz', 'gzcat')
-  call vimshell#set_execute_file('tbz,bz2', 'bzcat')
+" Define keyword.
+if !exists('g:neocomplete#keyword_patterns')
+    let g:neocomplete#keyword_patterns = {}
 endif
+let g:neocomplete#keyword_patterns['default'] = '\h\w*'
 
-function! g:my_chpwd(args, context)
-  call vimshell#execute('echo "chpwd"')
+" Plugin key-mappings.
+inoremap <expr><C-g>     neocomplete#undo_completion()
+inoremap <expr><C-l>     neocomplete#complete_common_string()
+
+" Recommended key-mappings.
+" <CR>: close popup and save indent.
+inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+function! s:my_cr_function()
+  return neocomplete#close_popup() . "\<CR>"
+  " For no inserting <CR> key.
+  "return pumvisible() ? neocomplete#close_popup() : "\<CR>"
 endfunction
-function! g:my_emptycmd(cmdline, context)
-  call vimshell#execute('echo "emptycmd"')
-  return a:cmdline
-endfunction
-function! g:my_preprompt(args, context)
-  call vimshell#execute('echo "preprompt"')
-endfunction
-function! g:my_preexec(cmdline, context)
-  call vimshell#execute('echo "preexec"')
+" <TAB>: completion.
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+" <C-h>, <BS>: close popup and delete backword char.
+inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
+inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
+inoremap <expr><C-y>  neocomplete#close_popup()
+inoremap <expr><C-e>  neocomplete#cancel_popup()
+" Close popup by <Space>.
+"inoremap <expr><Space> pumvisible() ? neocomplete#close_popup() : "\<Space>"
 
-  if a:cmdline =~# '^\s*diff\>'
-    call vimshell#set_syntax('diff')
-  endif
-  return a:cmdline
-endfunction
+" For cursor moving in insert mode(Not recommended)
+"inoremap <expr><Left>  neocomplete#close_popup() . "\<Left>"
+"inoremap <expr><Right> neocomplete#close_popup() . "\<Right>"
+"inoremap <expr><Up>    neocomplete#close_popup() . "\<Up>"
+"inoremap <expr><Down>  neocomplete#close_popup() . "\<Down>"
+" Or set this.
+"let g:neocomplete#enable_cursor_hold_i = 1
+" Or set this.
+"let g:neocomplete#enable_insert_char_pre = 1
 
-autocmd FileType vimshell
-\ call vimshell#altercmd#define('g', 'git')
-\| call vimshell#altercmd#define('i', 'iexe')
-\| call vimshell#altercmd#define('l', 'll')
-\| call vimshell#altercmd#define('ll', 'ls -al')
-\| call vimshell#hook#set('chpwd', ['g:my_chpwd'])
-\| call vimshell#hook#set('emptycmd', ['g:my_emptycmd'])
-\| call vimshell#hook#set('preprompt', ['g:my_preprompt'])
-\| call vimshell#hook#set('preexec', ['g:my_preexec'])
+" AutoComplPop like behavior.
+"let g:neocomplete#enable_auto_select = 1
 
-command! Vs :VimShell
+" Shell like behavior(not recommended).
+"set completeopt+=longest
+"let g:neocomplete#enable_auto_select = 1
+"let g:neocomplete#disable_auto_complete = 1
+"inoremap <expr><TAB>  pumvisible() ? "\<Down>" : "\<C-x>\<C-u>"
 
+" Enable omni completion.
+autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+
+" Enable heavy omni completion.
+if !exists('g:neocomplete#sources#omni#input_patterns')
+  let g:neocomplete#sources#omni#input_patterns = {}
+endif
+"let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
+"let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
+"let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
 
 
 "-------------------------------------------------------------------------------
 " unite.vim
 "-------------------------------------------------------------------------------
-" The prefix key.
-nnoremap    [unite]   <Nop>
-nmap    f [unite]
-
-nnoremap [unite]u  :<C-u>Unite<Space>
-nnoremap <silent> [unite]a  :<C-u>UniteWithCurrentDir -no-split -buffer-name=files buffer file_mru file bookmark<CR>
-nnoremap <silent> [unite]f  :<C-u>Unite -no-split bookmark<CR>
-nnoremap <silent> [unite]b  :<C-u>Unite -no-split buffer<CR>
-nnoremap <silent> [unite]t  :<C-u>Unite -no-split buffer_tab<CR>
-nnoremap <silent> [unite]m  :<C-u>Unite -no-split file_mru<CR>
-
-" nnoremap <silent> [unite]b  :<C-u>UniteWithBufferDir -buffer-name=files buffer file_mru bookmark file<CR>
-
-autocmd FileType unite call s:unite_my_settings()
-function! s:unite_my_settings()"{{{
-  " Overwrite settings.
-  imap <buffer> jj      <Plug>(unite_insert_leave)
-  nnoremap <silent><buffer> <C-k> :<C-u>call unite#mappings#do_action('preview')<CR>
-  imap <buffer> <C-w>     <Plug>(unite_delete_backward_path)
-  " Start insert.
-  let g:unite_enable_start_insert = 1
-endfunction"}}}
-
-autocmd FileType unite nnoremap <silent> <buffer> <ESC><ESC> :<C-q>q<CR>
-
+let g:unite_enable_start_insert=1
+let g:unite_source_history_yank_enable =1
 let g:unite_source_file_mru_limit = 200
-
-call unite#custom_default_action('source/bookmark/directory', 'vimfiler')
+nnoremap <silent> <leader>uy :<C-u>Unite history/yank<CR>
+nnoremap <silent> <leader>ub :<C-u>Unite buffer<CR>
+nnoremap <silent> <leader>uf :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
+nnoremap <silent> <leader>ur :<C-u>Unite -buffer-name=register register<CR>
+nnoremap <silent> <leader>uu :<C-u>Unite file_mru buffer<CR>
 
 "-------------------------------------------------------------------------------
 " vimfiler.vim
 "-------------------------------------------------------------------------------
-
-nnoremap <Space>f :<C-u>VimFiler<CR>
-let g:vimfiler_safe_mode_by_default = 0
-let g:vimfiler_as_default_explorer = 1
-let g:vimfiler_directory_display_top = 1
-
-"-------------------------------------------------------------------------------
-" taglist.vim
-"-------------------------------------------------------------------------------
-
-let g:Tlist_Auto_Highlight_Tag=1
-let g:Tlist_Show_Menu=1
-
-"-------------------------------------------------------------------------------
-" srcexpl.vim
-"-------------------------------------------------------------------------------
-let g:SrcExpl_isUpdateTags=0
-
-"-------------------------------------------------------------------------------
-" powerline.vim
-"-------------------------------------------------------------------------------
-let g:Powerline_symbols = 'fancy'
+:let g:vimfiler_as_default_explorer = 1
