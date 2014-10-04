@@ -1,3 +1,7 @@
+# Encoding
+export LC_CTYPE=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
+
 # oh-my-zsh
 ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="gentoo"
@@ -12,20 +16,11 @@ export PATH=/opt/local/bin:/opt/local/sbin:~/bin:$PATH
 alias l='ls -alv'
 alias git='/usr/local/bin/git'
 
-# vim
-export EDITOR=/Applications/MacVim.app/Contents/MacOS/Vim
-alias vi='env LANG=en-US.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim "$@"'
-alias vim='env LANG=en_US.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim "$@"'
-
 # tmux
 alias tmux='tmuxx'
 alias tm='tmuxx'
 
-# android
-export PATH=/Applications/android-sdk/tools:/Applications/android-sdk/platform-tools:$PATH
-export ANDROID_HOME=/Applications/android-sdk/
-
-# tmux自動起動
+# tmux
 if [ -z "$TMUX" -a -z "$STY" ]; then
   if type tmuxx >/dev/null 2>&1; then
     tmuxx

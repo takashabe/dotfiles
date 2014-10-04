@@ -1,36 +1,35 @@
 "-------------------------------------------------------------------------------
 " neobundle.vim
 "-------------------------------------------------------------------------------
-set nocompatible
-filetype off
+" Note: Skip initialization for vim-tiny or vim-small.
+if !1 | finish | endif
 
 if has('vim_starting')
-  set runtimepath+=~/.vim/bundle/neobundle.vim
-  call neobundle#rc(expand('~/.vim/bundle'))
+  set nocompatible               " Be iMproved
+
+  " Required:
+  set runtimepath+=~/.vim/bundle/neobundle.vim/
 endif
 
-" Plugin list
-NeoBundle 'The-NERD-Commenter'
-NeoBundle 'alpaca-tc/alpaca_powertabline'
-NeoBundle 'Align'
-" NeoBundle 'Lokaltog/powerline', { 'rtp' : 'powerline/bindings/vim' }
+" Required:
+call neobundle#begin(expand('~/.vim/bundle/'))
 
-NeoBundle 'Shougo/neocomplete.vim'
-NeoBundle 'Shougo/vimfiler.vim'
-NeoBundle 'Shougo/unite.vim'
-NeoBundle 'Shougo/vimproc', {
-      \ 'build' : {
-      \     'windows' : 'make -f make_mingw32.mak',
-      \     'cygwin' : 'make -f make_cygwin.mak',
-      \     'mac' : 'make -f make_mac.mak',
-      \     'unix' : 'make -f make_unix.mak',
-      \    },
-      \ }
+" Let NeoBundle manage NeoBundle
+" Required:
+NeoBundleFetch 'Shougo/neobundle.vim'
 
-NeoBundle 'Shougo/neobundle.vim'
+" My Bundles here:
+" Refer to |:NeoBundle-examples|.
+" Note: You don't set neobundle setting in .gvimrc!
 
-filetype plugin on
-filetype indent on
+call neobundle#end()
+
+" Required:
+filetype plugin indent on
+
+" If there are uninstalled bundles found on startup,
+" this will conveniently prompt you to install them.
+NeoBundleCheck
 
 
 "-------------------------------------------------------------------------------
@@ -139,10 +138,6 @@ set list              " 不可視文字表示
 set listchars=tab:>.,trail:_,extends:>,precedes:< " 不可視文字の表示形式
 set display=uhex      " 印字不可能文字を16進数で表示
 
-" 全角スペースの表示
-" highlight ZenkakuSpace cterm=underline ctermfg=lightblue guibg=darkgray
-" match ZenkakuSpace /　/
-
 " カーソル行をハイライト
 set cursorline
 " カレントウィンドウにのみ罫線を引く
@@ -170,7 +165,6 @@ highlight CursorLine ctermbg=black guibg=black
 " インデント Indent
 "-------------------------------------------------------------------------------
 set autoindent   " 自動でインデント
-"set paste        " ペースト時にautoindentを無効に(onにするとautocomplpop.vimが動かない)
 set smartindent  " 新しい行を開始したときに、新しい行のインデントを現在行と同じ量にする。
 set cindent      " Cプログラムファイルの自動インデントを始める
 
@@ -388,24 +382,10 @@ command! Jis Iso2022jp
 command! Sjis Cp932
 
 "-------------------------------------------------------------------------------
-" タグ関連 Tags
-"-------------------------------------------------------------------------------
-" set tags
-" if has("autochdir")
-  " " 編集しているファイルのディレクトリに自動で移動
-  " set autochdir
-  " set tags=tags;
-" else
-set tags=/Users/takashabe/dotfiles/common_ctags/tags,./tags,./../tags,./*/tags,./../../tags,./../../../tags,./../../../../tags,./../../../../../tags
-" endif
-
-" set notagbsearch
-
-"-------------------------------------------------------------------------------
 " カラー関連 Colors
 "-------------------------------------------------------------------------------
 
-colorscheme yuroyoro256
+colorscheme desert
 
 " ターミナルタイプによるカラー設定
 if &term =~ "xterm-256color" || "screen-256color"
@@ -481,117 +461,3 @@ noremap : ;
 
 " 範囲選択した箇所のxmlを整形
 map <Leader>x !/usr/local/bin/python -m BeautifulSoup<CR>
-
-"-------------------------------------------------------------------------------
-" Plugin settings
-"-------------------------------------------------------------------------------
-
-"-------------------------------------------------------------------------------
-" NERD_commenter.vim
-"-------------------------------------------------------------------------------
-" コメントの間にスペースを空ける
-let NERDSpaceDelims = 1
-"<Leader>xでコメントをトグル(NERD_commenter.vim)
-map <Leader>x, c<space>
-""未対応ファイルタイプのエラーメッセージを表示しない
-let NERDShutUp=1
-
-"-------------------------------------------------------------------------------
-" neocomplete.vim
-"-------------------------------------------------------------------------------
-" Disable AutoComplPop.
-let g:acp_enableAtStartup = 0
-" Use neocomplete.
-let g:neocomplete#enable_at_startup = 1
-" Use smartcase.
-let g:neocomplete#enable_smart_case = 1
-" Set minimum syntax keyword length.
-let g:neocomplete#sources#syntax#min_keyword_length = 3
-let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
-
-" Define dictionary.
-let g:neocomplete#sources#dictionary#dictionaries = {
-    \ 'default' : '',
-    \ 'vimshell' : $HOME.'/.vimshell_hist',
-    \ 'scheme' : $HOME.'/.gosh_completions'
-        \ }
-
-" Define keyword.
-if !exists('g:neocomplete#keyword_patterns')
-    let g:neocomplete#keyword_patterns = {}
-endif
-let g:neocomplete#keyword_patterns['default'] = '\h\w*'
-
-" Plugin key-mappings.
-inoremap <expr><C-g>     neocomplete#undo_completion()
-inoremap <expr><C-l>     neocomplete#complete_common_string()
-
-" Recommended key-mappings.
-" <CR>: close popup and save indent.
-inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
-function! s:my_cr_function()
-  return neocomplete#close_popup() . "\<CR>"
-  " For no inserting <CR> key.
-  "return pumvisible() ? neocomplete#close_popup() : "\<CR>"
-endfunction
-" <TAB>: completion.
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-" <C-h>, <BS>: close popup and delete backword char.
-inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
-inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
-inoremap <expr><C-y>  neocomplete#close_popup()
-inoremap <expr><C-e>  neocomplete#cancel_popup()
-" Close popup by <Space>.
-"inoremap <expr><Space> pumvisible() ? neocomplete#close_popup() : "\<Space>"
-
-" For cursor moving in insert mode(Not recommended)
-"inoremap <expr><Left>  neocomplete#close_popup() . "\<Left>"
-"inoremap <expr><Right> neocomplete#close_popup() . "\<Right>"
-"inoremap <expr><Up>    neocomplete#close_popup() . "\<Up>"
-"inoremap <expr><Down>  neocomplete#close_popup() . "\<Down>"
-" Or set this.
-"let g:neocomplete#enable_cursor_hold_i = 1
-" Or set this.
-"let g:neocomplete#enable_insert_char_pre = 1
-
-" AutoComplPop like behavior.
-"let g:neocomplete#enable_auto_select = 1
-
-" Shell like behavior(not recommended).
-"set completeopt+=longest
-"let g:neocomplete#enable_auto_select = 1
-"let g:neocomplete#disable_auto_complete = 1
-"inoremap <expr><TAB>  pumvisible() ? "\<Down>" : "\<C-x>\<C-u>"
-
-" Enable omni completion.
-autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-
-" Enable heavy omni completion.
-if !exists('g:neocomplete#sources#omni#input_patterns')
-  let g:neocomplete#sources#omni#input_patterns = {}
-endif
-"let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
-"let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
-"let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
-
-
-"-------------------------------------------------------------------------------
-" unite.vim
-"-------------------------------------------------------------------------------
-let g:unite_enable_start_insert=1
-let g:unite_source_history_yank_enable =1
-let g:unite_source_file_mru_limit = 200
-nnoremap <silent> <leader>uy :<C-u>Unite history/yank<CR>
-nnoremap <silent> <leader>ub :<C-u>Unite buffer<CR>
-nnoremap <silent> <leader>uf :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
-nnoremap <silent> <leader>ur :<C-u>Unite -buffer-name=register register<CR>
-nnoremap <silent> <leader>uu :<C-u>Unite file_mru buffer<CR>
-
-"-------------------------------------------------------------------------------
-" vimfiler.vim
-"-------------------------------------------------------------------------------
-:let g:vimfiler_as_default_explorer = 1
