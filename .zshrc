@@ -1,3 +1,7 @@
+# Encoding
+export LC_CTYPE=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
+
 # oh-my-zsh
 ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="gentoo"

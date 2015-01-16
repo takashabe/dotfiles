@@ -1,12 +1,8 @@
 "-------------------------------------------------------------------------------
 " neobundle.vim
 "-------------------------------------------------------------------------------
-set nocompatible
-filetype off
-
-filetype plugin on
-filetype indent on
-
+" Note: Skip initialization for vim-tiny or vim-small.
+if !1 | finish | endif
 
 "-------------------------------------------------------------------------------
 " 基本設定 Basics
@@ -114,10 +110,6 @@ set list              " 不可視文字表示
 set listchars=tab:>.,trail:_,extends:>,precedes:< " 不可視文字の表示形式
 set display=uhex      " 印字不可能文字を16進数で表示
 
-" 全角スペースの表示
-" highlight ZenkakuSpace cterm=underline ctermfg=lightblue guibg=darkgray
-" match ZenkakuSpace /　/
-
 " カーソル行をハイライト
 set cursorline
 " カレントウィンドウにのみ罫線を引く
@@ -145,7 +137,6 @@ highlight CursorLine ctermbg=black guibg=black
 " インデント Indent
 "-------------------------------------------------------------------------------
 set autoindent   " 自動でインデント
-"set paste        " ペースト時にautoindentを無効に(onにするとautocomplpop.vimが動かない)
 set smartindent  " 新しい行を開始したときに、新しい行のインデントを現在行と同じ量にする。
 set cindent      " Cプログラムファイルの自動インデントを始める
 
@@ -344,20 +335,6 @@ command! Iso2022jp edit ++enc=iso-2022-jp
 command! Utf8 edit ++enc=utf-8
 command! Jis Iso2022jp
 command! Sjis Cp932
-
-"-------------------------------------------------------------------------------
-" タグ関連 Tags
-"-------------------------------------------------------------------------------
-" set tags
-" if has("autochdir")
-  " " 編集しているファイルのディレクトリに自動で移動
-  " set autochdir
-  " set tags=tags;
-" else
-set tags=/Users/takashabe/dotfiles/common_ctags/tags,./tags,./../tags,./*/tags,./../../tags,./../../../tags,./../../../../tags,./../../../../../tags
-" endif
-
-" set notagbsearch
 
 "-------------------------------------------------------------------------------
 " カラー関連 Colors
