@@ -2,19 +2,34 @@
 export LC_CTYPE=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 
+### 通常コマンドのalias
+alias l='ls -alv'
+# 古い環境などxterm-256colorやscreen-256colorを認識しない環境用
+alias ssh='TERM=xterm ssh'
+
 # oh-my-zsh
 ZSH=$HOME/.oh-my-zsh
-ZSH_THEME="gentoo"
-plugins=(git github tmux debian)
+ZSH_THEME="takashabe_custom"
+plugins=(brew git github tmux debian python pyenv macports redis)
 source $ZSH/oh-my-zsh.sh
+
+# vim
+case "$(uname)" in
+  Darwin) # OSがMacならば
+    if [[ -d /Applications/MacVim.app ]]; then # MacVimが存在するならば
+      alias vim=/Applications/MacVim.app/Contents/MacOS/Vim
+      alias vi=vim
+    fi
+    ;;
+
+  *) ;; # OSがMac以外ならば何もしない
+esac
 
 # general path
 export PATH=/usr/local/bin:/usr/local/sbin:$PATH
 export PATH=/opt/local/bin:/opt/local/sbin:~/bin:$PATH
 fpath=(~/dotfiles/zsh-completions/src $fpath)
 
-# alias
-alias l='ls -alv'
 
 # tmux auto load
 if [ -z "$TMUX" -a -z "$STY" ]; then
@@ -29,6 +44,18 @@ if [ -z "$TMUX" -a -z "$STY" ]; then
   fi
 fi
 
+# 履歴をウィンドウ間で共有しない
+unsetopt share_history
+
 # rbenv
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
+
+# pyenv
+eval "$(pyenv virtualenv-init -)"
+
+# google cloud sdk
+export PATH=~/google-cloud-sdk/bin:$PATH
+
+# nodebrew
+PATH=$HOME/.nodebrew/current/bin:$PATH
