@@ -30,8 +30,7 @@ let $MYVIMRC="$HOME/.vimrc"
 let $MYGVIMRC="$HOME/.gvimrc"
 
 " OSのクリップボードを使用する
-" set clipboard+=unnamed
-set clipboard=unnamedplus
+set clipboard=unnamed,autoselect
 " set clipboard+=autoselect
 " ターミナルでマウスを使用できるようにする
 set mouse=a
