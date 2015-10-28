@@ -9,9 +9,14 @@ alias ssh='TERM=xterm ssh'
 
 # oh-my-zsh
 ZSH=$HOME/.oh-my-zsh
-ZSH_THEME="takashabe_custom"
-plugins=(brew git github tmux debian python pyenv macports redis)
+ZSH_THEME="robbyrussell"
+plugins=(brew git github tmux debian python pyenv macports redis nodebew npm node go)
 source $ZSH/oh-my-zsh.sh
+
+# general path
+export PATH=/usr/local/bin:/usr/local/sbin:$PATH
+export PATH=/opt/local/bin:/opt/local/sbin:~/bin:$PATH
+fpath=(~/dotfiles/zsh-completions/src $fpath)
 
 # vim
 case "$(uname)" in
@@ -24,12 +29,6 @@ case "$(uname)" in
 
   *) ;; # OSがMac以外ならば何もしない
 esac
-
-# general path
-export PATH=/usr/local/bin:/usr/local/sbin:$PATH
-export PATH=/opt/local/bin:/opt/local/sbin:~/bin:$PATH
-fpath=(~/dotfiles/zsh-completions/src $fpath)
-
 
 # tmux auto load
 if [ -z "$TMUX" -a -z "$STY" ]; then
