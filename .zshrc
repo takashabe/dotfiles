@@ -57,4 +57,9 @@ eval "$(pyenv virtualenv-init -)"
 export PATH=~/google-cloud-sdk/bin:$PATH
 
 # nodebrew
-PATH=$HOME/.nodebrew/current/bin:$PATH
+export PATH=$HOME/.nodebrew/current/bin:$PATH
+
+# go
+export GOROOT=/usr/local/opt/go/libexec
+export GOPATH=$HOME/go
+export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
