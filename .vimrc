@@ -4,6 +4,33 @@
 " Note: Skip initialization for vim-tiny or vim-small.
 if !1 | finish | endif
 
+if has('win32')
+    let s:vim_home=expand('~/vimfiles')
+else
+    let s:vim_home=expand('~/.vim')
+endif
+if has('vim_starting')
+    let &runtimepath.=printf(',%s/bundle/neobundle.vim', s:vim_home)
+endif
+
+set nocompatible
+call neobundle#begin(expand(s:vim_home.'/bundle/'))
+NeoBundleFetch 'Shougo/neobundle.vim'
+call neobundle#end()
+
+NeoBundle 'majutsushi/tagbar'
+NeoBundle 'Shougo/vimfiler'
+NeoBundle 'Shougo/vimproc'
+NeoBundle 'Shougo/unite.vim'
+NeoBundle 'Shougo/unite-outline'
+NeoBundle 'dgryski/vim-godef'
+NeoBundle 'vim-jp/vim-go-extra'
+set rtp^=$GOPATH/src/github.com/nsf/gocode/vim
+
+filetype plugin indent on
+syntax on
+NeoBundleCheck
+
 "-------------------------------------------------------------------------------
 " 基本設定 Basics
 "-------------------------------------------------------------------------------
@@ -243,12 +270,6 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 nnoremap <C-h> <C-w>h
 
-" C-hkjlでカレントウィンドウを上下左右端に移動
-" nnoremap <C-j> <C-w>J
-" nnoremap <C-k> <C-w>K
-" nnoremap <C-l> <C-w>L
-" nnoremap <C-h> <C-w>H
-
 "-------------------------------------------------------------------------------
 " エンコーディング関連 Encoding
 "-------------------------------------------------------------------------------
@@ -416,3 +437,19 @@ noremap : ;
 
 " 範囲選択した箇所のxmlを整形
 map <Leader>x !/usr/local/bin/python -m BeautifulSoup<CR>
+
+"-------------------------------------------------------------------------------
+" 各言語の設定 Language
+"-------------------------------------------------------------------------------
+
+" golang
+set path+=$GOPATH/src/**
+let g:gofmt_command = 'goimports'
+au BufWritePre *.go Fmt
+au BufNewFile,BufRead *.go set sw=4 noexpandtab ts=4 completeopt=menu,preview
+au FileType go compiler go
+
+"-------------------------------------------------------------------------------
+" 各プラグインの設定 Plugins
+"-------------------------------------------------------------------------------
+
