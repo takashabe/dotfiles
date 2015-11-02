@@ -18,6 +18,7 @@ call neobundle#begin(expand(s:vim_home.'/bundle/'))
 NeoBundleFetch 'Shougo/neobundle.vim'
 call neobundle#end()
 
+NeoBundle 'altercation/vim-colors-solarized'
 NeoBundle 'majutsushi/tagbar'
 NeoBundle 'Shougo/vimfiler'
 NeoBundle 'Shougo/vimproc'
@@ -361,7 +362,7 @@ command! Sjis Cp932
 " カラー関連 Colors
 "-------------------------------------------------------------------------------
 
-colorscheme desert
+colorscheme solarized
 
 " ターミナルタイプによるカラー設定
 if &term =~ "xterm-256color" || "screen-256color"
@@ -453,3 +454,33 @@ au FileType go compiler go
 " 各プラグインの設定 Plugins
 "-------------------------------------------------------------------------------
 
+" VimFilerTree {{{
+command! VimFilerTree call VimFilerTree(<f-args>)
+function VimFilerTree(...)
+    let l:h = expand(a:0 > 0 ? a:1 : '%:p:h')
+    let l:path = isdirectory(l:h) ? l:h : ''
+    exec ':VimFiler -buffer-name=explorer -split -simple -winwidth=45 -toggle -no-quit ' . l:path
+    wincmd t
+    setl winfixwidth
+endfunction
+autocmd! FileType vimfiler call g:my_vimfiler_settings()
+function! g:my_vimfiler_settings()
+    nmap     <buffer><expr><CR> vimfiler#smart_cursor_map("\<Plug>(vimfiler_expand_tree)", "\<Plug>(vimfiler_edit_file)")
+    nnoremap <buffer>s          :call vimfiler#mappings#do_action('my_split')<CR>
+    nnoremap <buffer>v          :call vimfiler#mappings#do_action('my_vsplit')<CR>
+endfunction
+
+let my_action = {'is_selectable' : 1}
+function! my_action.func(candidates)
+    wincmd p
+    exec 'split '. a:candidates[0].action__path
+endfunction
+call unite#custom_action('file', 'my_split', my_action)
+
+let my_action = {'is_selectable' : 1}
+function! my_action.func(candidates)
+    wincmd p
+    exec 'vsplit '. a:candidates[0].action__path
+endfunction
+call unite#custom_action('file', 'my_vsplit', my_action)
+" }}}
