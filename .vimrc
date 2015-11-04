@@ -5,27 +5,26 @@
 if !1 | finish | endif
 
 if has('win32')
-    let s:vim_home=expand('~/vimfiles')
+  let s:vim_home=expand('~/vimfiles')
 else
-    let s:vim_home=expand('~/.vim')
+  let s:vim_home=expand('~/.vim')
 endif
 if has('vim_starting')
-    let &runtimepath.=printf(',%s/bundle/neobundle.vim', s:vim_home)
+  let &runtimepath.=printf(',%s/bundle/neobundle.vim', s:vim_home)
 endif
 
 set nocompatible
 call neobundle#begin(expand(s:vim_home.'/bundle/'))
-NeoBundleFetch 'Shougo/neobundle.vim'
+  NeoBundleFetch 'Shougo/neobundle.vim'
+  NeoBundle 'altercation/vim-colors-solarized'
+  NeoBundle 'majutsushi/tagbar'
+  NeoBundle 'Shougo/vimfiler'
+  NeoBundle 'Shougo/vimproc'
+  NeoBundle 'Shougo/unite.vim'
+  NeoBundle 'Shougo/unite-outline'
+  NeoBundle 'dgryski/vim-godef'
+  NeoBundle 'vim-jp/vim-go-extra'
 call neobundle#end()
-
-NeoBundle 'altercation/vim-colors-solarized'
-NeoBundle 'majutsushi/tagbar'
-NeoBundle 'Shougo/vimfiler'
-NeoBundle 'Shougo/vimproc'
-NeoBundle 'Shougo/unite.vim'
-NeoBundle 'Shougo/unite-outline'
-NeoBundle 'dgryski/vim-godef'
-NeoBundle 'vim-jp/vim-go-extra'
 set rtp^=$GOPATH/src/github.com/nsf/gocode/vim
 
 filetype plugin indent on
@@ -456,7 +455,7 @@ au FileType go compiler go
 
 " VimFilerTree {{{
 command! VimFilerTree call VimFilerTree(<f-args>)
-function VimFilerTree(...)
+function! VimFilerTree(...)
     let l:h = expand(a:0 > 0 ? a:1 : '%:p:h')
     let l:path = isdirectory(l:h) ? l:h : ''
     exec ':VimFiler -buffer-name=explorer -split -simple -winwidth=45 -toggle -no-quit ' . l:path
@@ -464,7 +463,7 @@ function VimFilerTree(...)
     setl winfixwidth
 endfunction
 autocmd! FileType vimfiler call g:my_vimfiler_settings()
-function! g:my_vimfiler_settings()
+function! s:my_vimfiler_settings()
     nmap     <buffer><expr><CR> vimfiler#smart_cursor_map("\<Plug>(vimfiler_expand_tree)", "\<Plug>(vimfiler_edit_file)")
     nnoremap <buffer>s          :call vimfiler#mappings#do_action('my_split')<CR>
     nnoremap <buffer>v          :call vimfiler#mappings#do_action('my_vsplit')<CR>
