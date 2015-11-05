@@ -9,8 +9,8 @@ alias ssh='TERM=xterm ssh'
 
 # oh-my-zsh
 ZSH=$HOME/.oh-my-zsh
-ZSH_THEME="robbyrussell"
-plugins=(brew git github tmux debian python pyenv macports redis nodebew npm node go)
+ZSH_THEME="gentoo"
+plugins=(brew git github debian python pyenv macports redis nodebew npm node go)
 source $ZSH/oh-my-zsh.sh
 
 # general path
@@ -47,8 +47,11 @@ fi
 unsetopt share_history
 
 # rbenv
+export RBENV_ROOT=/usr/local/var/rbenv
 export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
+if which rbenv > /dev/null; then
+  eval "$(rbenv init - zsh)";
+fi
 
 # pyenv
 eval "$(pyenv virtualenv-init -)"
