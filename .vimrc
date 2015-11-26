@@ -16,7 +16,6 @@ endif
 set nocompatible
 call neobundle#begin(expand(s:vim_home.'/bundle/'))
   NeoBundleFetch 'Shougo/neobundle.vim'
-  NeoBundle 'altercation/vim-colors-solarized'
   NeoBundle 'majutsushi/tagbar'
   NeoBundle 'Shougo/vimfiler'
   NeoBundle 'Shougo/vimproc'
@@ -24,6 +23,15 @@ call neobundle#begin(expand(s:vim_home.'/bundle/'))
   NeoBundle 'Shougo/unite-outline'
   NeoBundle 'dgryski/vim-godef'
   NeoBundle 'vim-jp/vim-go-extra'
+  NeoBundle 'nanotech/jellybeans.vim'
+  NeoBundle 'w0ng/vim-hybrid'
+  NeoBundle 'altercation/vim-colors-solarized'
+  NeoBundle 'vim-scripts/twilight'
+  NeoBundle 'jonathanfilip/vim-lucius'
+  NeoBundle 'jpo/vim-railscasts-theme'
+  NeoBundle 'vim-scripts/Wombat'
+  NeoBundle 'tomasr/molokai'
+  NeoBundle 'vim-scripts/rdark'
 call neobundle#end()
 set rtp^=$GOPATH/src/github.com/nsf/gocode/vim
 
@@ -361,7 +369,7 @@ command! Sjis Cp932
 " カラー関連 Colors
 "-------------------------------------------------------------------------------
 
-colorscheme solarized
+colorscheme molokai
 
 " ターミナルタイプによるカラー設定
 if &term =~ "xterm-256color" || "screen-256color"

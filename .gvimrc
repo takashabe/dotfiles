@@ -1,7 +1,3 @@
-" カラースキーマ
-set background=dark
-colorscheme solarized
-
 " ツールバー非表示
 set guioptions=
 
