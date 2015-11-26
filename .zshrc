@@ -10,7 +10,7 @@ alias ssh='TERM=xterm ssh'
 # oh-my-zsh
 ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="gentoo"
-plugins=(brew git github debian python pyenv macports redis nodebew npm node go)
+plugins=(brew git github debian python pyenv macports redis nodebew npm node go vagrant)
 source $ZSH/oh-my-zsh.sh
 
 # general path
