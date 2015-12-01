@@ -1,3 +1,5 @@
+set background=dark
+
 " ツールバー非表示
 set guioptions=
 
