@@ -88,6 +88,9 @@ command! Rv source $MYVIMRC
 command! Egv edit $MYGVIMRC
 command! Rgv source $MYGVIMRC
 
+" デフォルトファイルタイプをmarkdownに
+set filetype=markdown
+
 "-------------------------------------------------------------------------------
 " ステータスライン StatusLine
 "-------------------------------------------------------------------------------
