@@ -1,6 +1,15 @@
 \.DS_Store
+
+
+### Vim ###
 \.vim/bundle/
 doc/tags
 doc/tags-ja
 common_ctags/
 \.vim/cache/
+[._]*.s[a-w][a-z]
+[._]s[a-w][a-z]
+*.un~
+Session.vim
+.netrwhist
+*~
