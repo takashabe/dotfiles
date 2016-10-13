@@ -64,5 +64,5 @@ export PATH=$HOME/.nodebrew/current/bin:$PATH
 
 # go
 export GOROOT=/usr/local/opt/go/libexec
-export GOPATH=$HOME/go
+export GOPATH=$HOME/dev
 export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
