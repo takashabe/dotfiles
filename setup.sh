@@ -14,3 +14,6 @@ cp ~/dotfiles/tmuxx ~/bin
 cp ~/dotfiles/diff-highlight ~/bin
 
 curl -L http://install.ohmyz.sh | sh
+
+# TODO homebrew, peco/ghq関連の追加
+# TODO linux/macos双方で動くようにしたい
