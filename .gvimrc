@@ -8,4 +8,4 @@ set lines=50
 set columns=160
 
 set transparency=5
-set guifont=Menlo\ Regular:h14
+set guifont=Ricty\ Regular:h16

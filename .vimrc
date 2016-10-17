@@ -378,7 +378,8 @@ command! Sjis Cp932
 " カラー関連 Colors
 "-------------------------------------------------------------------------------
 
-colorscheme molokai
+set background=dark
+colorscheme solarized
 
 " ターミナルタイプによるカラー設定
 if &term =~ "xterm-256color" || "screen-256color"
