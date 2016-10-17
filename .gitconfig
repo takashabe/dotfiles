@@ -1,0 +1,19 @@
+[user]
+  name = takashabe
+  email = takashabe.public@gmail.com
+[color]
+  status = auto
+  diff = auto
+  branch = auto
+  interactive = auto
+  grep = auto
+[core]
+  editor = vim
+  quotepath = false
+[merge]
+  tool = vimdiff
+  ff = false
+[diff]
+  tool=vimdiff
+[ghq]
+  root = $GOPATH/src
