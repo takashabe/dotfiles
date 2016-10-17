@@ -66,3 +66,15 @@ export PATH=$HOME/.nodebrew/current/bin:$PATH
 export GOROOT=/usr/local/opt/go/libexec
 export GOPATH=$HOME/dev
 export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
+
+# peco
+function peco-src () {
+  local selected_dir=$(ghq list -p | peco --query "$LBUFFER")
+  if [ -n "$selected_dir" ]; then
+    BUFFER="cd ${selected_dir}"
+    zle accept-line
+  fi
+  zle clear-screen
+}
+zle -N peco-src
+bindkey '^]' peco-src
