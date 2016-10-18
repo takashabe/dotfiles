@@ -79,9 +79,6 @@ set mouse=a
 set guioptions+=a
 set ttymouse=xterm2
 
-" ヤンクした文字は、システムのクリップボードに入れる"
-" set clipboard=unnamed
-
 " Ev/Rvでvimrcの編集と反映
 command! Ev edit $MYVIMRC
 command! Rv source $MYVIMRC
@@ -90,6 +87,8 @@ command! Rgv source $MYGVIMRC
 
 " デフォルトファイルタイプをmarkdownに
 set filetype=markdown
+
+let g:yankring_clipboard_monitor=0
 
 "-------------------------------------------------------------------------------
 " ステータスライン StatusLine
