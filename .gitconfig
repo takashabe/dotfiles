@@ -16,4 +16,4 @@
 [diff]
   tool=vimdiff
 [ghq]
-  root = $GOPATH/src
+  root = /Users/takashabe/dev/src
