@@ -22,8 +22,7 @@ call neobundle#begin(expand(s:vim_home.'/bundle/'))
   NeoBundle 'Shougo/unite.vim'
   NeoBundle 'Shougo/unite-outline'
   NeoBundle 'Shougo/neocomplete.vim'
-  NeoBundle 'dgryski/vim-godef'
-  NeoBundle 'vim-jp/vim-go-extra'
+  NeoBundle 'fatih/vim-go'
   NeoBundle 'nanotech/jellybeans.vim'
   NeoBundle 'w0ng/vim-hybrid'
   NeoBundle 'altercation/vim-colors-solarized'
@@ -31,7 +30,6 @@ call neobundle#begin(expand(s:vim_home.'/bundle/'))
   NeoBundle 'jonathanfilip/vim-lucius'
   NeoBundle 'jpo/vim-railscasts-theme'
   NeoBundle 'vim-scripts/Wombat'
-  NeoBundle 'tomasr/molokai'
   NeoBundle 'vim-scripts/rdark'
   NeoBundle 'derekwyatt/vim-scala'
   NeoBundle 'Shougo/context_filetype.vim'
@@ -74,7 +72,8 @@ let $MYGVIMRC="$HOME/.gvimrc"
 
 " OSのクリップボードを使用する
 set clipboard=unnamed,autoselect
-" set clipboard+=autoselect
+let g:yankring_clipboard_monitor=0 "MacOS Sierra用
+
 " ターミナルでマウスを使用できるようにする
 set mouse=a
 set guioptions+=a
@@ -85,11 +84,6 @@ command! Ev edit $MYVIMRC
 command! Rv source $MYVIMRC
 command! Egv edit $MYGVIMRC
 command! Rgv source $MYGVIMRC
-
-" デフォルトファイルタイプをmarkdownに
-set filetype=markdown
-
-let g:yankring_clipboard_monitor=0
 
 "-------------------------------------------------------------------------------
 " ステータスライン StatusLine
@@ -403,7 +397,6 @@ map <Leader>x !/usr/local/bin/python -m BeautifulSoup<CR>
 
 " golang
 set path+=$GOPATH/src/**
-let g:gofmt_command = 'goimports'
 au BufWritePre *.go Fmt
 au BufNewFile,BufRead *.go set sw=4 noexpandtab ts=4 completeopt=menu,preview
 au FileType go compiler go
@@ -508,3 +501,16 @@ let g:neocomplete#data_directory = $HOME . '/.vim/cache/neocomplete'
 call neocomplete#custom#source('look', 'min_pattern_length', 1)
 
 call neobundle#untap()
+
+"------------------------------------
+" vim-go
+"------------------------------------
+" シンタックスハイライト
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_types = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_build_constraints = 1
+" 'go fmt'を'goimports'に置き換える
+" let g:go_fmt_command = "goimports"
