@@ -300,6 +300,7 @@ autocmd FileType html :set fileencoding=utf-8
 autocmd FileType xml :set fileencoding=utf-8
 autocmd FileType java :set fileencoding=utf-8
 autocmd FileType scala :set fileencoding=utf-8
+autocmd FileType go :set fileencoding=utf-8
 
 " ワイルドカードで表示するときに優先度を低くする拡張子
 set suffixes=.bak,~,.swp,.o,.info,.aux,.log,.dvi,.bbl,.blg,.brf,.cb,.ind,.idx,.ilg,.inx,.out,.toc
@@ -396,10 +397,10 @@ map <Leader>x !/usr/local/bin/python -m BeautifulSoup<CR>
 "-------------------------------------------------------------------------------
 
 " golang
-set path+=$GOPATH/src/**
-au BufWritePre *.go Fmt
-au BufNewFile,BufRead *.go set sw=4 noexpandtab ts=4 completeopt=menu,preview
-au FileType go compiler go
+" set path+=$GOPATH/src/**
+" au BufWritePre *.go Fmt
+" au BufNewFile,BufRead *.go set sw=4 noexpandtab ts=4 completeopt=menu,preview
+" au FileType go compiler go
 
 "-------------------------------------------------------------------------------
 " 各プラグインの設定 Plugins
