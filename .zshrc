@@ -18,18 +18,6 @@ export PATH=/usr/local/bin:/usr/local/sbin:$PATH
 export PATH=/opt/local/bin:/opt/local/sbin:~/bin:$PATH
 fpath=(~/dotfiles/zsh-completions/src $fpath)
 
-# vim
-case "$(uname)" in
-  Darwin) # OSがMacならば
-    if [[ -d /Applications/MacVim.app ]]; then # MacVimが存在するならば
-      alias vim=/Applications/MacVim.app/Contents/MacOS/Vim
-      alias vi=vim
-    fi
-    ;;
-
-  *) ;; # OSがMac以外ならば何もしない
-esac
-
 # tmux auto load
 if [ -z "$TMUX" -a -z "$STY" ]; then
   if type tmuxx >/dev/null 2>&1; then
