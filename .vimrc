@@ -15,28 +15,28 @@ endif
 
 set nocompatible
 call neobundle#begin(expand(s:vim_home.'/bundle/'))
-  NeoBundleFetch 'Shougo/neobundle.vim'
-  NeoBundle 'majutsushi/tagbar'
-  NeoBundle 'Shougo/vimfiler'
-  NeoBundle 'Shougo/vimproc'
-  NeoBundle 'Shougo/unite.vim'
-  NeoBundle 'Shougo/unite-outline'
-  NeoBundle 'Shougo/neocomplete.vim'
-  NeoBundle 'fatih/vim-go'
-  NeoBundle 'nanotech/jellybeans.vim'
-  NeoBundle 'w0ng/vim-hybrid'
-  NeoBundle 'altercation/vim-colors-solarized'
-  NeoBundle 'vim-scripts/twilight'
-  NeoBundle 'jonathanfilip/vim-lucius'
-  NeoBundle 'jpo/vim-railscasts-theme'
-  NeoBundle 'vim-scripts/Wombat'
-  NeoBundle 'vim-scripts/rdark'
-  NeoBundle 'derekwyatt/vim-scala'
-  NeoBundle 'Shougo/context_filetype.vim'
-  NeoBundle 'ujihisa/neco-look'
-  NeoBundle 'pocke/neco-gh-issues'
-  NeoBundle 'Shougo/neco-syntax'
-  NeoBundle 'banyan/recognize_charcode.vim'
+NeoBundleFetch 'Shougo/neobundle.vim'
+NeoBundle 'majutsushi/tagbar'
+NeoBundle 'Shougo/vimfiler'
+NeoBundle 'Shougo/vimproc'
+NeoBundle 'Shougo/unite.vim'
+NeoBundle 'Shougo/unite-outline'
+NeoBundle 'Shougo/neocomplete.vim'
+NeoBundle 'fatih/vim-go'
+NeoBundle 'nanotech/jellybeans.vim'
+NeoBundle 'w0ng/vim-hybrid'
+NeoBundle 'altercation/vim-colors-solarized'
+NeoBundle 'vim-scripts/twilight'
+NeoBundle 'jonathanfilip/vim-lucius'
+NeoBundle 'jpo/vim-railscasts-theme'
+NeoBundle 'vim-scripts/Wombat'
+NeoBundle 'vim-scripts/rdark'
+NeoBundle 'derekwyatt/vim-scala'
+NeoBundle 'Shougo/context_filetype.vim'
+NeoBundle 'ujihisa/neco-look'
+NeoBundle 'pocke/neco-gh-issues'
+NeoBundle 'Shougo/neco-syntax'
+NeoBundle 'banyan/recognize_charcode.vim'
 call neobundle#end()
 set rtp^=$GOPATH/src/github.com/nsf/gocode/vim
 
@@ -102,9 +102,9 @@ endif
 
 "入力モード時、ステータスラインのカラーを変更
 augroup InsertHook
-autocmd!
-autocmd InsertEnter * highlight StatusLine guifg=#ccdc90 guibg=#2E4340 ctermfg=cyan
-autocmd InsertLeave * highlight StatusLine guifg=#2E4340 guibg=#ccdc90 ctermfg=white
+  autocmd!
+  autocmd InsertEnter * highlight StatusLine guifg=#ccdc90 guibg=#2E4340 ctermfg=cyan
+  autocmd InsertLeave * highlight StatusLine guifg=#2E4340 guibg=#ccdc90 ctermfg=white
 augroup END
 
 "自動的に QuickFix リストを表示する
@@ -423,30 +423,30 @@ map <Leader>x !/usr/local/bin/python -m BeautifulSoup<CR>
 " VimFilerTree コマンドで固定ツリーを出せるように
 command! VimFilerTree call VimFilerTree(<f-args>)
 function! VimFilerTree(...)
-    let l:h = expand(a:0 > 0 ? a:1 : '%:p:h')
-    let l:path = isdirectory(l:h) ? l:h : ''
-    exec ':VimFiler -buffer-name=explorer -split -simple -winwidth=45 -toggle -no-quit ' . l:path
-    wincmd t
-    setl winfixwidth
+  let l:h = expand(a:0 > 0 ? a:1 : '%:p:h')
+  let l:path = isdirectory(l:h) ? l:h : ''
+  exec ':VimFiler -buffer-name=explorer -split -simple -winwidth=45 -toggle -no-quit ' . l:path
+  wincmd t
+  setl winfixwidth
 endfunction
 autocmd! FileType vimfiler call g:my_vimfiler_settings()
 function! s:my_vimfiler_settings()
-    nmap     <buffer><expr><CR> vimfiler#smart_cursor_map("\<Plug>(vimfiler_expand_tree)", "\<Plug>(vimfiler_edit_file)")
-    nnoremap <buffer>s          :call vimfiler#mappings#do_action('my_split')<CR>
-    nnoremap <buffer>v          :call vimfiler#mappings#do_action('my_vsplit')<CR>
+  nmap     <buffer><expr><CR> vimfiler#smart_cursor_map("\<Plug>(vimfiler_expand_tree)", "\<Plug>(vimfiler_edit_file)")
+  nnoremap <buffer>s          :call vimfiler#mappings#do_action('my_split')<CR>
+  nnoremap <buffer>v          :call vimfiler#mappings#do_action('my_vsplit')<CR>
 endfunction
 
 let my_action = {'is_selectable' : 1}
 function! my_action.func(candidates)
-    wincmd p
-    exec 'split '. a:candidates[0].action__path
+  wincmd p
+  exec 'split '. a:candidates[0].action__path
 endfunction
 call unite#custom_action('file', 'my_split', my_action)
 
 let my_action = {'is_selectable' : 1}
 function! my_action.func(candidates)
-    wincmd p
-    exec 'vsplit '. a:candidates[0].action__path
+  wincmd p
+  exec 'vsplit '. a:candidates[0].action__path
 endfunction
 call unite#custom_action('file', 'my_vsplit', my_action)
 
@@ -473,18 +473,18 @@ let g:neocomplete#enable_auto_close_preview = 0
 let g:neocomplete#max_keyword_width = 10000
 
 if !exists('g:neocomplete#delimiter_patterns')
-    let g:neocomplete#delimiter_patterns= {}
+  let g:neocomplete#delimiter_patterns= {}
 endif
 let g:neocomplete#delimiter_patterns.ruby = ['::']
 
 if !exists('g:neocomplete#same_filetypes')
-    let g:neocomplete#same_filetypes = {}
+  let g:neocomplete#same_filetypes = {}
 endif
 let g:neocomplete#same_filetypes.ruby = 'eruby'
 
 
 if !exists('g:neocomplete#force_omni_input_patterns')
-    let g:neocomplete#force_omni_input_patterns = {}
+  let g:neocomplete#force_omni_input_patterns = {}
 endif
 
 let g:neocomplete#force_omni_input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\w*\|\h\w*::\w*'
@@ -493,20 +493,20 @@ let g:neocomplete#force_omni_input_patterns.go = '[^. \t]\.\%(\h\w*\)\?'        
 
 let s:neco_dicts_dir = $HOME . '/dicts'
 if isdirectory(s:neco_dicts_dir)
-    let g:neocomplete#sources#dictionary#dictionaries = {
-    \ 'ruby': s:neco_dicts_dir . '/ruby.dict',
-    \ 'javascript': s:neco_dicts_dir . '/jquery.dict',
-    \ 'scala' : $HOME.'/.vim/bundle/vim-scala/dict/scala.dict',
-    \ 'java' : $HOME.'/.vim/dict/java.dict',
-    \ 'c' : $HOME.'/.vim/dict/c.dict',
-    \ 'cpp' : $HOME.'/.vim/dict/cpp.dict',
-    \ 'javascript' : $HOME.'/.vim/dict/javascript.dict',
-    \ 'ocaml' : $HOME.'/.vim/dict/ocaml.dict',
-    \ 'perl' : $HOME.'/.vim/dict/perl.dict',
-    \ 'php' : $HOME.'/.vim/dict/php.dict',
-    \ 'scheme' : $HOME.'/.vim/dict/scheme.dict',
-    \ 'vm' : $HOME.'/.vim/dict/vim.dict'
-    \ }
+  let g:neocomplete#sources#dictionary#dictionaries = {
+        \ 'ruby': s:neco_dicts_dir . '/ruby.dict',
+        \ 'javascript': s:neco_dicts_dir . '/jquery.dict',
+        \ 'scala' : $HOME.'/.vim/bundle/vim-scala/dict/scala.dict',
+        \ 'java' : $HOME.'/.vim/dict/java.dict',
+        \ 'c' : $HOME.'/.vim/dict/c.dict',
+        \ 'cpp' : $HOME.'/.vim/dict/cpp.dict',
+        \ 'javascript' : $HOME.'/.vim/dict/javascript.dict',
+        \ 'ocaml' : $HOME.'/.vim/dict/ocaml.dict',
+        \ 'perl' : $HOME.'/.vim/dict/perl.dict',
+        \ 'php' : $HOME.'/.vim/dict/php.dict',
+        \ 'scheme' : $HOME.'/.vim/dict/scheme.dict',
+        \ 'vm' : $HOME.'/.vim/dict/vim.dict'
+        \ }
 endif
 let g:neocomplete#data_directory = $HOME . '/.vim/cache/neocomplete'
 
