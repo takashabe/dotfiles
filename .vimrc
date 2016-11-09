@@ -377,10 +377,21 @@ command! Pt :set paste!
 
 " tabをスペースに変換して入力する
 set expandtab
-" 保存時に行末の空白を除去する
-autocmd BufWritePre * :%s/\s\+$//ge
-" 保存時にtabをスペースに変換する
-autocmd BufWritePre * :%s/\t/  /ge
+
+" 保存時に特定のファイルタイプ時に文字を整形する
+function! s:replace_to_mystyle()
+  let position = getpos('.')
+  " 次のファイルタイプ以外の時のみ適用する
+  if &filetype !~ 'make\|go'
+    :%s/\t/  /ge              " 行末の空白を除去
+    :%s/\s\+$//ge             " tabをスペースに変換
+  endif
+  call setpos('.', position)
+endfunction
+augroup vimrc_bufwritepre
+  autocmd!
+  autocmd BufWritePre * call s:replace_to_mystyle()
+augroup END
 
 " コンマの後に自動的にスペースを挿入
 inoremap , ,<Space>
