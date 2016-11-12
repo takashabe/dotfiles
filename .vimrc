@@ -404,16 +404,6 @@ noremap : ;
 map <Leader>x !/usr/local/bin/python -m BeautifulSoup<CR>
 
 "-------------------------------------------------------------------------------
-" 各言語の設定 Language
-"-------------------------------------------------------------------------------
-
-" golang
-" set path+=$GOPATH/src/**
-" au BufWritePre *.go Fmt
-" au BufNewFile,BufRead *.go set sw=4 noexpandtab ts=4 completeopt=menu,preview
-" au FileType go compiler go
-
-"-------------------------------------------------------------------------------
 " 各プラグインの設定 Plugins
 "-------------------------------------------------------------------------------
 
