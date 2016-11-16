@@ -36,6 +36,7 @@ NeoBundle 'Shougo/context_filetype.vim'
 NeoBundle 'ujihisa/neco-look'
 NeoBundle 'pocke/neco-gh-issues'
 NeoBundle 'Shougo/neco-syntax'
+NeoBundle 'scrooloose/nerdcommenter'
 NeoBundle 'banyan/recognize_charcode.vim'
 call neobundle#end()
 set rtp^=$GOPATH/src/github.com/nsf/gocode/vim
@@ -408,6 +409,31 @@ map <Leader>x !/usr/local/bin/python -m BeautifulSoup<CR>
 "-------------------------------------------------------------------------------
 
 "------------------------------------
+" tagbar
+"------------------------------------
+" 挿入モードで開始する
+let g:unite_enable_start_insert=1
+" 大文字小文字を区別しない
+let g:unite_enable_ignore_case = 1
+let g:unite_enable_smart_case = 1
+"The prefix key.
+nnoremap [unite] <Nop>
+nmap <Leader>f [unite]
+" keymap
+nnoremap [unite]u  :<C-u>Unite -no-split<Space>
+nnoremap <silent> [unite]f :<C-u>Unite<Space>file<CR>
+nnoremap <silent> [unite]g :<C-u>Unite<Space>grep<CR>
+nnoremap <silent> [unite]b :<C-u>Unite<Space>buffer<CR>
+nnoremap <silent> [unite]m :<C-u>Unite<Space>bookmark<CR>
+nnoremap <silent> [unite]a :<C-u>UniteBookmarkAdd<CR>
+nnoremap <silent> [unite]r :<C-u>Unite<Space>file_mru<CR>
+nnoremap <silent> [unite]p :<C-u>Unite<Space>file_point<CR>
+nnoremap <silent> [unite]h :<C-u>Unite<Space>history/yank<CR>
+nnoremap <silent> [unite]d :<C-u>Unite<Space>directory/new<CR>
+nnoremap <silent> [unite]n :<C-u>Unite<Space>file/new<CR>
+nnoremap <silent> [unite]v :<C-u>UniteWithBufferDir file<CR>
+
+"------------------------------------
 " VimFiler
 "------------------------------------
 " VimFilerTree コマンドで固定ツリーを出せるように
@@ -516,3 +542,21 @@ let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
 " 'go fmt'を'goimports'に置き換える
 let g:go_fmt_command = "goimports"
+
+"------------------------------------
+" NERDcommenter
+"------------------------------------
+let g:NERDSpaceDelims = 1
+let g:NERDCompactSexyComs = 1
+let g:NERDDefaultAlign = 'left'
+let g:NERDAltDelims_java = 1
+let g:NERDCustomDelimiters = { 'c': { 'left': '/**','right': '*/' } }
+let g:NERDCommentEmptyLines = 1
+let g:NERDTrimTrailingWhitespace = 1
+
+"------------------------------------
+" tagbar
+"------------------------------------
+let g:tagbar_left = 0
+let g:tagbar_autofocus = 1
+nnoremap tt :TagbarToggle<CR>
