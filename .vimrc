@@ -245,12 +245,6 @@ nnoremap k gk
 nnoremap <Down> gj
 nnoremap <Up>   gk
 
-" ウィンドウサイズの変更
-" nnoremap + <C-w>+
-" nnoremap - <C-w>-
-" nnoremap < <C-w><
-" nnoremap > <C-w>>
-
 " 前回終了したカーソル行に移動
 autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal g`\"" | endif
 
@@ -338,9 +332,9 @@ elseif &term =~ "xterm-color"
 endif
 
 "ポップアップメニューのカラーを設定
-"hi Pmenu guibg=#666666
-"hi PmenuSel guibg=#8cd0d3 guifg=#666666
-"hi PmenuSbar guibg=#333333
+hi Pmenu guibg=#666666
+hi PmenuSel guibg=#8cd0d3 guifg=#666666
+hi PmenuSbar guibg=#333333
 
 " ハイライト on
 syntax enable
@@ -400,9 +394,6 @@ inoremap , ,<Space>
 " ; と : を入れ替え
 noremap ; :
 noremap : ;
-
-" 範囲選択した箇所のxmlを整形
-map <Leader>x !/usr/local/bin/python -m BeautifulSoup<CR>
 
 "-------------------------------------------------------------------------------
 " 各プラグインの設定 Plugins
