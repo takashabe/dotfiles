@@ -391,18 +391,29 @@ noremap ; :
 noremap : ;
 
 "-------------------------------------------------------------------------------
+" 各言語の設定 Languages
+"-------------------------------------------------------------------------------
+
+"------------------------------------
+" Go
+"------------------------------------
+" errをハイライト表示する
+autocmd FileType go :highlight goErr ctermfg=214
+autocmd FileType go :match goErr /\<err\>/
+
+"-------------------------------------------------------------------------------
 " 各プラグインの設定 Plugins
 "-------------------------------------------------------------------------------
 
 "------------------------------------
-" tagbar
+" Unite
 "------------------------------------
 " 挿入モードで開始する
 let g:unite_enable_start_insert=1
 " 大文字小文字を区別しない
 let g:unite_enable_ignore_case = 1
 let g:unite_enable_smart_case = 1
-"The prefix key.
+" prefix
 nnoremap [unite] <Nop>
 nmap <Leader>f [unite]
 " keymap
@@ -422,35 +433,19 @@ nnoremap <silent> [unite]v :<C-u>UniteWithBufferDir file<CR>
 "------------------------------------
 " VimFiler
 "------------------------------------
-" VimFilerTree コマンドで固定ツリーを出せるように
-command! VimFilerTree call VimFilerTree(<f-args>)
-function! VimFilerTree(...)
-  let l:h = expand(a:0 > 0 ? a:1 : '%:p:h')
-  let l:path = isdirectory(l:h) ? l:h : ''
-  exec ':VimFiler -buffer-name=explorer -split -simple -winwidth=45 -toggle -no-quit ' . l:path
-  wincmd t
-  setl winfixwidth
-endfunction
-autocmd! FileType vimfiler call g:my_vimfiler_settings()
-function! s:my_vimfiler_settings()
-  nmap     <buffer><expr><CR> vimfiler#smart_cursor_map("\<Plug>(vimfiler_expand_tree)", "\<Plug>(vimfiler_edit_file)")
-  nnoremap <buffer>s          :call vimfiler#mappings#do_action('my_split')<CR>
-  nnoremap <buffer>v          :call vimfiler#mappings#do_action('my_vsplit')<CR>
-endfunction
-
-let my_action = {'is_selectable' : 1}
-function! my_action.func(candidates)
-  wincmd p
-  exec 'split '. a:candidates[0].action__path
-endfunction
-call unite#custom_action('file', 'my_split', my_action)
-
-let my_action = {'is_selectable' : 1}
-function! my_action.func(candidates)
-  wincmd p
-  exec 'vsplit '. a:candidates[0].action__path
-endfunction
-call unite#custom_action('file', 'my_vsplit', my_action)
+" pycなどのファイルを無視(隠しファイル扱い)する
+let g:vimfiler_ignore_pattern='\(^\.\|\~$\|\.pyc$\|\.[oad]$\)'
+" デフォルトファイラにする
+let g:vimfiler_as_default_explorer=1
+" prefix
+nnoremap [vimfiler] <Nop>
+nmap <Leader>v [vimfiler]
+" カレントディレクトリを開く
+nnoremap <silent> [vimfiler]c :VimFilerCurrentDir<CR>
+inoremap <silent> [vimfiler]c <ESC>:VimFilerCurrentDir<CR>
+" プロジェクトホームを開く
+nnoremap <silent> [vimfiler]h :VimFiler -project<CR>
+inoremap <silent> [vimfiler]h <ESC>:VimFiler -project<CR>
 
 "------------------------------------
 " neocomplete.vim
@@ -527,7 +522,7 @@ let g:go_highlight_types = 1
 let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
 " 'go fmt'を'goimports'に置き換える
-let g:go_fmt_command = "goimports"
+" let g:go_fmt_command = "goimports"
 
 "------------------------------------
 " NERDcommenter
