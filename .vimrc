@@ -22,6 +22,8 @@ NeoBundle 'Shougo/vimproc'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/unite-outline'
 NeoBundle 'Shougo/neocomplete.vim'
+NeoBundle 'Shougo/neosnippet'
+NeoBundle 'Shougo/neosnippet-snippets'
 NeoBundle 'fatih/vim-go'
 NeoBundle 'nanotech/jellybeans.vim'
 NeoBundle 'w0ng/vim-hybrid'
@@ -266,10 +268,10 @@ set virtualedit+=block
 vnoremap v $h
 
 " CTRL-hjklでウィンドウ移動
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-l> <C-w>l
-nnoremap <C-h> <C-w>h
+" nnoremap <C-j> <C-w>j
+" nnoremap <C-k> <C-w>k
+" nnoremap <C-l> <C-w>l
+" nnoremap <C-h> <C-w>h
 
 "-------------------------------------------------------------------------------
 " エンコーディング関連 Encoding
@@ -522,7 +524,7 @@ let g:go_highlight_types = 1
 let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
 " 'go fmt'を'goimports'に置き換える
-" let g:go_fmt_command = "goimports"
+let g:go_fmt_command = "goimports"
 
 "------------------------------------
 " NERDcommenter
@@ -541,3 +543,9 @@ let g:NERDTrimTrailingWhitespace = 1
 let g:tagbar_left = 0
 let g:tagbar_autofocus = 1
 nnoremap tt :TagbarToggle<CR>
+
+
+
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-k>     <Plug>(neosnippet_expand_target)
