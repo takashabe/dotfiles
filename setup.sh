@@ -16,5 +16,8 @@ cp ~/dotfiles/diff-highlight ~/bin
 
 curl -L http://install.ohmyz.sh | sh
 
-# TODO homebrew, peco/ghq関連の追加
+# app config
+cp -r ~/dotfiles/.config ~/
+
+# TODO homebrew, ghq関連の追加
 # TODO linux/macos双方で動くようにしたい
