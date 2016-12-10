@@ -160,19 +160,19 @@ augroup cch
   autocmd WinEnter,BufRead * set cursorline
 augroup END
 
-:hi clear CursorLine
-:hi CursorLine gui=underline
+hi clear CursorLine
+hi CursorLine gui=underline
 highlight CursorLine ctermbg=black guibg=black
 " highlight CursorLine cterm=NONE ctermfg=black ctermbg=black
 " highlight CursorLine gui=NONE guifg=black guibg=black
 
 " コマンド実行中は再描画しない
-:set lazyredraw
+set lazyredraw
 " 高速ターミナル接続を行う
-:set ttyfast
+set ttyfast
 
 " コマンドラインの高さ
-:set cmdheight=2
+set cmdheight=2
 
 "-------------------------------------------------------------------------------
 " インデント Indent
@@ -544,8 +544,9 @@ let g:tagbar_left = 0
 let g:tagbar_autofocus = 1
 nnoremap tt :TagbarToggle<CR>
 
-
-
+"------------------------------------
+" neosnippet
+"------------------------------------
 imap <C-k>     <Plug>(neosnippet_expand_or_jump)
 smap <C-k>     <Plug>(neosnippet_expand_or_jump)
 xmap <C-k>     <Plug>(neosnippet_expand_target)
