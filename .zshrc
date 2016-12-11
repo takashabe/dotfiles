@@ -1,17 +1,16 @@
+# Load plugins
+source ~/.zshrc.plugin
+
 # Encoding
 export LC_CTYPE=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 
-### 通常コマンドのalias
+# alias
 alias l='ls -alv'
-# 古い環境などxterm-256colorやscreen-256colorを認識しない環境用
-alias ssh='TERM=xterm ssh'
+alias ll='ls -lv'
 
-# oh-my-zsh
-ZSH=$HOME/.oh-my-zsh
-ZSH_THEME="gentoo"
-plugins=(ansible brew git github debian python pyenv macports redis nodebew npm node golang vagrant pip peco mysql)
-source $ZSH/oh-my-zsh.sh
+# for not supported 256-color
+alias ssh='TERM=xterm ssh'
 
 # general path
 export PATH=/usr/local/bin:/usr/local/sbin:$PATH
@@ -30,9 +29,6 @@ if [ -z "$TMUX" -a -z "$STY" ]; then
     fi
   fi
 fi
-
-# 履歴をウィンドウ間で共有しない
-unsetopt share_history
 
 # rbenv
 export RBENV_ROOT=/usr/local/var/rbenv
