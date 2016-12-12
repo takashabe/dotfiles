@@ -24,6 +24,7 @@ NeoBundle 'Shougo/unite-outline'
 NeoBundle 'Shougo/neocomplete.vim'
 NeoBundle 'Shougo/neosnippet'
 NeoBundle 'Shougo/neosnippet-snippets'
+NeoBundle 'Shougo/neomru.vim'
 NeoBundle 'fatih/vim-go'
 NeoBundle 'nanotech/jellybeans.vim'
 NeoBundle 'w0ng/vim-hybrid'
@@ -419,18 +420,31 @@ let g:unite_enable_smart_case = 1
 nnoremap [unite] <Nop>
 nmap <Leader>f [unite]
 " keymap
-nnoremap [unite]u  :<C-u>Unite -no-split<Space>
-nnoremap <silent> [unite]f :<C-u>Unite<Space>file<CR>
-nnoremap <silent> [unite]g :<C-u>Unite<Space>grep<CR>
-nnoremap <silent> [unite]b :<C-u>Unite<Space>buffer<CR>
-nnoremap <silent> [unite]m :<C-u>Unite<Space>bookmark<CR>
-nnoremap <silent> [unite]a :<C-u>UniteBookmarkAdd<CR>
-nnoremap <silent> [unite]r :<C-u>Unite<Space>file_mru<CR>
-nnoremap <silent> [unite]p :<C-u>Unite<Space>file_point<CR>
-nnoremap <silent> [unite]h :<C-u>Unite<Space>history/yank<CR>
-nnoremap <silent> [unite]d :<C-u>Unite<Space>directory/new<CR>
-nnoremap <silent> [unite]n :<C-u>Unite<Space>file/new<CR>
-nnoremap <silent> [unite]v :<C-u>UniteWithBufferDir file<CR>
+" nnoremap [unite]u  :<C-u>Unite -no-split<Space>
+" nnoremap <silent> [unite]f :<C-u>Unite<Space>file<CR>
+" nnoremap <silent> [unite]g :<C-u>Unite<Space>grep<CR>
+" nnoremap <silent> [unite]b :<C-u>Unite<Space>buffer<CR>
+" nnoremap <silent> [unite]m :<C-u>Unite<Space>bookmark<CR>
+" nnoremap <silent> [unite]a :<C-u>UniteBookmarkAdd<CR>
+" nnoremap <silent> [unite]r :<C-u>Unite<Space>file_mru<CR>
+" nnoremap <silent> [unite]p :<C-u>Unite<Space>file_point<CR>
+" nnoremap <silent> [unite]h :<C-u>Unite<Space>history/yank<CR>
+" nnoremap <silent> [unite]d :<C-u>Unite<Space>directory/new<CR>
+" nnoremap <silent> [unite]n :<C-u>Unite<Space>file/new<CR>
+" nnoremap <silent> [unite]v :<C-u>UniteWithBufferDir file<CR>
+
+" 全部乗せ
+nnoremap <silent> [unite]a  :<C-u>UniteWithCurrentDir -no-split -no-resize -start-insert -buffer-name=files buffer file_mru bookmark file<CR>
+" ファイル一覧
+nnoremap <silent> [unite]f  :<C-u>Unite -no-split -no-resize -start-insert -buffer-name=files file<CR>
+" バッファ一覧
+nnoremap <silent> [unite]b  :<C-u>Unite -no-split -no-resize -start-insert buffer<CR>
+" 常用セット
+nnoremap <silent> [unite]u  :<C-u>Unite -no-split -no-resize -start-insert buffer file_mru<CR>
+" 最近使用したファイル一覧
+nnoremap <silent> [unite]m  :<C-u>Unite -no-split -no-resize -start-insert file_mru<CR>
+" 現在のバッファのカレントディレクトリからファイル一覧
+nnoremap <silent> [unite]d  :<C-u>UniteWithBufferDir -no-split -no-resize -start-insert file<CR>
 
 "------------------------------------
 " VimFiler
