@@ -21,11 +21,12 @@ end
 
 function fish_prompt
   set -l last_status $status
-  set -l cyan (set_color -o cyan)
+  # base colors: soralized (http://ethanschoonover.com/solarized)
+  set -l cyan (set_color -o 2aa198)
   set -l yellow (set_color -o b58900)
-  set -l red (set_color -o red)
-  set -l blue (set_color -o blue)
-  set -l green (set_color -o green)
+  set -l red (set_color -o dc322f)
+  set -l blue (set_color -o 268bd2)
+  set -l green (set_color -o 2aa198)
   set -l normal (set_color normal)
 
   if test $last_status = 0
@@ -37,12 +38,12 @@ function fish_prompt
   set -l cwd $cyan(prompt_pwd)
 
   if [ (_git_branch_name) ]
-    set -l git_branch $red(_git_branch_name)
-    set git_info "$git_branch$blue"
+    set -l git_branch (_git_branch_name)
+    set git_info "$blue$git_branch"
 
     if [ (_is_git_dirty) ]
       set -l dirty "$red*"
-      set git_info "$red- $git_info$dirty"
+      set git_info "- $git_info$dirty"
     end
   end
 
