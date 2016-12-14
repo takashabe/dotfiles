@@ -28,7 +28,7 @@ if status --is-interactive; and test -z $TMUX
   if tmux has-session > /dev/null ^ /dev/null
     # attach tmux session with percol like tool
     set -l sid (tmux list-sessions | grep '' | peco | cut -d: -f1)
-    command tmux attach-session -t $sid -n $wname
+    command tmux attach-session -t $sid
   else
     command tmux new-session -n $wname
   end
