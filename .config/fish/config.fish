@@ -16,12 +16,13 @@ set -x PATH /usr/local/bin /usr/local/sbin $PATH
 
 # tmux auto load
 if status --is-interactive; and test -z $TMUX
+  set -l wname "🐟"
   if tmux has-session > /dev/null ^ /dev/null
     # attach tmux session with percol like tool
     set -l sid (tmux list-sessions | grep '' | peco | cut -d: -f1)
-    command tmux attach-session -t $sid
+    command tmux attach-session -t $sid -n $wname
   else
-    command tmux new-session
+    command tmux new-session -n $wname
   end
 end
 

@@ -16,7 +16,6 @@ end
 function fish_prompt
   set -l last_status $status
   set -l cyan (set_color -o cyan)
-# set -l yellow (set_color -o yellow)
   set -l yellow (set_color -o b58900)
   set -l red (set_color -o red)
   set -l blue (set_color -o blue)
@@ -24,9 +23,9 @@ function fish_prompt
   set -l normal (set_color normal)
 
   if test $last_status = 0
-      set arrow "🐟 "
+      set arrow " 🐟 "
   else
-      set arrow "🐠 "
+      set arrow " 🐠 "
   end
   set -l cwd $cyan(basename (prompt_pwd))
 

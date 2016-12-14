@@ -41,6 +41,7 @@ NeoBundle 'pocke/neco-gh-issues'
 NeoBundle 'Shougo/neco-syntax'
 NeoBundle 'scrooloose/nerdcommenter'
 NeoBundle 'banyan/recognize_charcode.vim'
+NeoBundle 'dag/vim-fish'
 call neobundle#end()
 set rtp^=$GOPATH/src/github.com/nsf/gocode/vim
 
