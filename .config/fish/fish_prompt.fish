@@ -39,11 +39,11 @@ function fish_prompt
 
   if [ (_git_branch_name) ]
     set -l git_branch (_git_branch_name)
-    set git_info "$blue$git_branch"
+    set git_info "$blue- $git_branch"
 
     if [ (_is_git_dirty) ]
       set -l dirty "$red*"
-      set git_info "- $git_info$dirty"
+      set git_info "$git_info$dirty"
     end
   end
 
