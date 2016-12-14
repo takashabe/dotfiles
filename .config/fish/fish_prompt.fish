@@ -1,5 +1,3 @@
-# base thema: https://github.com/oh-my-fish/theme-robbyrussell
-
 function _git_branch_name
   echo (command git symbolic-ref HEAD ^/dev/null | sed -e 's|^refs/heads/||')
 end
@@ -13,6 +11,14 @@ function _is_git_dirty
   echo (command git status -s --ignore-submodules=dirty $untracked ^/dev/null)
 end
 
+function _is_macos
+  if uname -a | grep 'Darwin' > /dev/null ^ /dev/null
+    return 0
+  else
+    return 1
+  end
+end
+
 function fish_prompt
   set -l last_status $status
   set -l cyan (set_color -o cyan)
@@ -23,9 +29,9 @@ function fish_prompt
   set -l normal (set_color normal)
 
   if test $last_status = 0
-      set arrow " 🐟 "
+      set arrow "\U1F41F "
   else
-      set arrow " 🐠 "
+      set arrow "\U1F4A3 "
   end
   set -l cwd $cyan(basename (prompt_pwd))
 
@@ -35,9 +41,13 @@ function fish_prompt
 
     if [ (_is_git_dirty) ]
       set -l dirty "$red*"
-      set git_info " $red($git_info$dirty)"
+      set git_info "$red($git_info$dirty)"
     end
   end
 
-  echo -n -s $arrow ' ' $cwd $git_info $normal ' '
+  if _is_macos
+    printf "$arrow $cwd $git_info $normal"
+  else
+    echo -n -s -e $arrow ' ' $cwd $git_info $normal ' '
+  end
 end
