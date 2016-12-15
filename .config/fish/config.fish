@@ -22,7 +22,7 @@ alias ssh 'TERM=xterm ssh'
 # general path
 set -x PATH /usr/local/bin /usr/local/sbin $PATH
 
-# tmux auto load
+# tmux
 if status --is-interactive; and test -z $TMUX
   set -l wname "shell"
   if tmux has-session > /dev/null ^ /dev/null
@@ -32,6 +32,11 @@ if status --is-interactive; and test -z $TMUX
   else
     command tmux new-session -n $wname
   end
+end
+
+function reload_tmux
+  tmux source-file ~/.tmux.conf
+  echo "reload tmux"
 end
 
 # rbenv
