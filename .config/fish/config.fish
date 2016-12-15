@@ -43,7 +43,7 @@ end
 # TODO
 
 # pyenv
-# TODO
+status --is-interactive; and source (pyenv init -|psub)
 
 # nodebrew
 # TODO
