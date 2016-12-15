@@ -48,6 +48,12 @@ status --is-interactive; and source (pyenv init -|psub)
 # nodebrew
 # TODO
 
+# gcloud
+if status --is-interactive
+  bass source '/Users/takashabe/google-cloud-sdk/path.bash.inc'
+  bass source '/Users/takashabe/google-cloud-sdk/completion.bash.inc'
+end
+
 # golang
 set -x GOROOT /usr/local/opt/go/libexec
 set -x GOPATH $HOME/dev
