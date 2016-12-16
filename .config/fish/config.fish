@@ -4,8 +4,8 @@ function reload_config
 end
 
 # Encoding
-set -x LC_CTYPE ja_JP.UTF-8
-set -x LC_ALL ja_JP.UTF-8
+set -x LC_CTYPE en_US.UTF-8
+set -x LC_ALL en_US.UTF-8
 
 # alias
 alias l 'ls -alv'
@@ -58,38 +58,6 @@ end
 set -x GOROOT /usr/local/opt/go/libexec
 set -x GOPATH $HOME/dev
 set -x PATH $GOPATH/bin $GOROOT/bin $PATH
-
-# peco
-function peco_select_ghq
-  set -l query (commandline)
-
-  if test -n $query
-    set peco_flags --query "$query"
-  end
-
-  ghq list -p | peco $peco_flags | read line
-
-  if [ $line ]
-    cd $line
-    commandline -f repaint
-  end
-end
-
-function peco_select_history
-  set -l query (commandline)
-
-  if test -n $query
-    set peco_flags --query "$query"
-  end
-
-  history | peco $peco_flags | read line
-
-  if [ $line ]
-    commandline $line
-  else
-    commandline ''
-  end
-end
 
 ### key binding
 function fish_user_key_bindings
