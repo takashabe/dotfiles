@@ -1,6 +1,9 @@
-# Reload config
+# general function
 function reload_config
   exec fish -l
+end
+function edit_config
+  vim ~/dotfiles/.config/fish/config.fish
 end
 
 # Encoding
@@ -19,7 +22,11 @@ alias ..... 'cd ../../../..'
 # for not supported 256-color
 alias ssh 'TERM=xterm ssh'
 
-# general path
+# less
+set -x LESS '-R'
+set -x LESSOPEN '| /usr/local/bin/src-hilite-lesspipe.sh %s'
+
+# homebrew
 set -x PATH /usr/local/bin /usr/local/sbin $PATH
 
 # tmux

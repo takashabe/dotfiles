@@ -17,3 +17,5 @@
   tool=vimdiff
 [ghq]
   root = /Users/takashabe/dev/src
+[url "git@github.com:"]
+	pushinsteadof = https://github.com/
