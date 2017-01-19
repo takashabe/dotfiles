@@ -531,6 +531,7 @@ let g:go_fmt_command = "goimports"
 let g:go_file_type = "quickfix"
 " alias command
 command Gt :GoTest
+command Gr :GoRename
 
 "------------------------------------
 " NERDcommenter
