@@ -65,6 +65,9 @@ end
 set -x GOROOT /usr/local/opt/go/libexec
 set -x GOPATH $HOME/dev
 set -x PATH $GOPATH/bin $GOROOT/bin $PATH
+function gocover
+  go test -coverprofile cover.out; and go tool cover -html=cover.out
+end
 
 ### key binding
 function fish_user_key_bindings
