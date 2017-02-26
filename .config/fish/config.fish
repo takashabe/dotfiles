@@ -13,14 +13,22 @@ set -x LC_ALL en_US.UTF-8
 # alias
 alias l 'ls -alv'
 alias ll 'ls -lv'
-alias gst 'git status'
-alias gc 'git commit -v'
 alias ... 'cd ../..'
 alias .... 'cd ../../..'
 alias ..... 'cd ../../../..'
 
+# git
+alias gst 'git status'
+alias gb 'git branch'
+alias gad 'git add'
+alias gc 'git commit -v'
+
+
+# gnu tools
+set -x PATH /usr/local/opt/gnu-sed/libexec/gnubin $PATH
+
 # for not supported 256-color
-alias ssh 'TERM=xterm ssh'
+alias ssh 'env TERM=xterm ssh'
 
 # less
 set -x LESS '-R'
@@ -46,15 +54,6 @@ function reload_tmux
   echo "reload tmux"
 end
 
-# rbenv
-# TODO
-
-# pyenv
-status --is-interactive; and source (pyenv init -|psub)
-
-# nodebrew
-# TODO
-
 # gcloud
 if status --is-interactive
   bass source '/Users/takashabe/google-cloud-sdk/path.bash.inc'
@@ -66,7 +65,7 @@ set -x GOROOT /usr/local/opt/go/libexec
 set -x GOPATH $HOME/dev
 set -x PATH $GOPATH/bin $GOROOT/bin $PATH
 function gocover
-  go test -coverprofile cover.out; and go tool cover -html=cover.out
+  go test -coverprofile cover.out; and go tool cover -html=cover.out; and rm cover.out
 end
 
 ### key binding

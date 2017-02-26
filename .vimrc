@@ -43,6 +43,7 @@ NeoBundle 'scrooloose/nerdcommenter'
 NeoBundle 'banyan/recognize_charcode.vim'
 NeoBundle 'dag/vim-fish'
 NeoBundle 'keith/tmux.vim'
+NeoBundle 'tpope/vim-surround'
 call neobundle#end()
 set rtp^=$GOPATH/src/github.com/nsf/gocode/vim
 
@@ -69,7 +70,8 @@ set whichwrap=b,s,h,l,<,>,[,]    " カーソルを行頭、行末で止まらな
 set showcmd                      " コマンドをステータス行に表示
 set showmode                     " 現在のモードを表示
 set viminfo='50,<1000,s100,\"50  " viminfoファイルの設定
-set modelines=0                  " モードラインは無効
+set modeline                     " モードラインを有効にする
+set modelines=1                  " モードラインは1行
 set noundofile                   " undofileを作らない
 
 " 環境変数
@@ -400,7 +402,7 @@ noremap : ;
 "-------------------------------------------------------------------------------
 
 "------------------------------------
-" Go
+" Golang
 "------------------------------------
 " errをハイライト表示する
 autocmd FileType go :highlight goErr ctermfg=214
@@ -530,8 +532,8 @@ let g:go_highlight_build_constraints = 1
 let g:go_fmt_command = "goimports"
 let g:go_file_type = "quickfix"
 " alias command
-command Gt :GoTest
-command Gr :GoRename
+command! Gt :GoTest
+command! Gr :GoRename
 
 "------------------------------------
 " NERDcommenter

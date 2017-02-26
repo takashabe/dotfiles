@@ -18,7 +18,15 @@ cp ~/dotfiles/diff-highlight ~/bin
 curl -L http://install.ohmyz.sh | sh
 
 # app config
+# TODO: improve
 cp -r ~/dotfiles/.config ~/
+
+# fish
+ln -s ~/dotfiles/.config/fish/config.fish ~/.config/fish/config.fish
+ln -s ~/dotfiles/.config/fish/fish_prompt.fish ~/.config/fish/functions/fish_prompt.fish
+
+# karabiner
+ln -s ~/dotfiles/.config/karabiner/karabiner.json ~/.config/karabiner/karabiner.json
 
 # TODO homebrew, ghq関連の追加
 # TODO linux/macos双方で動くようにしたい
