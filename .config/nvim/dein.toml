@@ -1,0 +1,73 @@
+[[plugins]]
+repo = 'Shougo/dein.vim'
+
+# ==========================================================
+# color
+# ==========================================================
+
+[[plugins]]
+repo = 'lifepillar/vim-solarized8'
+hook_add = '''
+source ~/.config/nvim/plugins/solarized.rc.vim
+'''
+
+# ==========================================================
+# basic
+# ==========================================================
+
+[[plugins]]
+repo = 'scrooloose/nerdcommenter'
+hook_add = '''
+source ~/.config/nvim/plugins/nerdcommenter.rc.vim
+'''
+
+[[plugins]]
+repo = 'tpope/vim-surround'
+
+[[plugins]]
+repo = 'majutsushi/tagbar'
+hook_add = '''
+source ~/.config/nvim/plugins/tagbar.rc.vim
+'''
+
+[[plugins]]
+repo = 'banyan/recognize_charcode.vim'
+
+[[plugins]]
+repo = 'Shougo/context_filetype.vim'
+
+# ==========================================================
+# filer
+# ==========================================================
+
+[[plugins]]
+repo = 'Shougo/unite.vim'
+hook_add = '''
+source ~/.config/nvim/plugins/unite.rc.vim
+'''
+
+[[plugins]]
+repo = 'Shougo/neomru.vim'
+
+[[plugins]]
+repo = 'Shougo/vimfiler.vim'
+depends = 'unite.vim'
+hook_add = '''
+source ~/.config/nvim/plugins/vimfiler.rc.vim
+'''
+
+# ==========================================================
+# terminal
+# ==========================================================
+
+[[plugins]]
+repo = 'kassio/neoterm'
+if = "has('nvim')"
+hook_add = '''
+source ~/.config/nvim/plugins/neoterm.rc.vim
+'''
+
+[[plugins]]
+repo = 'Shougo/vimproc.vim'
+if = "!has('nvim')"
+build = 'make'
