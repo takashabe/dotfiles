@@ -5,6 +5,9 @@ let g:vimfiler_as_default_explorer=1
 " カレントディレクトリを開く
 nnoremap <silent> vc :VimFilerCurrentDir<CR>
 inoremap <silent> vc <ESC>:VimFilerCurrentDir<CR>
+" カレントバッファディレクトリを開く
+nnoremap <silent> vb :VimFilerBufferDir<CR>
+inoremap <silent> vb <ESC>:VimFilerBufferDir<CR>
 " プロジェクトホームを開く
 nnoremap <silent> vh :VimFiler -project<CR>
 inoremap <silent> vh <ESC>:VimFiler -project<CR>
