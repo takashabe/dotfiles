@@ -12,7 +12,8 @@ set -x LC_ALL en_US.UTF-8
 
 # vim
 set -x EDITOR nvim
-alias vim 'nvim'
+alias vim '/usr/local/bin/nvim'
+alias oldvim '/usr/local/bin/vim'
 
 # basic command alias
 alias l 'ls -alv'
