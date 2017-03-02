@@ -59,8 +59,11 @@ augroup InsertHook
 augroup END
 
 "自動的に QuickFix リストを表示する
-autocmd QuickfixCmdPost make,grep,grepadd,vimgrep,vimgrepadd cwin
-autocmd QuickfixCmdPost lmake,lgrep,lgrepadd,lvimgrep,lvimgrepadd lwin
+augroup Quickfix
+  autocmd!
+  autocmd QuickfixCmdPost make,grep,grepadd,vimgrep,vimgrepadd cwin
+  autocmd QuickfixCmdPost lmake,lgrep,lgrepadd,lvimgrep,lvimgrepadd lwin
+augroup END
 
 function! GetB()
   let c = matchstr(getline('.'), '.', col('.') - 1)
@@ -122,6 +125,27 @@ set ttyfast
 " コマンドラインの高さ
 set cmdheight=2
 
+" Use vsplit mode
+if has("vim_starting") && !has('gui_running') && has('vertsplit')
+  function! EnableVsplitMode()
+    " enable origin mode and left/right margins
+    let &t_CS = "y"
+    let &t_ti = &t_ti . "\e[?6;69h"
+    let &t_te = "\e[?6;69l\e[999H" . &t_te
+    let &t_CV = "\e[%i%p1%d;%p2%ds"
+    call writefile([ "\e[?6;69h" ], "/dev/tty", "a")
+  endfunction
+
+  " old vim does not ignore CPR
+  map <special> <Esc>[3;9R <Nop>
+
+  " new vim can't handle CPR with direct mapping
+  " map <expr> ^[[3;3R EnableVsplitMode()
+  set t_F9=[3;3R
+  map <expr> <t_F9> EnableVsplitMode()
+  let &t_RV .= "\e[?6;69h\e[1;3s\e[3;9H\e[6n\e[0;0s\e[?6;69l"
+endif
+
 "-------------------------------------------------------------------------------
 " インデント Indent
 "-------------------------------------------------------------------------------
@@ -132,17 +156,16 @@ set cindent      " Cプログラムファイルの自動インデントを始め
 " softtabstopはTabキー押し下げ時の挿入される空白の量，0の場合はtabstopと同じ，BSにも影響する
 set tabstop=2 shiftwidth=2 softtabstop=0
 
-if has("autocmd")
-  "ファイルタイプの検索を有効にする
-  filetype plugin on
-  "そのファイルタイプにあわせたインデントを利用する
-  filetype indent on
-  " これらのftではインデントを無効に
-  "autocmd FileType php filetype indent off
+"ファイルタイプの検索を有効にする
+filetype plugin on
+"そのファイルタイプにあわせたインデントを利用する
+filetype indent on
 
+augroup FileTypeIndent
+  autocmd!
   autocmd FileType html :set indentexpr=
   autocmd FileType xhtml :set indentexpr=
-endif
+augroup END
 
 "-------------------------------------------------------------------------------
 " 補完・履歴 Complete
@@ -183,15 +206,15 @@ nnoremap <C-g><C-b> :<C-u>GrepBuffer<Space><C-r><C-w><Enter>
 "-------------------------------------------------------------------------------
 " 移動設定 Move
 "-------------------------------------------------------------------------------
-
 " カーソルを表示行で移動する。論理行移動は<C-n>,<C-p>
 nnoremap j gj
 nnoremap k gk
-nnoremap <Down> gj
-nnoremap <Up>   gk
 
 " 前回終了したカーソル行に移動
-autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal g`\"" | endif
+augroup Move
+  autocmd!
+  autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal g`\"" | endif
+augroup END
 
 " 最後に編集された位置に移動
 nnoremap gb '[
@@ -230,17 +253,20 @@ set encoding=utf-8    " デフォルトエンコーディング
 " 文字コード関連
 " -> banyan/recognize_charcode.vim
 
-" cvsの時は文字コードをeuc-jpに設定
-autocmd FileType cvs :set fileencoding=euc-jp
-" 以下のファイルの時は文字コードをutf-8に設定
-autocmd FileType svn :set fileencoding=utf-8
-autocmd FileType js :set fileencoding=utf-8
-autocmd FileType css :set fileencoding=utf-8
-autocmd FileType html :set fileencoding=utf-8
-autocmd FileType xml :set fileencoding=utf-8
-autocmd FileType java :set fileencoding=utf-8
-autocmd FileType scala :set fileencoding=utf-8
-autocmd FileType go :set fileencoding=utf-8
+augroup FileEncoding
+  autocmd!
+  " cvsの時は文字コードをeuc-jpに設定
+  autocmd FileType cvs :set fileencoding=euc-jp
+  " 以下のファイルの時は文字コードをutf-8に設定
+  autocmd FileType svn :set fileencoding=utf-8
+  autocmd FileType js :set fileencoding=utf-8
+  autocmd FileType css :set fileencoding=utf-8
+  autocmd FileType html :set fileencoding=utf-8
+  autocmd FileType xml :set fileencoding=utf-8
+  autocmd FileType java :set fileencoding=utf-8
+  autocmd FileType scala :set fileencoding=utf-8
+  autocmd FileType go :set fileencoding=utf-8
+augroup END
 
 " ワイルドカードで表示するときに優先度を低くする拡張子
 set suffixes=.bak,~,.swp,.o,.info,.aux,.log,.dvi,.bbl,.blg,.brf,.cb,.ind,.idx,.ilg,.inx,.out,.toc
@@ -354,5 +380,8 @@ noremap : ;
 " Golang
 "------------------------------------
 " errをハイライト表示する
-autocmd FileType go :highlight goErr ctermfg=214
-autocmd FileType go :match goErr /\<err\>/
+augroup go
+  autocmd!
+  autocmd FileType go :highlight goErr ctermfg=214
+  autocmd FileType go :match goErr /\<err\>/
+augroup END

@@ -32,9 +32,10 @@ source ~/.config/nvim/plugins/tagbar.rc.vim
 
 [[plugins]]
 repo = 'banyan/recognize_charcode.vim'
+if = "!has('nvim')"
 
 [[plugins]]
-repo = 'Shougo/context_filetype.vim'
+repo = 'cohama/lexima.vim'
 
 # ==========================================================
 # filer

@@ -14,6 +14,7 @@ inoremap <expr><S-TAB>  pumvisible() ? "\<C-p>" : "\<C-h>"
 
 " <BS>: close popup and delete backword char.
 inoremap <expr><BS> deoplete#smart_close_popup()."\<C-h>"
+inoremap <expr><C-e> deoplete#close_popup()
 
 " Use auto delimiter
 call deoplete#custom#set('_', 'converters', [
@@ -23,5 +24,8 @@ call deoplete#custom#set('_', 'converters', [
       \ 'converter_truncate_menu',
       \ 'converter_auto_delimiter',
 \ ])
+
+" Auto selection
+set completeopt+=noinsert
 
 let g:deoplete#enable_camel_case = 1
