@@ -1,4 +1,31 @@
 # ==========================================================
+# unite
+# ==========================================================
+
+[[plugins]]
+repo = 'Shougo/unite.vim'
+hook_add = '''
+" for vimfiler
+if !has('nvim')
+  source ~/.config/nvim/plugins/unite.rc.vim
+endif
+'''
+
+[[plugins]]
+repo = 'Shougo/denite.nvim'
+if = "has('nvim')"
+hook_add = '''
+source ~/.config/nvim/plugins/denite.rc.nvim
+'''
+hook_post_source = '''
+source ~/.config/nvim/plugins/denite.rc.lazy.nvim
+'''
+
+[[plugins]]
+repo = 'nixprime/cpsm'
+build = 'env PY3=ON ./install.sh'
+
+# ==========================================================
 # auto completion
 # ==========================================================
 
@@ -9,7 +36,6 @@ repo = 'Shougo/context_filetype.vim'
 repo = 'Shougo/deoplete.nvim'
 depends = 'context_filetype.vim'
 if = "has('nvim')"
-on_i = 1
 hook_source = '''
 source ~/.config/nvim/plugins/deoplete.rc.vim
 '''
@@ -18,7 +44,6 @@ source ~/.config/nvim/plugins/deoplete.rc.vim
 repo = 'Shougo/neocomplete.vim'
 depends = 'context_filetype.vim'
 if = "has('lua')"
-on_i = 1
 hook_source = '''
 source ~/.config/nvim/plugins/neocomplete.rc.vim
 '''
@@ -43,7 +68,7 @@ on_source = ['neocomplete.vim', 'deoplete.nvim']
 
 [[plugins]]
 repo = 'Shougo/neco-vim'
-on_ft = 'vim'
+on_ft = ['vim', 'nvim']
 
 [[plugins]]
 repo = 'cespare/vim-toml'

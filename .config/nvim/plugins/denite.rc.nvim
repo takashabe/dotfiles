@@ -1,0 +1,22 @@
+" Prefix
+nnoremap [denite] <Nop>
+nmap <Leader>f [denite]
+
+" 全部乗せ
+" nnoremap <silent> [denite]a  :<C-u>DeniteBufferDir buffer file_mru file_rec<CR>
+nnoremap <silent> ,fa  :<C-u>DeniteBufferDir buffer file_mru file_rec<CR>
+" ファイル一覧
+nnoremap <silent> [denite]f  :<C-u>Denite file_rec<CR>
+" バッファ一覧
+nnoremap <silent> [denite]b  :<C-u>Denite buffer<CR>
+" 最近使用したファイル一覧
+nnoremap <silent> [denite]m  :<C-u>Denite file_mru<CR>
+
+" grep
+nnoremap <silent> [denite]g  :<C-u>Denite grep -buffer-name=search-buffer-denite<CR>
+" grep検索結果を再表示する
+nnoremap <silent> [denite]r :<C-u>Denite -resume -buffer-name=search-buffer-denite<CR>
+" resumeした検索結果の次の行の結果へ飛ぶ
+nnoremap <silent> [denite]n :<C-u>Denite -resume -buffer-name=search-buffer-denite -select=+1 -immediately<CR>
+" resumeした検索結果の前の行の結果へ飛ぶ
+nnoremap <silent> [denite]p :<C-u>Denite -resume -buffer-name=search-buffer-denite -select=-1 -immediately<CR>

@@ -2,7 +2,6 @@
 " 基本設定 Basics
 "-------------------------------------------------------------------------------
 set nocompatible                 " vi互換なし
-let mapleader = ","              " キーマップリーダー
 set scrolloff=5                  " スクロール時の余白確保
 set textwidth=0                  " 一行に長い文章を書いていても自動折り返しをしない
 set nobackup                     " バックアップ取らない
@@ -333,6 +332,9 @@ endif
 if has('nvim')
   set termguicolors
 endif
+
+" .nvimのsyntaxをvimに
+au MyAutoCmd BufNewFile,BufRead *.nvim set syntax=vim
 
 "ポップアップメニューのカラーを設定
 hi Pmenu guibg=#666666

@@ -23,6 +23,9 @@ if &runtimepath !~ '/dein.vim'
   execute 'set runtimepath+=' . fnamemodify(s:dein_dir, ':p')
 endif
 
+" setting Leader. in order to use in plugin settings
+let mapleader = ","
+
 " load plugins
 if dein#load_state(s:dein_cache_path)
   call dein#begin(s:dein_cache_path)

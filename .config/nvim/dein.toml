@@ -42,12 +42,6 @@ repo = 'cohama/lexima.vim'
 # ==========================================================
 
 [[plugins]]
-repo = 'Shougo/unite.vim'
-hook_add = '''
-source ~/.config/nvim/plugins/unite.rc.vim
-'''
-
-[[plugins]]
 repo = 'Shougo/neomru.vim'
 
 [[plugins]]
