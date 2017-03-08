@@ -111,6 +111,18 @@ augroup cch
   autocmd WinEnter,BufRead * set cursorline
 augroup END
 
+" insertモードとnormalモードでカーソルを切り替える
+if !has('gui_running') && !has('nvim')
+  let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
+  let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
+endif
+if !has('gui_running') && has('nvim')
+  let $NVIM_TUI_ENABLE_CURSOR_SHAPE=2
+  let &t_SI = "\<esc>[5 q"
+  let &t_SR = "\<esc>[3 q"
+  let &t_EI = "\<esc>[2 q"
+endif
+
 hi clear CursorLine
 hi CursorLine gui=underline
 highlight CursorLine ctermbg=black guibg=black
@@ -125,7 +137,7 @@ set ttyfast
 " コマンドラインの高さ
 set cmdheight=2
 
-" Use vsplit mode
+" vsplit時のスクロールを高速化する
 if has("vim_starting") && !has('gui_running') && has('vertsplit')
   function! EnableVsplitMode()
     " enable origin mode and left/right margins
@@ -238,11 +250,25 @@ set virtualedit+=block
 "ビジュアルモード時vで行末まで選択
 vnoremap v $h
 
-" CTRL-hjklでウィンドウ移動
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-l> <C-w>l
-nnoremap <C-h> <C-w>h
+" コマンドラインモード時の移動をEmacs風にする
+" 行頭へ移動
+cnoremap <C-a> <Home>
+" 一文字戻る
+cnoremap <C-b> <Left>
+" カーソルの下の文字を削除
+cnoremap <C-d> <Del>
+" 行末へ移動
+cnoremap <C-e> <End>
+" 一文字進む
+cnoremap <C-f> <Right>
+" コマンドライン履歴を一つ進む
+cnoremap <C-n> <Down>
+" コマンドライン履歴を一つ戻る
+cnoremap <C-p> <Up>
+" 前の単語へ移動
+cnoremap <M-b> <S-Left>
+" 次の単語へ移動
+cnoremap <M-f> <S-Right>
 
 "-------------------------------------------------------------------------------
 " エンコーディング関連 Encoding
