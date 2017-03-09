@@ -11,6 +11,12 @@ hook_add = '''
 source ~/.config/nvim/plugins/solarized.rc.vim
 '''
 
+[[plugins]]
+repo = 'itchyny/lightline.vim'
+hook_add = '''
+source ~/.config/nvim/plugins/lightline.rc.vim
+'''
+
 # ==========================================================
 # basic
 # ==========================================================
@@ -37,6 +43,7 @@ if = "!has('nvim')"
 [[plugins]]
 repo = 'cohama/lexima.vim'
 
+
 # ==========================================================
 # filer
 # ==========================================================
@@ -56,11 +63,9 @@ source ~/.config/nvim/plugins/vimfiler.rc.vim
 # ==========================================================
 
 [[plugins]]
-repo = 'kassio/neoterm'
-if = "has('nvim')"
-hook_add = '''
-source ~/.config/nvim/plugins/neoterm.rc.vim
-'''
+repo = 'Shougo/vimshell.vim'
+depends = 'vimproc.vim'
+if = "!has('nvim')"
 
 [[plugins]]
 repo = 'Shougo/vimproc.vim'

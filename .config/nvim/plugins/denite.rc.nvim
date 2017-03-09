@@ -14,6 +14,8 @@ nnoremap <silent> [denite]m  :<C-u>Denite file_mru<CR>
 
 " grep
 nnoremap <silent> [denite]g  :<C-u>Denite grep -buffer-name=search-buffer-denite<CR>
+" カーソル以下の単語でgrep
+nnoremap <silent> [denite]c  :<C-u>DeniteCursorWord grep -buffer-name=search-buffer-denite<CR>
 " grep検索結果を再表示する
 nnoremap <silent> [denite]r :<C-u>Denite -resume -buffer-name=search-buffer-denite<CR>
 " resumeした検索結果の次の行の結果へ飛ぶ

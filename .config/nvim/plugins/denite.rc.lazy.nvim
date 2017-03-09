@@ -1,3 +1,8 @@
+" lightline.vim側で描画するのでdeniteでstatuslineを描画しないようにする
+if exists('g:loaded_lightline')
+  call denite#custom#option('default', 'statusline', v:false)
+endif
+
 " file mru検索にあいまい検索を使う
 call denite#custom#source('file_mru', 'matchers', ['matcher_fuzzy', 'matcher_project_files'])
 " file検索にcpsmを使う
@@ -20,8 +25,8 @@ endif
 call denite#custom#map('_', "<ESC>", '<denite:enter_mode:normal>')
 
 " C-n, C-pで選択
-call denite#custom#map('insert', '<C-n>', 'move_to_next_line')
-call denite#custom#map('insert', '<C-p>', 'move_to_prev_line')
+call denite#custom#map('insert', '<C-n>', '<denite:move_to_next_line>')
+call denite#custom#map('insert', '<C-p>', '<denite:move_to_previous_line>')
 
 " git ls-files
 call denite#custom#alias('source', 'file_rec/git', 'file_rec')
