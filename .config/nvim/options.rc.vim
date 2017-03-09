@@ -186,6 +186,7 @@ set wildchar=<tab>         " コマンド補完を開始するキー
 set wildmode=list:full     " リスト表示，最長マッチ
 set history=1000           " コマンド・検索パターンの履歴数
 set complete+=k            " 補完に辞書ファイル追加
+set completeopt-=preview   " 補完時にスクラッチウィンドウを表示しない
 
 " <c-space>でomni補完
 imap <c-space> <c-x><c-o>
