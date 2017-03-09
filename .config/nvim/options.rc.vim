@@ -335,7 +335,7 @@ if has('nvim')
 endif
 
 " .nvimのsyntaxをvimに
-au MyAutoCmd BufNewFile,BufRead *.nvim set syntax=vim
+au MyAutoCmd BufNewFile,BufRead *.nvim :set syntax=vim
 
 "ポップアップメニューのカラーを設定
 hi Pmenu guibg=#666666
