@@ -21,26 +21,26 @@ source ~/.config/nvim/plugins/lightline.rc.vim
 # basic
 # ==========================================================
 
-[[plugins]]
+[[plugins]] # コメント切り替え
 repo = 'scrooloose/nerdcommenter'
 hook_add = '''
 source ~/.config/nvim/plugins/nerdcommenter.rc.vim
 '''
 
-[[plugins]]
+[[plugins]] # textobject拡張
 repo = 'tpope/vim-surround'
 
-[[plugins]]
+[[plugins]] # taglist
 repo = 'majutsushi/tagbar'
 hook_add = '''
 source ~/.config/nvim/plugins/tagbar.rc.vim
 '''
 
-[[plugins]]
+[[plugins]] # 文字エンコード
 repo = 'banyan/recognize_charcode.vim'
 if = "!has('nvim')"
 
-[[plugins]]
+[[plugins]] # 括弧入力補完
 repo = 'cohama/lexima.vim'
 
 
@@ -48,7 +48,7 @@ repo = 'cohama/lexima.vim'
 # filer
 # ==========================================================
 
-[[plugins]]
+[[plugins]] # unite, deniteのfile_mruエンジン
 repo = 'Shougo/neomru.vim'
 
 [[plugins]]

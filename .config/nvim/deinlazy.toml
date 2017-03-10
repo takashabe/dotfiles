@@ -21,7 +21,7 @@ hook_post_source = '''
 source ~/.config/nvim/plugins/denite.rc.lazy.nvim
 '''
 
-[[plugins]]
+[[plugins]] # fast matcher
 repo = 'nixprime/cpsm'
 build = 'env PY3=ON ./install.sh'
 
@@ -29,7 +29,7 @@ build = 'env PY3=ON ./install.sh'
 # auto completion
 # ==========================================================
 
-[[plugins]]
+[[plugins]] # filetype判断
 repo = 'Shougo/context_filetype.vim'
 
 [[plugins]]
@@ -48,7 +48,7 @@ hook_source = '''
 source ~/.config/nvim/plugins/neocomplete.rc.vim
 '''
 
-[[plugins]]
+[[plugins]] # go補完エンジン
 repo = 'zchee/deoplete-go'
 depends = 'deoplete.nvim'
 if = "has('nvim')"
@@ -58,7 +58,7 @@ hook_source = '''
 source ~/.config/nvim/plugins/deoplete-go.rc.vim
 '''
 
-[[plugins]]
+[[plugins]] # 英単語補完
 repo = 'ujihisa/neco-look'
 on_source = ['neocomplete.vim', 'deoplete.nvim']
 
