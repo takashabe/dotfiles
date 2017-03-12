@@ -35,6 +35,9 @@ let g:yankring_clipboard_monitor=0 "MacOS Sierra用
 command! Ev edit $MYVIMRC
 command! Rv source $MYVIMRC
 
+" マウスを有効にする
+set mouse=a
+
 "-------------------------------------------------------------------------------
 " ステータスライン StatusLine
 "-------------------------------------------------------------------------------
