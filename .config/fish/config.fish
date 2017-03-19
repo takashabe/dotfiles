@@ -16,8 +16,8 @@ alias vim '/usr/local/bin/nvim'
 alias oldvim '/usr/local/bin/vim'
 
 # basic command alias
-alias l 'ls -alv'
-alias ll 'ls -lv'
+alias l 'ls -alvh'
+alias ll 'ls -lvh'
 alias ... 'cd ../..'
 alias .... 'cd ../../..'
 alias ..... 'cd ../../../..'
