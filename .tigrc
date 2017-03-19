@@ -1,0 +1,2 @@
+## bindings
+bind status C !git commit -v
