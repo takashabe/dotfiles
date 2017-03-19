@@ -23,7 +23,7 @@ function! MyFilename()
   \ (&ft == 'vimfiler' ? vimfiler#get_status_string() :
   \  &ft == 'unite' ? unite#get_status_string() :
   \  &ft == 'vimshell' ? vimshell#get_status_string() :
-  \ '' != expand('%') ? expand('%') : '[No Name]') .
+  \ '' != expand('%:t') ? expand('%:t') : '[No Name]') .
   \ ('' != MyModified() ? ' ' . MyModified() : '')
 endfunction
 function! MyMode()
