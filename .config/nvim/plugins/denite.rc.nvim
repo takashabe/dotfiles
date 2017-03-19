@@ -10,6 +10,8 @@ nnoremap <silent> [denite]f  :<C-u>Denite file_rec<CR>
 nnoremap <silent> [denite]b  :<C-u>Denite buffer<CR>
 " 最近使用したファイル一覧
 nnoremap <silent> [denite]m  :<C-u>Denite file_mru<CR>
+" yank
+nnoremap <silent> [denite]y  :<C-u>Denite neoyank<CR>
 " dotfiles
 nnoremap <silent> [denite]d  :<C-u>call denite#start([{'name': 'file_rec', 'args': ['~/dotfiles/.config/nvim']}])<CR>
 

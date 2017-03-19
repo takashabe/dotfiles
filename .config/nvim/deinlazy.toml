@@ -25,6 +25,9 @@ source ~/.config/nvim/plugins/denite.rc.lazy.nvim
 repo = 'nixprime/cpsm'
 build = 'env PY3=ON ./install.sh'
 
+[[plugins]] # denite source
+repo = 'Shougo/neoyank.vim'
+
 # ==========================================================
 # auto completion
 # ==========================================================
