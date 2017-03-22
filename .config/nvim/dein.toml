@@ -43,6 +43,12 @@ if = "!has('nvim')"
 [[plugins]] # 括弧入力補完
 repo = 'cohama/lexima.vim'
 
+[[plugins]] # 整形
+repo = 'junegunn/vim-easy-align'
+hook_add = '''
+source ~/.config/nvim/plugins/vim-easy-align.rc.vim
+'''
+# READMEのgifが分かりやすい. https://github.com/junegunn/vim-easy-align
 
 # ==========================================================
 # filer
