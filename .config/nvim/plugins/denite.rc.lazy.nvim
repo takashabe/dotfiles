@@ -7,8 +7,8 @@ endif
 call denite#custom#source('file_mru', 'matchers', ['matcher_fuzzy', 'matcher_project_files'])
 " file検索にcpsmを使う
 call denite#custom#source('file_rec', 'matcher', ['matcher_cpsm'])
-" sourter use sublime
-call denite#custom#source('file_rec', 'sorters', ['sorter_sublime'])
+" sourter use rank
+call denite#custom#source('file_rec', 'sorters', ['sorter_rank'])
 
 " grepにagを使う
 if executable('ag')
