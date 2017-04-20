@@ -4,6 +4,8 @@ nmap <Leader>f [denite]
 
 " 全部乗せ
 nnoremap <silent> [denite]a  :<C-u>DeniteBufferDir buffer file_mru file_rec<CR>
+" 全部乗せ(project)
+nnoremap <silent> [denite]s  :<C-u>DeniteProjectDir buffer file_mru file_rec<CR>
 " ファイル一覧
 nnoremap <silent> [denite]f  :<C-u>Denite file_rec<CR>
 " バッファ一覧
