@@ -69,6 +69,7 @@ end
 set -x GOROOT /usr/local/opt/go/libexec
 set -x GOPATH $HOME/dev
 set -x PATH $GOPATH/bin $GOROOT/bin $PATH
+# TODO: Support recursive gocover
 function gocover
   go test -coverprofile cover.out; and go tool cover -html=cover.out; and rm cover.out
 end
