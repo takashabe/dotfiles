@@ -121,12 +121,6 @@ if !has('gui_running') && !has('nvim')
   let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
   let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
 endif
-if !has('gui_running') && has('nvim')
-  let $NVIM_TUI_ENABLE_CURSOR_SHAPE=2
-  let &t_SI = "\<esc>[5 q"
-  let &t_SR = "\<esc>[3 q"
-  let &t_EI = "\<esc>[2 q"
-endif
 
 hi clear CursorLine
 hi CursorLine gui=underline
