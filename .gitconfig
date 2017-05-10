@@ -12,7 +12,6 @@
   quotepath = false
 [merge]
   tool = vimdiff
-  ff = false
 [diff]
   tool=vimdiff
 [ghq]
