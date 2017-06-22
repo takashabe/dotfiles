@@ -65,6 +65,12 @@ source ~/.config/nvim/plugins/deoplete-go.rc.vim
 repo = 'ujihisa/neco-look'
 on_source = ['neocomplete.vim', 'deoplete.nvim']
 
+[[plugins]] # python補完
+repo = 'zchee/deoplete-jedi'
+depends = 'deoplete.nvim'
+if = "has('nvim')"
+on_ft = 'python'
+
 # ==========================================================
 # lang
 # ==========================================================
