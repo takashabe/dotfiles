@@ -6,7 +6,7 @@ endif
 " file mru検索にあいまい検索を使う
 call denite#custom#source('file_mru', 'matchers', ['matcher_fuzzy', 'matcher_project_files'])
 " file検索にcpsmを使う
-call denite#custom#source('file_rec', 'matcher', ['matcher_cpsm'])
+call denite#custom#source('file_rec', 'matchers', ['matcher_cpsm'])
 " sourter use rank
 call denite#custom#source('file_rec', 'sorters', ['sorter_rank'])
 
