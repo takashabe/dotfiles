@@ -50,6 +50,13 @@ source ~/.config/nvim/plugins/vim-easy-align.rc.vim
 '''
 # READMEのgifが分かりやすい. https://github.com/junegunn/vim-easy-align
 
+[[plugins]] # 自動lint
+repo = 'neomake/neomake'
+if = "has('nvim')"
+hook_add = '''
+source ~/.config/nvim/plugins/neomake.rc.vim
+'''
+
 # ==========================================================
 # filer
 # ==========================================================

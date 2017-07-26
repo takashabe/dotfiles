@@ -12,3 +12,6 @@ let g:go_def_mode = 'godef'
 nnoremap <silent> <Leader>lt :GoTest<CR>
 nnoremap <silent> <Leader>lc :GoTestCompile<CR>
 nnoremap <silent> <Leader>lr :GoRename<CR>
+
+" neomake
+let g:neomake_go_enabled_makers = ['golint', 'govet']
