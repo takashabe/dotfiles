@@ -1,7 +1,7 @@
+## Mac
 \.DS_Store
 
-
-### Vim ###
+## Vim
 \.vim/bundle/
 doc/tags
 doc/tags-ja
