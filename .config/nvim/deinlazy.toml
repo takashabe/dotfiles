@@ -109,3 +109,7 @@ on_ft = 'fish'
 [[plugins]]
 repo = 'rhysd/vim-gfm-syntax'
 on_ft = ['markdown', 'mkd']
+
+[[plugins]]
+repo = 'othree/yajs.vim'
+on_ft = ['js']
