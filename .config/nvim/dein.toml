@@ -71,6 +71,10 @@ hook_add = '''
 source ~/.config/nvim/plugins/vimfiler.rc.vim
 '''
 
+[[plugins]] # matcher library for the denite
+repo = 'nixprime/cpsm'
+build = 'env PY3=ON ./install.sh'
+
 # ==========================================================
 # terminal
 # ==========================================================
