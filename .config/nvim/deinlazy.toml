@@ -71,6 +71,22 @@ depends = 'deoplete.nvim'
 if = "has('nvim')"
 on_ft = 'python'
 
+[[plugins]] # javascript補完
+repo = 'ternjs/tern_for_vim'
+if = "has('nvim')"
+build = 'npm install'
+on_ft = ['javascript', 'javascript.jsx']
+
+[[plugins]] # javascript補完
+repo = 'carlitux/deoplete-ternjs'
+depends = 'deoplete.nvim'
+build = 'npm install -g tern'
+if = "has('nvim')"
+on_ft = ['javascript', 'javascript.jsx']
+hook_source = '''
+source ~/.config/nvim/plugins/deoplete-ternjs.rc.vim
+'''
+
 # ==========================================================
 # lang
 # ==========================================================
@@ -111,5 +127,13 @@ repo = 'rhysd/vim-gfm-syntax'
 on_ft = ['markdown', 'mkd']
 
 [[plugins]]
+repo = 'pangloss/vim-javascript'
+on_ft = ['javascript', 'javascript.jsx']
+
+[[plugins]]
 repo = 'othree/yajs.vim'
-on_ft = ['js']
+on_ft = ['javascript', 'javascript.jsx']
+
+[[plugins]]
+repo = 'othree/es.next.syntax.vim'
+on_ft = ['javascript', 'javascript.jsx']

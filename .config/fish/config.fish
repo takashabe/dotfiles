@@ -42,6 +42,9 @@ set -x LESSOPEN '| /usr/local/bin/src-hilite-lesspipe.sh %s'
 # homebrew
 set -x PATH /usr/local/bin /usr/local/sbin $PATH
 
+# nodebrew
+set -x PATH $HOME/.nodebrew/current/bin $PATH
+
 # tmux
 if status --is-interactive; and test -z $TMUX
   set -l wname "shell"
