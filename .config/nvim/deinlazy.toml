@@ -71,7 +71,7 @@ depends = 'deoplete.nvim'
 if = "has('nvim')"
 on_ft = 'python'
 
-[[plugins]] # javascript補完
+[[plugins]] # javascript タグジャンプとか
 repo = 'ternjs/tern_for_vim'
 if = "has('nvim')"
 build = 'npm install'
@@ -88,7 +88,19 @@ source ~/.config/nvim/plugins/deoplete-ternjs.rc.vim
 '''
 
 # ==========================================================
-# lang
+# lint, formatter
+# ==========================================================
+
+[[plugins]]
+repo = 'prettier/vim-prettier'
+on_ft = ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql']
+do = 'npm install'
+hook_source = '''
+source ~/.config/nvim/plugins/vim-prettier.rc.vim
+'''
+
+# ==========================================================
+# lang general
 # ==========================================================
 
 [[plugins]]
