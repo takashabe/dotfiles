@@ -1,6 +1,6 @@
 {
   "Style": {
-    "Selected": ["underline", "on_white", "black"],
-    "Matched": ["blue", "on_black"]
+    "Selected": ["underline", "on_cyan", "black"],
+    "Matched": ["yellow"]
   }
 }
