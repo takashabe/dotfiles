@@ -1,6 +1,6 @@
 [user]
-	name = takashabe
-	email = takashabe.public@gmail.com
+  name = takashabe
+  email = takashabe.public@gmail.com
 [color]
   status = auto
   diff = auto
@@ -8,7 +8,7 @@
   interactive = auto
   grep = auto
 [core]
-  editor = vim
+  editor = nvim
   quotepath = false
   excludesfile = /Users/takashabe/.gitignore
 [merge]
