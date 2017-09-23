@@ -32,7 +32,7 @@ call denite#custom#map('insert', '<C-p>', '<denite:move_to_previous_line>')
 call denite#custom#alias('source', 'file_rec/git', 'file_rec')
 call denite#custom#var('file_rec/git', 'command', ['git', 'ls-files', '-co', '--exclude-standard'])
 
-" ignore .git/ ...
+" ignore case
 call denite#custom#filter('matcher_ignore_globs', 'ignore_globs',
-  \ [ '.git/', '.ropeproject/', '__pycache__/',
+  \ [ '.git/', '.ropeproject/', '__pycache__/', 'node_modules/', 'vendor/',
   \   'venv/', 'images/', '*.min.*', 'img/', 'fonts/'])
