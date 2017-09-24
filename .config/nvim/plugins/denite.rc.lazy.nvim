@@ -3,15 +3,13 @@ if exists('g:loaded_lightline')
   call denite#custom#option('default', 'statusline', v:false)
 endif
 
-" file mru検索にあいまい検索を使う
 call denite#custom#source('file_mru', 'matchers', ['matcher_fuzzy', 'matcher_project_files'])
-" file検索にcpsmを使う
 call denite#custom#source('file_rec', 'matchers', ['matcher_cpsm'])
-" sourter use rank
 call denite#custom#source('file_rec', 'sorters', ['sorter_rank'])
 
-" grepにagを使う
 if executable('ag')
+  call denite#custom#var('file_rec', 'command', ['ag', '--follow', '--nocolor', '--nogroup', '-g', ''])
+
   call denite#custom#var('grep', 'command', ['ag'])
   call denite#custom#var('grep', 'default_opts',
       \ ['-i', '--vimgrep', '-G'])
@@ -27,10 +25,6 @@ call denite#custom#map('_', "<ESC>", '<denite:enter_mode:normal>')
 " C-n, C-pで選択
 call denite#custom#map('insert', '<C-n>', '<denite:move_to_next_line>')
 call denite#custom#map('insert', '<C-p>', '<denite:move_to_previous_line>')
-
-" git ls-files
-call denite#custom#alias('source', 'file_rec/git', 'file_rec')
-call denite#custom#var('file_rec/git', 'command', ['git', 'ls-files', '-co', '--exclude-standard'])
 
 " ignore case
 call denite#custom#filter('matcher_ignore_globs', 'ignore_globs',
