@@ -40,7 +40,7 @@ set -x LESS '-R'
 set -x LESSOPEN '| /usr/local/bin/src-hilite-lesspipe.sh %s'
 
 # homebrew
-set -x PATH /usr/local/bin /usr/local/sbin $PATH
+set -x PATH /usr/local/bin $PATH
 
 # nodebrew
 set -x PATH $HOME/.nodebrew/current/bin $PATH
