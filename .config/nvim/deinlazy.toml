@@ -70,6 +70,9 @@ repo = 'zchee/deoplete-jedi'
 depends = 'deoplete.nvim'
 if = "has('nvim')"
 on_ft = 'python'
+hook_source = '''
+source ~/.config/nvim/plugins/deoplete-jedi.rc.vim
+'''
 
 [[plugins]] # javascript タグジャンプとか
 repo = 'ternjs/tern_for_vim'
@@ -99,6 +102,14 @@ hook_source = '''
 source ~/.config/nvim/plugins/vim-prettier.rc.vim
 '''
 
+[[plugins]]
+repo = 'google/yapf'
+on_ft = 'python'
+rtp = 'plugins/vim'
+hook_source = '''
+source ~/.config/nvim/plugins/yapf.rc.vim
+'''
+
 # ==========================================================
 # lang general
 # ==========================================================
@@ -120,6 +131,13 @@ repo = 'fatih/vim-go'
 on_ft = ['go', 'tmpl']
 hook_source = '''
 source ~/.config/nvim/plugins/vim-go.rc.vim
+'''
+
+[[plugins]]
+repo = 'davidhalter/jedi-vim'
+on_ft = 'python'
+hook_source = '''
+source ~/.config/nvim/plugins/jedi-vim.rc.vim
 '''
 
 [[plugins]]
