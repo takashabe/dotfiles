@@ -130,10 +130,7 @@ if !has('gui_running') && !has('nvim')
 endif
 
 hi clear CursorLine
-hi CursorLine gui=underline
-highlight CursorLine ctermbg=black guibg=black
-" highlight CursorLine cterm=NONE ctermfg=black ctermbg=black
-" highlight CursorLine gui=NONE guifg=black guibg=black
+hi CursorLine ctermbg=black gui=underline guibg=black
 
 " コマンド実行中は再描画しない
 set lazyredraw
