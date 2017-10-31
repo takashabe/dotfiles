@@ -6,13 +6,6 @@ repo = 'Shougo/dein.vim'
 # ==========================================================
 
 [[plugins]]
-repo = 'lifepillar/vim-solarized8'
-hook_add = '''
-source ~/.config/nvim/plugins/solarized.rc.vim
-'''
-
-
-[[plugins]]
 repo = 'joshdick/onedark.vim'
 hook_add = '''
 source ~/.config/nvim/plugins/onedark.rc.vim
