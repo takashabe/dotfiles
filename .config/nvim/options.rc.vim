@@ -422,17 +422,3 @@ if has('nvim')
   " terminalモードでも<ESC>でcommandモードに戻る
   tnoremap <silent> <ESC> <C-\><C-n>
 endif
-
-"-------------------------------------------------------------------------------
-" 各言語の設定 Languages
-"-------------------------------------------------------------------------------
-
-"------------------------------------
-" Golang
-"------------------------------------
-" errをハイライト表示する
-augroup go
-  autocmd!
-  autocmd FileType go :highlight goErr ctermfg=214
-  autocmd FileType go :match goErr /\<err\>/
-augroup END
