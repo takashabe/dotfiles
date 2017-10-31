@@ -81,6 +81,6 @@ end
 function fish_user_key_bindings
   bind \c] peco_select_ghq
   bind \cr peco_select_history
-  bind \cj peco_select_z
+  bind \cu peco_select_z
   bind \co peco_select_file
 end
