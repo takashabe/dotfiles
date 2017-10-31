@@ -41,6 +41,13 @@ set mouse=a
 " 保存を簡単に
 nnoremap <Leader>w :w<CR>
 
+" nvimでマルチバイト文字の入力が文字化けしないように
+" https://github.com/neovim/neovim/issues/3094
+if has('nvim')
+  set ttimeout
+  set ttimeoutlen=50
+endif
+
 "-------------------------------------------------------------------------------
 " ステータスライン StatusLine
 "-------------------------------------------------------------------------------
