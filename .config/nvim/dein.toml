@@ -60,6 +60,12 @@ repo = 'kana/vim-operator-user'
 [[plugins]] # text object 拡張
 repo = 'rhysd/vim-operator-surround'
 
+[[plugins]] # sneak case <> camel case
+repo = 'tyru/operator-camelize.vim'
+hook_add = '''
+source ~/.config/nvim/plugins/operator-camelize.rc.vim
+'''
+
 # ==========================================================
 # filer
 # ==========================================================
