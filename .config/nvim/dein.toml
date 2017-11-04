@@ -27,9 +27,6 @@ hook_add = '''
 source ~/.config/nvim/plugins/nerdcommenter.rc.vim
 '''
 
-[[plugins]] # textobject拡張
-repo = 'tpope/vim-surround'
-
 [[plugins]] # taglist
 repo = 'majutsushi/tagbar'
 hook_add = '''
@@ -56,6 +53,12 @@ if = "has('nvim')"
 hook_add = '''
 source ~/.config/nvim/plugins/neomake.rc.vim
 '''
+
+[[plugins]] # text object 拡張
+repo = 'kana/vim-operator-user'
+
+[[plugins]] # text object 拡張
+repo = 'rhysd/vim-operator-surround'
 
 # ==========================================================
 # filer
