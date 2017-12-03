@@ -1,1 +1,1 @@
-map <leader>oc <plug>(operator-camelize-toggle)
+map <leader>oc <plug>(operator-camelize-toggle)<CR>
