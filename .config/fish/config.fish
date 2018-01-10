@@ -39,11 +39,16 @@ alias ssh 'env TERM=xterm ssh'
 set -x LESS '-R'
 set -x LESSOPEN '| /usr/local/bin/src-hilite-lesspipe.sh %s'
 
-# homebrew
+### homebrew
 set -x PATH /usr/local/bin $PATH
+# openssl with homebrew
+set -x PATH /usr/local/opt/openssl/bin $PATH
 
 # nodebrew
 set -x PATH $HOME/.nodebrew/current/bin $PATH
+
+# rbenv
+rbenv init - | source
 
 # tmux
 if status --is-interactive; and test -z $TMUX
@@ -57,6 +62,9 @@ if status --is-interactive; and test -z $TMUX
   end
 end
 
+# z
+set -x Z_DATA $HOME/.z
+
 function reload_tmux
   tmux source-file ~/.tmux.conf
   echo "reload tmux"
@@ -64,9 +72,15 @@ end
 
 # gcloud
 if status --is-interactive
-  bass source '/Users/takashabe/google-cloud-sdk/path.bash.inc'
-  bass source '/Users/takashabe/google-cloud-sdk/completion.bash.inc'
+  bass source "$HOME/bin/google-cloud-sdk/path.bash.inc"
+  bass source "$HOME/bin/google-cloud-sdk/completion.bash.inc"
 end
+alias gl 'gcloud'
+
+# docker, kubernetes
+alias d 'docker'
+alias k 'kubectl'
+alias mk '/usr/local/bin/minikube'
 
 # golang
 set -x GOROOT /usr/local/opt/go/libexec
