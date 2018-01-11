@@ -141,6 +141,10 @@ source ~/.config/nvim/plugins/jedi-vim.rc.vim
 '''
 
 [[plugins]]
+repo = 'Glench/Vim-Jinja2-Syntax'
+on_ft = 'jinja'
+
+[[plugins]]
 repo = 'elzr/vim-json'
 on_ft = 'json'
 
