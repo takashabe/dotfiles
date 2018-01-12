@@ -10,12 +10,12 @@
 [core]
   editor = nvim
   quotepath = false
-  excludesfile = /Users/takashabe/.gitignore
+  excludesfile = ~/.gitignore
 [merge]
   tool = vimdiff
 [diff]
   tool=vimdiff
 [ghq]
-  root = /Users/takashabe/dev/src
+  root = ~/dev/src
 [credential]
   helper = osxkeychain
