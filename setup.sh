@@ -11,14 +11,12 @@ cp ~/dotfiles/coloredlogcat.py ~/bin
 cp ~/dotfiles/tmuxx ~/bin
 cp ~/dotfiles/diff-highlight ~/bin
 
-# fish
+# .config
 ln -s ~/dotfiles/.config/fish/config.fish ~/.config/fish/config.fish
-
-# karabiner
 ln -s ~/dotfiles/.config/karabiner ~/.config/karabiner
-
-# neovim
 ln -s ~/dotfiles/.config/nvim ~/.config/nvim
+ln -s ~/dotfiles/.config/tmux ~/.config/tmux
+ln -s ~/dotfiles/.config/peco ~/.config/peco
 
 # TODO homebrew, ghq関連の追加
 # TODO linux/macos双方で動くようにしたい
