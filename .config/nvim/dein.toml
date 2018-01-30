@@ -66,6 +66,12 @@ hook_add = '''
 source ~/.config/nvim/plugins/operator-camelize.rc.vim
 '''
 
+[[plugins]] # インデントレベル表示
+repo = 'nathanaelkane/vim-indent-guides'
+hook_add = '''
+source ~/.config/nvim/plugins/vim-indent-guides.rc.vim
+'''
+
 # ==========================================================
 # filer
 # ==========================================================
