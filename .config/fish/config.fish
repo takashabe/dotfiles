@@ -22,12 +22,15 @@ alias ... 'cd ../..'
 alias .... 'cd ../../..'
 alias ..... 'cd ../../../..'
 
-# git
+# git, github
+set -x GITHUB_TOKEN '0f3df6434ea437015101a27f443fdaae51c7d4eb'
 alias gst 'git status'
 alias gb 'git branch'
 alias gad 'git add'
 alias gc 'git commit -v'
-
+function gbp
+  git branch -a --sort=-authordate | cut -b 3- | perl -pe 's#^remotes/origin/###' | perl -nlE 'say if !$c{$_}++' | grep -v -- "->" | peco | xargs git checkout
+end
 
 # gnu tools
 set -x PATH /usr/local/opt/gnu-sed/libexec/gnubin $PATH
@@ -49,6 +52,9 @@ set -x PATH $HOME/.nodebrew/current/bin $PATH
 
 # rbenv
 rbenv init - | source
+
+# java
+set -x JAVA_HOME (/usr/libexec/java_home)
 
 # tmux
 if status --is-interactive; and test -z $TMUX
@@ -77,10 +83,11 @@ if status --is-interactive
 end
 alias gl 'gcloud'
 
-# docker, kubernetes
+# docker, k8s
 alias d 'docker'
 alias k 'kubectl'
 alias mk '/usr/local/bin/minikube'
+alias kc peco_select_k8s_context
 
 # golang
 set -x GOROOT /usr/local/opt/go/libexec
