@@ -23,7 +23,6 @@ alias .... 'cd ../../..'
 alias ..... 'cd ../../../..'
 
 # git, github
-set -x GITHUB_TOKEN '0f3df6434ea437015101a27f443fdaae51c7d4eb'
 alias gst 'git status'
 alias gb 'git branch'
 alias gad 'git add'
@@ -58,7 +57,7 @@ set -x JAVA_HOME (/usr/libexec/java_home)
 
 # tmux
 if status --is-interactive; and test -z $TMUX
-  set -l wname "shell"
+  set -l wname "<°)))彡"
   if tmux has-session > /dev/null ^ /dev/null
     # attach tmux session with percol like tool
     set -l sid (tmux list-sessions | grep '' | peco | cut -d: -f1)
@@ -87,7 +86,7 @@ alias gl 'gcloud'
 alias d 'docker'
 alias k 'kubectl'
 alias mk '/usr/local/bin/minikube'
-alias kc peco_select_k8s_context
+alias kcp peco_select_k8s_context
 
 # golang
 set -x GOROOT /usr/local/opt/go/libexec
@@ -105,3 +104,6 @@ function fish_user_key_bindings
   bind \cu peco_select_z
   bind \co peco_select_file
 end
+
+### env for application, token, secret
+source $HOME/.config/fish/conf.d/env.fish
