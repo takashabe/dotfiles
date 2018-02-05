@@ -72,6 +72,10 @@ hook_add = '''
 source ~/.config/nvim/plugins/vim-indent-guides.rc.vim
 '''
 
+[[plugins]] # gitラッパー
+repo = "tpope/vim-fugitive"
+hook_add = 'source ~/.config/nvim/plugins/vim-fugitive.rc.vim'
+
 # ==========================================================
 # filer
 # ==========================================================
