@@ -1,2 +1,8 @@
-## bindings
+#### bindings
 bind status C !git commit -v
+
+#### display options
+# 水平分割時の割合
+set split-view-height = 80%
+# 差分の前後表示行数
+set diff-context = 6
