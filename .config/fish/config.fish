@@ -105,5 +105,8 @@ function fish_user_key_bindings
   bind \co peco_select_file
 end
 
+# direnv
+eval (direnv hook fish)
+
 ### env for application, token, secret
 source $HOME/.config/fish/conf.d/env.fish
