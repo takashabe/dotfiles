@@ -6,14 +6,17 @@ function edit_config
   vim ~/dotfiles/.config/fish/config.fish
 end
 
+# general
+set -x PATH $HOME/bin $PATH
+
 # Encoding
 set -x LC_CTYPE en_US.UTF-8
 set -x LC_ALL en_US.UTF-8
 
 # vim
 set -x EDITOR nvim
+alias vi '/usr/local/bin/nvim'
 alias vim '/usr/local/bin/nvim'
-alias oldvim '/usr/local/bin/vim'
 
 # basic command alias
 alias l 'ls -alvh'
@@ -45,6 +48,8 @@ set -x LESSOPEN '| /usr/local/bin/src-hilite-lesspipe.sh %s'
 set -x PATH /usr/local/bin $PATH
 # openssl with homebrew
 set -x PATH /usr/local/opt/openssl/bin $PATH
+# ccat
+alias cat 'ccat'
 
 # nodebrew
 set -x PATH $HOME/.nodebrew/current/bin $PATH
