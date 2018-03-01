@@ -77,13 +77,13 @@ source ~/.config/nvim/plugins/deoplete-jedi.rc.vim
 [[plugins]] # javascript タグジャンプとか
 repo = 'ternjs/tern_for_vim'
 if = "has('nvim')"
-build = 'npm install'
+build = 'yarn install'
 on_ft = ['javascript', 'javascript.jsx']
 
 [[plugins]] # javascript補完
 repo = 'carlitux/deoplete-ternjs'
 depends = 'deoplete.nvim'
-build = 'npm install -g tern'
+build = 'yarn install -g tern'
 if = "has('nvim')"
 on_ft = ['javascript', 'javascript.jsx']
 hook_source = '''
@@ -97,7 +97,7 @@ source ~/.config/nvim/plugins/deoplete-ternjs.rc.vim
 [[plugins]]
 repo = 'prettier/vim-prettier'
 on_ft = ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql']
-do = 'npm install'
+do = 'yarn install'
 hook_source = '''
 source ~/.config/nvim/plugins/vim-prettier.rc.vim
 '''
