@@ -422,3 +422,12 @@ if has('nvim')
   " terminalモードでも<ESC>でcommandモードに戻る
   tnoremap <silent> <ESC> <C-\><C-n>
 endif
+
+"-------------------------------------------------------------------------------
+" Noevim Provider
+"-------------------------------------------------------------------------------
+if has('nvim')
+  " python
+  let g:python_host_prog  = '/usr/local/opt/python@2/bin/python2'
+  let g:python3_host_prog = '/usr/local/bin/python'
+endif
