@@ -105,6 +105,9 @@ function gocover
   go test -coverprofile cover.out; and go tool cover -html=cover.out; and rm cover.out
 end
 
+# python
+set -x PATH /usr/local/Cellar/python@2/2.7.14_1/bin $PATH
+
 ### key binding
 function fish_user_key_bindings
   bind \c] peco_select_ghq
