@@ -7,14 +7,12 @@ call denite#custom#source('file_mru', 'matchers', ['matcher_fuzzy', 'matcher_pro
 call denite#custom#source('file_rec', 'matchers', ['matcher_cpsm'])
 call denite#custom#source('file_rec', 'sorters', ['sorter_rank'])
 
-if executable('ag')
-  call denite#custom#var('file_rec', 'command', ['ag', '--follow', '--nocolor', '--nogroup', '--ignore', 'vendor/', '-g', ''])
-
-  call denite#custom#var('grep', 'command', ['ag'])
+if executable('rg')
+  call denite#custom#var('grep', 'command', ['rg'])
   call denite#custom#var('grep', 'default_opts',
-    \ ['-i', '--vimgrep', '-G'])
+      \ ['--vimgrep', '--no-heading'])
   call denite#custom#var('grep', 'recursive_opts', [])
-  call denite#custom#var('grep', 'pattern_opt', [''])
+  call denite#custom#var('grep', 'pattern_opt', ['--regexp'])
   call denite#custom#var('grep', 'separator', ['--'])
   call denite#custom#var('grep', 'final_opts', [])
 endif
