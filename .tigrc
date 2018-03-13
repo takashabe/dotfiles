@@ -2,6 +2,8 @@
 bind status C !git commit -v
 
 #### display options
+# 表示内容の設定->コミットハッシュ:日付:Author:コミットメッセージ
+set main-view = id:width=12 date author commit-title:graph=yes,refs=yes
 # 水平分割時の割合
 set split-view-height = 80%
 # 差分の前後表示行数
