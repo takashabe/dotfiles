@@ -17,7 +17,7 @@ inoremap <expr><BS> deoplete#smart_close_popup()."\<C-h>"
 inoremap <expr><C-e> deoplete#close_popup()
 
 " Use auto delimiter
-call deoplete#custom#set('_', 'converters', [
+call deoplete#custom#source('_', 'converters', [
       \ 'converter_remove_paren',
       \ 'converter_remove_overlap',
       \ 'converter_truncate_abbr',
