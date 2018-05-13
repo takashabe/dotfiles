@@ -74,6 +74,7 @@ if status --is-interactive; and test -z $TMUX
     command tmux new-session -n $wname
   end
 end
+alias tmw peco_select_tmux_window
 
 # z
 set -x Z_DATA $HOME/.z
