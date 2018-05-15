@@ -6,19 +6,10 @@ function edit_config
   vim ~/dotfiles/.config/fish/config.fish
 end
 
-# general
+##################################### general
 set -x PATH $HOME/bin $PATH
 
-# Encoding
-set -x LC_CTYPE en_US.UTF-8
-set -x LC_ALL en_US.UTF-8
-
-# vim
-set -x EDITOR nvim
-alias vi '/usr/local/bin/nvim'
-alias vim '/usr/local/bin/nvim'
-
-# basic command alias
+## basic command alias
 alias l 'ls -alvh'
 alias ll 'ls -lvh'
 alias ... 'cd ../..'
@@ -26,6 +17,16 @@ alias .... 'cd ../../..'
 alias ..... 'cd ../../../..'
 alias curl-android 'curl -A "Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.167 Mobile Safari/537.36"'
 alias curl-ios 'curl -A "Mozilla/5.0 (iPhone; CPU iPhone OS 10_3 like Mac OS X) AppleWebKit/602.1.50 (KHTML, like Gecko) CriOS/56.0.2924.75 Mobile/14E5239e Safari/602.1"'
+
+## Encoding
+set -x LC_CTYPE en_US.UTF-8
+set -x LC_ALL en_US.UTF-8
+
+## vim
+set -x EDITOR nvim
+alias vi '/usr/local/bin/nvim'
+alias vim '/usr/local/bin/nvim'
+
 alias diff 'colordiff'
 
 # git, github
@@ -89,15 +90,14 @@ if status --is-interactive
   bass source "$HOME/bin/google-cloud-sdk/path.bash.inc"
   bass source "$HOME/bin/google-cloud-sdk/completion.bash.inc"
 end
-alias gl 'gcloud'
 
-# docker, k8s
+### docker, k8s
 alias d 'docker'
 alias k 'kubectl'
 alias mk '/usr/local/bin/minikube'
 alias kcp peco_select_k8s_context
 
-# golang
+### Golang
 set -x GOROOT /usr/local/opt/go/libexec
 set -x GOPATH $HOME/dev
 set -x PATH $GOPATH/bin $GOROOT/bin $PATH
@@ -105,11 +105,19 @@ set -x PATH $GOPATH/bin $GOROOT/bin $PATH
 function gocover
   go test -coverprofile cover.out; and go tool cover -html=cover.out; and rm cover.out
 end
+## reload gocode
+function gocode_reload
+  gocode close
+  go get -u github.com/nsf/gocode
+end
 
-# python
+### Rust
+set -x PATH $HOME/.cargo/bin $PATH
+
+### Python
 set -x PATH /usr/local/Cellar/python@2/2.7.14_1/bin $PATH
 
-### key binding
+### Key binding
 function fish_user_key_bindings
   bind \c] peco_select_ghq
   bind \cr peco_select_history

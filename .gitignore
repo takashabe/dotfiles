@@ -16,4 +16,7 @@ Session.vim
 .envrc
 
 ## private memo
-_memo.md
+_memo*
+
+## private temporary
+_tmp
