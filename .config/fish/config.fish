@@ -116,7 +116,7 @@ end
 set -x PATH $HOME/.cargo/bin $PATH
 
 ### Python
-set -x PATH /usr/local/Cellar/python@2/2.7.14_1/bin $PATH
+set -x PATH /usr/local/Cellar/python@2/2.7.15/bin $PATH
 
 ### Key binding
 function fish_user_key_bindings
