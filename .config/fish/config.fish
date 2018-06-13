@@ -34,6 +34,7 @@ alias gst 'git status'
 alias gb 'git branch'
 alias gad 'git add'
 alias gc 'git commit -v'
+alias h 'hub'
 function gbp
   git branch -a --sort=-authordate | cut -b 3- | perl -pe 's#^remotes/origin/###' | perl -nlE 'say if !$c{$_}++' | grep -v -- "->" | peco | xargs git checkout
 end
@@ -75,6 +76,7 @@ if status --is-interactive; and test -z $TMUX
     command tmux new-session -n $wname
   end
 end
+alias tmw peco_select_tmux_window
 
 # z
 set -x Z_DATA $HOME/.z
@@ -114,7 +116,7 @@ end
 set -x PATH $HOME/.cargo/bin $PATH
 
 ### Python
-set -x PATH /usr/local/Cellar/python@2/2.7.14_1/bin $PATH
+set -x PATH /usr/local/Cellar/python@2/2.7.15/bin $PATH
 
 ### Key binding
 function fish_user_key_bindings
