@@ -7,11 +7,11 @@ let g:vimfiler_as_default_explorer=1
 nnoremap [vimfiler] <Nop>
 nmap <Leader>v [vimfiler]
 " カレントディレクトリを開く
-nnoremap <silent> [vimfiler]c :VimFilerCurrentDir<CR>
-inoremap <silent> [vimfiler]c <ESC>:VimFilerCurrentDir<CR>
+nnoremap <silent> [vimfiler]c :VimFilerCurrentDir -explorer<CR>
+inoremap <silent> [vimfiler]c <ESC>:VimFilerCurrentDir -explorer<CR>
 " カレントバッファディレクトリを開く
-nnoremap <silent> [vimfiler]b :VimFilerBufferDir<CR>
-inoremap <silent> [vimfiler]b <ESC>:VimFilerBufferDir<CR>
+nnoremap <silent> [vimfiler]b :VimFilerBufferDir -explorer<CR>
+inoremap <silent> [vimfiler]b <ESC>:VimFilerBufferDir -explorer<CR>
 " プロジェクトホームを開く
-nnoremap <silent> [vimfiler]h :VimFiler -project<CR>
-inoremap <silent> [vimfiler]h <ESC>:VimFiler -project<CR>
+nnoremap <silent> [vimfiler]h :VimFilerExploer -project<CR>
+inoremap <silent> [vimfiler]h <ESC>:VimFilerExloer -project<CR>
