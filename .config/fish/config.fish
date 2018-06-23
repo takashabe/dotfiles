@@ -22,6 +22,10 @@ alias curl-ios 'curl -A "Mozilla/5.0 (iPhone; CPU iPhone OS 10_3 like Mac OS X) 
 set -x LC_CTYPE en_US.UTF-8
 set -x LC_ALL en_US.UTF-8
 
+## Prompt
+set -x PROMPT_ICON 'O'
+set -x PROMPT_ERROR_ICON 'X'
+
 ## vim
 set -x EDITOR nvim
 alias vi '/usr/local/bin/nvim'

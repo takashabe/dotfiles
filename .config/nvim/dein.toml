@@ -83,11 +83,17 @@ hook_add = 'source ~/.config/nvim/plugins/vim-fugitive.rc.vim'
 [[plugins]] # unite, deniteのfile_mruエンジン
 repo = 'Shougo/neomru.vim'
 
-[[plugins]]
+[[plugins]] # [deprecated] filer plugin
 repo = 'Shougo/vimfiler.vim'
 depends = 'unite.vim'
 hook_add = '''
 source ~/.config/nvim/plugins/vimfiler.rc.vim
+'''
+
+[[plugins]] # dark power filer plugin
+repo = 'Shougo/defx.nvim'
+hook_add = '''
+source ~/.config/nvim/plugins/defx.rc.nvim
 '''
 
 [[plugins]] # matcher library for the denite
