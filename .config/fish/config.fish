@@ -98,13 +98,13 @@ alias k 'kubectl'
 alias mk '/usr/local/bin/minikube'
 alias kcp peco_select_k8s_context
 
-### Golang
+# Golang
 set -x GOROOT /usr/local/opt/go/libexec
 set -x GOPATH $HOME/dev
 set -x PATH $GOPATH/bin $GOROOT/bin $PATH
-# TODO: Support recursive gocover
+## TODO: Support recursive gocover
 function gocover
-  go test -coverprofile cover.out; and go tool cover -html=cover.out; and rm cover.out
+  go test -coverprofile cover.out ./...; and go tool cover -html=cover.out; and rm cover.out
 end
 ## reload gocode
 function gocode_reload
