@@ -4,7 +4,7 @@ python << EOF
 import os
 import sys
 
-path = os.path.expanduser("/usr/local/lib/python3.6/site-packages")
+path = os.path.expanduser("/usr/local/lib/python3.7/site-packages")
 if not path in sys.path:
     sys.path.append(path)
 EOF
