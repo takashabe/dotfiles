@@ -23,8 +23,8 @@ set -x LC_CTYPE en_US.UTF-8
 set -x LC_ALL en_US.UTF-8
 
 ## Prompt
-set -x PROMPT_ICON 'O'
-set -x PROMPT_ERROR_ICON 'X'
+set -x PROMPT_ICON "(*'-')"
+set -x PROMPT_ERROR_ICON "(*;_;)"
 
 ## vim
 set -x EDITOR nvim
