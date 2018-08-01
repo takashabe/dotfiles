@@ -44,7 +44,7 @@ function gbp
 end
 function gcm
   if test (count $argv) -lt 1
-    echo 'require: new_branch name'
+    echo 'require: branch name'
     return 128
   end
   git checkout -b $argv[1] origin/master
