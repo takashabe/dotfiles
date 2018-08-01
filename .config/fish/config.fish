@@ -42,6 +42,13 @@ alias h 'hub'
 function gbp
   git branch -a --sort=-authordate | cut -b 3- | perl -pe 's#^remotes/origin/###' | perl -nlE 'say if !$c{$_}++' | grep -v -- "->" | peco | xargs git checkout
 end
+function gcm
+  if test (count $argv) -lt 1
+    echo 'require: new_branch name'
+    return 128
+  end
+  git checkout -b $argv[1] origin/master
+end
 
 # gnu tools
 set -x PATH /usr/local/opt/gnu-sed/libexec/gnubin $PATH
