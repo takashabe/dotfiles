@@ -125,10 +125,11 @@ function switch_gcloud
 end
 
 ### docker, k8s
-alias d 'docker'
 alias k 'kubectl'
-alias mk '/usr/local/bin/minikube'
+alias kg 'kubectl get'
+alias kd 'kubectl describe'
 alias kcp peco_select_k8s_context
+alias knp peco_select_k8s_namespace
 
 # Golang
 set -x GOROOT /usr/local/opt/go/libexec
