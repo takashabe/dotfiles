@@ -110,6 +110,14 @@ hook_source = '''
 source ~/.config/nvim/plugins/yapf.rc.vim
 '''
 
+[[plugins]] # SQL整形plugin
+repo = 'vim-scripts/SQLUtilities'
+on_ft = 'sql'
+
+[[plugins]] # 汎用的な整形Plugin. SQL用ではないが、他に使う場面もないのでfiletype指定している
+repo = 'vim-scripts/Align'
+on_ft = 'sql'
+
 # ==========================================================
 # lang general
 # ==========================================================

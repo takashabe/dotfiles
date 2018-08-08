@@ -123,6 +123,8 @@ function switch_gcloud
     gcloud config set account (echo $GCLOUD_WORK_ACCOUNT)
   end
 end
+## appengine
+set -x PATH $HOME/bin/go_appengine/ $PATH
 
 ### docker, k8s
 alias k 'kubectl'
