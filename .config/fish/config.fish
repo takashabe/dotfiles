@@ -124,7 +124,9 @@ function switch_gcloud
   end
 end
 ## appengine
-set -x PATH $HOME/bin/go_appengine/ $PATH
+if test -e $HOME/bin/go_appengin/
+  set -x PATH $HOME/bin/go_appengine/ $PATH
+end
 
 ### docker, k8s
 alias k 'kubectl'
