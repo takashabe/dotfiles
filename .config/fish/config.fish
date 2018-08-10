@@ -124,7 +124,7 @@ function switch_gcloud
   end
 end
 ## appengine
-if test -e $HOME/bin/go_appengin/
+if test -e $HOME/bin/go_appengine/
   set -x PATH $HOME/bin/go_appengine/ $PATH
 end
 
