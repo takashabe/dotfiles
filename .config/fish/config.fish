@@ -28,6 +28,7 @@ set -x LC_ALL en_US.UTF-8
 ## Prompt
 set -x PROMPT_ICON "(*'-')"
 set -x PROMPT_ERROR_ICON "(*;_;)"
+set -x PROMPT_ENABLE_K8S_CONTEXT 1
 
 ## vim
 set -x EDITOR nvim
