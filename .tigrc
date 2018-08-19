@@ -8,3 +8,7 @@ set main-view = id:width=12 date author commit-title:graph=yes,refs=yes
 set split-view-height = 80%
 # 差分の前後表示行数
 set diff-context = 6
+
+#### colors
+# format: color <location> <fg> <bg> <font>
+color cursor 253 237 bold

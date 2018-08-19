@@ -6,9 +6,9 @@ repo = 'Shougo/dein.vim'
 # ==========================================================
 
 [[plugins]]
-repo = 'joshdick/onedark.vim'
+repo = 'cocopon/iceberg.vim'
 hook_add = '''
-source ~/.config/nvim/plugins/onedark.rc.vim
+source ~/.config/nvim/plugins/iceberg.rc.vim
 '''
 
 [[plugins]]
