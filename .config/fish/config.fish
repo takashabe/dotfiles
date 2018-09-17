@@ -1,5 +1,5 @@
-# env for application, token, secret
-source $HOME/.config/fish/conf.d/env.fish
+# Load local env, functions and so on.
+source $HOME/.config/fish/conf.d/local.fish
 
 # general function
 function reload_config
@@ -23,8 +23,7 @@ alias ll 'ls -lvh'
 alias ... 'cd ../..'
 alias .... 'cd ../../..'
 alias ..... 'cd ../../../..'
-alias curl-android 'curl -A "Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.167 Mobile Safari/537.36"'
-alias curl-ios 'curl -A "Mozilla/5.0 (iPhone; CPU iPhone OS 10_3 like Mac OS X) AppleWebKit/602.1.50 (KHTML, like Gecko) CriOS/56.0.2924.75 Mobile/14E5239e Safari/602.1"'
+
 
 ## Encoding
 set -x LC_CTYPE en_US.UTF-8
@@ -41,6 +40,24 @@ alias vi '/usr/local/bin/nvim'
 alias vim '/usr/local/bin/nvim'
 
 alias diff 'colordiff'
+
+# curl
+alias curl-android 'curl -A "Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.167 Mobile Safari/537.36"'
+alias curl-ios 'curl -A "Mozilla/5.0 (iPhone; CPU iPhone OS 10_3 like Mac OS X) AppleWebKit/602.1.50 (KHTML, like Gecko) CriOS/56.0.2924.75 Mobile/14E5239e Safari/602.1"'
+function curl-xml-ios
+  if test (count $argv) -lt 1
+    echo 'require: url'
+    return 128
+  end
+  curl-ios $argv[1] | xmllint --format -
+end
+function curl-xml-android
+  if test (count $argv) -lt 1
+    echo 'require: url'
+    return 128
+  end
+  curl-android $argv[1] | xmllint --format -
+end
 
 # git, github
 alias gst 'git status'
@@ -71,6 +88,7 @@ set -x LESSOPEN '| /usr/local/bin/src-hilite-lesspipe.sh %s'
 
 ### homebrew
 set -x PATH /usr/local/bin $PATH
+set -g fish_user_paths "/usr/local/sbin" $fish_user_paths
 # openssl with homebrew
 set -x PATH /usr/local/opt/openssl/bin $PATH
 # ccat
@@ -151,8 +169,8 @@ function gocover
 end
 ## reload gocode
 function gocode_reload
-  gocode close
-  go get -u github.com/nsf/gocode
+  gocode exit
+  go get -u github.com/mdempsky/gocode
 end
 
 ### Rust
