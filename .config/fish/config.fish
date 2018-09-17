@@ -9,6 +9,11 @@ function edit_config
   vim ~/dotfiles/.config/fish/config.fish
 end
 
+function reload_network
+  sudo ifconfig en0 down
+  sudo ifconfig en0 up
+end
+
 ##################################### general
 set -x PATH $HOME/bin $PATH
 
