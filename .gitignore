@@ -12,6 +12,9 @@ Session.vim
 .netrwhist
 *~
 
+## VsCode
+.vscode/
+
 ## direnv
 .envrc
 
