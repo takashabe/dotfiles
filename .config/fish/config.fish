@@ -172,6 +172,10 @@ function gocode_reload
   gocode exit
   go get -u github.com/mdempsky/gocode
 end
+## golang/tools re-install
+function go_install_binaries
+  command go get -v -u golang.org/x/tools/...
+end
 
 ### Rust
 set -x PATH $HOME/.cargo/bin $PATH
