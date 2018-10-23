@@ -175,3 +175,7 @@ build = './install.sh'
 hook_source = '''
 source ~/.config/nvim/plugins/tigris.rc.nvim
 '''
+
+[[plugins]]
+repo = 'stephpy/vim-yaml'
+on_ft = ['yaml', 'yml']
