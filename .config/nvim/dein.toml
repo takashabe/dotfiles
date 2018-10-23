@@ -5,10 +5,16 @@ repo = 'Shougo/dein.vim'
 # color
 # ==========================================================
 
+# [[plugins]]
+# repo = 'cocopon/iceberg.vim'
+# hook_add = '''
+# source ~/.config/nvim/plugins/iceberg.rc.vim
+# '''
+
 [[plugins]]
-repo = 'cocopon/iceberg.vim'
+repo = 'joshdick/onedark.vim'
 hook_add = '''
-source ~/.config/nvim/plugins/iceberg.rc.vim
+source ~/.config/nvim/plugins/onedark.rc.vim
 '''
 
 [[plugins]]
