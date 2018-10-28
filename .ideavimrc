@@ -1,6 +1,0 @@
-" 音を鳴らさない
-set visualbell
-set noerrorbells
-
-" クリップボードを使用する
-set clipboard=unnamed
