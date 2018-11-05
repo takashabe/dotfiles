@@ -1,0 +1,65 @@
+{
+    // General
+    "editor.minimap.enabled": false,
+    "editor.renderControlCharacters": true,
+    "window.titleBarStyle": "native",
+    "window.title": "${activeEditorLong}${separator}${rootName}",
+    // Go
+    "go.inferGopath": true,
+    "go.autocompleteUnimportedPackages": true,
+    "go.gopath": "/Users/a14960/dev",
+    "go.docsTool": "guru",
+    "go.formatTool": "goimports",
+    "go.buildOnSave": "package",
+    // Editor
+    "editor.tabSize": 2,
+    "editor.renderWhitespace": "boundary",
+    "editor.cursorStyle": "block",
+    "editor.wordWrap": "on",
+    // Terminal
+    "terminal.integrated.shell.osx": "/usr/local/bin/fish",
+    // Vim
+    "vim.easymotion": true,
+    "vim.enableNeovim": true,
+    "vim.leader": ",",
+    "vim.neovimPath": "/usr/local/bin/nvim",
+    "vim.useSystemClipboard": true,
+    "vim.visualstar": true,
+    "vim.hlsearch": true,
+    // Keybind when normal-mode
+    "vim.normalModeKeyBindingsNonRecursive": [
+        {
+            "before": ["<leader>","t"],
+            "commands": [ "workbench.action.terminal.toggleTerminal" ]
+        },
+        {
+            "before": [":"],
+            "commands": [ "workbench.action.showCommands" ]
+        },
+        {
+            "before": [";"],
+            "after": [":"]
+        },
+        {
+            "before": ["<leader>","w"],
+            "commands": [ ":w" ]
+        },
+        {
+            "before": ["<leader>","f","f"],
+            "commands": [ "workbench.action.quickOpen" ]
+        },
+        {
+            "before": ["<leader>","="],
+            "commands": [ "wwm.aligncode" ]
+        },
+        {
+            "before": ["<leader>","l","v"],
+            "commands": [ "go.vet.workspace" ]
+        },
+    ],
+
+    // Mics...
+    "explorer.confirmDelete": false,
+    "workbench.colorTheme": "One Dark Pro",
+    "workbench.iconTheme": "vscode-icons",
+}

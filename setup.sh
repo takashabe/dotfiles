@@ -21,5 +21,10 @@ ln -s ~/dotfiles/.config/nvim ~/.config/
 ln -s ~/dotfiles/.config/tmux ~/.config/
 ln -s ~/dotfiles/.config/peco ~/.config/
 
+# vscode
+ln -s ~/dotfiles/.config/code/vsicons.settings.json  ~/Library/Application\ Support/Code/User/
+ln -s ~/dotfiles/.config/code/settings.json  ~/Library/Application\ Support/Code/User/
+ln -s ~/dotfiles/.config/code/keybindings.json ~/Library/Application\ Support/Code/User/
+
 # TODO homebrew, ghq関連の追加
 # TODO linux/macos双方で動くようにしたい
