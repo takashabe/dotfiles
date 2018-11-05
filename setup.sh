@@ -1,30 +1,30 @@
 #!/bin/sh
 
 ## .rc files for home directory
-ln -s ~/dotfiles/.tmux.conf ~/
-ln -s ~/dotfiles/.gitconfig ~/
-ln -s ~/dotfiles/.gitignore ~/
-ln -s ~/dotfiles/.ideavimrc ~/
-ln -s ~/dotfiles/.tigrc ~/
-ln -s ~/dotfiles/.agignore ~/
+ln -s $HOME/dotfiles/.tmux.conf $HOME/
+ln -s $HOME/dotfiles/.gitconfig $HOME/
+ln -s $HOME/dotfiles/.gitignore $HOME/
+ln -s $HOME/dotfiles/.ideavimrc $HOME/
+ln -s $HOME/dotfiles/.tigrc $HOME/
+ln -s $HOME/dotfiles/.agignore $HOME/
 
-## ~/bin
-mkdir ~/bin
-cp ~/dotfiles/coloredlogcat.py ~/bin
-cp ~/dotfiles/tmuxx ~/bin
-cp ~/dotfiles/diff-highlight ~/bin
+## $HOME/bin
+mkdir $HOME/bin
+cp $HOME/dotfiles/coloredlogcat.py $HOME/bin
+cp $HOME/dotfiles/tmuxx $HOME/bin
+cp $HOME/dotfiles/diff-highlight $HOME/bin
 
-# ~/.config
-ln -s ~/dotfiles/.config/fish/config.fish ~/.config/fish/
-ln -s ~/dotfiles/.config/karabiner ~/.config/
-ln -s ~/dotfiles/.config/nvim ~/.config/
-ln -s ~/dotfiles/.config/tmux ~/.config/
-ln -s ~/dotfiles/.config/peco ~/.config/
+# $HOME/.config
+ln -s $HOME/dotfiles/.config/fish/config.fish $HOME/.config/fish/
+ln -s $HOME/dotfiles/.config/karabiner $HOME/.config/
+ln -s $HOME/dotfiles/.config/nvim $HOME/.config/
+ln -s $HOME/dotfiles/.config/tmux $HOME/.config/
+ln -s $HOME/dotfiles/.config/peco $HOME/.config/
 
 # vscode
-ln -s ~/dotfiles/.config/code/vsicons.settings.json  ~/Library/Application\ Support/Code/User/
-ln -s ~/dotfiles/.config/code/settings.json  ~/Library/Application\ Support/Code/User/
-ln -s ~/dotfiles/.config/code/keybindings.json ~/Library/Application\ Support/Code/User/
+ln -s $HOME/dotfiles/.config/code/vsicons.settings.json  $HOME/Library/Application\ Support/Code/User/
+ln -s $HOME/dotfiles/.config/code/settings.json  $HOME/Library/Application\ Support/Code/User/
+ln -s $HOME/dotfiles/.config/code/keybindings.json $HOME/Library/Application\ Support/Code/User/
 
 # TODO homebrew, ghq関連の追加
 # TODO linux/macos双方で動くようにしたい
