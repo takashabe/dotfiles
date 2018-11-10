@@ -19,7 +19,6 @@
     // Terminal
     "terminal.integrated.shell.osx": "/usr/local/bin/fish",
     // Vim
-    "vim.easymotion": true,
     "vim.enableNeovim": true,
     "vim.leader": ",",
     "vim.neovimPath": "/usr/local/bin/nvim",
