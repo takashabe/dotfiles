@@ -96,11 +96,11 @@ hook_add = '''
 source ~/.config/nvim/plugins/vimfiler.rc.vim
 '''
 
-[[plugins]] # dark power filer plugin
-repo = 'Shougo/defx.nvim'
-hook_add = '''
-source ~/.config/nvim/plugins/defx.rc.nvim
-'''
+# [[plugins]] # dark power filer plugin
+# repo = 'Shougo/defx.nvim'
+# hook_add = '''
+# source ~/.config/nvim/plugins/defx.rc.nvim
+# '''
 
 [[plugins]] # matcher library for the denite
 repo = 'nixprime/cpsm'
