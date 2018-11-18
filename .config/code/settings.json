@@ -11,10 +11,14 @@
     "go.docsTool": "guru",
     "go.formatTool": "goimports",
     "go.buildOnSave": "package",
+    "go.enableCodeLens": {
+        "references": false,
+        "runtest": false,
+    },
     // Editor
     "editor.tabSize": 2,
     "editor.renderWhitespace": "boundary",
-    "editor.cursorStyle": "block",
+    "editor.cursorStyle": "line",
     "editor.wordWrap": "on",
     // Terminal
     "terminal.integrated.shell.osx": "/usr/local/bin/fish",
