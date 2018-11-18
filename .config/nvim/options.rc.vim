@@ -115,18 +115,18 @@ set listchars=tab:»-,trail:-,extends:»,precedes:< " 不可視文字の表示�
 set display=uhex      " 印字不可能文字を16進数で表示
 
 "" カーソル行をハイライト
-"set cursorline
+set cursorline
 "" カレントウィンドウにのみ罫線を引く
-"augroup cch
-"  autocmd! cch
-"  autocmd WinLeave * set nocursorline
-"  autocmd WinEnter,BufRead * set cursorline
-"augroup END
+augroup cch
+ autocmd! cch
+ autocmd WinLeave * set nocursorline
+ autocmd WinEnter,BufRead * set cursorline
+augroup END
 
 " パフォーマンス優先でカーソルハイライトを止める
-set nocursorline
-set nocursorcolumn
-set norelativenumber
+" set nocursorline
+" set nocursorcolumn
+" set norelativenumber
 
 " insertモードとnormalモードでカーソルを切り替える
 if !has('gui_running') && !has('nvim')
