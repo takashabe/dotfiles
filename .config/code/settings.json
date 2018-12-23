@@ -71,4 +71,6 @@
     "workbench.colorTheme": "One Dark Pro",
     "workbench.iconTheme": "vscode-icons",
     "vsicons.dontShowNewVersionMessage": true,
+    "workbench.fontAliasing": "antialiased",
+    "window.zoomLevel": 0,
 }
