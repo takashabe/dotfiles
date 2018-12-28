@@ -60,6 +60,7 @@ function curl-xml-android
 end
 
 # git, github
+alias git 'hub'
 alias gst 'git status'
 alias gb 'git branch'
 alias gad 'git add'
