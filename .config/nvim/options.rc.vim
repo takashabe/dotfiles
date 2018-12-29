@@ -116,11 +116,6 @@ augroup cch
  autocmd WinEnter,BufRead * set cursorline
 augroup END
 
-" パフォーマンス優先でカーソルハイライトを止める
-" set nocursorline
-" set nocursorcolumn
-" set norelativenumber
-
 " insertモードとnormalモードでカーソルを切り替える
 if !has('gui_running') && !has('nvim')
   let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
@@ -237,11 +232,6 @@ nnoremap gp ']
 " 対応する括弧に移動
 nnoremap [ %
 nnoremap ] %
-
-" 最後に変更されたテキストを選択する
-nnoremap gc  `[v`]
-vnoremap gc <C-u>normal gc<Enter>
-onoremap gc <C-u>normal gc<Enter>
 
 " カーソル位置の単語をyankする
 nnoremap vy vawy
@@ -364,16 +354,6 @@ inoremap <silent> <ESC> <ESC>:set iminsert=0<CR>
 nmap ye ;let @"=expand("<cword>")<CR>
 " Visualモードでのpで選択範囲をレジスタの内容に置き換える
 vnoremap p <Esc>;let current_reg = @"<CR>gvdi<C-R>=current_reg<CR><Esc>
-
-" XMLの閉タグを自動挿入
-augroup MyXML
-  autocmd!
-  autocmd Filetype xml inoremap <buffer> </ </<C-x><C-o>
-augroup END
-
-"  Insert mode中で単語単位/行単位の削除をアンドゥ可能にする
-inoremap <C-u>  <C-g>u<C-u>
-inoremap <C-w>  <C-g>u<C-w>
 
 " :Ptでインデントモード切替
 command! Pt :set paste!
