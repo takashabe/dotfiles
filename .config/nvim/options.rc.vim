@@ -20,13 +20,6 @@ set modeline                     " モードラインを有効にする
 set modelines=1                  " モードラインは1行
 set noundofile                   " undofileを作らない
 
-" 環境変数
-if has('nvim')
-  let $MYVIMRC="$HOME/.config/nvim/init.vim"
-else
-  let $MYVIMRC="$HOME/.vimrc"
-endif
-
 " OSのクリップボードを使用する
 set clipboard=unnamed
 let g:yankring_clipboard_monitor=0 "MacOS Sierra用

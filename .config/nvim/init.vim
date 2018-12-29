@@ -1,45 +1,25 @@
-if &compatible
-  set nocompatible
-endif
+set nocompatible
 
 augroup MyAutoCmd
   autocmd!
 augroup END
 
-" settings dein.vim cache
-if has('nvim')
-  let s:dein_cache_path = expand('~/.cache/nvim/dein')
-else
-  let s:dein_cache_path = expand('~/.cache/vim/dein')
-endif
-
-let s:dein_dir = s:dein_cache_path .'/repos/github.com/Shougo/dein.vim'
-
-" install dein.vim
-if &runtimepath !~ '/dein.vim'
-  if !isdirectory(s:dein_dir)
-    execute '!git clone https://github.com/Shougo/dein.vim' s:dein_dir
-  endif
-  execute 'set runtimepath+=' . fnamemodify(s:dein_dir, ':p')
-endif
-
-" setting Leader. in order to use in plugin settings
+" setting env. in order to use in plugin settings
 let mapleader = ","
+let $MYVIMRC="$HOME/.config/nvim/init.vim"
 
-" load plugins
-if dein#load_state(s:dein_cache_path)
-  call dein#begin(s:dein_cache_path)
-  call dein#load_toml('~/.config/nvim/dein.toml', {'lazy' : 0})
-  call dein#load_toml('~/.config/nvim/deinlazy.toml', {'lazy' : 1})
-  call dein#end()
-  call dein#save_state()
+" install vim-plug
+if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
+  silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
-if dein#check_install()
-  call dein#install()
-endif
+call plug#begin('~/.local/share/nvim/plugged')
 
-filetype plugin indent on
-syntax enable
+execute 'source' fnamemodify(expand('<sfile>'), ':h').'/plug.rc.vim'
+
+call plug#end()
 
 execute 'source' fnamemodify(expand('<sfile>'), ':h').'/options.rc.vim'
+colorscheme onedark
