@@ -15,11 +15,11 @@ if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
+" install plugins
 call plug#begin('~/.local/share/nvim/plugged')
-
 execute 'source' fnamemodify(expand('<sfile>'), ':h').'/plug.rc.vim'
-
 call plug#end()
 
+" apply .vimrc
 execute 'source' fnamemodify(expand('<sfile>'), ':h').'/options.rc.vim'
 colorscheme onedark
