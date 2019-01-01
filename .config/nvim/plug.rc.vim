@@ -26,3 +26,18 @@ execute 'source' plug_conf . 'nerdcommenter.rc.vim'
 Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
 execute 'source' plug_conf . 'fzf.rc.vim'
+
+" ==========================================================
+" LanguageServer
+" ==========================================================
+Plug 'prabirshrestha/asyncomplete.vim'
+Plug 'prabirshrestha/async.vim'
+Plug 'prabirshrestha/vim-lsp'
+Plug 'prabirshrestha/asyncomplete-lsp.vim'
+execute 'source' plug_conf . 'vim-lsp.rc.vim'
+
+" ==========================================================
+" Go
+" ==========================================================
+Plug 'fatih/vim-go', { 'for': 'go', 'do': ':GoInstallBinaries' }
+execute 'source' plug_conf . 'vim-go.rc.vim'
