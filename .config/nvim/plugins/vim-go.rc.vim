@@ -15,3 +15,6 @@ nnoremap <silent> <Leader>lr :GoRename<CR>
 
 " neomake
 let g:neomake_go_enabled_makers = ['golint', 'govet']
+
+" Experiment: using vim-lsp
+let g:go_def_mapping_enabled = 0
