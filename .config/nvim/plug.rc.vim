@@ -16,7 +16,6 @@ execute 'source' plug_conf . 'vim-indent-guides.rc.vim'
 Plug 'cohama/lexima.vim'
 Plug 'junegunn/vim-easy-align'
 execute 'source' plug_conf . 'vim-easy-align.rc.vim'
-Plug 'tpope/vim-fugitive'
 Plug 'scrooloose/nerdcommenter'
 execute 'source' plug_conf . 'nerdcommenter.rc.vim'
 
@@ -41,3 +40,12 @@ execute 'source' plug_conf . 'vim-lsp.rc.vim'
 " ==========================================================
 Plug 'fatih/vim-go', { 'for': 'go', 'do': ':GoInstallBinaries' }
 execute 'source' plug_conf . 'vim-go.rc.vim'
+
+" ==========================================================
+" Others
+" ==========================================================
+Plug 'tpope/vim-fugitive'
+Plug 'majutsushi/tagbar'
+execute 'source' plug_conf . 'tagbar.rc.vim'
+Plug 'neomake/neomake'
+execute 'source' plug_conf . 'neomake.rc.vim'
