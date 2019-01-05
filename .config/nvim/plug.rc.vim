@@ -44,8 +44,8 @@ execute 'source' plug_conf . 'vim-go.rc.vim'
 " ==========================================================
 " Other language/file syntax
 " ==========================================================
-plug 'vim-toml', {'for': 'toml'}
-plug 'vim-tmux', {'for': 'tmux'}
+Plug 'cespare/vim-toml', {'for': 'toml'}
+Plug 'keith/tmux.vim', {'for': 'tmux'}
 
 " ==========================================================
 " Others
