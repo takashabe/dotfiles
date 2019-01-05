@@ -38,8 +38,14 @@ execute 'source' plug_conf . 'vim-lsp.rc.vim'
 " ==========================================================
 " Go
 " ==========================================================
-Plug 'fatih/vim-go', { 'for': 'go', 'do': ':GoInstallBinaries' }
+Plug 'fatih/vim-go', {'for': 'go', 'do': ':GoInstallBinaries'}
 execute 'source' plug_conf . 'vim-go.rc.vim'
+
+" ==========================================================
+" Other language/file syntax
+" ==========================================================
+plug 'vim-toml', {'for': 'toml'}
+plug 'vim-tmux', {'for': 'tmux'}
 
 " ==========================================================
 " Others
