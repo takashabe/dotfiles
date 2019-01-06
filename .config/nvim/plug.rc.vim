@@ -38,7 +38,7 @@ execute 'source' plug_conf . 'vim-lsp.rc.vim'
 " ==========================================================
 " Go
 " ==========================================================
-Plug 'fatih/vim-go', {'for': 'go', 'do': ':GoInstallBinaries'}
+Plug 'fatih/vim-go', {'for':['go', 'tmpl'], 'do': ':GoInstallBinaries'}
 execute 'source' plug_conf . 'vim-go.rc.vim'
 
 " ==========================================================
