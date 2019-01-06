@@ -46,6 +46,12 @@ execute 'source' plug_conf . 'vim-go.rc.vim'
 " ==========================================================
 Plug 'cespare/vim-toml', {'for': 'toml'}
 Plug 'keith/tmux.vim', {'for': 'tmux'}
+Plug 'Glench/Vim-Jinja2-Syntax', {'for': 'jinja'}
+Plug 'elzr/vim-json', {'for': 'json'}
+Plug 'hail2u/vim-css3-syntax', {'for': 'css'}
+Plug 'dag/vim-fish', {'for': 'fish'}
+Plug 'rhysd/vim-gfm-syntax', {'for': 'markdown'}
+Plug 'stephpy/vim-yaml', {'for': 'yaml'}
 
 " ==========================================================
 " Others
