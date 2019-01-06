@@ -36,34 +36,40 @@ repo = 'Shougo/neoyank.vim'
 repo = 'Shougo/context_filetype.vim'
 
 [[plugins]]
-repo = 'Shougo/deoplete.nvim'
-depends = 'context_filetype.vim'
-if = "has('nvim')"
-hook_source = '''
-source ~/.config/nvim/plugins/deoplete.rc.vim
-'''
+repo = 'prabirshrestha/async.vim'
 
 [[plugins]]
-repo = 'Shougo/neocomplete.vim'
-depends = 'context_filetype.vim'
-if = "has('lua')"
-hook_source = '''
-source ~/.config/nvim/plugins/neocomplete.rc.vim
-'''
+repo = 'prabirshrestha/vim-lsp'
 
-[[plugins]] # go補完エンジン
-repo = 'zchee/deoplete-go'
-depends = 'deoplete.nvim'
-if = "has('nvim')"
-on_ft = 'go'
-build = 'make'
-hook_source = '''
-source ~/.config/nvim/plugins/deoplete-go.rc.vim
-'''
-
-[[plugins]] # 英単語補完
-repo = 'ujihisa/neco-look'
-on_source = ['neocomplete.vim', 'deoplete.nvim']
+# [[plugins]]
+# repo = 'Shougo/deoplete.nvim'
+# depends = 'context_filetype.vim'
+# if = "has('nvim')"
+# hook_source = '''
+# source ~/.config/nvim/plugins/deoplete.rc.vim
+# '''
+#
+# [[plugins]]
+# repo = 'Shougo/neocomplete.vim'
+# depends = 'context_filetype.vim'
+# if = "has('lua')"
+# hook_source = '''
+# source ~/.config/nvim/plugins/neocomplete.rc.vim
+# '''
+#
+# [[plugins]] # go補完エンジン
+# repo = 'zchee/deoplete-go'
+# depends = 'deoplete.nvim'
+# if = "has('nvim')"
+# on_ft = 'go'
+# build = 'make'
+# hook_source = '''
+# source ~/.config/nvim/plugins/deoplete-go.rc.vim
+# '''
+#
+# [[plugins]] # 英単語補完
+# repo = 'ujihisa/neco-look'
+# on_source = ['neocomplete.vim', 'deoplete.nvim']
 
 # [[plugins]] # python補完
 # repo = 'zchee/deoplete-jedi'
@@ -74,21 +80,21 @@ on_source = ['neocomplete.vim', 'deoplete.nvim']
 # source ~/.config/nvim/plugins/deoplete-jedi.rc.vim
 # '''
 
-[[plugins]] # javascript タグジャンプとか
-repo = 'ternjs/tern_for_vim'
-if = "has('nvim')"
-build = 'npm install'
-on_ft = ['javascript', 'javascript.jsx']
-
-[[plugins]] # javascript補完
-repo = 'carlitux/deoplete-ternjs'
-depends = 'deoplete.nvim'
-build = 'npm install -g tern'
-if = "has('nvim')"
-on_ft = ['javascript', 'javascript.jsx']
-hook_source = '''
-source ~/.config/nvim/plugins/deoplete-ternjs.rc.vim
-'''
+# [[plugins]] # javascript タグジャンプとか
+# repo = 'ternjs/tern_for_vim'
+# if = "has('nvim')"
+# build = 'npm install'
+# on_ft = ['javascript', 'javascript.jsx']
+#
+# [[plugins]] # javascript補完
+# repo = 'carlitux/deoplete-ternjs'
+# depends = 'deoplete.nvim'
+# build = 'npm install -g tern'
+# if = "has('nvim')"
+# on_ft = ['javascript', 'javascript.jsx']
+# hook_source = '''
+# source ~/.config/nvim/plugins/deoplete-ternjs.rc.vim
+# '''
 
 # ==========================================================
 # lint, formatter

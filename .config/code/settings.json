@@ -15,7 +15,12 @@
         "references": false,
         "runtest": false,
     },
+    "go.alternateTools": {
+        "go-langserver": "go-lsp",
+    },
+    "go.useLanguageServer": true,
     // Editor
+    "editor.fontSize": 14,
     "editor.tabSize": 2,
     "editor.renderWhitespace": "boundary",
     "editor.cursorStyle": "line",
@@ -65,4 +70,7 @@
     "explorer.confirmDelete": false,
     "workbench.colorTheme": "One Dark Pro",
     "workbench.iconTheme": "vscode-icons",
+    "vsicons.dontShowNewVersionMessage": true,
+    "workbench.fontAliasing": "antialiased",
+    "window.zoomLevel": 0,
 }
