@@ -31,8 +31,9 @@ command! Rv source $MYVIMRC
 " マウスを有効にする
 set mouse=a
 
-" 保存を簡単に
+" 保存/終了を簡単に
 nnoremap <Leader>w :w<CR>
+nnoremap <Leader>q :q<CR>
 
 " nvimでマルチバイト文字の入力が文字化けしないように
 " https://github.com/neovim/neovim/issues/3094
