@@ -29,11 +29,12 @@ execute 'source' plug_conf . 'fzf.rc.vim'
 " ==========================================================
 " LanguageServer
 " ==========================================================
-Plug 'prabirshrestha/asyncomplete.vim'
 Plug 'prabirshrestha/async.vim'
 Plug 'prabirshrestha/vim-lsp'
-Plug 'prabirshrestha/asyncomplete-lsp.vim'
 execute 'source' plug_conf . 'vim-lsp.rc.vim'
+Plug 'prabirshrestha/asyncomplete-lsp.vim'
+Plug 'prabirshrestha/asyncomplete.vim'
+execute 'source' plug_conf . 'asyncomplete.rc.vim'
 
 " ==========================================================
 " Go
