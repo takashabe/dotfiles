@@ -3,7 +3,7 @@ source $HOME/.config/fish/conf.d/local.fish
 
 # general function
 function reload_config
-  exec fish -l
+  exec fish
 end
 function edit_config
   vim ~/dotfiles/.config/fish/config.fish
