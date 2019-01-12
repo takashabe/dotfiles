@@ -1,9 +1,9 @@
-if executable('go-langserver')
+if executable('bingo')
   augroup LspGo
     au!
     au User lsp_setup call lsp#register_server({
-        \ 'name': 'go-langserver',
-        \ 'cmd': {server_info->['go-langserver', '-gocodecompletion']},
+        \ 'name': 'bingo',
+        \ 'cmd': {server_info->['bingo', '-mode', 'stdio']},
         \ 'whitelist': ['go'],
         \ })
     " omnifunc
