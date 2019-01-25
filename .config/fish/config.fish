@@ -3,7 +3,7 @@ source $HOME/.config/fish/conf.d/local.fish
 
 # general function
 function reload_config
-  exec fish
+  source $HOME/.config/fish/config.fish
 end
 function edit_config
   vim ~/dotfiles/.config/fish/config.fish
@@ -156,6 +156,7 @@ end
 ### docker, k8s
 alias k 'kubectl'
 alias kg 'kubectl get'
+alias kt 'kubectl top'
 alias kd 'kubectl describe'
 alias kcp peco_select_k8s_context
 alias knp peco_select_k8s_namespace
