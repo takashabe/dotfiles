@@ -193,3 +193,12 @@ end
 
 # direnv
 eval (direnv hook fish)
+
+## memo
+function newmemo
+  set -l memo_dir $GOPATH/src/github.com/takashabe/note/memo
+  set -l now (date "+%Y%m%d_%H%M%S")
+
+  touch $memo_dir/$now.md
+  $EDITOR $memo_dir/$now.md
+end
