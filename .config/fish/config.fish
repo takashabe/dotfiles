@@ -182,10 +182,21 @@ end
 ### Rust
 set -x PATH $HOME/.cargo/bin $PATH
 
+### history
+function history-merge --on-event fish_preexec
+  history --save
+  history --merge
+end
+
+function share_history_for_peco
+  history-merge
+  peco_select_history
+end
+
 ### Key binding
 function fish_user_key_bindings
   bind \c] peco_select_ghq
-  bind \cr peco_select_history
+  bind \cr share_history_for_peco
   bind \cu peco_select_z
   bind \co peco_select_file
   bind \cg peco_select_cd
