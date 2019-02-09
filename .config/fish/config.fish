@@ -15,6 +15,10 @@ function reload_network
 end
 
 ##################################### general
+## alias
+alias rm 'rmtrash'
+alias mv 'mv -i'
+
 set -x PATH $HOME/bin $PATH
 
 ## basic command alias
@@ -206,10 +210,15 @@ end
 eval (direnv hook fish)
 
 ## memo
-function newmemo
+function memo_new
   set -l memo_dir $GOPATH/src/github.com/takashabe/note/memo
   set -l now (date "+%Y%m%d_%H%M%S")
 
   touch $memo_dir/$now.md
   $EDITOR $memo_dir/$now.md
+end
+function memo_clean
+  set -l memo_dir $GOPATH/src/github.com/takashabe/note/memo
+
+  find $memo_dir -type f -size 0 | xargs rm
 end
