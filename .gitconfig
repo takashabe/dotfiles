@@ -1,5 +1,6 @@
-[include]
-  path = ~/.gitconfig.local
+[user]
+  email = takashabe.io@gmail.com
+  name = takashabe
 [color]
   status = auto
   diff = auto
