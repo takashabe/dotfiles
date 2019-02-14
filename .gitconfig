@@ -18,3 +18,5 @@
   root = ~/dev/src
 [credential]
   helper = osxkeychain
+[http]
+  cookiefile = /Users/a14960/.gitcookies
