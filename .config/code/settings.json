@@ -5,20 +5,18 @@
     "window.titleBarStyle": "native",
     "window.title": "${activeEditorLong}${separator}${rootName}",
     // Go
-    "go.inferGopath": true,
     "go.autocompleteUnimportedPackages": true,
     "go.gopath": "/Users/a14960/dev",
     "go.docsTool": "guru",
-    "go.formatTool": "goimports",
+    "go.formatTool": "goreturns",
     "go.buildOnSave": "package",
     "go.enableCodeLens": {
         "references": false,
         "runtest": false,
     },
-    "go.alternateTools": {
-        "go-langserver": "go-lsp",
+    "go.toolsEnvVars": {
+        "GO111MODULE": "on",
     },
-    "go.useLanguageServer": true,
     // Editor
     "editor.fontSize": 14,
     "editor.tabSize": 2,
@@ -72,5 +70,5 @@
     "workbench.iconTheme": "vscode-icons",
     "vsicons.dontShowNewVersionMessage": true,
     "workbench.fontAliasing": "antialiased",
-    "window.zoomLevel": 0,
+    "window.zoomLevel": -1,
 }

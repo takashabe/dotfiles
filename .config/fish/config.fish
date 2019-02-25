@@ -165,6 +165,8 @@ alias kd 'kubectl describe'
 alias kcp peco_select_k8s_context
 alias knp peco_select_k8s_namespace
 
+set -x PATH $HOME/bin/kubebuilder $PATH
+
 # Golang
 set -x GOROOT /usr/local/opt/go/libexec
 set -x GOPATH $HOME/dev
