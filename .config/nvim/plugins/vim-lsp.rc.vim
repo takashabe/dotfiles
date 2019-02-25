@@ -3,7 +3,7 @@ if executable('bingo')
     au!
     au User lsp_setup call lsp#register_server({
         \ 'name': 'bingo',
-        \ 'cmd': {server_info->['bingo', '-mode', 'stdio', '-disable-func-snippet', 'true']},
+        \ 'cmd': {server_info->['bingo']},
         \ 'whitelist': ['go'],
         \ })
     " omnifunc

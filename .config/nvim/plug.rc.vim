@@ -20,8 +20,14 @@ Plug 'scrooloose/nerdcommenter'
 execute 'source' plug_conf . 'nerdcommenter.rc.vim'
 
 " ==========================================================
+" Window/Buffer
+" ==========================================================
+Plug 'mtth/scratch.vim'
+
+" ==========================================================
 " fzf
 " ==========================================================
+" require fzf binary
 Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
 execute 'source' plug_conf . 'fzf.rc.vim'
