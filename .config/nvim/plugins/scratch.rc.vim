@@ -1,2 +1,2 @@
-g:scratch_filetype=markdown
-g:scratch_autohide=0
+let g:scratch_filetype = 'markdown'
+let g:scratch_autohide = 0
