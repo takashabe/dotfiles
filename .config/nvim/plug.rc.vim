@@ -23,6 +23,7 @@ execute 'source' plug_conf . 'nerdcommenter.rc.vim'
 " Window/Buffer
 " ==========================================================
 Plug 'mtth/scratch.vim'
+execute 'source' plug_conf . 'scratch.rc.vim'
 
 " ==========================================================
 " fzf
