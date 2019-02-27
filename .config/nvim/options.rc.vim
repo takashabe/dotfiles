@@ -186,8 +186,46 @@ set history=1000           " コマンド・検索パターンの履歴数
 set complete+=k            " 補完に辞書ファイル追加
 set completeopt-=preview   " 補完時にスクラッチウィンドウを表示しない
 
-" <c-space>でomni補完
-imap <c-space> <c-x><c-o>
+" C-x補完のヒント表示
+" TODO: 慣れてきたら消す
+" 入力キーの辞書
+let s:compl_key_dict = {
+      \ char2nr("\<C-l>"): "\<C-x>\<C-l>",
+      \ char2nr("\<C-n>"): "\<C-x>\<C-n>",
+      \ char2nr("\<C-p>"): "\<C-x>\<C-p>",
+      \ char2nr("\<C-k>"): "\<C-x>\<C-k>",
+      \ char2nr("\<C-t>"): "\<C-x>\<C-t>",
+      \ char2nr("\<C-i>"): "\<C-x>\<C-i>",
+      \ char2nr("\<C-]>"): "\<C-x>\<C-]>",
+      \ char2nr("\<C-f>"): "\<C-x>\<C-f>",
+      \ char2nr("\<C-d>"): "\<C-x>\<C-d>",
+      \ char2nr("\<C-v>"): "\<C-x>\<C-v>",
+      \ char2nr("\<C-u>"): "\<C-x>\<C-u>",
+      \ char2nr("\<C-o>"): "\<C-x>\<C-o>",
+      \ char2nr('s'): "\<C-x>s",
+      \ char2nr("\<C-s>"): "\<C-x>s"
+      \}
+" 表示メッセージ
+let s:hint_i_ctrl_x_msg = join([
+      \ '<C-l>: While lines(行全体)',
+      \ '<C-n>: keywords in the current file(ファイル内キーワード)',
+      \ "<C-k>: keywords in 'dictionary'(辞書)",
+      \ "<C-t>: keywords in 'thesaurus'(シソーラス)",
+      \ '<C-i>: keywords in the current and included files(現ファイル、インクルード済みファイル内キーワード)',
+      \ '<C-]>: tags',
+      \ '<C-f>: file names',
+      \ '<C-d>: definitions or macros',
+      \ '<C-v>: Vim command-line',
+      \ "<C-u>: User defined completion ('completefunc')",
+      \ "<C-o>: omni completion ('omnifunc')",
+      \ "s: Spelling suggestions ('spell')"
+      \], "\n")
+function! s:hint_i_ctrl_x() abort
+  echo s:hint_i_ctrl_x_msg
+  let c = getchar()
+  return get(s:compl_key_dict, c, nr2char(c))
+endfunction
+inoremap <expr> <C-x>  <SID>hint_i_ctrl_x()
 
 "-------------------------------------------------------------------------------
 " 検索設定 Search

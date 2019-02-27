@@ -39,9 +39,6 @@ execute 'source' plug_conf . 'fzf.rc.vim'
 Plug 'prabirshrestha/async.vim'
 Plug 'prabirshrestha/vim-lsp'
 execute 'source' plug_conf . 'vim-lsp.rc.vim'
-Plug 'prabirshrestha/asyncomplete-lsp.vim'
-Plug 'prabirshrestha/asyncomplete.vim'
-execute 'source' plug_conf . 'asyncomplete.rc.vim'
 
 " ==========================================================
 " Go
