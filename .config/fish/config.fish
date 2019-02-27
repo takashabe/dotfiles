@@ -168,7 +168,7 @@ alias knp peco_select_k8s_namespace
 set -x PATH $HOME/bin/kubebuilder $PATH
 
 # Golang
-set -x GOROOT /usr/local/opt/go/libexec
+set -x GOROOT /Users/a14960/dev/src/go.googlesource.com/go
 set -x GOPATH $HOME/dev
 set -x PATH $GOPATH/bin $GOROOT/bin $PATH
 ## TODO: Support recursive gocover
