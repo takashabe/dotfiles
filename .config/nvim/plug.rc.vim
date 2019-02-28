@@ -24,6 +24,8 @@ execute 'source' plug_conf . 'nerdcommenter.rc.vim'
 " ==========================================================
 Plug 'mtth/scratch.vim'
 execute 'source' plug_conf . 'scratch.rc.vim'
+Plug 'lambdalisue/fila.vim'
+execute 'source' plug_conf . 'fila.rc.vim'
 
 " ==========================================================
 " fzf
