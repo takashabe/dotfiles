@@ -1,2 +1,2 @@
-nnoremap <leader>ad :Fila . -drawer -toggle -width=30
-nnoremap <leader>ac :Fila .
+nnoremap <leader>ad :Fila . -drawer -toggle -width=30<CR><C-w>=
+nnoremap <leader>ac :Fila .<CR>
