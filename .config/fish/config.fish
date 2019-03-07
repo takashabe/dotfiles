@@ -168,22 +168,10 @@ alias knp peco_select_k8s_namespace
 set -x PATH $HOME/bin/kubebuilder $PATH
 
 # Golang
-set -x GOROOT /Users/a14960/dev/src/go.googlesource.com/go
+set -x GO111MODULE on
+set -x GOROOT /usr/local/opt/go/libexec
 set -x GOPATH $HOME/dev
 set -x PATH $GOPATH/bin $GOROOT/bin $PATH
-## TODO: Support recursive gocover
-function gocover
-  go test -coverprofile cover.out ./...; and go tool cover -html=cover.out; and rm cover.out
-end
-## reload gocode
-function gocode_reload
-  gocode exit
-  go get -u github.com/mdempsky/gocode
-end
-## golang/tools re-install
-function go_install_binaries
-  command go get -v -u golang.org/x/tools/...
-end
 
 ### Rust
 set -x PATH $HOME/.cargo/bin $PATH
