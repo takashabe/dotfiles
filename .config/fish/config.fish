@@ -172,6 +172,20 @@ set -x GO111MODULE on
 set -x GOROOT /usr/local/opt/go/libexec
 set -x GOPATH $HOME/dev
 set -x PATH $GOPATH/bin $GOROOT/bin $PATH
+### Install golang tool binaries
+function go_install_binaries
+  set -l GO_BINARIES \
+    'github.com/golang/mock/gomock' \
+    'github.com/golang/mock/mockgen' \
+    'golang.org/x/tools/cmd/goimports' \
+    'golang.org/x/tools/cmd/gopls'
+  pushd $HOME
+  for uri in $GO_BINARIES
+    echo "go get -u $uri ..."
+    go get -u $uri
+  end
+  popd
+end
 
 ### Rust
 set -x PATH $HOME/.cargo/bin $PATH
