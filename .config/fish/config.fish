@@ -152,10 +152,6 @@ function switch_gcloud
     gcloud config set account (echo $GCLOUD_WORK_ACCOUNT)
   end
 end
-## appengine
-if test -e $HOME/bin/go_appengine/
-  set -x PATH $HOME/bin/go_appengine/ $PATH
-end
 
 ### docker, k8s
 alias k 'kubectl'
@@ -164,7 +160,6 @@ alias kt 'kubectl top'
 alias kd 'kubectl describe'
 alias kcp peco_select_k8s_context
 alias knp peco_select_k8s_namespace
-
 set -x PATH $HOME/bin/kubebuilder $PATH
 
 # Golang
