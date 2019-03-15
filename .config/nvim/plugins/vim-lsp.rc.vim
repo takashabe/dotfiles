@@ -18,5 +18,9 @@ if executable('bingo')
     au FileType go nnoremap <buffer><silent> K :<C-u>LspHover<CR>
     au FileType go nnoremap <buffer><silent> <F1> :<C-u>LspImplementation<CR>
     au FileType go nnoremap <buffer><silent> <F2> :<C-u>LspRename<CR>
+    " auto fmt
+    " TODO: 意図通りにformatされないことが多かったので直接goimportsを呼ぶよう
+    " にしている(options.rc.vim)
+    " autocmd BufWritePre *.go :LspDocumentFormat
   augroup end
 endif
