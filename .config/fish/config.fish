@@ -199,7 +199,7 @@ end
 
 ### Key binding
 function fish_user_key_bindings
-  bind \c\[ peco_select_ghq
+  bind \c] peco_select_ghq
   bind \cr share_history_for_peco
   bind \cu peco_select_z
   bind \co peco_select_file
