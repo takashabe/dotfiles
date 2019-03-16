@@ -448,18 +448,3 @@ if has('nvim')
   let g:python_host_prog = '/usr/local/bin/python2'
   let g:python3_host_prog = '/usr/local/bin/python3'
 endif
-
-"-------------------------------------------------------------------------------
-" Golang
-"-------------------------------------------------------------------------------
-" 保存時にgofmtを走らせる
-function! s:keep_pos_exec(cmd)
-  let save_view = winsaveview()
-  silent! execute "normal! i \<esc>x" | undojoin | execute a:cmd
-  call winrestview(save_view)
-endfunction
-function! s:format_gofmt() range
-  let cmd = ':silent %! goimports'
-  call s:keep_pos_exec(cmd)
-endfunction
-autocmd BufWritePre *.go call s:format_gofmt()

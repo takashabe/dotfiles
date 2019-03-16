@@ -45,8 +45,8 @@ execute 'source' plug_conf . 'vim-lsp.rc.vim'
 " ==========================================================
 " Go
 " ==========================================================
-" Plug 'fatih/vim-go', {'for':['go', 'tmpl'], 'do': ':GoInstallBinaries'}
-" execute 'source' plug_conf . 'vim-go.rc.vim'
+Plug 'takashabe/vim-gofmt', {'for': 'go'}
+execute 'source' plug_conf . 'vim-gofmt.rc.vim'
 
 " ==========================================================
 " Other language/file syntax
@@ -66,5 +66,5 @@ Plug 'stephpy/vim-yaml', {'for': 'yaml'}
 Plug 'tpope/vim-fugitive'
 Plug 'majutsushi/tagbar'
 execute 'source' plug_conf . 'tagbar.rc.vim'
-Plug 'neomake/neomake'
-execute 'source' plug_conf . 'neomake.rc.vim'
+" Plug 'neomake/neomake'
+" execute 'source' plug_conf . 'neomake.rc.vim'
