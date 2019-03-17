@@ -113,7 +113,7 @@ set -x JAVA_HOME (/usr/libexec/java_home)
 
 # tmux
 if status --is-interactive; and test -z $TMUX
-  set -l wname "<°)))彡"
+  set -l wname "fish"
   if tmux has-session > /dev/null ^ /dev/null
     # attach tmux session with percol like tool
     set -l sid (tmux list-sessions | grep '' | peco | cut -d: -f1)
