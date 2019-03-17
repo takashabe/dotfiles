@@ -6,11 +6,6 @@ window:
     x: 8
     y: 4
 
-scrolling:
-  history: 10000
-  multiplier: 3
-  auto_scroll: false
-
 tabspaces: 2
 
 font:
@@ -26,9 +21,15 @@ font:
   size: 16.0
   use_thin_strokes: true
 
-render_timer: false
-persistent_logging: false
-draw_bold_text_with_bright_colors: true
+mouse:
+  double_click: { threshold: 300 }
+  triple_click: { threshold: 300 }
+  hide_when_typing: false
+
+  # Open the URL with "Ctrl-click"
+  url:
+    launcher: open
+    modifiers: Control
 
 # Colors (One Dark)
 colors:
