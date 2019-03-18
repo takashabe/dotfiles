@@ -30,8 +30,8 @@ alias ..... 'cd ../../../..'
 
 
 ## Encoding
+set -x LANG en_US.UTF-8
 set -x LC_CTYPE en_US.UTF-8
-set -x LC_ALL en_US.UTF-8
 
 ## Prompt
 set -x PROMPT_ICON "(*'-')"
@@ -91,6 +91,9 @@ alias ssh 'env TERM=xterm ssh'
 set -x LESS '-R'
 set -x LESSOPEN '| /usr/local/bin/src-hilite-lesspipe.sh %s'
 
+# fzf
+export FZF_DEFAULT_COMMAND="rg --files-with-matches --hidden '.' --glob '!.git'"
+
 ### homebrew
 set -x PATH /usr/local/bin $PATH
 set -g fish_user_paths "/usr/local/sbin" $fish_user_paths
@@ -110,13 +113,13 @@ set -x JAVA_HOME (/usr/libexec/java_home)
 
 # tmux
 if status --is-interactive; and test -z $TMUX
-  set -l wname "<°)))彡"
+  set -l wname "fish"
   if tmux has-session > /dev/null ^ /dev/null
     # attach tmux session with percol like tool
     set -l sid (tmux list-sessions | grep '' | peco | cut -d: -f1)
-    command tmux attach-session -t $sid
+    command tmux -u attach-session -t $sid
   else
-    command tmux new-session -n $wname
+    command tmux -u new-session -n $wname
   end
 end
 alias tmw peco_select_tmux_window
