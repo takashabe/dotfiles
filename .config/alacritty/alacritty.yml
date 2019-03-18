@@ -9,16 +9,16 @@ window:
 tabspaces: 2
 
 font:
-  #normal:
-    #family: SF Mono Square
-    #style: Regular
-  #bold:
-    #family: SF Mono Square
-    #style: Bold
-  #italic:
-    #family: SF Mono Square
-    #style: Italic
-  size: 16.0
+  normal:
+    family: SF Mono Square
+    style: Regular
+  bold:
+    family: SF Mono Square
+    style: Bold
+  italic:
+    family: SF Mono Square
+    style: Italic
+  size: 20.0
   use_thin_strokes: true
 
 mouse:
@@ -30,6 +30,10 @@ mouse:
   url:
     launcher: open
     modifiers: Control
+
+cursor:
+  style: Block
+  unfocused_hollow: false
 
 # Colors (One Dark)
 colors:
