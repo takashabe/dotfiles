@@ -24,7 +24,7 @@ font:
 mouse:
   double_click: { threshold: 300 }
   triple_click: { threshold: 300 }
-  hide_when_typing: false
+  hide_when_typing: true
 
   # Open the URL with "Ctrl-click"
   url:
@@ -33,7 +33,7 @@ mouse:
 
 cursor:
   style: Block
-  unfocused_hollow: false
+  unfocused_hollow: true
 
 # Colors (One Dark)
 colors:
