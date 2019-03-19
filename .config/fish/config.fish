@@ -15,19 +15,17 @@ function reload_network
 end
 
 ##################################### general
-## alias
+## basic command alias
 alias rm 'rmtrash'
 alias mv 'mv -i'
-
-set -x PATH $HOME/bin $PATH
-
-## basic command alias
+alias diff 'colordiff'
 alias l 'ls -alvh'
 alias ll 'ls -lvh'
 alias ... 'cd ../..'
 alias .... 'cd ../../..'
 alias ..... 'cd ../../../..'
 
+set -x PATH $HOME/bin $PATH
 
 ## Encoding
 set -x LANG en_US.UTF-8
@@ -43,7 +41,8 @@ set -x EDITOR nvim
 alias vi '/usr/local/bin/nvim'
 alias vim '/usr/local/bin/nvim'
 
-alias diff 'colordiff'
+## alternative grep
+alias rg 'rg --hidden'
 
 # curl
 alias curl-android 'curl -A "Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.167 Mobile Safari/537.36"'
@@ -90,9 +89,6 @@ alias ssh 'env TERM=xterm ssh'
 # less
 set -x LESS '-R'
 set -x LESSOPEN '| /usr/local/bin/src-hilite-lesspipe.sh %s'
-
-# fzf
-export FZF_DEFAULT_COMMAND="rg --files-with-matches --hidden '.' --glob '!.git'"
 
 ### homebrew
 set -x PATH /usr/local/bin $PATH
