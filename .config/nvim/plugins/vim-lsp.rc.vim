@@ -1,9 +1,9 @@
-if executable('gopls')
+if executable('bingo')
   augroup LspGo
     au!
     au User lsp_setup call lsp#register_server({
-        \ 'name': 'gopls',
-        \ 'cmd': {server_info->['gopls']},
+        \ 'name': 'bingo',
+        \ 'cmd': {server_info->['bingo']},
         \ 'whitelist': ['go'],
         \ })
     " omnifunc
