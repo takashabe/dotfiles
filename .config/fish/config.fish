@@ -160,6 +160,7 @@ alias kd 'kubectl describe'
 alias kcp peco_select_k8s_context
 alias knp peco_select_k8s_namespace
 set -x PATH $HOME/bin/kubebuilder $PATH
+set -x PATH $HOME/.krew/bin $PATH
 
 # Golang
 set -x GO111MODULE on
