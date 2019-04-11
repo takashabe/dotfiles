@@ -66,5 +66,5 @@ Plug 'stephpy/vim-yaml', {'for': 'yaml'}
 Plug 'tpope/vim-fugitive'
 Plug 'majutsushi/tagbar'
 execute 'source' plug_conf . 'tagbar.rc.vim'
-" Plug 'neomake/neomake'
-" execute 'source' plug_conf . 'neomake.rc.vim'
+Plug 'w0rp/ale'
+execute 'source' plug_conf . 'ale.rc.vim'

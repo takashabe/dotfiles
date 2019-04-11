@@ -173,8 +173,7 @@ function go_install_binaries
     'github.com/golang/mock/gomock' \
     'github.com/golang/mock/mockgen' \
     'golang.org/x/tools/cmd/goimports' \
-    'golang.org/x/tools/cmd/gopls' \
-    'github.com/saibing/bingo'
+    'github.com/golangci/golangci-lint/cmd/golangci-lint'
   pushd $HOME
   for uri in $GO_BINARIES
     echo "go get -u $uri ..."
