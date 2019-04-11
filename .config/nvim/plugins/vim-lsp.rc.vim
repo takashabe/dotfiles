@@ -18,7 +18,5 @@ if executable('gopls')
     au FileType go nnoremap <buffer><silent> K :<C-u>LspHover<CR>
     au FileType go nnoremap <buffer><silent> <F1> :<C-u>LspImplementation<CR>
     au FileType go nnoremap <buffer><silent> <F2> :<C-u>LspRename<CR>
-    " auto fmt
-    autocmd BufWritePre *.go :LspDocumentFormat
   augroup end
 endif
