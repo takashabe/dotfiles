@@ -427,17 +427,14 @@ imap <C-h> <BS>
 cmap <C-h> <BS>
 
 "-------------------------------------------------------------------------------
-" ターミナル Terminal - only neovim
+" ターミナル Terminal
 "-------------------------------------------------------------------------------
+set sh=$SHELL
+tnoremap <silent> <C-q> <C-\><C-n>
 if has('nvim')
-  " 起動するシェルをいつものシェルに
-  set sh=$SHELL
-
-  " <Leader>t でsplitされたシェルを起動する
   nnoremap <silent> <Leader>t :split term://fish<CR>:startinsert<CR>
-
-  " terminalモードでも<ESC>でcommandモードに戻る
-  tnoremap <silent> <ESC> <C-\><C-n>
+else
+  nnoremap <silent> <Leader>t :term<CR>
 endif
 
 "-------------------------------------------------------------------------------

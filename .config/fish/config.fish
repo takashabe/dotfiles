@@ -1,19 +1,3 @@
-# Load local env, functions and so on.
-source $HOME/.config/fish/conf.d/local.fish
-
-# general function
-function reload_config
-  source $HOME/.config/fish/config.fish
-end
-function edit_config
-  vim ~/dotfiles/.config/fish/config.fish
-end
-
-function reload_network
-  sudo ifconfig en0 down
-  sudo ifconfig en0 up
-end
-
 ##################################### general
 ## basic command alias
 alias rm 'rmtrash'
@@ -37,9 +21,7 @@ set -x PROMPT_ERROR_ICON "(*;_;)"
 set -x PROMPT_ENABLE_K8S_CONTEXT 1
 
 ## vim
-set -x EDITOR nvim
-alias vi '/usr/local/bin/nvim'
-alias vim '/usr/local/bin/nvim'
+set -x EDITOR vim
 
 ## alternative grep
 alias rg 'rg --hidden'
@@ -64,11 +46,10 @@ end
 
 # git, github
 alias git 'hub'
+alias g 'git'
 alias gst 'git status'
 alias gb 'git branch'
-alias gad 'git add'
 alias gc 'git commit -v'
-alias h 'hub'
 function gbp
   git branch -a --sort=-authordate | cut -b 3- | perl -pe 's#^remotes/origin/###' | perl -nlE 'say if !$c{$_}++' | grep -v -- "->" | peco | xargs git checkout
 end
@@ -118,7 +99,6 @@ if status --is-interactive; and test -z $TMUX
     command tmux -u new-session -n $wname
   end
 end
-alias tmw peco_select_tmux_window
 
 # z
 set -x Z_DATA $HOME/.z
@@ -206,7 +186,7 @@ function fish_user_key_bindings
 end
 
 # direnv
-eval (direnv hook fish)
+direnv hook fish | source
 
 ## memo
 function memo_new
@@ -220,4 +200,20 @@ function memo_clean
   set -l memo_dir $GOPATH/src/github.com/takashabe/note/memo
 
   find $memo_dir -type f -size 0 | xargs rm
+end
+
+# Load local env, functions and so on.
+source $HOME/.config/fish/conf.d/local.fish
+
+# general function
+function reload_config
+  source $HOME/.config/fish/config.fish
+end
+function edit_config
+  $EDITOR ~/dotfiles/.config/fish/config.fish
+end
+
+function reload_network
+  sudo ifconfig en0 down
+  sudo ifconfig en0 up
 end
