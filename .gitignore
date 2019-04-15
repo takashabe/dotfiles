@@ -7,6 +7,8 @@ doc/tags
 doc/tags-ja
 common_ctags/
 \.vim/cache/
+\.vim/plugged/
+\.vim/autoload/plug.vim
 *.un~
 Session.vim
 .netrwhist
