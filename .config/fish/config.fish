@@ -154,7 +154,6 @@ function go_install_binaries
     'github.com/golang/mock/mockgen' \
     'golang.org/x/tools/cmd/goimports' \
     'golang.org/x/tools/cmd/gopls' \
-    'github.com/golangci/golangci-lint/cmd/golangci-lint' \
     'github.com/mattn/efm-langserver/cmd/efm-langserver'
   pushd $HOME
   for uri in $GO_BINARIES
