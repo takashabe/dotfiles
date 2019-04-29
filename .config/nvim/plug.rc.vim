@@ -46,8 +46,8 @@ execute 'source' plug_conf . 'vim-lsp.rc.vim'
 " ==========================================================
 " Go
 " ==========================================================
-Plug 'takashabe/vim-gofmt', {'for': 'go'}
-execute 'source' plug_conf . 'vim-gofmt.rc.vim'
+Plug 'fatih/vim-go', {'for': 'go'}
+execute 'source' plug_conf . 'vim-go.rc.vim'
 
 " ==========================================================
 " Other language/file syntax
