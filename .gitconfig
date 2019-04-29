@@ -8,7 +8,6 @@
   interactive = auto
   grep = auto
 [core]
-  editor = nvim
   quotepath = false
   excludesfile = ~/.gitignore
 [merge]
