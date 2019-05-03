@@ -36,4 +36,4 @@ endif
 
 " apply .vimrc
 execute 'source' fnamemodify(expand('<sfile>'), ':h').'/options.rc.vim'
-colorscheme iceberg
+colorscheme onedark
