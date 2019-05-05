@@ -67,8 +67,6 @@
     // Mics...
     "explorer.confirmDelete": false,
     "workbench.colorTheme": "One Dark Pro",
-    "workbench.iconTheme": "vscode-icons",
-    "vsicons.dontShowNewVersionMessage": true,
     "workbench.fontAliasing": "antialiased",
-    "window.zoomLevel": -1,
+    "window.zoomLevel": -1
 }
