@@ -13,10 +13,12 @@
 [merge]
   tool = vimdiff
 [diff]
-  tool=vimdiff
+  tool = vimdiff
 [ghq]
   root = ~/dev/src
 [credential]
   helper = osxkeychain
 [http]
   cookiefile = /Users/a14960/.gitcookies
+[hub]
+  protocol = https
