@@ -19,6 +19,7 @@ set -x LC_CTYPE en_US.UTF-8
 set -x PROMPT_ICON "(*'-')"
 set -x PROMPT_ERROR_ICON "(*;_;)"
 set -x PROMPT_ENABLE_K8S_CONTEXT 1
+set -x PROMPT_ENABLE_GCLOUD_PROJECT 1
 
 ## vim
 set -x EDITOR vim
