@@ -5,6 +5,9 @@ let g:lsp_diagnostics_enabled = 0
 let g:lsp_signs_enabled = 0
 let g:lsp_diagnostics_echo_cursor = 0
 
+" Disable slowly features...
+let g:lsp_highlight_references_enabled = 0
+
 if executable('gopls')
   augroup LspGo
     au!
