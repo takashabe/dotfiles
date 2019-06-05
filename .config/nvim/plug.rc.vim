@@ -10,6 +10,8 @@ Plug 'itchyny/lightline.vim'
 execute 'source' plug_conf . 'lightline.rc.vim'
 Plug 'nathanaelkane/vim-indent-guides'
 execute 'source' plug_conf . 'vim-indent-guides.rc.vim'
+Plug 'ryanoasis/vim-devicons'
+execute 'source' plug_conf . 'vim-devicons.rc.vim'
 
 " ==========================================================
 " Edit
@@ -62,9 +64,14 @@ Plug 'rhysd/vim-gfm-syntax', {'for': 'markdown'}
 Plug 'stephpy/vim-yaml', {'for': 'yaml'}
 
 " ==========================================================
-" Others
+" VCS
 " ==========================================================
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-rhubarb'
+
+" ==========================================================
+" Others
+" ==========================================================
 Plug 'majutsushi/tagbar'
 execute 'source' plug_conf . 'tagbar.rc.vim'
 Plug 'w0rp/ale'
