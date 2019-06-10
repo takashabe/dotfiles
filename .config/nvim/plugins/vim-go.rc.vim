@@ -10,10 +10,9 @@ let g:go_highlight_variable_assignments = 1
 
 " Formatter
 let g:go_fmt_autosave = 1
-let g:go_fmt_command = "goimports"
+let g:go_fmt_command = "gofmt"
 let g:go_fmt_options = {
   \ 'gofmt': '-s',
-  \ 'goimports': '',
   \ }
 
 " godef
@@ -21,4 +20,6 @@ let g:go_fmt_options = {
 let g:go_def_mapping_enabled = 0
 
 " mapping functions
-" TODO
+nnoremap <silent> <Leader>lt :GoTest<CR>
+nnoremap <silent> <Leader>lc :GoTestCompile<CR>
+nnoremap <silent> <Leader>lf :GoImports<CR>
