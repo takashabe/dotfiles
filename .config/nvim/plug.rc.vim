@@ -5,13 +5,10 @@ let plug_conf = expand('<sfile>:p:h') . '/plugins/'
 " Apppearance
 " ==========================================================
 Plug 'joshdick/onedark.vim'
-Plug 'cocopon/iceberg.vim'
 Plug 'itchyny/lightline.vim'
 execute 'source' plug_conf . 'lightline.rc.vim'
 Plug 'nathanaelkane/vim-indent-guides'
 execute 'source' plug_conf . 'vim-indent-guides.rc.vim'
-Plug 'ryanoasis/vim-devicons'
-execute 'source' plug_conf . 'vim-devicons.rc.vim'
 
 " ==========================================================
 " Edit
@@ -27,8 +24,8 @@ execute 'source' plug_conf . 'nerdcommenter.rc.vim'
 " ==========================================================
 Plug 'mtth/scratch.vim'
 execute 'source' plug_conf . 'scratch.rc.vim'
-Plug 'scrooloose/nerdtree'
-execute 'source' plug_conf . 'nerdtree.rc.vim'
+Plug 'lambdalisue/fila.vim'
+execute 'source' plug_conf . 'fila.rc.vim'
 
 " ==========================================================
 " fzf
