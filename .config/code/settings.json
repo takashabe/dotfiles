@@ -17,8 +17,6 @@
     "go.toolsEnvVars": {
         "GO111MODULE": "on",
     },
-    // Editor
-    "editor.fontSize": 14,
     "editor.tabSize": 2,
     "editor.renderWhitespace": "boundary",
     "editor.cursorStyle": "line",
@@ -67,6 +65,6 @@
     // Mics...
     "explorer.confirmDelete": false,
     "workbench.colorTheme": "One Dark Pro",
-    "workbench.fontAliasing": "antialiased",
-    "window.zoomLevel": -1
+    "window.zoomLevel": -1,
+    "editor.fontSize": 16
 }
