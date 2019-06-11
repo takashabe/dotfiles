@@ -1,12 +1,9 @@
 let g:lsp_auto_enable = 1
 
-" Disable diagnostics because not stable yet.
-let g:lsp_diagnostics_enabled = 0
-let g:lsp_signs_enabled = 0
-let g:lsp_diagnostics_echo_cursor = 0
-
-" Disable slowly features...
-let g:lsp_highlight_references_enabled = 0
+let g:lsp_signs_enabled = 1
+let g:lsp_diagnostics_enabled = 1
+let g:lsp_diagnostics_echo_cursor = 1
+let g:lsp_highlight_references_enabled = 1
 
 if executable('gopls')
   augroup LspGo
@@ -23,10 +20,10 @@ if executable('gopls')
     au FileType go nnoremap <buffer><silent> gD :<C-u>LspReferences<CR>
     au FileType go nnoremap <buffer><silent> gs :<C-u>LspDocumentSymbol<CR>
     au FileType go nnoremap <buffer><silent> gS :<C-u>LspWorkspaceSymbol<CR>
-    au FileType go nnoremap <buffer><silent> gQ :<C-u>LspDocumentFormat<CR>
-    au FileType go vnoremap <buffer><silent> gQ :LspDocumentRangeFormat<CR>
-    au FileType go nnoremap <buffer><silent> K :<C-u>LspHover<CR>
-    au FileType go nnoremap <buffer><silent> <F1> :<C-u>LspImplementation<CR>
-    au FileType go nnoremap <buffer><silent> <F2> :<C-u>LspRename<CR>
+    au FileType go nnoremap <buffer><silent> gf :<C-u>LspDocumentFormat<CR>
+    au FileType go vnoremap <buffer><silent> gf :LspDocumentRangeFormat<CR>
+    au FileType go nnoremap <buffer><silent> gh :<C-u>LspHover<CR>
+    au FileType go nnoremap <buffer><silent> gi :<C-u>LspImplementation<CR>
+    au FileType go nnoremap <buffer><silent> gr :<C-u>LspRename<CR>
   augroup end
 endif

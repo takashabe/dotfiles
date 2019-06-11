@@ -18,6 +18,8 @@ let g:go_fmt_options = {
 " godef
 "" Use gopls with vim-lsp
 let g:go_def_mapping_enabled = 0
+let g:go_info_mode = 'gocode'
+let g:go_def_mode = 'guru'
 
 " mapping functions
 nnoremap <silent> <Leader>lt :GoTest<CR>
