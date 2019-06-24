@@ -8,3 +8,5 @@ let g:ale_fix_on_save = 0
 
 " Formatter list
 let g:ale_fixers = {'go': ['goimports']}
+
+nnoremap <silent> <Leader>af :ALEFix<CR>
