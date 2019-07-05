@@ -147,8 +147,11 @@ set -x PATH $HOME/.krew/bin $PATH
 set -x DOCKER_BUILDKIT 1
 
 # Golang
-set -x GO111MODULE on
-set -x GOROOT /usr/local/opt/go/libexec
+set -x GO111MODULE auto
+## Homebrew
+# set -x GOROOT /usr/local/opt/go/libexec
+## HEAD
+set -x GOROOT /Users/a14960/dev/src/go.googlesource.com/go
 set -x GOPATH $HOME/dev
 set -x PATH $GOPATH/bin $GOROOT/bin $PATH
 ### Install golang tool binaries
