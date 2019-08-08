@@ -21,8 +21,12 @@ set modelines=1                  " モードラインは1行
 set noundofile                   " undofileを作らない
 
 " OSのクリップボードを使用する
-set clipboard=unnamed
-let g:yankring_clipboard_monitor=0 "MacOS Sierra用
+if has('mac')
+  set clipboard=unnamed
+  let g:yankring_clipboard_monitor=0
+else
+  set clipboard=unnamedplus
+endif
 
 " Ev/Rvでvimrcの編集と反映
 command! Ev edit $MYVIMRC
