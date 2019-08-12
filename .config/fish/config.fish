@@ -22,6 +22,7 @@ set -x PROMPT_ENABLE_K8S_CONTEXT 1
 set -x PROMPT_ENABLE_GCLOUD_PROJECT 1
 
 ## vim
+alias vi vim
 set -x EDITOR vim
 
 ## alternative grep
@@ -223,4 +224,10 @@ end
 function reload_network
   sudo ifconfig en0 down
   sudo ifconfig en0 up
+end
+
+## Xorg
+if status --is-interactive; and test uname = "Linux"
+  xset m 1/2 4
+  xset r rate 200 60
 end
