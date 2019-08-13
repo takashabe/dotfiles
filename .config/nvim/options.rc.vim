@@ -416,7 +416,7 @@ augroup vimrc_bufwritepre
 augroup END
 
 " コンマの後に自動的にスペースを挿入
-inoremap , ,<Space>
+" inoremap , ,<Space>
 
 " ; と : を入れ替え
 noremap ; :
