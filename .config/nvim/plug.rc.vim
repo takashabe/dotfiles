@@ -45,9 +45,7 @@ execute 'source' plug_conf . 'vim-lsp.rc.vim'
 " ==========================================================
 " Go
 " ==========================================================
-" Plug 'fatih/vim-go', {'for': 'go'}
-" execute 'source' plug_conf . 'vim-go.rc.vim'
-Plug 'takashabe/gopher.vim'
+Plug 'arp242/gopher.vim'
 execute 'source' plug_conf . 'gopher.rc.vim'
 Plug 'buoto/gotests-vim'
 execute 'source' plug_conf . 'gotests-vim.rc.vim'
@@ -63,6 +61,7 @@ Plug 'hail2u/vim-css3-syntax', {'for': 'css'}
 Plug 'dag/vim-fish', {'for': 'fish'}
 Plug 'rhysd/vim-gfm-syntax', {'for': 'markdown'}
 Plug 'stephpy/vim-yaml', {'for': 'yaml'}
+Plug 'tokorom/vim-review', {'for': 'review'}
 
 " ==========================================================
 " VCS
