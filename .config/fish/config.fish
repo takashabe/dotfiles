@@ -147,11 +147,6 @@ set -x PATH $HOME/.krew/bin $PATH
 set -x DOCKER_BUILDKIT 1
 
 # Golang
-set -x GO111MODULE auto
-## Homebrew
-# set -x GOROOT /usr/local/opt/go/libexec
-## HEAD
-set -x GOROOT $HOME/dev/src/go.googlesource.com/go
 set -x GOPATH $HOME/dev
 set -x PATH $GOPATH/bin $GOROOT/bin $PATH
 ### Install golang tool binaries
@@ -160,7 +155,8 @@ function go_install_binaries
     'github.com/golang/mock/gomock' \
     'github.com/golang/mock/mockgen' \
     'golang.org/x/tools/cmd/goimports' \
-    'golang.org/x/tools/cmd/gopls'
+    'golang.org/x/tools/cmd/gopls' \
+    'github.com/google/pprof'
   pushd $HOME
   for uri in $GO_BINARIES
     echo "go get -u $uri ..."
