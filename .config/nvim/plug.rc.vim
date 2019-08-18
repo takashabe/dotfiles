@@ -18,6 +18,8 @@ Plug 'junegunn/vim-easy-align'
 execute 'source' plug_conf . 'vim-easy-align.rc.vim'
 Plug 'scrooloose/nerdcommenter'
 execute 'source' plug_conf . 'nerdcommenter.rc.vim'
+Plug 'fuenor/im_control.vim'
+execute 'source' plug_conf . 'im_control.rc.vim'
 
 " ==========================================================
 " Window/Buffer
