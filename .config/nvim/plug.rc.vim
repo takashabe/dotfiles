@@ -18,6 +18,8 @@ Plug 'junegunn/vim-easy-align'
 execute 'source' plug_conf . 'vim-easy-align.rc.vim'
 Plug 'scrooloose/nerdcommenter'
 execute 'source' plug_conf . 'nerdcommenter.rc.vim'
+Plug 'tpope/vim-capslock'
+execute 'source' plug_conf . 'vim-capslock.rc.vim'
 
 " ==========================================================
 " Window/Buffer
