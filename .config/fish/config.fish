@@ -1,3 +1,6 @@
+## fish plugin manager
+# TODO
+
 ##################################### general
 ## basic command alias
 alias rm 'rmtrash'
@@ -82,23 +85,32 @@ set -x PATH /usr/local/opt/openssl/bin $PATH
 alias cat 'ccat'
 
 # nodebrew
-set -x PATH $HOME/.nodebrew/current/bin $PATH
+if command -v nodebrew
+  set -x PATH $HOME/.nodebrew/current/bin $PATH
+end
 
 # rbenv
-rbenv init - | source
+if command -v rbenv
+  rbenv init - | source
+end
 
 # java
-set -x JAVA_HOME (/usr/libexec/java_home)
+# TODO: consider java_home handling
+if command -v java
+  set -x JAVA_HOME (/usr/libexec/java_home)
+end
 
 # tmux
-if status --is-interactive; and test -z $TMUX
-  set -l wname "fish"
-  if tmux has-session > /dev/null ^ /dev/null
-    # attach tmux session with percol like tool
-    set -l sid (tmux list-sessions | grep '' | peco | cut -d: -f1)
-    command tmux -u attach-session -t $sid
-  else
-    command tmux -u new-session -n $wname
+if status --is-interactive
+  if test -z $TMUX
+    set -l wname "fish"
+    if tmux has-session > /dev/null ^ /dev/null
+      # attach tmux session with percol like tool
+      set -l sid (tmux list-sessions | grep '' | peco | cut -d: -f1)
+      command tmux -u attach-session -t $sid
+    else
+      command tmux -u new-session -n $wname
+    end
   end
 end
 
@@ -113,9 +125,14 @@ end
 ### gcloud
 ## load completion
 if status --is-interactive
-  bass source "$HOME/bin/google-cloud-sdk/path.bash.inc"
-  bass source "$HOME/bin/google-cloud-sdk/completion.bash.inc"
+  if test (uname) = "Linux"
+    source "/opt/google-cloud-sdk/path.fish.inc"
+  else
+    bass source "$HOME/bin/google-cloud-sdk/path.bash.inc"
+    bass source "$HOME/bin/google-cloud-sdk/completion.bash.inc"
+  end
 end
+
 ## switch gcloud project
 function switch_gcloud
   if test (count $argv) -lt 1
@@ -152,7 +169,7 @@ set -x GO111MODULE auto
 ## Homebrew
 # set -x GOROOT /usr/local/opt/go/libexec
 ## HEAD
-set -x GOROOT $HOME/dev/src/go.googlesource.com/go
+#set -x GOROOT $HOME/dev/src/go.googlesource.com/go
 set -x GOPATH $HOME/dev
 set -x PATH $GOPATH/bin $GOROOT/bin $PATH
 ### Install golang tool binaries
@@ -196,7 +213,7 @@ end
 # direnv
 direnv hook fish | source
 
-## memo
+## note
 function memo_new
   set -l memo_dir $GOPATH/src/github.com/takashabe/note/memo
   set -l now (date "+%Y%m%d_%H%M%S")
@@ -227,7 +244,7 @@ function reload_network
 end
 
 ## Xorg
-if status --is-interactive; and test uname = "Linux"
+if status --is-interactive; and test (uname) = "Linux"
   xset m 1/2 4
   xset r rate 200 60
 end
