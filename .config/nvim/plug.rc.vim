@@ -70,6 +70,7 @@ Plug 'tokorom/vim-review', {'for': 'review'}
 " ==========================================================
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
+Plug 'airblade/vim-gitgutter'
 
 " ==========================================================
 " Others
