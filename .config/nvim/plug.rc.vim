@@ -20,6 +20,8 @@ Plug 'scrooloose/nerdcommenter'
 execute 'source' plug_conf . 'nerdcommenter.rc.vim'
 Plug 'tpope/vim-capslock'
 execute 'source' plug_conf . 'vim-capslock.rc.vim'
+Plug 'fuenor/im_control.vim'
+execute 'source' plug_conf . 'im_control.rc.vim'
 
 " ==========================================================
 " Window/Buffer
@@ -70,6 +72,7 @@ Plug 'tokorom/vim-review', {'for': 'review'}
 " ==========================================================
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
+Plug 'airblade/vim-gitgutter'
 
 " ==========================================================
 " Others

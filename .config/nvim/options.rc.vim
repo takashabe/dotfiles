@@ -387,12 +387,6 @@ hi PmenuSel cterm=reverse ctermfg=33 ctermbg=222 gui=reverse guifg=#3399ff guibg
 " 編集関連 Edit
 "-------------------------------------------------------------------------------
 
-" insertモードを抜けるとIMEオフ
-set noimdisable
-set iminsert=0 imsearch=0
-set noimcmdline
-inoremap <silent> <ESC> <ESC>:set iminsert=0<CR>
-
 " yeでそのカーソル位置にある単語をレジスタに追加
 nmap ye ;let @"=expand("<cword>")<CR>
 " Visualモードでのpで選択範囲をレジスタの内容に置き換える
