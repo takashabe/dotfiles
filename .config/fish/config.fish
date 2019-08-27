@@ -85,18 +85,18 @@ set -x PATH /usr/local/opt/openssl/bin $PATH
 alias cat 'ccat'
 
 # nodebrew
-if command -v nodebrew
+if status --is-interactive; and command -v nodebrew > /dev/null
   set -x PATH $HOME/.nodebrew/current/bin $PATH
 end
 
 # rbenv
-if command -v rbenv
+if status --is-interactive; and command -v rbenv > /dev/null
   rbenv init - | source
 end
 
 # java
 # TODO: consider java_home handling
-if command -v java
+if status --is-interactive; and command -v java > /dev/null
   set -x JAVA_HOME (/usr/libexec/java_home)
 end
 
