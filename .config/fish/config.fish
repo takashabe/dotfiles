@@ -167,6 +167,7 @@ set -x DOCKER_BUILDKIT 1
 # Golang
 set -x GOPATH $HOME/dev
 set -x PATH $GOPATH/bin $GOROOT/bin $PATH
+set -x GO111MODULE on
 ### Install golang tool binaries
 function go_install_binaries
   set -l GO_BINARIES \
