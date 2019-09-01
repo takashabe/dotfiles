@@ -228,7 +228,7 @@ source $HOME/.config/fish/conf.d/local.fish
 
 # general function
 function reload_config
-  source $HOME/.config/fish/config.fish
+  exec fish
 end
 function edit_config
   $EDITOR ~/dotfiles/.config/fish/config.fish
