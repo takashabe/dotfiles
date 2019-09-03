@@ -3,22 +3,22 @@ env:
 
 window:
   padding:
-    x: 8
-    y: 4
+    x: 4
+    y: 2
 
 tabspaces: 2
 
 font:
   normal:
-    family: SF Mono Square
+    family: Noto Sans Mono
     style: Regular
   bold:
-    family: SF Mono Square
+    family: Noto Sans Mono
     style: Bold
   italic:
-    family: SF Mono Square
+    family: Noto Sans Mono
     style: Italic
-  size: 16.0
+  size: 10.0
   use_thin_strokes: true
 
 mouse:
@@ -69,7 +69,7 @@ colors:
 background_opacity: 1.0
 
 shell:
- program: /usr/local/bin/fish
+ program: /usr/bin/fish
  args:
    - --login
 

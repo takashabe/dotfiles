@@ -23,10 +23,8 @@
     "editor.wordWrap": "on",
     // Terminal
     "terminal.integrated.shell.osx": "/usr/local/bin/fish",
-    // Vim
-    "vim.enableNeovim": true,
     "vim.leader": ",",
-    "vim.neovimPath": "/usr/local/bin/nvim",
+    "vim.neovimPath": "",
     "vim.useSystemClipboard": true,
     "vim.visualstar": true,
     "vim.hlsearch": true,
@@ -66,5 +64,7 @@
     "explorer.confirmDelete": false,
     "workbench.colorTheme": "One Dark Pro",
     "window.zoomLevel": -1,
-    "editor.fontSize": 16
+    "vsicons.dontShowNewVersionMessage": true,
+    "editor.fontSize": 16,
+    "terminal.integrated.fontSize": 16
 }

@@ -21,8 +21,12 @@ set modelines=1                  " モードラインは1行
 set noundofile                   " undofileを作らない
 
 " OSのクリップボードを使用する
-set clipboard=unnamed
-let g:yankring_clipboard_monitor=0 "MacOS Sierra用
+if has('mac')
+  set clipboard=unnamed
+  let g:yankring_clipboard_monitor=0
+else
+  set clipboard=unnamedplus
+endif
 
 " Ev/Rvでvimrcの編集と反映
 command! Ev edit $MYVIMRC
@@ -383,12 +387,6 @@ hi PmenuSel cterm=reverse ctermfg=33 ctermbg=222 gui=reverse guifg=#3399ff guibg
 " 編集関連 Edit
 "-------------------------------------------------------------------------------
 
-" insertモードを抜けるとIMEオフ
-set noimdisable
-set iminsert=0 imsearch=0
-set noimcmdline
-inoremap <silent> <ESC> <ESC>:set iminsert=0<CR>
-
 " yeでそのカーソル位置にある単語をレジスタに追加
 nmap ye ;let @"=expand("<cword>")<CR>
 " Visualモードでのpで選択範囲をレジスタの内容に置き換える
@@ -416,7 +414,7 @@ augroup vimrc_bufwritepre
 augroup END
 
 " コンマの後に自動的にスペースを挿入
-inoremap , ,<Space>
+" inoremap , ,<Space>
 
 " ; と : を入れ替え
 noremap ; :

@@ -1,3 +1,6 @@
+## fish plugin manager
+# TODO
+
 ##################################### general
 ## basic command alias
 alias rm 'rmtrash'
@@ -22,10 +25,11 @@ set -x PROMPT_ENABLE_K8S_CONTEXT 1
 set -x PROMPT_ENABLE_GCLOUD_PROJECT 1
 
 ## vim
+alias vi vim
 set -x EDITOR vim
 
 ## alternative grep
-alias rg 'rg --hidden -i'
+alias rg 'rg --hidden'
 
 # curl
 alias curl-android 'curl -A "Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.167 Mobile Safari/537.36"'
@@ -81,23 +85,32 @@ set -x PATH /usr/local/opt/openssl/bin $PATH
 alias cat 'ccat'
 
 # nodebrew
-set -x PATH $HOME/.nodebrew/current/bin $PATH
+if status --is-interactive; and command -v nodebrew > /dev/null
+  set -x PATH $HOME/.nodebrew/current/bin $PATH
+end
 
 # rbenv
-rbenv init - | source
+if status --is-interactive; and command -v rbenv > /dev/null
+  rbenv init - | source
+end
 
 # java
-set -x JAVA_HOME (/usr/libexec/java_home)
+# TODO: consider java_home handling
+if status --is-interactive; and command -v java > /dev/null
+  set -x JAVA_HOME (/usr/libexec/java_home)
+end
 
 # tmux
-if status --is-interactive; and test -z $TMUX
-  set -l wname "fish"
-  if tmux has-session > /dev/null ^ /dev/null
-    # attach tmux session with percol like tool
-    set -l sid (tmux list-sessions | grep '' | peco | cut -d: -f1)
-    command tmux -u attach-session -t $sid
-  else
-    command tmux -u new-session -n $wname
+if status --is-interactive
+  if test -z $TMUX
+    set -l wname "fish"
+    if tmux has-session > /dev/null ^ /dev/null
+      # attach tmux session with percol like tool
+      set -l sid (tmux list-sessions | grep '' | peco | cut -d: -f1)
+      command tmux -u attach-session -t $sid
+    else
+      command tmux -u new-session -n $wname
+    end
   end
 end
 
@@ -112,9 +125,14 @@ end
 ### gcloud
 ## load completion
 if status --is-interactive
-  bass source "$HOME/bin/google-cloud-sdk/path.bash.inc"
-  bass source "$HOME/bin/google-cloud-sdk/completion.bash.inc"
+  if test (uname) = "Linux"
+    source "/opt/google-cloud-sdk/path.fish.inc"
+  else
+    bass source "$HOME/bin/google-cloud-sdk/path.bash.inc"
+    bass source "$HOME/bin/google-cloud-sdk/completion.bash.inc"
+  end
 end
+
 ## switch gcloud project
 function switch_gcloud
   if test (count $argv) -lt 1
@@ -147,20 +165,17 @@ set -x PATH $HOME/.krew/bin $PATH
 set -x DOCKER_BUILDKIT 1
 
 # Golang
-set -x GO111MODULE auto
-## Homebrew
-# set -x GOROOT /usr/local/opt/go/libexec
-## HEAD
-set -x GOROOT $HOME/dev/src/go.googlesource.com/go
 set -x GOPATH $HOME/dev
 set -x PATH $GOPATH/bin $GOROOT/bin $PATH
+set -x GO111MODULE on
 ### Install golang tool binaries
 function go_install_binaries
   set -l GO_BINARIES \
     'github.com/golang/mock/gomock' \
     'github.com/golang/mock/mockgen' \
     'golang.org/x/tools/cmd/goimports' \
-    'golang.org/x/tools/cmd/gopls'
+    'golang.org/x/tools/cmd/gopls' \
+    'github.com/google/pprof'
   pushd $HOME
   for uri in $GO_BINARIES
     echo "go get -u $uri ..."
@@ -195,7 +210,7 @@ end
 # direnv
 direnv hook fish | source
 
-## memo
+## note
 function memo_new
   set -l memo_dir $GOPATH/src/github.com/takashabe/note/memo
   set -l now (date "+%Y%m%d_%H%M%S")
@@ -214,7 +229,7 @@ source $HOME/.config/fish/conf.d/local.fish
 
 # general function
 function reload_config
-  source $HOME/.config/fish/config.fish
+  exec fish
 end
 function edit_config
   $EDITOR ~/dotfiles/.config/fish/config.fish
@@ -223,4 +238,10 @@ end
 function reload_network
   sudo ifconfig en0 down
   sudo ifconfig en0 up
+end
+
+## Xorg
+if status --is-interactive; and test (uname) = "Linux"
+  xset m 1/2 4
+  xset r rate 200 60
 end

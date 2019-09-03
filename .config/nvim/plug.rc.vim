@@ -18,6 +18,10 @@ Plug 'junegunn/vim-easy-align'
 execute 'source' plug_conf . 'vim-easy-align.rc.vim'
 Plug 'scrooloose/nerdcommenter'
 execute 'source' plug_conf . 'nerdcommenter.rc.vim'
+Plug 'tpope/vim-capslock'
+execute 'source' plug_conf . 'vim-capslock.rc.vim'
+Plug 'fuenor/im_control.vim'
+execute 'source' plug_conf . 'im_control.rc.vim'
 
 " ==========================================================
 " Window/Buffer
@@ -45,8 +49,10 @@ execute 'source' plug_conf . 'vim-lsp.rc.vim'
 " ==========================================================
 " Go
 " ==========================================================
-" Plug 'fatih/vim-go', {'for': 'go'}
-" execute 'source' plug_conf . 'vim-go.rc.vim'
+Plug 'arp242/gopher.vim'
+execute 'source' plug_conf . 'gopher.rc.vim'
+Plug 'buoto/gotests-vim'
+execute 'source' plug_conf . 'gotests-vim.rc.vim'
 
 " ==========================================================
 " Other language/file syntax
@@ -59,18 +65,20 @@ Plug 'hail2u/vim-css3-syntax', {'for': 'css'}
 Plug 'dag/vim-fish', {'for': 'fish'}
 Plug 'rhysd/vim-gfm-syntax', {'for': 'markdown'}
 Plug 'stephpy/vim-yaml', {'for': 'yaml'}
+Plug 'tokorom/vim-review', {'for': 'review'}
 
 " ==========================================================
 " VCS
 " ==========================================================
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
+Plug 'airblade/vim-gitgutter'
 
 " ==========================================================
 " Others
 " ==========================================================
 Plug 'majutsushi/tagbar'
 execute 'source' plug_conf . 'tagbar.rc.vim'
-Plug 'w0rp/ale'
-execute 'source' plug_conf . 'ale.rc.vim'
+" Plug 'w0rp/ale'
+" execute 'source' plug_conf . 'ale.rc.vim'
 Plug 'direnv/direnv.vim'
