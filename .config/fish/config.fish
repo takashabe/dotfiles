@@ -167,6 +167,7 @@ set -x DOCKER_BUILDKIT 1
 # Golang
 set -x GOPATH $HOME/dev
 set -x PATH $GOPATH/bin $GOROOT/bin $PATH
+set -x GO111MODULE on
 ### Install golang tool binaries
 function go_install_binaries
   set -l GO_BINARIES \
@@ -228,7 +229,7 @@ source $HOME/.config/fish/conf.d/local.fish
 
 #### general function
 function reload_config
-  source $HOME/.config/fish/config.fish
+  exec fish
 end
 function edit_config
   $EDITOR ~/dotfiles/.config/fish/config.fish
