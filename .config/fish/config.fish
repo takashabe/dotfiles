@@ -226,7 +226,7 @@ end
 # Load local env, functions and so on.
 source $HOME/.config/fish/conf.d/local.fish
 
-# general function
+#### general function
 function reload_config
   source $HOME/.config/fish/config.fish
 end
