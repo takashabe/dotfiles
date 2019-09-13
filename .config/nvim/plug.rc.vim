@@ -79,6 +79,6 @@ Plug 'airblade/vim-gitgutter'
 " ==========================================================
 Plug 'majutsushi/tagbar'
 execute 'source' plug_conf . 'tagbar.rc.vim'
-" Plug 'w0rp/ale'
-" execute 'source' plug_conf . 'ale.rc.vim'
+Plug 'w0rp/ale'
+execute 'source' plug_conf . 'ale.rc.vim'
 Plug 'direnv/direnv.vim'
