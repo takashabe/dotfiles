@@ -47,7 +47,7 @@ window class_only: %w[google-chrome slack] do
   remap 'M-d', to: 'Ctrl-Delete'
 
   # actually these are vim insert mode bindings, but compatible with shell
-  remap 'C-w', to: ['Ctrl-Shift-Left', 'Delete']
+  remap 'Super-w', to: 'C-w'
 
   %w[a z x c v w t l].each do |key|
     remap "Alt-#{key}", to: "C-#{key}"
