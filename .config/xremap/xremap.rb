@@ -4,7 +4,7 @@ define :activate do |wm_class, command|
   execute("wmctrl -x -a #{wm_class.shellescape} || #{command.shellescape}")
 end
 
-window class_not: %w[slack google-chrome gnome-terminal-server urxvt alacritty Focus-Proxy-Window] do
+window class_not: %w[slack google-chrome gnome-terminal-server urxvt Alacritty Focus-Proxy-Window] do
   # emacs-like bindings
   remap 'C-b', to: 'Left'
   remap 'C-f', to: 'Right'
