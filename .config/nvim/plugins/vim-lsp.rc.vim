@@ -25,7 +25,7 @@ if executable('gopls')
     au FileType go nnoremap <buffer><silent> gs :<C-u>LspDocumentSymbol<CR>
     au FileType go nnoremap <buffer><silent> gS :<C-u>LspWorkspaceSymbol<CR>
     au FileType go nnoremap <buffer><silent> gf :<C-u>LspDocumentFormatSync<CR>
-    au FileType go nnoremap <buffer><silent> gh :<C-u>LspHover<CR>
+    " au FileType go nnoremap <buffer><silent> gh :<C-u>LspHover<CR>
     au FileType go nnoremap <buffer><silent> gi :<C-u>LspImplementation<CR>
     au FileType go nnoremap <buffer><silent> gr :<C-u>LspRename<CR>
   augroup end

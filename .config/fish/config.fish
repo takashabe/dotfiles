@@ -164,6 +164,10 @@ alias knp peco_select_k8s_namespace
 set -x PATH $HOME/bin/kubebuilder $PATH
 set -x PATH $HOME/.krew/bin $PATH
 set -x DOCKER_BUILDKIT 1
+function docker_clean
+  docker stop (docker ps -a -q)
+  docker rm (docker ps -a -q)
+end
 
 # Golang
 set -x GOPATH $HOME/dev

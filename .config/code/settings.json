@@ -8,7 +8,7 @@
     "go.autocompleteUnimportedPackages": true,
     "go.gopath": "/Users/a14960/dev",
     "go.docsTool": "guru",
-    "go.formatTool": "goreturns",
+    "go.formatTool": "goimports",
     "go.buildOnSave": "package",
     "go.enableCodeLens": {
         "references": false,
@@ -66,5 +66,6 @@
     "window.zoomLevel": -1,
     "vsicons.dontShowNewVersionMessage": true,
     "editor.fontSize": 16,
-    "terminal.integrated.fontSize": 16
+    "terminal.integrated.fontSize": 16,
+    "go.useLanguageServer": true
 }
