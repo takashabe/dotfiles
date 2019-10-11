@@ -1,4 +1,6 @@
-#!/bin/sh
+#!/bin/bash
+
+set -e
 
 ## .rc files for home directory
 ln -s $HOME/dotfiles/.tmux.conf $HOME/
@@ -29,3 +31,8 @@ ln -s $HOME/dotfiles/.config/code/keybindings.json $HOME/Library/Application\ Su
 
 # TODO homebrew, ghq関連の追加
 # TODO linux/macos双方で動くようにしたい
+
+# Linux only
+if [ uname = "Linux" ]; then
+  ln -s $HOME/dotfiles/.config/xremap/  $HOME/.config/xremap/
+fi
