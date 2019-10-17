@@ -20,6 +20,9 @@ Session.vim
 ## direnv
 .envrc
 
+## telepresence
+telepresence.log
+
 ## private memo
 _memo*
 
