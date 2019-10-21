@@ -1,0 +1,12 @@
+[Unit]
+Description = xkeysnail
+
+[Service]
+KillMode    = process
+ExecStart   = /usr/bin/sudo /usr/bin/xkeysnail /home/takashabe/.config/xkeysnail/config.py
+Type        = simple
+Restart     = always
+Environment = DISPLAY=:1
+
+[Install]
+WantedBy = default.target

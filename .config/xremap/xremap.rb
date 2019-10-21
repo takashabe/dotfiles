@@ -4,7 +4,7 @@ define :activate do |wm_class, command|
   execute("wmctrl -x -a #{wm_class.shellescape} || #{command.shellescape}")
 end
 
-window class_not: %w[slack Mozilla-Firefox google-chrome gnome-terminal-server urxvt Alacritty Focus-Proxy-Window] do
+window class_not: %w[slack google-chrome Alacritty Focus-Proxy-Window] do
   # emacs-like bindings
   remap 'C-b', to: 'Left'
   remap 'C-f', to: 'Right'
@@ -23,11 +23,11 @@ window class_not: %w[slack Mozilla-Firefox google-chrome gnome-terminal-server u
   remap 'M-d', to: 'Ctrl-Delete'
 
   %w[a z x c w t l].each do |key|
-    remap "Alt-#{key}", to: "C-#{key}"
+    remap "Win-#{key}", to: "C-#{key}"
   end
 end
 
-window class_only: %w[Mozilla-Firefox google-chrome slack] do
+window class_only: %w[google-chrome slack] do
   remap 'C-b', to: 'Left'
   remap 'C-f', to: 'Right'
   remap 'C-p', to: 'Up'
@@ -47,7 +47,7 @@ window class_only: %w[Mozilla-Firefox google-chrome slack] do
   remap 'Super-w', to: 'C-w'
 
   %w[a z x c v w t l].each do |key|
-    remap "Alt-#{key}", to: "C-#{key}"
+    remap "Win-#{key}", to: "C-#{key}"
   end
   remap 'Alt-o', to: 'Ctrl-Shift-Tab'
   remap 'Alt-p', to: 'Ctrl-Tab'

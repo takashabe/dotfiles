@@ -10,15 +10,15 @@ tabspaces: 2
 
 font:
   normal:
-    family: Noto Sans Mono
+    family: Cica
     style: Regular
   bold:
-    family: Noto Sans Mono
+    family: Cica
     style: Bold
   italic:
-    family: Noto Sans Mono
+    family: Cica
     style: Italic
-  size: 10.0
+  size: 12.0
   use_thin_strokes: true
 
 mouse:
