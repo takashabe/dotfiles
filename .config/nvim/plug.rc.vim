@@ -48,7 +48,8 @@ execute 'source' plug_conf . 'fzf.rc.vim'
 " LanguageServer
 " ==========================================================
 Plug 'prabirshrestha/async.vim'
-Plug 'prabirshrestha/vim-lsp'
+" Plug 'prabirshrestha/vim-lsp'
+Plug 'takashabe/vim-lsp' " temporary
 execute 'source' plug_conf . 'vim-lsp.rc.vim'
 
 " ==========================================================
