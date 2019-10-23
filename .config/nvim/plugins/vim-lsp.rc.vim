@@ -3,7 +3,10 @@ let g:lsp_auto_enable = 1
 let g:lsp_diagnostics_enabled = 1
 let g:lsp_signs_enabled = 1
 let g:lsp_diagnostics_echo_cursor = 1
-let g:lsp_highlight_references_enabled = 1
+let g:lsp_highlight_references_enabled = 0
+
+" https://github.com/prabirshrestha/asyncomplete.vim/issues/156
+let g:lsp_text_edit_enabled = 0
 
 if executable('gopls')
   augroup LspGo
