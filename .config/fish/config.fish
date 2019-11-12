@@ -33,7 +33,7 @@ set -x EDITOR vim
 alias rg 'rg --hidden'
 
 ## fzf
-set -x FZF_DEFAULT_COMMAND 'rg --hidden -l ""'
+set -x FZF_DEFAULT_COMMAND 'rg --files --hidden --glob "!.git/*"'
 
 # curl
 alias curl-android 'curl -A "Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.167 Mobile Safari/537.36"'
