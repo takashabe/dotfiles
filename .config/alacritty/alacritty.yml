@@ -10,15 +10,15 @@ tabspaces: 2
 
 font:
   normal:
-    family: Cica
+    family: SF Mono Square
     style: Regular
   bold:
-    family: Cica
+    family: SF Mono Square
     style: Bold
   italic:
-    family: Cica
+    family: SF Mono Square
     style: Italic
-  size: 12.0
+  size: 10.0
   use_thin_strokes: true
 
 mouse:
