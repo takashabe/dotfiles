@@ -48,7 +48,10 @@ execute 'source' plug_conf . 'fzf.rc.vim'
 " LanguageServer
 " ==========================================================
 Plug 'prabirshrestha/async.vim'
-Plug 'prabirshrestha/vim-lsp'
+Plug 'prabirshrestha/asyncomplete.vim'
+Plug 'prabirshrestha/asyncomplete-lsp.vim'
+" Plug 'prabirshrestha/vim-lsp'
+Plug 'takashabe/vim-lsp' " temporary fork
 execute 'source' plug_conf . 'vim-lsp.rc.vim'
 
 " ==========================================================
@@ -84,6 +87,6 @@ Plug 'airblade/vim-gitgutter'
 " ==========================================================
 Plug 'majutsushi/tagbar'
 execute 'source' plug_conf . 'tagbar.rc.vim'
-Plug 'w0rp/ale'
+Plug 'dense-analysis/ale'
 execute 'source' plug_conf . 'ale.rc.vim'
 Plug 'direnv/direnv.vim'
