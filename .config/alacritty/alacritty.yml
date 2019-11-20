@@ -18,7 +18,7 @@ font:
   italic:
     family: SF Mono Square
     style: Italic
-  size: 10.0
+  size: 12.0
   use_thin_strokes: true
 
 mouse:
