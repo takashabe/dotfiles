@@ -20,9 +20,9 @@ if executable('gopls')
         \     'completeUnimported': v:false,
         \     'caseSensitiveCompletion': v:true,
         \     'usePlaceholders': v:true,
-        \     'completionDocumentation': v:true,
+        \     'completionDocumentation': v:false,
         \     'watchFileChanges': v:true,
-        \     'hoverKind': 'SingleLine',
+        \     'hoverKind': 'SynopsisDocumentation',
         \   }},
         \ })
     " omnifunc
