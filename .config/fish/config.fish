@@ -13,6 +13,7 @@ alias .... 'cd ../../..'
 alias ..... 'cd ../../../..'
 
 set -x PATH $HOME/bin $PATH
+set -x PATH $HOME/.local/bin $PATH
 
 ## Encoding
 set -x LANG en_US.UTF-8
