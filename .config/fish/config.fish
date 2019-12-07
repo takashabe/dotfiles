@@ -230,6 +230,16 @@ function memo_clean
 
   find $memo_dir -type f -size 0 | xargs rm
 end
+function diary_new
+  set -l diary_dir $GOPATH/src/github.com/takashabe/note/diary
+  set -l today (date "+%Y%m%d")
+
+  touch $diary_dir/$today.md
+  $EDITOR $dirary_dir/$today.md
+end
+
+## Slack
+set -x SLACK_DEVELOPER_MENU true
 
 # Load local env, functions and so on.
 source $HOME/.config/fish/conf.d/local.fish
