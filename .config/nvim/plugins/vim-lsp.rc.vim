@@ -8,6 +8,11 @@ let g:lsp_highlight_references_enabled = 0
 " https://github.com/prabirshrestha/asyncomplete.vim/issues/156
 let g:lsp_text_edit_enabled = 0
 
+" debug
+" let g:lsp_log_verbose = 1
+" let g:lsp_log_file = expand('~/vim-lsp.log')
+" let g:asyncomplete_log_file = expand('~/asyncomplete.log')
+
 if executable('gopls')
   augroup LspGo
     au!
@@ -15,15 +20,6 @@ if executable('gopls')
         \ 'name': 'gopls',
         \ 'cmd': {server_info->['gopls']},
         \ 'whitelist': ['go'],
-        \ 'workspace_config': {'gopls': {
-        \     'staticcheck': v:true,
-        \     'completeUnimported': v:false,
-        \     'caseSensitiveCompletion': v:true,
-        \     'usePlaceholders': v:true,
-        \     'completionDocumentation': v:false,
-        \     'watchFileChanges': v:true,
-        \     'hoverKind': 'SynopsisDocumentation',
-        \   }},
         \ })
     " omnifunc
     autocmd FileType go setlocal omnifunc=lsp#complete
