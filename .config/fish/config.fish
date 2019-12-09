@@ -236,7 +236,7 @@ function diary_new
   set -l today (date "+%Y%m%d")
 
   touch $diary_dir/$today.md
-  $EDITOR $dirary_dir/$today.md
+  $EDITOR $diary_dir/$today.md
 end
 
 ## Slack
