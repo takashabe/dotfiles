@@ -3,6 +3,7 @@
 
 ##################################### general
 ## basic command alias
+alias make 'make --no-print-directory'
 alias rm 'rmtrash'
 alias mv 'mv -i'
 alias diff 'colordiff'
