@@ -6,16 +6,12 @@
   "window.title": "${activeEditorLong}${separator}${rootName}",
   "editor.tabSize": 2,
   "editor.insertSpaces": true,
+  "editor.renderWhitespace": "boundary",
+  "editor.cursorStyle": "line",
+  "editor.wordWrap": "on",
   // Go
-  "go.autocompleteUnimportedPackages": true,
+  "go.autocompleteUnimportedPackages": false,
   "go.gopath": "/Users/a14960/dev",
-  "go.docsTool": "guru",
-  "go.formatTool": "goimports",
-  "go.buildOnSave": "package",
-  "go.enableCodeLens": {
-    "references": false,
-    "runtest": false,
-  },
   "go.toolsEnvVars": {
     "GO111MODULE": "on",
   },
@@ -24,9 +20,23 @@
     "editor.tabSize": 2,
     "editor.insertSpaces": false,
   },
-  "editor.renderWhitespace": "boundary",
-  "editor.cursorStyle": "line",
-  "editor.wordWrap": "on",
+  "go.languageServerExperimentalFeatures": {
+    "format": true,
+    "autoComplete": true,
+    "rename": true,
+    "goToDefinition": true,
+    "hover": true,
+    "signatureHelp": true,
+    "goToTypeDefinition": true,
+    "goToImplementation": true,
+    "documentSymbols": true,
+    "workspaceSymbols": true,
+    "findReferences": true,
+    "diagnostics": true,
+    "documentLink": true,
+    "highlight": true
+  },
+  
   // Terminal
   "terminal.integrated.shell.osx": "/usr/local/bin/fish",
   "vim.leader": ",",
@@ -103,9 +113,9 @@
   // Mics...
   "explorer.confirmDelete": false,
   "workbench.colorTheme": "One Dark Pro",
-  "window.zoomLevel": 0,
+  "window.zoomLevel": 1,
   "vsicons.dontShowNewVersionMessage": true,
   "editor.fontSize": 16,
   "terminal.integrated.fontSize": 16,
-  "editor.fontFamily": "Menlo, Monaco, 'Courier New', monospace"
+  "editor.fontFamily": "'Cica','SF Mono 1x2','SF Mono Square'"
 }
