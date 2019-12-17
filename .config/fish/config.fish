@@ -239,9 +239,6 @@ function diary_new
   $EDITOR $diary_dir/$today.md
 end
 
-## Slack
-set -x SLACK_DEVELOPER_MENU true
-
 # Load local env, functions and so on.
 source $HOME/.config/fish/conf.d/local.fish
 
