@@ -113,9 +113,9 @@
   // Mics...
   "explorer.confirmDelete": false,
   "workbench.colorTheme": "One Dark Pro",
-  "window.zoomLevel": 1,
+  "window.zoomLevel": 0,
   "vsicons.dontShowNewVersionMessage": true,
-  "editor.fontSize": 16,
-  "terminal.integrated.fontSize": 16,
-  "editor.fontFamily": "'Cica','SF Mono 1x2','SF Mono Square'"
+  "editor.fontFamily": "'Cica','SF Mono 1x2','SF Mono Square'",
+  "markdown.preview.fontSize": 12,
+  "vim.easymotionMarkerFontSize": "12"
 }
