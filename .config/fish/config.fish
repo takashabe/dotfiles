@@ -106,6 +106,9 @@ if status --is-interactive; and command -v java > /dev/null
   set -x JAVA_HOME (/usr/libexec/java_home)
 end
 
+# Python
+set -x PATH /Users/a14960/Library/Python/3.7/bin $PATH
+
 # tmux
 if status --is-interactive
   if test -z $TMUX

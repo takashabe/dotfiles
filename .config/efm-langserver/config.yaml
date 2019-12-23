@@ -2,3 +2,17 @@ languages:
   go:
     lint-command: 'golangci-lint run --disable-all -E govet -E errcheck -E staticcheck -E gosimple -E gounused'
     lint-stdin: true
+  
+  markdown:
+    lint-command: 'markdownlint -s'
+    lint-stdint: true
+    lint-formats:
+      - '%f:%l %m'
+
+  yaml:
+    lint-command: 'yamllint -f parsable -'
+    lint-stdin: true
+    lint-formats:
+      - '%f:%l:%c: %m'
+    env:
+      - 'PYTHONIOENCODING=UTF-8'
