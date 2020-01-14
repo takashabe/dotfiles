@@ -183,7 +183,7 @@ function go_install_binaries
     'github.com/golang/mock/gomock' \
     'github.com/golang/mock/mockgen' \
     'golang.org/x/tools/cmd/goimports' \
-    'golang.org/x/tools/cmd/gopls' \
+    'golang.org/x/tools/gopls' \
     'github.com/google/pprof'
   pushd $HOME
   for uri in $GO_BINARIES
