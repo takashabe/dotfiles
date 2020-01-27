@@ -108,6 +108,8 @@ end
 
 # Python
 set -x PATH /Users/a14960/Library/Python/3.7/bin $PATH
+alias python python3
+alias pip pip3
 
 # tmux
 if status --is-interactive
