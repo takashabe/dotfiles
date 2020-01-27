@@ -33,8 +33,8 @@ Plug 'tpope/vim-surround'
 " ==========================================================
 Plug 'mtth/scratch.vim'
 execute 'source' plug_conf . 'scratch.rc.vim'
-Plug 'lambdalisue/fila.vim'
-execute 'source' plug_conf . 'fila.rc.vim'
+Plug 'lambdalisue/fern.vim'
+execute 'source' plug_conf . 'fern.rc.vim'
 
 " ==========================================================
 " fzf
