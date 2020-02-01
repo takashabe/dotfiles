@@ -7,4 +7,7 @@ export XMODIFIERS=@im=fcitx
 xhost +SI:localuser:root
 xhost +SI:localuser:xkeysnail
 
+eval $(/usr/bin/gnome-keyring-daemon --start)
+export SSH_AUTH_SOCK
+
 exec i3
