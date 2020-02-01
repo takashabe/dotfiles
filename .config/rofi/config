@@ -1,0 +1,2 @@
+rofi.modi:  window,drun,system:~/.config/rofi/launch.sh
+rofi.kb-cancel: Escape,Control+bracketleft

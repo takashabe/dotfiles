@@ -1,7 +1,5 @@
 #!/bin/bash
 
-set -e
-
 ## .rc files for home directory
 ln -s $HOME/dotfiles/.tmux.conf $HOME/
 ln -s $HOME/dotfiles/.gitconfig $HOME/
@@ -23,6 +21,8 @@ ln -s $HOME/dotfiles/.config/nvim $HOME/.config/
 ln -s $HOME/dotfiles/.config/tmux $HOME/.config/
 ln -s $HOME/dotfiles/.config/peco $HOME/.config/
 ln -s $HOME/dotfiles/.config/alacritty $HOME/.config/
+ln -s $HOME/dotfiles/.config/rofi $HOME/.config/
+ln -s $HOME/dotfiles/.config/i3 $HOME/.config/
 
 # vscode
 ln -s $HOME/dotfiles/.config/code/vsicons.settings.json  $HOME/Library/Application\ Support/Code/User/
