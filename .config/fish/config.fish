@@ -182,13 +182,15 @@ end
 # Golang
 set -x GOPATH $HOME/dev
 set -x PATH $GOPATH/bin $GOROOT/bin $PATH
+set -x GO111MODULE on
 ### Install golang tool binaries
 function go_install_binaries
+  set -l GOPLS_VERSION 'v0.3.1'
   set -l GO_BINARIES \
     'github.com/golang/mock/gomock' \
     'github.com/golang/mock/mockgen' \
     'golang.org/x/tools/cmd/goimports' \
-    'golang.org/x/tools/gopls' \
+    'golang.org/x/tools/gopls'@$GOPLS_VERSION \
     'github.com/google/pprof'
   pushd $HOME
   for uri in $GO_BINARIES
