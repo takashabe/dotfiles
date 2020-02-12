@@ -14,20 +14,14 @@ Session.vim
 .netrwhist
 *~
 
-## VsCode
+## vscode
 .vscode/
 
-## direnv
-.envrc
-
-## telepresence
 telepresence.log
 
-## private memo
+.envrc
+
 _memo*
-
-## private temporary
 _tmp
-
-## misc tools
 _tools
+_secret
