@@ -8,6 +8,7 @@ ln -s $HOME/dotfiles/.ideavimrc $HOME/
 ln -s $HOME/dotfiles/.tigrc $HOME/
 ln -s $HOME/dotfiles/.agignore $HOME/
 ln -s $HOME/dotfiles/.Xresources $HOME/
+ln -s $HOME/dotfiles/.screenlayout $HOME/
 
 ## $HOME/bin
 mkdir $HOME/bin

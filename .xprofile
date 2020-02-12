@@ -12,4 +12,6 @@ export SSH_AUTH_SOCK
 
 xrandr &&
 
+source $HOME/.screenlayout/basic.sh
+
 exec i3
