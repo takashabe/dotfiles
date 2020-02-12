@@ -7,6 +7,7 @@ ln -s $HOME/dotfiles/.gitignore $HOME/
 ln -s $HOME/dotfiles/.ideavimrc $HOME/
 ln -s $HOME/dotfiles/.tigrc $HOME/
 ln -s $HOME/dotfiles/.agignore $HOME/
+ln -s $HOME/dotfiles/.Xresources $HOME/
 
 ## $HOME/bin
 mkdir $HOME/bin

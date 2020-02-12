@@ -4,22 +4,22 @@ import re
 from xkeysnail.transform import *
 
 # Keybindings for Firefox/Chrome
-define_keymap(lambda wm_class: wm_class in ("firefox", "google-chrome"), {
+define_keymap(re.compile("Firefox|Google-chrome"), {
   K("Super-w"): K("C-w"),
   K("Super-l"): K("C-l"),
 }, "Firefox and Chrome")
 
 # macOS(Emacs)-like keybindings in non-Emacs applications
-define_keymap(lambda wm_class: wm_class not in ("Emacs", "URxvt", "Alacritty"), {
+define_keymap(lambda wm_class: wm_class not in ("Alacritty"), {
   # Cursor
-  K("C-b"): with_mark(K("left")),
-  K("C-f"): with_mark(K("right")),
-  K("C-p"): with_mark(K("up")),
-  K("C-n"): with_mark(K("down")),
-  K("C-h"): with_mark(K("backspace")),
+  K("C-b"): K("left"),
+  K("C-f"): K("right"),
+  K("C-p"): K("up"),
+  K("C-n"): K("down"),
+  K("C-h"): K("backspace"),
   # Beginning/End of line
-  K("C-a"): with_mark(K("home")),
-  K("C-e"): with_mark(K("end")),
+  K("C-a"): K("home"),
+  K("C-e"): K("end"),
   # Kill line
   K("C-k"): [K("Shift-end"), K("C-x"), set_mark(False)],
 
