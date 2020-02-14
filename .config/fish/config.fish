@@ -27,6 +27,10 @@ set -x PROMPT_ENABLE_K8S_CONTEXT 1
 set -x PROMPT_ENABLE_K8S_NAMESPACE 1
 set -x PROMPT_ENABLE_GCLOUD_PROJECT 1
 
+## fish-peco 
+## https://github.com/takashabe/fish-peco
+set -x PECO_SELECT_CD_IGNORE_CASE '.git|vendor/'
+
 ## vim
 alias vi vim
 set -x EDITOR vim
