@@ -189,7 +189,7 @@ set -x PATH $GOPATH/bin $GOROOT/bin $PATH
 set -x GO111MODULE on
 ### Install golang tool binaries
 function go_install_binaries
-  set -l GOPLS_VERSION 'v0.3.1'
+  set -l GOPLS_VERSION 'v0.3.2'
   set -l GO_BINARIES \
     'github.com/golang/mock/gomock' \
     'github.com/golang/mock/mockgen' \
