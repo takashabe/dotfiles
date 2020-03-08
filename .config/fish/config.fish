@@ -104,12 +104,6 @@ if status --is-interactive; and command -v rbenv > /dev/null
   rbenv init - | source
 end
 
-# java
-# TODO: consider java_home handling
-if status --is-interactive; and command -v java > /dev/null
-  set -x JAVA_HOME (/usr/libexec/java_home)
-end
-
 # Python
 set -x PATH /Users/a14960/Library/Python/3.7/bin $PATH
 alias python python3
