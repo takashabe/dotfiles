@@ -10,6 +10,8 @@ xhost +SI:localuser:xkeysnail
 eval $(/usr/bin/gnome-keyring-daemon --start)
 export SSH_AUTH_SOCK
 
+xset r rate 200 60
+
 xrandr &&
 
 source $HOME/.screenlayout/basic.sh
