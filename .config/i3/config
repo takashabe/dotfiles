@@ -160,7 +160,7 @@ bar {
 }
 
 # Kill window with middle mouse button
-bundsym --release button2 kill
+bindsym --release button2 kill
 
 # Additional tools
 exec --no-startup-id fcitx
