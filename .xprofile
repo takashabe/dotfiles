@@ -16,4 +16,6 @@ xrandr &&
 
 source $HOME/.screenlayout/basic.sh
 
+xrdb -merge $HOME/.Xresources &&
+
 exec i3
