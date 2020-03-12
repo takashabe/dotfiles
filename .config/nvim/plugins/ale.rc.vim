@@ -7,6 +7,10 @@ let g:ale_lint_on_enter = 0
 let g:ale_fix_on_save = 0
 
 " Formatter list
-let g:ale_fixers = {'go': ['goimports']}
+let g:ale_fixers = {
+  \ 'go': ['goimports'],
+  \ 'javascript': ['prettier'],
+  \ 'html': ['prettier'],
+  \ }
 
 nnoremap <silent> <Leader>af :ALEFix<CR>
