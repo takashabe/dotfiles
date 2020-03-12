@@ -5,6 +5,8 @@ let plug_conf = expand('<sfile>:p:h') . '/plugins/'
 " Apppearance
 " ==========================================================
 Plug 'joshdick/onedark.vim'
+Plug 'morhetz/gruvbox'
+
 Plug 'itchyny/lightline.vim'
 execute 'source' plug_conf . 'lightline.rc.vim'
 Plug 'nathanaelkane/vim-indent-guides'

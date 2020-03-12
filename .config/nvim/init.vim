@@ -36,4 +36,7 @@ endif
 
 " apply .vimrc
 execute 'source' fnamemodify(expand('<sfile>'), ':h').'/options.rc.vim'
-colorscheme onedark
+
+" colorscheme
+set background=dark
+colorscheme gruvbox
