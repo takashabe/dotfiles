@@ -104,12 +104,6 @@ if status --is-interactive; and command -v rbenv > /dev/null
   rbenv init - | source
 end
 
-# java
-# TODO: consider java_home handling
-if status --is-interactive; and command -v java > /dev/null
-  set -x JAVA_HOME (/usr/libexec/java_home)
-end
-
 # Python
 set -x PATH /Users/a14960/Library/Python/3.7/bin $PATH
 alias python python3
@@ -195,7 +189,8 @@ function go_install_binaries
     'github.com/golang/mock/mockgen' \
     'golang.org/x/tools/cmd/goimports' \
     'golang.org/x/tools/gopls'@$GOPLS_VERSION \
-    'github.com/google/pprof'
+    'github.com/google/pprof' \
+    'github.com/k0kubun/sqldef/cmd/mysqldef'
   pushd $HOME
   for uri in $GO_BINARIES
     echo "go get -u $uri ..."

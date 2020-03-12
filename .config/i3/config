@@ -159,5 +159,8 @@ bar {
         status_command i3status
 }
 
+# Kill window with middle mouse button
+bindsym --release button2 kill
+
 # Additional tools
 exec --no-startup-id fcitx
