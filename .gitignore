@@ -25,3 +25,6 @@ _memo*
 _tmp
 _tools
 _secret
+
+# license
+tmux-gruvbox-dark.conf
