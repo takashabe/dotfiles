@@ -412,7 +412,7 @@ au BufNewFile,BufRead *.re set noexpandtab tabstop=2 shiftwidth=2
 "-------------------------------------------------------------------------------
 " ターミナル Terminal
 "-------------------------------------------------------------------------------
-set sh=$SHELL
+set sh=fish
 tnoremap <silent> <C-q> <C-\><C-n>
 if has('nvim')
   nnoremap <silent> <Leader>t :split term://fish<CR>:startinsert<CR>
