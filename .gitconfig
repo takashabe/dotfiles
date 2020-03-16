@@ -2,11 +2,7 @@
   email = takashabe.io@gmail.com
   name = takashabe
 [color]
-  status = auto
-  diff = auto
-  branch = auto
-  interactive = auto
-  grep = auto
+  ui = true
 [core]
   quotepath = false
   excludesfile = ~/.gitignore
