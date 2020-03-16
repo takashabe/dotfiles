@@ -16,9 +16,7 @@
   tool = vimdiff
 [ghq]
   root = ~/dev/src
-[credential]
-  helper = osxkeychain
-[http]
-  cookiefile = /Users/a14960/.gitcookies
-[hub]
-  protocol = https
+[includeif "gitdir:/home/**"]
+  path = ~/dotfiles/.gitconfig.credential.linux
+[includeif "gitdir:/Users/**"]
+  path = ~/dotfiles/.gitconfig.credential.darwin
