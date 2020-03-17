@@ -112,13 +112,12 @@ alias pip pip3
 # tmux
 if status --is-interactive
   if test -z $TMUX
-    set -l wname "fish"
     if tmux has-session > /dev/null ^ /dev/null
       # attach tmux session with percol like tool
       set -l sid (tmux list-sessions | grep '' | peco | cut -d: -f1)
       command tmux -u attach-session -t $sid
     else
-      command tmux -u new-session -n $wname
+      command tmux -u new-session
     end
   end
 end
