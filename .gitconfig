@@ -12,7 +12,5 @@
   tool = vimdiff
 [ghq]
   root = ~/dev/src
-[includeif "gitdir:/home/**"]
-  path = ~/dotfiles/.gitconfig.credential.linux
-[includeif "gitdir:/Users/**"]
-  path = ~/dotfiles/.gitconfig.credential.darwin
+[include]
+  path = ~/.gitconfig.credential
