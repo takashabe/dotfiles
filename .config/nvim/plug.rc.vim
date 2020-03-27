@@ -59,8 +59,8 @@ execute 'source' plug_conf . 'vim-lsp.rc.vim'
 " ==========================================================
 " Go
 " ==========================================================
-Plug 'arp242/gopher.vim'
-execute 'source' plug_conf . 'gopher.rc.vim'
+Plug 'mattn/vim-goimports'
+Plug 'mattn/vim-goaddtags'
 Plug 'buoto/gotests-vim'
 execute 'source' plug_conf . 'gotests-vim.rc.vim'
 
@@ -68,6 +68,8 @@ execute 'source' plug_conf . 'gotests-vim.rc.vim'
 " Other language/file syntax
 " ==========================================================
 Plug 'tokorom/vim-review', {'for': 'review'}
+
+" TODO: experimental
 Plug 'sheerun/vim-polyglot'
 " following are included in the vim-polyglot:
 " Plug 'cespare/vim-toml', {'for': 'toml'}
