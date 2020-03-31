@@ -189,8 +189,9 @@ function go_install_binaries
     'golang.org/x/tools/cmd/goimports' \
     'golang.org/x/tools/gopls'@$GOPLS_VERSION \
     'github.com/google/pprof' \
-    'github.com/cweill/gotests' \
-    'github.com/k0kubun/sqldef/cmd/mysqldef'
+    'github.com/cweill/gotests/...' \
+    'github.com/k0kubun/sqldef/cmd/mysqldef' \
+    'github.com/haya14busa/gtrans'
   pushd $HOME
   for uri in $GO_BINARIES
     echo "go get -u $uri ..."
