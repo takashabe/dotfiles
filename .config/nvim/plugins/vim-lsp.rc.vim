@@ -39,3 +39,30 @@ if executable('gopls')
     au FileType go nnoremap <buffer><silent> ga :<C-u>LspDocumentDiagnostics<CR>
   augroup end
 endif
+
+if executable('pyls')
+  augroup LspPython
+    au!
+    au User lsp_setup call lsp#register_server({
+        \ 'name': 'pyls',
+        \ 'cmd': {server_info->['pyls']},
+        \ 'whitelist': ['python'],
+        \ })
+    " omnifunc
+    autocmd FileType go setlocal omnifunc=lsp#complete
+
+    " autocmd
+    autocmd FileType go autocmd BufWritePre <buffer> silent LspDocumentFormatSync
+
+    " map
+    au FileType python nnoremap <buffer><silent> gd :<C-u>LspDefinition<CR>
+    au FileType python nnoremap <buffer><silent> gD :<C-u>LspReferences<CR>
+    au FileType python nnoremap <buffer><silent> gs :<C-u>LspDocumentSymbol<CR>
+    au FileType python nnoremap <buffer><silent> gS :<C-u>LspWorkspaceSymbol<CR>
+    au FileType python nnoremap <buffer><silent> gf :<C-u>LspDocumentFormatSync<CR>
+    au FileType python nnoremap <buffer><silent> gh :<C-u>LspHover<CR>
+    au FileType python nnoremap <buffer><silent> gi :<C-u>LspImplementation<CR>
+    au FileType python nnoremap <buffer><silent> gr :<C-u>LspRename<CR>
+    au FileType python nnoremap <buffer><silent> ga :<C-u>LspDocumentDiagnostics<CR>
+  augroup end
+endif
