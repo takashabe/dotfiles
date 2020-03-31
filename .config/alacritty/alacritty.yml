@@ -6,8 +6,6 @@ window:
     x: 4
     y: 2
 
-tabspaces: 2
-
 font:
   normal:
     family: SF Mono Square
