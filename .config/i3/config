@@ -191,4 +191,4 @@ bar {
 exec --no-startup-id fcitx
 
 # title bar size
-for_window [class=".*"] border pixel 2
+for_window [class=".*"] border pixel 1
