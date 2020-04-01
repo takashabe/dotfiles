@@ -191,7 +191,9 @@ function go_install_binaries
     'github.com/google/pprof' \
     'github.com/cweill/gotests/...' \
     'github.com/k0kubun/sqldef/cmd/mysqldef' \
-    'github.com/haya14busa/gtrans'
+    'github.com/haya14busa/gtrans'  \
+    'github.com/rakyll/gotest' \
+    'github.com/fatih/gomodifytags'
   pushd $HOME
   for uri in $GO_BINARIES
     echo "go get -u $uri ..."

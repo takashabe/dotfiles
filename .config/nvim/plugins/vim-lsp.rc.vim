@@ -25,7 +25,7 @@ if executable('gopls')
     autocmd FileType go setlocal omnifunc=lsp#complete
 
     " autocmd
-    autocmd FileType go autocmd BufWritePre <buffer> silent LspDocumentFormatSync
+    " autocmd FileType go autocmd BufWritePre <buffer> silent LspDocumentFormatSync
 
     " map
     au FileType go nnoremap <buffer><silent> gd :<C-u>LspDefinition<CR>
