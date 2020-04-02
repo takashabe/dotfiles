@@ -68,18 +68,8 @@ execute 'source' plug_conf . 'gotests-vim.rc.vim'
 " Other language/file syntax
 " ==========================================================
 Plug 'tokorom/vim-review', {'for': 'review'}
-
-" TODO: experimental
 Plug 'sheerun/vim-polyglot'
-" following are included in the vim-polyglot:
-" Plug 'cespare/vim-toml', {'for': 'toml'}
-" Plug 'keith/tmux.vim', {'for': 'tmux'}
-" Plug 'Glench/Vim-Jinja2-Syntax', {'for': 'jinja'}
-" Plug 'elzr/vim-json', {'for': 'json'}
-" Plug 'hail2u/vim-css3-syntax', {'for': 'css'}
-" Plug 'dag/vim-fish', {'for': 'fish'}
-" Plug 'rhysd/vim-gfm-syntax', {'for': 'markdown'}
-" Plug 'stephpy/vim-yaml', {'for': 'yaml'}
+execute 'source' plug_conf . 'vim-polyglot.rc.vim'
 
 
 " ==========================================================
