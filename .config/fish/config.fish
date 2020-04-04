@@ -131,6 +131,7 @@ function reload_tmux
 end
 
 ### gcloud
+set -x GOOGLE_APPLICATION_CREDENTIALS "$HOME/.config/gcloud/application_default_credentials.json"
 ## load completion
 if status --is-interactive
   if test (uname) = "Linux"
