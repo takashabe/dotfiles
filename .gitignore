@@ -28,3 +28,5 @@ _secret
 
 # license
 tmux-gruvbox-dark.conf
+
+venv/

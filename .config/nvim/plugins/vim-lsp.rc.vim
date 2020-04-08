@@ -47,7 +47,16 @@ if executable('pyls')
         \ 'name': 'pyls',
         \ 'cmd': {server_info->['pyls']},
         \ 'whitelist': ['python'],
-        \ })
+        \ 'workspace_config': {
+        \   'pyls':{
+        \     'plugins': {
+        \       'jedi_definition': {
+        \         'follow_imports': v:true,
+        \         'follow_builtin_imports': v:true
+        \       }
+        \     }
+        \   }
+        \ }})
     " omnifunc
     autocmd FileType go setlocal omnifunc=lsp#complete
 
