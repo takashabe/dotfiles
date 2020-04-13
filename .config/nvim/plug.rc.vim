@@ -68,9 +68,8 @@ execute 'source' plug_conf . 'gotests-vim.rc.vim'
 " Other language/file syntax
 " ==========================================================
 Plug 'tokorom/vim-review', {'for': 'review'}
-Plug 'sheerun/vim-polyglot'
-execute 'source' plug_conf . 'vim-polyglot.rc.vim'
-
+Plug 'plasticboy/vim-markdown', {'for': 'markdown'}
+execute 'source' plug_conf . 'vim-markdown.rc.vim'
 
 " ==========================================================
 " VCS
