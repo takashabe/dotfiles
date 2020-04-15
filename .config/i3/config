@@ -192,4 +192,4 @@ exec --no-startup-id fcitx
 
 # title bar size
 # ref. https://i3wm.org/docs/userguide.html 6.16 Changing border style
-for_window [class=".*"] border pixel 1
+for_window [class=".*"] border normal 1
