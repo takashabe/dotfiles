@@ -3,12 +3,6 @@
 import re
 from xkeysnail.transform import *
 
-# Keybindings for Firefox/Chrome
-define_keymap(re.compile("Firefox|Google-chrome"), {
-  K("Super-w"): K("C-w"),
-  K("Super-l"): K("C-l"),
-}, "Firefox and Chrome")
-
 # macOS(Emacs)-like keybindings in non-Emacs applications
 define_keymap(lambda wm_class: wm_class not in ("Alacritty"), {
   # Cursor
