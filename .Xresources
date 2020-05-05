@@ -1,35 +1,34 @@
 Xcursor.size: 12
 Xft.antialias: true
 
-! === gruvbox color scheme ===
-! hard contrast: *background: #1d2021
-*background: #282828
-! soft contrast: *background: #32302f
-*foreground: #ebdbb2
-! Black + DarkGrey
-*color0:  #282828
-*color8:  #928374
-! DarkRed + Red
-*color1:  #cc241d
-*color9:  #fb4934
-! DarkGreen + Green
-*color2:  #98971a
-*color10: #b8bb26
-! DarkYellow + Yellow
-*color3:  #d79921
-*color11: #fabd2f
-! DarkBlue + Blue
-*color4:  #458588
-*color12: #83a598
-! DarkMagenta + Magenta
-*color5:  #b16286
-*color13: #d3869b
-! DarkCyan + Cyan
-*color6:  #689d6a
-*color14: #8ec07c
-! LightGrey + White
-*color7:  #a89984
-*color15: #ebdbb2
+! === onedark color scheme ===
+! special
+*.foreground:   #ABB2BF
+*.background:   #282C34
+*.cursorColor:  #ABB2BF
+! black
+*.color0:       #5C6370
+*.color8:       #4B5263
+! red
+*.color1:       #E06C75
+*.color9:       #BE5046
+*.color2:       #98C379
+*.color10:      #98C379
+! yellow
+*.color3:       #E5C07B
+*.color11:      #D19A66
+! blue
+*.color4:       #61AFEF
+*.color12:      #61AFEF
+! magenta
+*.color5:       #C678DD
+*.color13:      #C678DD
+! cyan
+*.color6:       #56B6C2
+*.color14:      #56B6C2
+! white
+*.color7:       #ABB2BF
+*.color15:      #3E4452
 
 ! === urxvt ===
 ! fonts
