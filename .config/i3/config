@@ -49,10 +49,10 @@ set $transparent #00000000
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec alacritty
+bindsym $mod+Return exec urxvt -e fish
 
 # kill focused window
-bindsym $mod+Shift+q kill  
+bindsym $mod+Shift+q kill
 bindsym --release button2 kill
 
 # dmenu alternative

@@ -39,4 +39,4 @@ execute 'source' fnamemodify(expand('<sfile>'), ':h').'/options.rc.vim'
 
 " colorscheme
 set background=dark
-colorscheme onedark
+colorscheme gruvbox

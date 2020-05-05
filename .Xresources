@@ -1,7 +1,10 @@
 Xcursor.size: 12
+Xft.antialias: true
 
 ! === gruvbox color scheme ===
-*background: #1d2021
+! hard contrast: *background: #1d2021
+*background: #282828
+! soft contrast: *background: #32302f
 *foreground: #ebdbb2
 ! Black + DarkGrey
 *color0:  #282828
@@ -27,3 +30,19 @@ Xcursor.size: 12
 ! LightGrey + White
 *color7:  #a89984
 *color15: #ebdbb2
+
+! === urxvt ===
+! fonts
+urxvt.font:            xft:SF Mono Square:size=10
+urxvt.letterSpace:     -1
+! input method
+urxvt.perl-ext-common: xim-onthespot
+urxvt.inputMethod:     fcitx
+urxvt.preeditType:     OnTheSpot
+! key
+urxvt.iso14755:        false
+urxvt.iso14755_52:     false
+urxvt.pointerBlank:    true
+! appearance
+urxvt.visualBell:      true
+urxvt.scrollBar:       false
