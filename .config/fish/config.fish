@@ -273,3 +273,7 @@ if status --is-interactive; and test (uname) = "Linux"
   xset m 1/2 4
   xset r rate 200 60
 end
+
+## Login message
+# emtpy
+set fish_greeting
