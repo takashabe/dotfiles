@@ -187,7 +187,7 @@ function go_install_binaries
     'github.com/golang/mock/gomock' \
     'github.com/golang/mock/mockgen' \
     'golang.org/x/tools/cmd/goimports' \
-    'golang.org/x/tools/gopls' \
+    'golang.org/x/tools/gopls@master' \
     'github.com/google/pprof' \
     'github.com/cweill/gotests/...' \
     'github.com/k0kubun/sqldef/cmd/mysqldef' \
