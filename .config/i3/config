@@ -176,6 +176,7 @@ bindsym $mod+r mode "resize"
 
 # i3 blocks
 bar {
+  output primary
   status_command i3blocks
   font pango:SF Mono Square 8
   mode dock
