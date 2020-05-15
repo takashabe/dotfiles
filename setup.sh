@@ -25,6 +25,7 @@ ln -s $HOME/dotfiles/.config/peco $HOME/.config/
 ln -s $HOME/dotfiles/.config/alacritty $HOME/.config/
 ln -s $HOME/dotfiles/.config/rofi $HOME/.config/
 ln -s $HOME/dotfiles/.config/i3 $HOME/.config/
+ln -s $HOME/dotfiles/.config/i3blocks $HOME/.config/
 
 # vscode
 ln -s $HOME/dotfiles/.config/code/vsicons.settings.json  $HOME/Library/Application\ Support/Code/User/
