@@ -194,23 +194,23 @@ bar {
   }
 }
 
-# i3 blocks
-# bar {
-#   output primary
-#   status_command i3blocks
-#   font pango:SF Mono Square 8
-#   mode dock
-#   position top
-#   separator_symbol " │ "
-#   workspace_buttons yes
-#   strip_workspace_numbers yes
-#   binding_mode_indicator yes
-#   tray_padding 0
-# }
+# border colors
+# class                 border  backgr. text    indicator child_border
+client.focused          #32cd32 #32cd32 #ffffff #32cd32   #32cd32
+client.focused_inactive #333333 #333333 #ffffff #333333   #333333
+client.unfocused        #333333 #333333 #888888 #333333   #333333
+client.urgent           #333333 #333333 #ffffff #333333   #333333
+client.placeholder      #333333 #333333 #ffffff #333333   #333333
+client.background       #ffffff
 
+# i3 gaps and border
+# https://github.com/Airblader/i3
+for_window [class=".*"] border pixel 1
+gaps inner 5
+gaps outer 2
+
+# Autostart
 # fcitx
 exec --no-startup-id fcitx
-
-# title bar size
-# ref. https://i3wm.org/docs/userguide.html 6.16 Changing border style
-for_window [class=".*"] border normal 1
+# feh(background image)
+exec --no-startup-id feh --bg-scale $HOME/Pictures/wallpapers/01.jpg
