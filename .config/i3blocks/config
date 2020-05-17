@@ -7,7 +7,7 @@ CRIT_PERCENT=80
 DECIMALS=2
 
 [memory]
-label=MEM:
+label=MEM 
 command=$HOME/dev/src/github.com/takashabe/i3blocks-contrib/memory/memory
 color=#8fa1b3
 interval=10
