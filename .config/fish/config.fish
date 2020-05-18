@@ -267,6 +267,11 @@ function reload_network
   sudo ifconfig en0 up
 end
 
+## osx system functions
+function msleep
+  osascript -e 'tell application "Finder" to sleep'
+end
+
 ## Xorg
 if status --is-interactive; and test (uname) = "Linux"
   xset m 1/2 4
