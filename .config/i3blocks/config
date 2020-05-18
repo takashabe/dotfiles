@@ -1,0 +1,19 @@
+[cpu_usage]
+command=$HOME/dev/src/github.com/takashabe/i3blocks-contrib/cpu_usage/cpu_usage
+interval=10
+LABEL=CPU 
+WARN_PERCENT=50
+CRIT_PERCENT=80
+DECIMALS=2
+
+[memory]
+label=MEM 
+command=$HOME/dev/src/github.com/takashabe/i3blocks-contrib/memory/memory
+color=#8fa1b3
+interval=10
+
+[date]
+label=
+command=date +'%m/%d(%a) %H:%M'
+color=#8fa1b3
+interval=1

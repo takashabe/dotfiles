@@ -183,12 +183,11 @@ set -x PATH $GOPATH/bin $GOROOT/bin $PATH
 set -x GO111MODULE on
 ### Install golang tool binaries
 function go_install_binaries
-  set -l GOPLS_VERSION 'v0.3.4'
   set -l GO_BINARIES \
     'github.com/golang/mock/gomock' \
     'github.com/golang/mock/mockgen' \
     'golang.org/x/tools/cmd/goimports' \
-    'golang.org/x/tools/gopls'@$GOPLS_VERSION \
+    'golang.org/x/tools/gopls@master' \
     'github.com/google/pprof' \
     'github.com/cweill/gotests/...' \
     'github.com/k0kubun/sqldef/cmd/mysqldef' \
@@ -224,6 +223,8 @@ function fish_user_key_bindings
   bind \cu peco_select_z
   bind \co peco_select_file
   bind \cg peco_select_cd
+
+  bind "[1;2F" kill-line
 end
 
 # direnv
@@ -271,3 +272,7 @@ if status --is-interactive; and test (uname) = "Linux"
   xset m 1/2 4
   xset r rate 200 60
 end
+
+## Login message
+# emtpy
+set fish_greeting

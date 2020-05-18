@@ -25,26 +25,6 @@ bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 
-# colors from .Xresources
-set_from_resource $darkred     color1  #000000
-set_from_resource $red         color9  #000000
-set_from_resource $darkgreen   color2  #000000
-set_from_resource $green       color10 #000000
-set_from_resource $darkyellow  color3  #000000
-set_from_resource $yellow      color11 #000000
-set_from_resource $darkblue    color4  #000000
-set_from_resource $blue        color12 #000000
-set_from_resource $darkmagenta color5  #000000
-set_from_resource $magenta     color13 #000000
-set_from_resource $darkcyan    color6  #000000
-set_from_resource $cyan        color14 #000000
-set_from_resource $darkwhite   color7  #000000
-set_from_resource $white       color15 #000000
-# Use custom colors for black
-set $black       #282828
-set $darkblack   #1d2021
-set $transparent #00000000
-
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
@@ -52,7 +32,7 @@ floating_modifier $mod
 bindsym $mod+Return exec alacritty
 
 # kill focused window
-bindsym $mod+Shift+q kill  
+bindsym $mod+Shift+q kill
 bindsym --release button2 kill
 
 # dmenu alternative
@@ -174,22 +154,63 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-# i3 blocks
+# colors
+# onedark like
+set $background #2b303b
+set $foreground #c0c5ce
+set $secondary #3f4751
+set $black #2b303b
+set $red #bf616a
+set $green #a3be8c
+set $yellow #ebcb8b
+set $blue #8fa1b3
+set $magenta #b48ead
+set $cyan #96b5b4
+set $white #c0c5ce
+
 bar {
   status_command i3blocks
-  font pango:SF Mono Square 8
+  font pango:SF Mono Square Regular 8
   mode dock
   position top
-  separator_symbol " │ "
+  separator_symbol "│"
   workspace_buttons yes
   strip_workspace_numbers yes
   binding_mode_indicator yes
-  tray_padding 0
+  tray_padding 1
+  tray_output primary
+  colors {
+    background $background
+    focused_background $background
+    statusline $blue
+    focused_statusline $blue
+    separator $secondary
+    focused_separator $secondary
+    focused_workspace  $blue $blue $background
+    active_workspace $background $background $foreground
+    inactive_workspace $background $background $foreground
+    urgent_workspace   $red $red $background
+    binding_mode       $blue $blue $background
+  }
 }
 
+# border colors
+# class                 border  backgr. text    indicator child_border
+client.focused          #32cd32 #32cd32 #ffffff #32cd32   #32cd32
+client.focused_inactive #333333 #333333 #ffffff #333333   #333333
+client.unfocused        #333333 #333333 #888888 #333333   #333333
+client.urgent           #333333 #333333 #ffffff #333333   #333333
+client.placeholder      #333333 #333333 #ffffff #333333   #333333
+client.background       #ffffff
+
+# i3 gaps and border
+# https://github.com/Airblader/i3
+for_window [class=".*"] border pixel 1
+gaps inner 5
+gaps outer 2
+
+# Autostart
 # fcitx
 exec --no-startup-id fcitx
-
-# title bar size
-# ref. https://i3wm.org/docs/userguide.html 6.16 Changing border style
-for_window [class=".*"] border normal 1
+# feh(background image)
+exec --no-startup-id feh --bg-scale $HOME/Pictures/wallpapers/01.jpg
