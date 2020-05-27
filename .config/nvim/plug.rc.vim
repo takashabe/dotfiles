@@ -55,6 +55,7 @@ Plug 'prabirshrestha/asyncomplete-lsp.vim'
 " Plug 'prabirshrestha/vim-lsp'
 Plug 'takashabe/vim-lsp' " temporary fork
 execute 'source' plug_conf . 'vim-lsp.rc.vim'
+Plug 'mattn/vim-lsp-settings'
 
 " ==========================================================
 " Go
