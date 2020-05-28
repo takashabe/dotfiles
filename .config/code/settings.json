@@ -115,8 +115,10 @@
   "workbench.colorTheme": "One Dark Pro",
   "window.zoomLevel": 0,
   "vsicons.dontShowNewVersionMessage": true,
-  "editor.fontFamily": "'SF Mono 1x2','SF Mono Square'",
-  "markdown.preview.fontSize": 12,
-  "vim.easymotionMarkerFontSize": "12",
-  "editor.fontSize": 18
+  "editor.fontFamily": "\"SF Mono 1x2\", \"SF Mono Square\"",
+  "markdown.preview.fontSize": 18,
+  "vim.easymotionMarkerFontSize": "16",
+  "editor.fontSize": 18,
+  "debug.console.fontSize": 18,
+  "vim.easymotionMarkerFontFamily": "'SF Mono Square'"
 }
