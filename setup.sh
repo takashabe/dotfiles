@@ -28,14 +28,20 @@ ln -s $HOME/dotfiles/.config/i3 $HOME/.config/
 ln -s $HOME/dotfiles/.config/i3blocks $HOME/.config/
 
 # vscode
-ln -s $HOME/dotfiles/.config/code/vsicons.settings.json  $HOME/Library/Application\ Support/Code/User/
-ln -s $HOME/dotfiles/.config/code/settings.json  $HOME/Library/Application\ Support/Code/User/
-ln -s $HOME/dotfiles/.config/code/keybindings.json $HOME/Library/Application\ Support/Code/User/
+if [ $(uname) = "Linux" ]; then
+  echo "Yes Linux!"
+  CODE_PATH=$HOME/.config/Code/User/
+else
+  echo "No Linux..."
+  CODE_PATH=$HOME/Library/Application\ Support/Code/User/
+fi
+ln -s $HOME/dotfiles/.config/code/vsicons.settings.json $CODE_PATH
+ln -s $HOME/dotfiles/.config/code/settings.json $CODE_PATH
+ln -s $HOME/dotfiles/.config/code/keybindings.json $CODE_PATH
 
-# TODO homebrew, ghq関連の追加
-# TODO linux/macos双方で動くようにしたい
-
-# Linux only
+# keyremap for linux
 if [ uname = "Linux" ]; then
   ln -s $HOME/dotfiles/.config/xremap/  $HOME/.config/xremap/
 fi
+
+# TODO homebrew, homebrew-cask, yay
