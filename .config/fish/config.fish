@@ -73,7 +73,7 @@ function gcm
     echo 'require: branch name'
     return 128
   end
-  git checkout -b $argv[1] origin/master
+  git switch -c $argv[1] origin/master
 end
 
 # gnu tools
