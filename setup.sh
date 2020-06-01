@@ -4,15 +4,13 @@
 ln -s $HOME/dotfiles/.tmux.conf $HOME/
 ln -s $HOME/dotfiles/.gitconfig $HOME/
 ln -s $HOME/dotfiles/.gitignore $HOME/
-ln -s $HOME/dotfiles/.ideavimrc $HOME/
 ln -s $HOME/dotfiles/.tigrc $HOME/
-ln -s $HOME/dotfiles/.agignore $HOME/
 ln -s $HOME/dotfiles/.Xresources $HOME/
 ln -s $HOME/dotfiles/.screenlayout $HOME/
+ln -s $HOME/dotfiles/.terraformrc $HOME/
 
 ## $HOME/bin
 mkdir $HOME/bin
-cp $HOME/dotfiles/coloredlogcat.py $HOME/bin
 cp $HOME/dotfiles/tmuxx $HOME/bin
 cp $HOME/dotfiles/diff-highlight $HOME/bin
 
