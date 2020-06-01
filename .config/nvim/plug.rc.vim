@@ -71,6 +71,7 @@ execute 'source' plug_conf . 'gotests-vim.rc.vim'
 Plug 'tokorom/vim-review', {'for': 'review'}
 Plug 'rhysd/vim-gfm-syntax', {'for': 'markdown'}
 Plug 'iamcco/markdown-preview.nvim', {'for': 'markdown', 'do': 'cd app & yarn install'}
+Plug 'hashivim/vim-terraform'
 
 " ==========================================================
 " VCS
