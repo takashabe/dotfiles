@@ -278,6 +278,9 @@ if status --is-interactive; and test (uname) = "Linux"
   xset r rate 200 60
 end
 
+## Terraform
+alias tf 'terraform'
+
 ## Login message
 # emtpy
 set fish_greeting
