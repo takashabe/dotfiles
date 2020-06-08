@@ -14,3 +14,5 @@
   root = ~/dev/src
 [include]
   path = ~/.gitconfig.credential
+[pull]
+  rebase = true
