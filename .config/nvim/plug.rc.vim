@@ -52,8 +52,7 @@ execute 'source' plug_conf . 'fzf.rc.vim'
 Plug 'prabirshrestha/async.vim'
 Plug 'prabirshrestha/asyncomplete.vim'
 Plug 'prabirshrestha/asyncomplete-lsp.vim'
-" Plug 'prabirshrestha/vim-lsp'
-Plug 'takashabe/vim-lsp' " temporary fork
+Plug 'prabirshrestha/vim-lsp'
 execute 'source' plug_conf . 'vim-lsp.rc.vim'
 Plug 'mattn/vim-lsp-settings'
 
@@ -73,6 +72,7 @@ Plug 'rhysd/vim-gfm-syntax', {'for': 'markdown'}
 Plug 'iamcco/markdown-preview.nvim', {'for': 'markdown', 'do': 'cd app & yarn install'}
 Plug 'hashivim/vim-terraform', {'for': ['tf', 'tfvars']}
 execute 'source' plug_conf . 'vim-terraform.rc.vim'
+Plug 'bazelbuild/vim-ft-bzl'
 
 " ==========================================================
 " VCS
