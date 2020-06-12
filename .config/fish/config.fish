@@ -187,7 +187,6 @@ function go_install_binaries
     'github.com/golang/mock/gomock' \
     'github.com/golang/mock/mockgen' \
     'golang.org/x/tools/cmd/goimports' \
-    'golang.org/x/tools/gopls@master' \
     'github.com/google/pprof' \
     'github.com/cweill/gotests/...' \
     'github.com/k0kubun/sqldef/cmd/mysqldef' \
@@ -280,6 +279,11 @@ end
 
 ## Terraform
 alias tf 'terraform'
+
+## haya14busa/gtrans
+# set -x GOOGLE_TRANSLATE_API_KEY "set local"
+set -x GOOGLE_TRANSLATE_LANG ja
+set -x GOOGLE_TRANSLATE_SECONDLANG en
 
 ## Login message
 # emtpy
