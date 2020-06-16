@@ -8,6 +8,8 @@ ln -s $HOME/dotfiles/.tigrc $HOME/
 ln -s $HOME/dotfiles/.Xresources $HOME/
 ln -s $HOME/dotfiles/.screenlayout $HOME/
 ln -s $HOME/dotfiles/.terraformrc $HOME/
+ln -s $HOME/dotfiles/.yabairc $HOME/
+ln -s $HOME/dotfiles/.skhdrc $HOME/
 
 ## $HOME/bin
 mkdir $HOME/bin
