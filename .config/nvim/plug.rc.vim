@@ -73,6 +73,7 @@ Plug 'iamcco/markdown-preview.nvim', {'for': 'markdown', 'do': 'cd app & yarn in
 Plug 'hashivim/vim-terraform', {'for': ['tf', 'tfvars']}
 execute 'source' plug_conf . 'vim-terraform.rc.vim'
 Plug 'bazelbuild/vim-ft-bzl'
+Plug 'cespare/vim-toml'
 
 " ==========================================================
 " VCS
