@@ -144,20 +144,7 @@ end
 
 ## switch gcloud project
 function switch_gcloud
-  if test (count $argv) -lt 1
-    echo 'usage: switch_gcloud <private> or <work>'
-    return 128
-  end
-  set -l env $argv[1]
-  if test $env = "private"
-    echo "switch to private"
-    gcloud config set project (echo $GCLOUD_PRIVATE_PROJECT)
-    gcloud config set account (echo $GCLOUD_PRIVATE_ACCOUNT)
-  else if test "$env" = "work"
-    echo "switch to work"
-    gcloud config set project (echo $GCLOUD_WORK_PROJECT)
-    gcloud config set account (echo $GCLOUD_WORK_ACCOUNT)
-  end
+  fzf_gcloud_configurations
 end
 
 ### docker, k8s
@@ -217,7 +204,7 @@ end
 
 ### Key binding
 function fish_user_key_bindings
-  bind \c] peco_select_ghq
+  bind \c] fzf_ghq
   bind \cr share_history_for_peco
   bind \cu peco_select_z
   bind \co peco_select_file
