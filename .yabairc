@@ -9,7 +9,9 @@ yabai -m config left_padding   10
 yabai -m config right_padding  10
 yabai -m config window_gap     10
 
-yabai -m config auto_balance on
+yabai -m config auto_balance off
 
 yabai -m config window_shadow off
 yabai -m config window_opacity off
+
+yabai -m rule --add app="^System Preferences$" manage=off
