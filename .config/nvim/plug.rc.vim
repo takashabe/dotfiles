@@ -24,6 +24,8 @@ Plug 'tpope/vim-capslock'
 execute 'source' plug_conf . 'vim-capslock.rc.vim'
 Plug 'fuenor/im_control.vim'
 execute 'source' plug_conf . 'im_control.rc.vim'
+Plug 'liuchengxu/vista.vim'
+execute 'source' plug_conf . 'vista.rc.vim'
 
 " ==========================================================
 " Text Object
