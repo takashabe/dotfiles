@@ -2,7 +2,7 @@ let g:lightline = {
       \ 'colorscheme': 'onedark',
       \ 'mode_map': {'c': 'NORMAL'},
       \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename' ] ]
+      \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename', 'modified', 'method'] ]
       \ },
       \ 'component_function': {
       \   'modified': 'LightlineModified',
