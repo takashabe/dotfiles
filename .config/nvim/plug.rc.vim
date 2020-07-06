@@ -76,6 +76,7 @@ Plug 'hashivim/vim-terraform', {'for': ['tf', 'tfvars']}
 execute 'source' plug_conf . 'vim-terraform.rc.vim'
 Plug 'bazelbuild/vim-ft-bzl'
 Plug 'cespare/vim-toml'
+Plug 'dag/vim-fish'
 
 " ==========================================================
 " VCS
