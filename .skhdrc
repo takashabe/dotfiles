@@ -11,6 +11,9 @@ shift + cmd - j : yabai -m window --warp south
 shift + cmd - k : yabai -m window --warp north
 shift + cmd - l : yabai -m window --warp east
 
+# rotate window
+shift + cmd - r : yabai -m space --rotate 90
+
 # toggle window fullscreen
 cmd + shift - w : yabai -m window --toggle zoom-fullscreen
 
