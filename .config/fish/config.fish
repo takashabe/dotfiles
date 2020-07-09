@@ -271,6 +271,10 @@ alias tf 'terraform'
 set -x GOOGLE_TRANSLATE_LANG ja
 set -x GOOGLE_TRANSLATE_SECONDLANG en
 
+## terraform
+set -x TF_CLI_ARGS_plan "--parallelism=64"
+set -x TF_CLI_ARGS_apply "--parallelism=64"
+
 ## Login message
 # emtpy
 set fish_greeting
