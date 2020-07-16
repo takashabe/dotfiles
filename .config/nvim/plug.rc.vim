@@ -6,7 +6,7 @@ let plug_conf = expand('<sfile>:p:h') . '/plugins/'
 " ==========================================================
 Plug 'joshdick/onedark.vim'
 Plug 'morhetz/gruvbox'
-
+Plug 'ryanoasis/vim-devicons'
 Plug 'itchyny/lightline.vim'
 execute 'source' plug_conf . 'lightline.rc.vim'
 Plug 'nathanaelkane/vim-indent-guides'
@@ -80,9 +80,7 @@ Plug 'dag/vim-fish'
 " ==========================================================
 " VCS
 " ==========================================================
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-rhubarb'
-Plug 'airblade/vim-gitgutter'
+Plug 'lambdalisue/gina.vim'
 
 " ==========================================================
 " Others
