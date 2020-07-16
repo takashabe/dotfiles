@@ -54,8 +54,6 @@ let g:lightline = {
       \   'gina_traffic': 'g:lightline.my.gina_traffic',
       \   'gina_status':  'g:lightline.my.gina_status',
       \ },
-      \ 'separator': {'left': "\ue0b0", 'right': "\ue0b2"},
-      \ 'subseparator': {'left': "\ue0b1", 'right': "\ue0b3"},
       \}
 
 " Note:
@@ -90,11 +88,11 @@ let g:lightline.my = {}
   endfunction
 
   function! g:lightline.my.fileformat() abort
-    return &filetype !~# 'vimfiler' ? &fileformat . ' ' . WebDevIconsGetFileFormatSymbol() : ''
+    return &filetype !~# 'vimfiler' ? &fileformat: ''
   endfunction
 
   function! g:lightline.my.filetype() abort
-    return &filetype !~# 'vimfiler' ? (strlen(&filetype) ? &filetype . ' ' . WebDevIconsGetFileTypeSymbol() : 'no ft') : ''
+    return &filetype !~# 'vimfiler' ? (strlen(&filetype) ? &filetype: 'no ft') : ''
   endfunction
 
   function! g:lightline.my.fileencoding() abort
@@ -102,7 +100,7 @@ let g:lightline.my = {}
   endfunction
 
   function! g:lightline.my.lineinfo() abort
-    return &filetype !~# 'vimfiler' && winwidth(0) >= 70 ? printf("\ue0a1% 3d / %d \ue0a3% 3d", line('.'), line('$'), col('.')) : ''
+    return &filetype !~# 'vimfiler' && winwidth(0) >= 70 ? printf("L:%3d/%3d C:%d", line('.'), line('$'), col('.')) : ''
   endfunction
 
   function! g:lightline.my.gina_branch() abort
