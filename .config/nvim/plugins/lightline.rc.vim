@@ -21,7 +21,7 @@ let g:lightline = {
       \ 'active': {
       \   'left': [
       \     ['mode', 'paste'],
-      \     ['filename'],
+      \     ['filename', 'gina_branch'],
       \   ],
       \   'right': [
       \     ['fileformat', 'fileencoding', 'filetype'],
@@ -33,18 +33,8 @@ let g:lightline = {
       \     ['filename'],
       \   ],
       \ },
-      \ 'tabline': {
-      \   'left': [
-      \     ['cwd'],
-      \     ['tabs'],
-      \   ],
-      \   'right': [
-      \     ['gina_branch', 'gina_traffic', 'gina_status'],
-      \   ]
-      \ },
       \ 'component_function': {
       \   'mode':         'g:lightline.my.mode',
-      \   'cwd':          'g:lightline.my.cwd',
       \   'filename':     'g:lightline.my.filename',
       \   'fileformat':   'g:lightline.my.fileformat',
       \   'fileencoding': 'g:lightline.my.fileencoding',
@@ -65,16 +55,12 @@ let g:lightline.my = {}
     return &filetype !~# 'vimfiler' ? lightline#mode() : ''
   endfunction
 
-  function! g:lightline.my.cwd() abort
-    return fnamemodify(getcwd(), ':~')
-  endfunction
-
   function! g:lightline.my.readonly() abort
-    return empty(&buftype) && &readonly ? "\ue0a2" : ''
+    return empty(&buftype) && &readonly ? "RO" : ''
   endfunction
 
   function! g:lightline.my.modified() abort
-    return empty(&buftype) && &modified ? "\uf41e" : ''
+    return empty(&buftype) && &modified ? "+" : ''
   endfunction
 
   function! g:lightline.my.filename() abort
@@ -104,13 +90,5 @@ let g:lightline.my = {}
   endfunction
 
   function! g:lightline.my.gina_branch() abort
-    return gina#component#repo#preset('fancy')
-  endfunction
-
-  function! g:lightline.my.gina_traffic() abort
-    return gina#component#status#preset('fancy')
-  endfunction
-
-  function! g:lightline.my.gina_status() abort
-    return gina#component#traffic#preset('fancy')
+    return gina#component#repo#branch()
   endfunction
