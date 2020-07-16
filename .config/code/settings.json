@@ -98,4 +98,7 @@
   "editor.fontLigatures": null,
   "editor.formatOnSave": true,
   "go.formatTool": "goimports",
+  "files.associations": {
+    "*.vim": "vimrc"
+  },
 }
