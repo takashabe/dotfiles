@@ -1,55 +1,94 @@
+"let g:lightline = {
+"      \ 'colorscheme': 'onedark',
+"      \ 'mode_map': {'c': 'NORMAL'},
+"      \ 'active': {
+"      \   'left': [ [ 'mode', 'paste' ], [ 'gitbranch', 'filename', 'modified', 'method'] ]
+"      \ },
+"      \ 'component_function': {
+"      \   'modified': 'LightlineModified',
+"      \   'readonly': 'LightlineReadonly',
+"      \   'gitbranch': 'LightlineGitBranch',
+"      \   'filename': 'LightlineFilename',
+"      \   'fileformat': 'LightlineFileformat',
+"      \   'filetype': 'LightlineFiletype',
+"      \   'fileencoding': 'LightlineFileencoding',
+"      \   'mode': 'LightlineMode'
+"      \ }
+"      \ }
+
 let g:lightline = {
       \ 'colorscheme': 'onedark',
-      \ 'mode_map': {'c': 'NORMAL'},
       \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename', 'modified', 'method'] ]
+      \   'left': [
+      \     ['mode', 'paste'],
+      \     ['filename', 'gina_branch'],
+      \   ],
+      \   'right': [
+      \     ['fileformat', 'fileencoding', 'filetype'],
+      \     ['lineinfo']
+      \   ],
+      \ },
+      \ 'inactive': {
+      \   'left': [
+      \     ['filename'],
+      \   ],
       \ },
       \ 'component_function': {
-      \   'modified': 'LightlineModified',
-      \   'readonly': 'LightlineReadonly',
-      \   'fugitive': 'LightlineFugitive',
-      \   'filename': 'LightlineFilename',
-      \   'fileformat': 'LightlineFileformat',
-      \   'filetype': 'LightlineFiletype',
-      \   'fileencoding': 'LightlineFileencoding',
-      \   'mode': 'LightlineMode'
-      \ }
-      \ }
+      \   'mode':         'g:lightline.my.mode',
+      \   'filename':     'g:lightline.my.filename',
+      \   'fileformat':   'g:lightline.my.fileformat',
+      \   'fileencoding': 'g:lightline.my.fileencoding',
+      \   'filetype':     'g:lightline.my.filetype',
+      \   'lineinfo':     'g:lightline.my.lineinfo',
+      \   'gina_branch':  'g:lightline.my.gina_branch',
+      \   'gina_traffic': 'g:lightline.my.gina_traffic',
+      \   'gina_status':  'g:lightline.my.gina_status',
+      \ },
+      \}
 
-function! LightlineModified()
-  return &ft =~ 'help\|vimfiler\|gundo' ? '' : &modified ? '+' : &modifiable ? '' : '-'
-endfunction
+" Note:
+" component_function cannot be a script local function so use
+" g:lightline.my namespace instead of s:
+let g:lightline.my = {}
 
-function! LightlineReadonly()
-  return &ft !~? 'help\|vimfiler\|gundo' && &readonly ? 'x' : ''
-endfunction
+  function! g:lightline.my.mode() abort
+    return &filetype !~# 'vimfiler' ? lightline#mode() : ''
+  endfunction
 
-function! LightlineFilename()
-  return ('' != LightlineReadonly() ? LightlineReadonly() . ' ' : '') .
-        \ ('' != expand('%') ? expand('%') : '[No Name]') .
-        \ ('' != LightlineModified() ? ' ' . LightlineModified() : '')
-endfunction
+  function! g:lightline.my.readonly() abort
+    return empty(&buftype) && &readonly ? "RO" : ''
+  endfunction
 
-function! LightlineFugitive()
-  if &ft !~? 'vimfiler\|gundo' && exists('*fugitive#head')
-    return fugitive#head()
-  else
-    return ''
-  endif
-endfunction
+  function! g:lightline.my.modified() abort
+    return empty(&buftype) && &modified ? "+" : ''
+  endfunction
 
-function! LightlineFileformat()
-  return winwidth(0) > 70 ? &fileformat : ''
-endfunction
+  function! g:lightline.my.filename() abort
+    let fname = fnamemodify(expand('%'), ':~:.')
+    let readonly = g:lightline.my.readonly()
+    let modified = g:lightline.my.modified()
+    return '' .
+          \ (empty(fname)    ? '[No name]' : fname) .
+          \ (empty(readonly) ? '' : ' ' . readonly) .
+          \ (empty(modified) ? '' : ' ' . modified)
+  endfunction
 
-function! LightlineFiletype()
-  return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype : 'no ft') : ''
-endfunction
+  function! g:lightline.my.fileformat() abort
+    return &filetype !~# 'vimfiler' ? &fileformat: ''
+  endfunction
 
-function! LightlineFileencoding()
-  return winwidth(0) > 70 ? (&fenc !=# '' ? &fenc : &enc) : ''
-endfunction
+  function! g:lightline.my.filetype() abort
+    return &filetype !~# 'vimfiler' ? (strlen(&filetype) ? &filetype: 'no ft') : ''
+  endfunction
 
-function! LightlineMode()
-  return winwidth(0) > 60 ? lightline#mode() : ''
-endfunction
+  function! g:lightline.my.fileencoding() abort
+    return &filetype !~# 'vimfiler' ? (strlen(&fileencoding) ? &fileencoding : &encoding) : ''
+  endfunction
+
+  function! g:lightline.my.lineinfo() abort
+    return &filetype !~# 'vimfiler' && winwidth(0) >= 70 ? printf("L:%3d/%3d C:%d", line('.'), line('$'), col('.')) : ''
+  endfunction
+
+  function! g:lightline.my.gina_branch() abort
+    return gina#component#repo#branch()
+  endfunction

@@ -10,33 +10,10 @@
   "editor.cursorStyle": "line",
   "editor.wordWrap": "on",
   // Go
-  "go.autocompleteUnimportedPackages": false,
-  "go.gopath": "/Users/a14960/dev",
-  "go.toolsEnvVars": {
-    "GO111MODULE": "on",
-  },
-  "go.useLanguageServer": true,
   "[go]": {
     "editor.tabSize": 2,
     "editor.insertSpaces": false,
   },
-  "go.languageServerExperimentalFeatures": {
-    "format": true,
-    "autoComplete": true,
-    "rename": true,
-    "goToDefinition": true,
-    "hover": true,
-    "signatureHelp": true,
-    "goToTypeDefinition": true,
-    "goToImplementation": true,
-    "documentSymbols": true,
-    "workspaceSymbols": true,
-    "findReferences": true,
-    "diagnostics": true,
-    "documentLink": true,
-    "highlight": true
-  },
-  
   // Terminal
   "terminal.integrated.shell.osx": "/usr/local/bin/fish",
   "vim.leader": ",",
@@ -114,11 +91,14 @@
   "explorer.confirmDelete": false,
   "workbench.colorTheme": "One Dark Pro",
   "window.zoomLevel": 0,
-  "vsicons.dontShowNewVersionMessage": true,
-  "editor.fontFamily": "\"SF Mono 1x2\", \"SF Mono Square\"",
+  "editor.fontFamily": "SF Mono 1x2",
   "markdown.preview.fontSize": 18,
-  "vim.easymotionMarkerFontSize": "16",
-  "editor.fontSize": 18,
-  "debug.console.fontSize": 18,
-  "vim.easymotionMarkerFontFamily": "'SF Mono Square'"
+  "editor.fontSize": 20,
+  "editor.lineHeight": 0,
+  "editor.fontLigatures": null,
+  "editor.formatOnSave": true,
+  "go.formatTool": "goimports",
+  "files.associations": {
+    "*.vim": "vimrc"
+  },
 }
