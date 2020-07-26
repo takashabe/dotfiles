@@ -240,9 +240,6 @@ function diary_new
   $EDITOR $diary_dir/$today.md
 end
 
-# Load local env, functions and so on.
-source $HOME/.config/fish/conf.d/local.fish
-
 #### general function
 function reload_config
   exec fish
@@ -282,3 +279,6 @@ set -x TF_CLI_ARGS_apply "--parallelism=64"
 ## Login message
 # emtpy
 set fish_greeting
+
+# Load local env, functions and so on.
+source $HOME/.config/fish/conf.d/local.fish
