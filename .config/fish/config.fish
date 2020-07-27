@@ -35,7 +35,7 @@ alias rg 'rg --hidden'
 
 ## fzf
 set -x FZF_DEFAULT_COMMAND 'rg --files --hidden --glob "!.git/*"'
-set -x FZF_DEFAULT_OPTS '--layout=reverse'
+set -x FZF_DEFAULT_OPTS '--layout=reverse --inline-info'
 
 ## takashabe/fish-fzf
 set -x FZF_CD_IGNORE_CASE '.git|vendor/|node_modules'
