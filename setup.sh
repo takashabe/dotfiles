@@ -21,7 +21,6 @@ ln -s $HOME/dotfiles/.config/fish/config.fish $HOME/.config/fish/
 ln -s $HOME/dotfiles/.config/karabiner $HOME/.config/
 ln -s $HOME/dotfiles/.config/nvim $HOME/.config/
 ln -s $HOME/dotfiles/.config/tmux $HOME/.config/
-ln -s $HOME/dotfiles/.config/peco $HOME/.config/
 ln -s $HOME/dotfiles/.config/alacritty $HOME/.config/
 ln -s $HOME/dotfiles/.config/rofi $HOME/.config/
 ln -s $HOME/dotfiles/.config/i3 $HOME/.config/

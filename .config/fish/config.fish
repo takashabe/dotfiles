@@ -65,7 +65,7 @@ alias gst 'git status'
 alias gb 'git branch'
 alias gc 'git commit -v'
 function gbp
-  git branch -a --sort=-authordate | cut -b 3- | perl -pe 's#^remotes/origin/###' | perl -nlE 'say if !$c{$_}++' | grep -v -- "->" | peco | xargs git checkout
+  git branch -a --sort=-authordate | cut -b 3- | perl -pe 's#^remotes/origin/###' | perl -nlE 'say if !$c{$_}++' | grep -v -- "->" | fzf | xargs git checkout
 end
 function gcm
   if test (count $argv) -lt 1
@@ -113,7 +113,7 @@ if status --is-interactive
   if test -z $TMUX
     if tmux has-session > /dev/null ^ /dev/null
       # attach tmux session with percol like tool
-      set -l sid (tmux list-sessions | grep '' | peco | cut -d: -f1)
+      set -l sid (tmux list-sessions | grep '' | fzf | cut -d: -f1)
       command tmux -u attach-session -t $sid
     else
       command tmux -u new-session
@@ -153,8 +153,7 @@ alias k 'kubectl'
 alias kg 'kubectl get'
 alias kt 'kubectl top'
 alias kd 'kubectl describe'
-alias kcp peco_select_k8s_context
-alias knp peco_select_k8s_namespace
+alias kcp fzf_k8s_context
 set -x PATH $HOME/bin/kubebuilder $PATH
 set -x PATH $HOME/.krew/bin $PATH
 set -x DOCKER_BUILDKIT 1
