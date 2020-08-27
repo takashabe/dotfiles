@@ -26,10 +26,6 @@ set -x PROMPT_ENABLE_K8S_CONTEXT 1
 set -x PROMPT_ENABLE_K8S_NAMESPACE 0
 set -x PROMPT_ENABLE_GCLOUD_PROJECT 1
 
-## fish-peco 
-## https://github.com/takashabe/fish-peco
-set -x PECO_SELECT_CD_IGNORE_CASE '.git|vendor/'
-
 ## vim
 alias vi vim
 set -x EDITOR vim
@@ -39,7 +35,10 @@ alias rg 'rg --hidden'
 
 ## fzf
 set -x FZF_DEFAULT_COMMAND 'rg --files --hidden --glob "!.git/*"'
-set -x FZF_DEFAULT_OPTS '--height 40% --reverse --border'
+set -x FZF_DEFAULT_OPTS '--height 40% --reverse --border --layout=reverse --inline-info'
+
+## takashabe/fish-fzf
+set -x FZF_CD_IGNORE_CASE '.git|vendor/|node_modules'
 
 # curl
 alias curl-android 'curl -A "Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.167 Mobile Safari/537.36"'
@@ -66,7 +65,7 @@ alias gst 'git status'
 alias gb 'git branch'
 alias gc 'git commit -v'
 function gbp
-  git branch -a --sort=-authordate | cut -b 3- | perl -pe 's#^remotes/origin/###' | perl -nlE 'say if !$c{$_}++' | grep -v -- "->" | peco | xargs git checkout
+  git branch -a --sort=-authordate | cut -b 3- | perl -pe 's#^remotes/origin/###' | perl -nlE 'say if !$c{$_}++' | grep -v -- "->" | fzf | xargs git checkout
 end
 function gcm
   if test (count $argv) -lt 1
@@ -114,7 +113,7 @@ if status --is-interactive
   if test -z $TMUX
     if tmux has-session > /dev/null ^ /dev/null
       # attach tmux session with percol like tool
-      set -l sid (tmux list-sessions | grep '' | peco | cut -d: -f1)
+      set -l sid (tmux list-sessions | grep '' | fzf | cut -d: -f1)
       command tmux -u attach-session -t $sid
     else
       command tmux -u new-session
@@ -154,8 +153,7 @@ alias k 'kubectl'
 alias kg 'kubectl get'
 alias kt 'kubectl top'
 alias kd 'kubectl describe'
-alias kcp peco_select_k8s_context
-alias knp peco_select_k8s_namespace
+alias kcp fzf_k8s_context
 set -x PATH $HOME/bin/kubebuilder $PATH
 set -x PATH $HOME/.krew/bin $PATH
 set -x DOCKER_BUILDKIT 1
@@ -197,18 +195,22 @@ function history-merge --on-event fish_preexec
   history --merge
 end
 
-function share_history_for_peco
+function wrap_fzf_history
   history-merge
-  peco_select_history
+  fzf_history
+end
+
+function wrap_fzf_file
+  fzf_file --preview "bat --style=numbers --color=always --line-range :500 {}"
 end
 
 ### Key binding
 function fish_user_key_bindings
   bind \c] fzf_ghq
-  bind \cr share_history_for_peco
-  bind \cu peco_select_z
-  bind \co peco_select_file
-  bind \cg peco_select_cd
+  bind \cr wrap_fzf_history
+  bind \cu fzf_z
+  bind \co wrap_fzf_file
+  bind \cg fzf_cd
 
   bind "[1;2F" kill-line
 end
@@ -236,9 +238,6 @@ function diary_new
   touch $diary_dir/$today.md
   $EDITOR $diary_dir/$today.md
 end
-
-# Load local env, functions and so on.
-source $HOME/.config/fish/conf.d/local.fish
 
 #### general function
 function reload_config
@@ -279,3 +278,6 @@ set -x TF_CLI_ARGS_apply "--parallelism=64"
 ## Login message
 # emtpy
 set fish_greeting
+
+# Load local env, functions and so on.
+source $HOME/.config/fish/conf.d/local.fish
