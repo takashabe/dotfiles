@@ -19,3 +19,7 @@ cmd + shift - w : yabai -m window --toggle zoom-fullscreen
 
 # reload yabai
 ctrl + cmd - r : launchctl kickstart -k "gui/${UID}/homebrew.mxcl.yabai"
+
+# disable the default evil shortcut
+cmd - h : yabai -m window --focus prev
+cmd - m : yabai -m window --focus next
