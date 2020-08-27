@@ -6,7 +6,6 @@
   "window.title": "${activeEditorLong}${separator}${rootName}",
   "editor.tabSize": 2,
   "editor.insertSpaces": true,
-  "editor.renderWhitespace": "boundary",
   "editor.cursorStyle": "line",
   "editor.wordWrap": "on",
   // Go
@@ -90,10 +89,9 @@
   // Mics...
   "explorer.confirmDelete": false,
   "workbench.colorTheme": "One Dark Pro",
-  "window.zoomLevel": 0,
-  "editor.fontFamily": "SF Mono 1x2",
+  "window.zoomLevel": 1,
+  "editor.fontFamily": "Cica",
   "markdown.preview.fontSize": 18,
-  "editor.fontSize": 20,
   "editor.lineHeight": 0,
   "editor.fontLigatures": null,
   "editor.formatOnSave": true,
@@ -101,4 +99,7 @@
   "files.associations": {
     "*.vim": "vimrc"
   },
+  "editor.fontSize": 16,
+  "explorer.confirmDragAndDrop": false,
+  "editor.renderWhitespace": "all",
 }
