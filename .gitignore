@@ -33,3 +33,5 @@ _secret
 tmux-gruvbox-dark.conf
 
 venv/
+
+package-lock.json
