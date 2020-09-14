@@ -1,21 +1,3 @@
-"let g:lightline = {
-"      \ 'colorscheme': 'onedark',
-"      \ 'mode_map': {'c': 'NORMAL'},
-"      \ 'active': {
-"      \   'left': [ [ 'mode', 'paste' ], [ 'gitbranch', 'filename', 'modified', 'method'] ]
-"      \ },
-"      \ 'component_function': {
-"      \   'modified': 'LightlineModified',
-"      \   'readonly': 'LightlineReadonly',
-"      \   'gitbranch': 'LightlineGitBranch',
-"      \   'filename': 'LightlineFilename',
-"      \   'fileformat': 'LightlineFileformat',
-"      \   'filetype': 'LightlineFiletype',
-"      \   'fileencoding': 'LightlineFileencoding',
-"      \   'mode': 'LightlineMode'
-"      \ }
-"      \ }
-
 let g:lightline = {
       \ 'colorscheme': 'onedark',
       \ 'active': {

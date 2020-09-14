@@ -19,6 +19,11 @@ set -x PATH $HOME/.local/bin $PATH
 set -x LANG en_US.UTF-8
 set -x LC_CTYPE en_US.UTF-8
 
+## XDG Base Directory
+set -x XDG_DATA_HOME $HOME/.local/share
+set -x XDG_CACHE_HOME $HOME/.cache
+set -x XDG_CONFIG_HOME $HOME/.config
+
 ## Prompt
 set -x PROMPT_ICON "(*'-')"
 set -x PROMPT_ERROR_ICON "(*;_;)"
