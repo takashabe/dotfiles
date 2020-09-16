@@ -6,8 +6,8 @@
 alias make 'make --no-print-directory'
 alias mv 'mv -i'
 alias diff 'colordiff'
-alias l 'exa -alh --git'
-alias ll 'exa -lh --git'
+alias l 'exa -alh'
+alias ll 'exa -lh'
 alias ... 'cd ../..'
 alias .... 'cd ../../..'
 alias ..... 'cd ../../../..'
@@ -18,6 +18,11 @@ set -x PATH $HOME/.local/bin $PATH
 ## Encoding
 set -x LANG en_US.UTF-8
 set -x LC_CTYPE en_US.UTF-8
+
+## XDG Base Directory
+set -x XDG_DATA_HOME $HOME/.local/share
+set -x XDG_CACHE_HOME $HOME/.cache
+set -x XDG_CONFIG_HOME $HOME/.config
 
 ## Prompt
 set -x PROMPT_ICON "(*'-')"
