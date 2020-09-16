@@ -9,8 +9,8 @@ Plug 'morhetz/gruvbox'
 Plug 'ryanoasis/vim-devicons'
 Plug 'itchyny/lightline.vim'
 execute 'source' plug_conf . 'lightline.rc.vim'
-Plug 'nathanaelkane/vim-indent-guides'
-execute 'source' plug_conf . 'vim-indent-guides.rc.vim'
+" Plug 'nathanaelkane/vim-indent-guides'
+" execute 'source' plug_conf . 'vim-indent-guides.rc.vim'
 
 " ==========================================================
 " Edit
