@@ -9,8 +9,8 @@ Plug 'morhetz/gruvbox'
 Plug 'ryanoasis/vim-devicons'
 Plug 'itchyny/lightline.vim'
 execute 'source' plug_conf . 'lightline.rc.vim'
-Plug 'nathanaelkane/vim-indent-guides'
-execute 'source' plug_conf . 'vim-indent-guides.rc.vim'
+" Plug 'nathanaelkane/vim-indent-guides'
+" execute 'source' plug_conf . 'vim-indent-guides.rc.vim'
 
 " ==========================================================
 " Edit
@@ -37,8 +37,8 @@ Plug 'tpope/vim-surround'
 " ==========================================================
 Plug 'mtth/scratch.vim'
 execute 'source' plug_conf . 'scratch.rc.vim'
-Plug 'lambdalisue/fern.vim'
-execute 'source' plug_conf . 'fern.rc.vim'
+Plug 'preservim/nerdtree'
+execute 'source' plug_conf . 'nerdtree.rc.vim'
 
 " ==========================================================
 " fzf

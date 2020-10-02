@@ -4,6 +4,7 @@ let g:lsp_signs_enabled = 1
 let g:lsp_textprop_enabled = 0
 let g:lsp_virtual_text_enabled = 0
 let g:lsp_highlight_references_enabled = 0
+let g:lsp_highlights_enabled = 0
 
 " experimental
 " https://github.com/prabirshrestha/asyncomplete.vim/issues/156
