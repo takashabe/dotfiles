@@ -11,6 +11,7 @@ alias ll 'exa -lh'
 alias ... 'cd ../..'
 alias .... 'cd ../../..'
 alias ..... 'cd ../../../..'
+alias cat 'bat -p'
 
 set -x PATH $HOME/bin $PATH
 set -x PATH $HOME/.local/bin $PATH
@@ -95,8 +96,7 @@ set -x PATH /usr/local/bin $PATH
 set -g fish_user_paths "/usr/local/sbin" $fish_user_paths
 # openssl with homebrew
 set -x PATH /usr/local/opt/openssl/bin $PATH
-# ccat
-alias cat 'ccat'
+
 
 # nodebrew
 if status --is-interactive; and command -v nodebrew > /dev/null
