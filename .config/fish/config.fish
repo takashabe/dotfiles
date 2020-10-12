@@ -11,7 +11,6 @@ alias ll 'exa -lh'
 alias ... 'cd ../..'
 alias .... 'cd ../../..'
 alias ..... 'cd ../../../..'
-alias cat 'bat -p'
 
 set -x PATH $HOME/bin $PATH
 set -x PATH $HOME/.local/bin $PATH
