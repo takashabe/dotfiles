@@ -36,7 +36,7 @@ alias vi vim
 set -x EDITOR vim
 
 ## alternative grep
-alias rg 'rg --hidden'
+alias rg "rg --hidden --glob '!.git'"
 
 ## fzf
 set -x FZF_DEFAULT_COMMAND 'rg --files --hidden --glob "!.git/*"'
