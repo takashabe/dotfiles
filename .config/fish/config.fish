@@ -161,6 +161,7 @@ alias kcp fzf_k8s_context
 set -x PATH $HOME/bin/kubebuilder $PATH
 set -x PATH $HOME/.krew/bin $PATH
 set -x DOCKER_BUILDKIT 1
+set -x COMPOSE_DOCKER_CLI_BUILD 1
 function docker_clean
   docker stop (docker ps -a -q)
   docker rm (docker ps -a -q)
