@@ -25,3 +25,4 @@ yabai -m rule --add app="Spotify" manage=off
 yabai -m rule --add app="LINE" manage=off
 yabai -m rule --add app="Preview" manage=off
 yabai -m rule --add app="Keynote" manage=off
+yabai -m rule --add app="Docker" manage=off
