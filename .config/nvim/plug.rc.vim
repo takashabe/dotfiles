@@ -20,10 +20,14 @@ Plug 'junegunn/vim-easy-align'
 execute 'source' plug_conf . 'vim-easy-align.rc.vim'
 Plug 'scrooloose/nerdcommenter'
 execute 'source' plug_conf . 'nerdcommenter.rc.vim'
-Plug 'fuenor/im_control.vim'
-execute 'source' plug_conf . 'im_control.rc.vim'
 Plug 'liuchengxu/vista.vim'
 execute 'source' plug_conf . 'vista.rc.vim'
+
+" for fcitx
+if has('unix') && !has('mac')
+  Plug 'fuenor/im_control.vim'
+  execute 'source' plug_conf . 'im_control.rc.vim'
+endif
 
 " ==========================================================
 " Text Object
