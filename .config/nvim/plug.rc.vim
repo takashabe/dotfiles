@@ -60,36 +60,24 @@ Plug 'mattn/vim-lsp-settings'
 " ==========================================================
 " Go
 " ==========================================================
-Plug 'mattn/vim-goimports'
-Plug 'mattn/vim-goaddtags'
-Plug 'buoto/gotests-vim'
+Plug 'mattn/vim-goimports', {'for': 'go'}
+Plug 'mattn/vim-goaddtags', {'for': 'go'}
+Plug 'buoto/gotests-vim', {'for': 'go'}
 execute 'source' plug_conf . 'gotests-vim.rc.vim'
 
 " ==========================================================
 " Other language/file syntax
 " ==========================================================
 Plug 'tokorom/vim-review', {'for': 'review'}
-Plug 'rhysd/vim-gfm-syntax', {'for': 'markdown'}
-Plug 'iamcco/markdown-preview.nvim', {'for': 'markdown', 'do': 'cd app & yarn install'}
+" Plug 'rhysd/vim-gfm-syntax', {'for': 'markdown'}
 Plug 'hashivim/vim-terraform', {'for': ['tf', 'tfvars']}
 execute 'source' plug_conf . 'vim-terraform.rc.vim'
-Plug 'bazelbuild/vim-ft-bzl'
-Plug 'cespare/vim-toml'
-Plug 'dag/vim-fish'
-Plug 'chr4/nginx.vim'
-
-" ==========================================================
-" VCS
-" ==========================================================
-Plug 'lambdalisue/gina.vim'
+Plug 'cespare/vim-toml', {'for': 'toml'}
+Plug 'dag/vim-fish', {'for': 'fish'}
+Plug 'chr4/nginx.vim' {'for': 'nginx'}
 
 " ==========================================================
 " Others
 " ==========================================================
-Plug 'majutsushi/tagbar'
-execute 'source' plug_conf . 'tagbar.rc.vim'
-Plug 'dense-analysis/ale'
-execute 'source' plug_conf . 'ale.rc.vim'
 Plug 'direnv/direnv.vim'
 Plug 'haya14busa/vim-gtrans'
-Plug 'sharat87/roast.vim'

@@ -107,11 +107,6 @@ if status --is-interactive; and command -v rbenv > /dev/null
   rbenv init - | source
 end
 
-# Python
-set -x PATH /Users/a14960/Library/Python/3.7/bin $PATH
-alias python python3
-alias pip pip3
-
 # tmux
 if status --is-interactive
   if test -z $TMUX
@@ -135,6 +130,7 @@ end
 
 ### gcloud
 set -x GOOGLE_APPLICATION_CREDENTIALS "$HOME/.config/gcloud/application_default_credentials.json"
+set -x CLOUDSDK_PYTHON (brew --prefix python@3.8)/bin/python3
 ## load completion
 if status --is-interactive
   if test (uname) = "Linux"
