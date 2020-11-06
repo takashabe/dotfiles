@@ -130,7 +130,9 @@ end
 
 ### gcloud
 set -x GOOGLE_APPLICATION_CREDENTIALS "$HOME/.config/gcloud/application_default_credentials.json"
-set -x CLOUDSDK_PYTHON (brew --prefix python@3.8)/bin/python3
+if test (uname) != "Linux"
+  set -x CLOUDSDK_PYTHON (brew --prefix python@3.8)/bin/python3
+end
 ## load completion
 if status --is-interactive
   if test (uname) = "Linux"
