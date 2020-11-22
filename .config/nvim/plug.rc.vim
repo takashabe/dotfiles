@@ -71,6 +71,7 @@ execute 'source' plug_conf . 'gotests-vim.rc.vim'
 " Other language/file syntax
 " ==========================================================
 Plug 'tokorom/vim-review', {'for': 'review'}
+Plug 'rhysd/vim-gfm-syntax', {'for': 'markdown'}
 Plug 'hashivim/vim-terraform', {'for': ['tf', 'tfvars']}
 execute 'source' plug_conf . 'vim-terraform.rc.vim'
 Plug 'cespare/vim-toml', {'for': 'toml'}
