@@ -35,3 +35,14 @@ augroup lsp_install
   au!
   autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
 augroup END
+
+" vim-lsp-settings
+let g:lsp_settings = {}
+let g:lsp_settings['gopls'] = {
+  \  'workspace_config': {
+  \    'experimentalWorkspaceModule': v:true,
+  \  },
+  \  'initialization_options': {
+  \    'experimentalWorkspaceModule': v:true,
+  \  },
+  \}
