@@ -37,12 +37,12 @@ augroup lsp_install
 augroup END
 
 " vim-lsp-settings
-let g:lsp_settings = {}
-let g:lsp_settings['gopls'] = {
-  \  'workspace_config': {
-  \    'experimentalWorkspaceModule': v:true,
-  \  },
-  \  'initialization_options': {
-  \    'experimentalWorkspaceModule': v:true,
-  \  },
-  \}
+" let g:lsp_settings = {}
+" let g:lsp_settings['gopls'] = {
+"   \  'workspace_config': {
+"   \    'experimentalWorkspaceModule': v:true,
+"   \  },
+"   \  'initialization_options': {
+"   \    'experimentalWorkspaceModule': v:true,
+"   \  },
+"   \}
