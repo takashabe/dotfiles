@@ -35,3 +35,7 @@ tmux-gruvbox-dark.conf
 venv/
 
 package-lock.json
+
+# firebase
+firebase-debug.log
+firestore-debug.log

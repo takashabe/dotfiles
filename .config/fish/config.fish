@@ -30,6 +30,7 @@ set -x PROMPT_ERROR_ICON "(*;_;)"
 set -x PROMPT_ENABLE_K8S_CONTEXT 1
 set -x PROMPT_ENABLE_K8S_NAMESPACE 0
 set -x PROMPT_ENABLE_GCLOUD_PROJECT 1
+set -x PROMPT_SHOW_ERR_STATUS 1
 
 ## vim
 alias vi vim
@@ -186,7 +187,8 @@ function go_install_binaries
     'github.com/haya14busa/gtrans'  \
     'github.com/rakyll/gotest' \
     'github.com/fatih/gomodifytags' \
-    'github.com/rubenv/sql-migrate/...'
+    'github.com/rubenv/sql-migrate/...' \
+    'github.com/derailed/k9s'
   pushd $HOME
   for uri in $GO_BINARIES
     echo "go get -u $uri ..."
