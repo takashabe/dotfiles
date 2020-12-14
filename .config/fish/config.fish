@@ -101,6 +101,12 @@ set -x PATH /usr/local/opt/openssl/bin $PATH
 if status --is-interactive; and command -v nodebrew > /dev/null
   set -x PATH $HOME/.nodebrew/current/bin $PATH
 end
+if status --is-interactive; and [ -d /usr/share/nvm ] > /dev/null
+  set -x NVM_DIR $HOME/.nvm
+  bass source /usr/share/nvm/nvm.sh
+  bass source /usr/share/nvm/bash_completion
+  bass source /usr/share/nvm/install-nvm-exec
+end
 
 # rbenv
 if status --is-interactive; and command -v rbenv > /dev/null
