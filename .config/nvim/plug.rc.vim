@@ -11,6 +11,7 @@ Plug 'itchyny/lightline.vim'
 execute 'source' plug_conf . 'lightline.rc.vim'
 Plug 'Yggdroot/indentLine'
 execute 'source' plug_conf . 'indentLine.rc.vim'
+Plug 'rafi/awesome-vim-colorschemes'
 
 " ==========================================================
 " Edit
