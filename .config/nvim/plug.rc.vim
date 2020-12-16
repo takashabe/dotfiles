@@ -44,6 +44,13 @@ Plug 'preservim/nerdtree'
 execute 'source' plug_conf . 'nerdtree.rc.vim'
 
 " ==========================================================
+" Process integration
+" ==========================================================
+Plug 'tpope/vim-dispatch'
+Plug 'vim-test/vim-test'
+execute 'source' plug_conf . 'vim-test.rc.vim'
+
+" ==========================================================
 " fzf
 " ==========================================================
 " require fzf binary
@@ -65,6 +72,7 @@ Plug 'mattn/vim-lsp-settings'
 " ==========================================================
 Plug 'mattn/vim-goimports', {'for': 'go'}
 Plug 'mattn/vim-goaddtags', {'for': 'go'}
+Plug 'mattn/vim-gorun', {'for': 'go'}
 Plug 'buoto/gotests-vim', {'for': 'go'}
 execute 'source' plug_conf . 'gotests-vim.rc.vim'
 
