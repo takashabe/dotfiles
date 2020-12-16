@@ -22,7 +22,6 @@ execute 'source' plug_conf . 'vim-easy-align.rc.vim'
 Plug 'scrooloose/nerdcommenter'
 execute 'source' plug_conf . 'nerdcommenter.rc.vim'
 Plug 'liuchengxu/vista.vim'
-execute 'source' plug_conf . 'vista.rc.vim'
 
 " for fcitx
 if has('unix') && !has('mac')
