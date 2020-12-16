@@ -13,6 +13,7 @@
     "editor.tabSize": 2,
     "editor.insertSpaces": false,
   },
+  "go.useLanguageServer": true,
   // Terminal
   "terminal.integrated.shell.osx": "/usr/local/bin/fish",
   "vim.leader": ",",
@@ -102,4 +103,5 @@
   "editor.fontSize": 16,
   "explorer.confirmDragAndDrop": false,
   "editor.renderWhitespace": "all",
+  "workbench.startupEditor": "newUntitledFile",
 }

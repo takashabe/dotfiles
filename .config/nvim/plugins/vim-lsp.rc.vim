@@ -1,19 +1,12 @@
 let g:lsp_diagnostics_enabled = 1
 let g:lsp_diagnostics_echo_cursor = 1
-let g:lsp_signs_enabled = 1
-let g:lsp_textprop_enabled = 0
-let g:lsp_virtual_text_enabled = 0
-let g:lsp_highlight_references_enabled = 0
-let g:lsp_highlights_enabled = 0
-
-" experimental
-" https://github.com/prabirshrestha/asyncomplete.vim/issues/156
-let g:lsp_text_edit_enabled = 1
+let g:lsp_diagnostics_float_cursor = 1
+let g:lsp_text_edit_enabled = 0
 
 " debug
-" let g:lsp_log_verbose = 1
-" let g:lsp_log_file = expand('~/vim-lsp.log')
-" let g:asyncomplete_log_file = expand('~/asyncomplete.log')
+let g:lsp_log_verbose = 1
+let g:lsp_log_file = expand('~/vim-lsp.log')
+let g:asyncomplete_log_file = expand('~/asyncomplete.log')
 
 function! s:on_lsp_buffer_enabled() abort
   " omnifunc
@@ -37,12 +30,18 @@ augroup lsp_install
 augroup END
 
 " vim-lsp-settings
-" let g:lsp_settings = {}
-" let g:lsp_settings['gopls'] = {
-"   \  'workspace_config': {
-"   \    'experimentalWorkspaceModule': v:true,
-"   \  },
-"   \  'initialization_options': {
-"   \    'experimentalWorkspaceModule': v:true,
-"   \  },
-"   \}
+let g:lsp_settings_filetype_go = ['gopls', 'golangci-lint-langserver']
+
+let g:lsp_settings = {}
+let g:lsp_settings['golangci-lint-langserver'] = {
+  \  'initialization_options': {
+  \    'command': ['golangci-lint', 'run', 
+  \      '--fast',
+  \      '--enable', 'golint', 
+  \      '--exclude-use-default=false',
+  \      '--out-format', 'json', 
+  \      '--max-same-issues', '0', 
+  \      '--max-issues-per-linter', '0'
+  \    ],
+  \  },
+  \}
