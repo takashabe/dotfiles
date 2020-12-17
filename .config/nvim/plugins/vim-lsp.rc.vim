@@ -40,7 +40,6 @@ let g:lsp_settings['golangci-lint-langserver'] = {
   \      '--enable', 'deadcode', 
   \      '--enable', 'errcheck', 
   \      '--enable', 'gosimple', 
-  \      '--enable', 'staticcheck', 
   \      '--enable', 'unused', 
   \      '--enable', 'govet', 
   \      '--enable', 'golint', 
