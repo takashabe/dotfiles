@@ -2,8 +2,6 @@
   // General
   "editor.minimap.enabled": false,
   "editor.renderControlCharacters": true,
-  "window.titleBarStyle": "native",
-  "window.title": "${activeEditorLong}${separator}${rootName}",
   "editor.tabSize": 2,
   "editor.insertSpaces": true,
   "editor.cursorStyle": "line",
@@ -13,7 +11,15 @@
     "editor.tabSize": 2,
     "editor.insertSpaces": false,
   },
+  "gopls": {
+    "experimentalWorkspaceModule": true,
+  },
   "go.useLanguageServer": true,
+  "go.languageServerExperimentalFeatures": {
+    "diagnostics": true,
+    "documentLink": true
+  },
+  "go.formatTool": "goimports",
   // Terminal
   "terminal.integrated.shell.osx": "/usr/local/bin/fish",
   "vim.leader": ",",
@@ -90,13 +96,12 @@
   // Mics...
   "explorer.confirmDelete": false,
   "workbench.colorTheme": "One Dark Pro",
-  "window.zoomLevel": 1,
+  "window.zoomLevel": -1,
   "editor.fontFamily": "Cica",
   "markdown.preview.fontSize": 18,
   "editor.lineHeight": 0,
-  "editor.fontLigatures": null,
+  "editor.fontLigatures": false,
   "editor.formatOnSave": true,
-  "go.formatTool": "goimports",
   "files.associations": {
     "*.vim": "vimrc"
   },
