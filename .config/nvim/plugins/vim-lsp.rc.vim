@@ -30,5 +30,24 @@ augroup lsp_install
 augroup END
 
 " vim-lsp-settings
-let g:lsp_settings_filetype_go = ['gopls']
+" let g:lsp_settings_filetype_go = ['gopls']
+let g:lsp_settings_filetype_go = ['gopls', 'golangci-lint-langserver']
+
 let g:lsp_settings = {}
+let g:lsp_settings['golangci-lint-langserver'] = {
+  \  'initialization_options': {
+  \    'command': ['golangci-lint', 'run',
+  \      '--disable-all',
+  \      '--enable', 'deadcode',
+  \      '--enable', 'errcheck',
+  \      '--enable', 'gosimple',
+  \      '--enable', 'unused',
+  \      '--enable', 'govet',
+  \      '--enable', 'golint',
+  \      '--exclude-use-default=false',
+  \      '--out-format', 'json',
+  \      '--max-same-issues', '0',
+  \      '--max-issues-per-linter', '0'
+  \    ],
+  \  },
+  \}
