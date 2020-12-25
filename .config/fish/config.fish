@@ -280,3 +280,9 @@ set fish_greeting
 
 # Load local env, functions and so on.
 source $HOME/.config/fish/conf.d/local.fish
+
+# tab completion very slow...  may be fix next-release. (3.1.3?)
+# https://github.com/fish-shell/fish-shell/issues/7511
+if status --is-interactive; and test (uname) = "Darwin"
+  function __fish_describe_command; end
+end
