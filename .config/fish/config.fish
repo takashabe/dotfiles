@@ -98,11 +98,10 @@ set -g fish_user_paths "/usr/local/sbin" $fish_user_paths
 set -x PATH /usr/local/opt/openssl/bin $PATH
 
 
-# nodebrew
+# node
 if status --is-interactive; and command -v nodebrew > /dev/null
   set -x PATH $HOME/.nodebrew/current/bin $PATH
-end
-if status --is-interactive; and [ -d /usr/share/nvm ] > /dev/null
+else if [ -d /usr/share/nvm ] > /dev/null
   set -x NVM_DIR $HOME/.nvm
   bass source /usr/share/nvm/nvm.sh
   bass source /usr/share/nvm/bash_completion
@@ -188,7 +187,8 @@ function go_install_binaries
     'github.com/rakyll/gotest' \
     'github.com/fatih/gomodifytags' \
     'github.com/rubenv/sql-migrate/...' \
-    'github.com/derailed/k9s'
+    'github.com/derailed/k9s' \
+    'sigs.k8s.io/kustomize/kustomize/v3@v3.8.8'
   pushd $HOME
   for uri in $GO_BINARIES
     echo "go get -u $uri ..."
@@ -230,18 +230,6 @@ end
 direnv hook fish | source
 
 ## note
-function memo_new
-  set -l memo_dir $GOPATH/src/github.com/takashabe/note/memo
-  set -l now (date "+%Y%m%d_%H%M%S")
-
-  touch $memo_dir/$now.md
-  $EDITOR $memo_dir/$now.md
-end
-function memo_clean
-  set -l memo_dir $GOPATH/src/github.com/takashabe/note/memo
-
-  find $memo_dir -type f -size 0 | xargs rm
-end
 function diary_new
   set -l diary_dir $GOPATH/src/github.com/takashabe/note/diary
   set -l today (date "+%Y%m%d")
