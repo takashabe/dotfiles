@@ -70,6 +70,7 @@ Plug 'mattn/vim-lsp-settings'
 " Go
 " ==========================================================
 Plug 'mattn/vim-goimports', {'for': 'go'}
+execute 'source' plug_conf . 'vim-goimports.rc.vim'
 Plug 'mattn/vim-goaddtags', {'for': 'go'}
 Plug 'mattn/vim-gorun', {'for': 'go'}
 Plug 'buoto/gotests-vim', {'for': 'go'}
