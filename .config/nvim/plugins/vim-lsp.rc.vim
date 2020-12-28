@@ -37,7 +37,6 @@ let g:lsp_settings['golangci-lint-langserver'] = {
   \  'initialization_options': {
   \    'command': ['golangci-lint', 'run',
   \      '--disable-all',
-  \      '--enable', 'errcheck',
   \      '--enable', 'govet',
   \      '--enable', 'golint',
   \      '--exclude-use-default=false',
