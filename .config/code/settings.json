@@ -96,8 +96,7 @@
   // Mics...
   "explorer.confirmDelete": false,
   "workbench.colorTheme": "One Dark Pro",
-  "window.zoomLevel": -2,
-  "editor.fontFamily": "Cica",
+  "window.zoomLevel": 1,
   "markdown.preview.fontSize": 18,
   "editor.lineHeight": 0,
   "editor.fontLigatures": false,
@@ -109,4 +108,5 @@
   "explorer.confirmDragAndDrop": false,
   "editor.renderWhitespace": "all",
   "workbench.startupEditor": "newUntitledFile",
+  "editor.fontFamily": "Menlo, Monaco, 'Courier New', monospace",
 }
