@@ -104,7 +104,7 @@
   "files.associations": {
     "*.vim": "vimrc"
   },
-  "editor.fontSize": 16,
+  "editor.fontSize": 14,
   "explorer.confirmDragAndDrop": false,
   "editor.renderWhitespace": "all",
   "workbench.startupEditor": "newUntitledFile",
