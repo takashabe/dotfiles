@@ -31,7 +31,6 @@ augroup END
 
 " vim-lsp-settings
 let g:lsp_settings_filetype_go = ['gopls', 'golangci-lint-langserver']
-let g:lsp_settings_filetype_terraform = ['terraform-ls']
 
 let g:lsp_settings = {}
 let g:lsp_settings['golangci-lint-langserver'] = {
