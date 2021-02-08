@@ -39,7 +39,10 @@ ln -s $HOME/dotfiles/.config/code/keybindings.json $CODE_PATH
 
 # keyremap for linux
 if [ $(uname) = "Linux" ]; then
+  echo "=== Linux only ==="
   ln -s $HOME/dotfiles/.config/xremap/  $HOME/.config/xremap/
+  ln -s $HOME/dotfiles/.config/xkeysnail/  $HOME/.config/xkeysnail/
+  sudo ln -s $HOME/dotfiles/etc/systemd/system/* /etc/systemd/system/
 fi
 
 # TODO homebrew, homebrew-cask, yay
