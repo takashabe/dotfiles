@@ -1,6 +1,7 @@
 #!/bin/bash
 
 ## .rc files for home directory
+ln -s $HOME/dotfiles/.vimrc $HOME/
 ln -s $HOME/dotfiles/.tmux.conf $HOME/
 ln -s $HOME/dotfiles/.gitconfig $HOME/
 ln -s $HOME/dotfiles/.gitignore $HOME/
@@ -43,6 +44,13 @@ if [ $(uname) = "Linux" ]; then
   ln -s $HOME/dotfiles/.config/xremap/  $HOME/.config/xremap/
   ln -s $HOME/dotfiles/.config/xkeysnail/  $HOME/.config/xkeysnail/
   sudo ln -s $HOME/dotfiles/etc/systemd/system/* /etc/systemd/system/
+fi
+
+# keyrepeat for Mac
+if [ $(uname) = "Darwin" ]; then
+  # -int 1 == 15ms
+  defaults write -g InitialKeyRepeat -int 10
+  defaults write -g KeyRepeat -int 1
 fi
 
 # TODO homebrew, homebrew-cask, yay
