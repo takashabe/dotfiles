@@ -27,7 +27,7 @@ set -x XDG_CONFIG_HOME $HOME/.config
 ## Prompt
 set -x PROMPT_ICON "(*'-')"
 set -x PROMPT_ERROR_ICON "(*;_;)"
-set -x PROMPT_ENABLE_K8S_CONTEXT 1
+set -x PROMPT_ENABLE_K8S_CONTEXT 0
 set -x PROMPT_ENABLE_K8S_NAMESPACE 0
 set -x PROMPT_ENABLE_GCLOUD_PROJECT 1
 set -x PROMPT_SHOW_ERR_STATUS 1
@@ -187,9 +187,7 @@ function go_install_binaries
     'github.com/haya14busa/gtrans'  \
     'github.com/rakyll/gotest' \
     'github.com/fatih/gomodifytags' \
-    'github.com/rubenv/sql-migrate/...' \
-    'github.com/derailed/k9s' \
-    'sigs.k8s.io/kustomize/kustomize/v3@v3.8.8'
+    'github.com/rubenv/sql-migrate/...'
   pushd $HOME
   for uri in $GO_BINARIES
     echo "go get -u $uri ..."
@@ -286,4 +284,9 @@ source $HOME/.config/fish/conf.d/local.fish
 # https://github.com/fish-shell/fish-shell/issues/7511
 if status --is-interactive; and test (uname) = "Darwin"
   function __fish_describe_command; end
+end
+
+# mysql-client via homebrew
+if status --is-interactive; and test (uname) = "Darwin"
+  set -x PATH /usr/local/opt/mysql-client/bin $PATH
 end
