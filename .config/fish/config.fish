@@ -179,18 +179,19 @@ set -x GOTEST_CMD gotest
 ### Install golang tool binaries
 function go_install_binaries
   set -l GO_BINARIES \
-    'github.com/golang/mock/gomock' \
-    'github.com/golang/mock/mockgen' \
-    'golang.org/x/tools/cmd/goimports' \
-    'github.com/google/pprof' \
-    'github.com/cweill/gotests/...' \
-    'github.com/haya14busa/gtrans'  \
-    'github.com/rakyll/gotest' \
-    'github.com/fatih/gomodifytags' \
-    'github.com/rubenv/sql-migrate/...'
+    'github.com/golang/mock/gomock@latest' \
+    'github.com/golang/mock/mockgen@latest' \
+    'golang.org/x/tools/cmd/goimports@latest' \
+    'github.com/google/pprof@latest' \
+    'github.com/cweill/gotests/gotests@latest' \
+    'github.com/haya14busa/gtrans@latest'  \
+    'github.com/rakyll/gotest@latest' \
+    'github.com/fatih/gomodifytags@latest' \
+    'github.com/rubenv/sql-migrate/sql-migrate@latest' \
+    'github.com/swaggo/swag/cmd/swag@latest'
   pushd $HOME
   for uri in $GO_BINARIES
-    echo "go get -u $uri ..."
+    echo "go install $uri ..."
     go get -u $uri
   end
   popd
