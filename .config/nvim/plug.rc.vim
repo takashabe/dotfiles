@@ -88,6 +88,7 @@ Plug 'cespare/vim-toml', {'for': 'toml'}
 Plug 'dag/vim-fish', {'for': 'fish'}
 Plug 'chr4/nginx.vim', {'for': 'nginx'}
 Plug 'delphinus/vim-firestore'
+Plug 'mechatroner/rainbow_csv', {'for': ['csv', 'tsv']}
 
 " ==========================================================
 " Others

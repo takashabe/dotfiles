@@ -412,6 +412,7 @@ cmap <C-h> <BS>
 " 特定のfiletypeではハードタブを使うようにする
 au BufNewFile,BufRead *.go set noexpandtab tabstop=2 shiftwidth=2
 au BufNewFile,BufRead *.re set noexpandtab tabstop=2 shiftwidth=2
+au BufNewFile,BufRead *.tsv set noexpandtab tabstop=2 shiftwidth=2
 
 "-------------------------------------------------------------------------------
 " ターミナル Terminal
