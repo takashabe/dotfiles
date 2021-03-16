@@ -4,7 +4,7 @@ import re
 from xkeysnail.transform import *
 
 # macOS(Emacs)-like keybindings in non-Emacs applications
-define_keymap(lambda wm_class: wm_class not in ("Alacritty", "Visual Studio Code"), {
+define_keymap(lambda wm_class: wm_class not in ("Alacritty", "Code"), {
   # Cursor
   K("C-b"): K("left"),
   K("C-f"): K("right"),
