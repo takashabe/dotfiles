@@ -19,6 +19,7 @@ Session.vim
 
 ## vscode
 .vscode/
+*.code-workspace
 
 telepresence.log
 

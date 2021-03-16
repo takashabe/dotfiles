@@ -95,8 +95,8 @@
   ],
   // Mics...
   "explorer.confirmDelete": false,
-  "workbench.colorTheme": "One Dark Pro",
-  "window.zoomLevel": 1,
+"workbench.colorTheme": "One Dark Pro",
+"window.zoomLevel": 1,
   "markdown.preview.fontSize": 18,
   "editor.lineHeight": 0,
   "editor.fontLigatures": false,
@@ -109,4 +109,8 @@
   "editor.renderWhitespace": "all",
   "workbench.startupEditor": "newUntitledFile",
   "editor.fontFamily": "Menlo, Monaco, 'Courier New', monospace",
+  "workbench.iconTheme": "vscode-icons",
+  "[vue]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
 }
