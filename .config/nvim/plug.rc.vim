@@ -87,7 +87,7 @@ execute 'source' plug_conf . 'vim-terraform.rc.vim'
 Plug 'cespare/vim-toml', {'for': 'toml'}
 Plug 'dag/vim-fish', {'for': 'fish'}
 Plug 'chr4/nginx.vim', {'for': 'nginx'}
-Plug 'delphinus/vim-firestore'
+Plug 'delphinus/vim-firestore', {'for': 'rule'}
 Plug 'mechatroner/rainbow_csv', {'for': ['csv', 'tsv']}
 
 " ==========================================================
