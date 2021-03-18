@@ -78,6 +78,14 @@ Plug 'buoto/gotests-vim', {'for': 'go'}
 execute 'source' plug_conf . 'gotests-vim.rc.vim'
 
 " ==========================================================
+" JavaScript
+" ==========================================================
+" TODO: lspに変えたい
+Plug 'prettier/vim-prettier', {
+  \ 'do': 'yarn install',
+  \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'graphql', 'vue', 'html'] }
+
+" ==========================================================
 " Other language/file syntax
 " ==========================================================
 Plug 'tokorom/vim-review', {'for': 'review'}
