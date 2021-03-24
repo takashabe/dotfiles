@@ -24,12 +24,6 @@ Plug 'scrooloose/nerdcommenter'
 execute 'source' plug_conf . 'nerdcommenter.rc.vim'
 Plug 'liuchengxu/vista.vim'
 
-" for fcitx
-if has('unix') && !has('mac')
-  Plug 'fuenor/im_control.vim'
-  execute 'source' plug_conf . 'im_control.rc.vim'
-endif
-
 " ==========================================================
 " Text Object
 " ==========================================================
