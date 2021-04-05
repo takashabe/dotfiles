@@ -91,7 +91,7 @@
       "commands": [
         "go.vet.workspace"
       ]
-    },
+    }
   ],
   // Mics...
   "explorer.confirmDelete": false,
