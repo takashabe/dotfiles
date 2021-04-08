@@ -10,16 +10,23 @@
   "[go]": {
     "editor.tabSize": 2,
     "editor.insertSpaces": false,
-  },
-  "gopls": {
-    "experimentalWorkspaceModule": true,
+    "editor.formatOnSave": true,
   },
   "go.useLanguageServer": true,
   "go.languageServerExperimentalFeatures": {
     "diagnostics": true,
-    "documentLink": true
   },
   "go.formatTool": "goimports",
+  "go.lintTool": "golangci-lint",
+  "go.lintFlags": [
+    "--disable-all",
+    "--enable=govet",
+    "--enable=golint",
+    "--exclude-use-default=false",
+    "--max-same-issues=0",
+    "--max-issues-per-linter=0"
+  ],
+  "go.lintOnSave": "file",
   // Terminal
   "terminal.integrated.shell.osx": "/usr/local/bin/fish",
   "vim.leader": ",",
