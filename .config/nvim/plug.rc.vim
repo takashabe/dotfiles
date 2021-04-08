@@ -93,10 +93,15 @@ Plug 'delphinus/vim-firestore', {'for': 'rule'}
 Plug 'mechatroner/rainbow_csv', {'for': ['csv', 'tsv']}
 
 " ==========================================================
+" Git
+" ==========================================================
+Plug 'lambdalisue/gina.vim'
+Plug 'tyru/open-browser.vim'
+Plug 'tyru/open-browser-github.vim'
+Plug 'airblade/vim-gitgutter'
+
+" ==========================================================
 " Others
 " ==========================================================
 Plug 'direnv/direnv.vim'
 Plug 'haya14busa/vim-gtrans'
-Plug 'lambdalisue/gina.vim'
-Plug 'tyru/open-browser.vim'
-Plug 'tyru/open-browser-github.vim'
