@@ -99,13 +99,17 @@ set -x PATH /usr/local/opt/openssl/bin $PATH
 
 
 # node
-if status --is-interactive; and command -v nodebrew > /dev/null
-  set -x PATH $HOME/.nodebrew/current/bin $PATH
-else if [ -d /usr/share/nvm ] > /dev/null
+if [ -d /usr/share/nvm ] > /dev/null
+  # for linux nvm
   set -x NVM_DIR $HOME/.nvm
   bass source /usr/share/nvm/nvm.sh
   bass source /usr/share/nvm/bash_completion
   bass source /usr/share/nvm/install-nvm-exec
+else if [ -e (brew --prefix nvm)/nvm ]
+  # for homebrew nvm
+  set -x NVM_DIR $HOME/.nvm
+  bass source (brew --prefix nvm)/nvm.sh
+  bass source (brew --prefix nvm)/etc/bash_completion.d/nvm
 end
 
 # rbenv
@@ -136,16 +140,12 @@ end
 
 ### gcloud
 set -x GOOGLE_APPLICATION_CREDENTIALS "$HOME/.config/gcloud/application_default_credentials.json"
-if test (uname) != "Linux"
-  set -x CLOUDSDK_PYTHON (brew --prefix python@3.8)/bin/python3
-end
-## load completion
 if status --is-interactive
   if test (uname) = "Linux"
     source "/opt/google-cloud-sdk/path.fish.inc"
   else
-    bass source "$HOME/bin/google-cloud-sdk/path.bash.inc"
-    bass source "$HOME/bin/google-cloud-sdk/completion.bash.inc"
+    source "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.fish.inc"
+    bass source "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.bash.inc"
   end
 end
 
