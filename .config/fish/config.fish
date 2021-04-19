@@ -156,7 +156,7 @@ end
 
 ### docker, k8s
 alias dk 'docker'
-alias dkc 'docker-compose'
+alias dkc 'docker compose'
 alias k 'kubectl'
 alias kg 'kubectl get'
 alias kt 'kubectl top'
