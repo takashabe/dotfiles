@@ -3,7 +3,7 @@ let g:lightline = {
       \ 'active': {
       \   'left': [
       \     ['mode', 'paste'],
-      \     ['filename', 'gina_branch', 'lsp_warning', 'lsp_error'],
+      \     ['filename', 'gina_branch', 'method', 'lsp_warning', 'lsp_error'],
       \   ],
       \   'right': [
       \     ['fileformat', 'fileencoding', 'filetype'],
@@ -11,21 +11,22 @@ let g:lightline = {
       \   ],
       \ },
       \ 'component_expand': {
-      \   'lsp_warning':  'g:lightline.my.lsp_warning',
-      \   'lsp_error':    'g:lightline.my.lsp_error',
+      \   'lsp_warning': 'g:lightline.my.lsp_warning',
+      \   'lsp_error': 'g:lightline.my.lsp_error',
       \ },
       \ 'component_function': {
-      \   'mode':         'g:lightline.my.mode',
-      \   'filename':     'g:lightline.my.filename',
-      \   'fileformat':   'g:lightline.my.fileformat',
+      \   'mode': 'g:lightline.my.mode',
+      \   'filename': 'g:lightline.my.filename',
+      \   'fileformat': 'g:lightline.my.fileformat',
       \   'fileencoding': 'g:lightline.my.fileencoding',
-      \   'filetype':     'g:lightline.my.filetype',
-      \   'lineinfo':     'g:lightline.my.lineinfo',
-      \   'gina_branch':  'g:lightline.my.gina_branch',
+      \   'filetype': 'g:lightline.my.filetype',
+      \   'lineinfo': 'g:lightline.my.lineinfo',
+      \   'gina_branch': 'g:lightline.my.gina_branch',
+      \   'method': 'NearestMethodOrFunction'
       \ },
       \ 'component_type': {
-      \   'lsp_warning':  'warning',
-      \   'lsp_error':    'error',
+      \   'lsp_warning': 'warning',
+      \   'lsp_error': 'error',
       \ },
       \}
 
@@ -77,16 +78,24 @@ function! g:lightline.my.gina_branch() abort
 endfunction
 
 function! g:lightline.my.lsp_warning() abort
-    let l:counts = lsp#get_buffer_diagnostics_counts()
-    return l:counts.warning == 0 ? '' : printf('W:%d', l:counts.warning)
+  let l:counts = lsp#get_buffer_diagnostics_counts()
+  return l:counts.warning == 0 ? '' : printf('W:%d', l:counts.warning)
 endfunction
 
 function! g:lightline.my.lsp_error() abort
-    let l:counts = lsp#get_buffer_diagnostics_counts()
-    return l:counts.error == 0 ? '' : printf('E:%d', l:counts.error)
+  let l:counts = lsp#get_buffer_diagnostics_counts()
+  return l:counts.error == 0 ? '' : printf('E:%d', l:counts.error)
 endfunction
 
 augroup lightline_autocmd
-    autocmd!
-    autocmd User lsp_diagnostics_updated call lightline#update()
+  autocmd!
+  autocmd User lsp_diagnostics_updated call lightline#update()
 augroup END
+
+function! NearestMethodOrFunction() abort
+  let l:func_name = get(b:, 'vista_nearest_method_or_function', '')
+  if l:func_name != ''
+    return ' ' . l:func_name
+  endif
+  return ''
+endfunction

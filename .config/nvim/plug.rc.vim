@@ -12,6 +12,7 @@ execute 'source' plug_conf . 'lightline.rc.vim'
 Plug 'Yggdroot/indentLine'
 execute 'source' plug_conf . 'indentLine.rc.vim'
 Plug 'rafi/awesome-vim-colorschemes'
+Plug 'arcticicestudio/nord-vim'
 
 " ==========================================================
 " Edit
@@ -22,6 +23,7 @@ execute 'source' plug_conf . 'vim-easy-align.rc.vim'
 Plug 'scrooloose/nerdcommenter'
 execute 'source' plug_conf . 'nerdcommenter.rc.vim'
 Plug 'liuchengxu/vista.vim'
+execute 'source' plug_conf . 'vista.rc.vim'
 
 " ==========================================================
 " Text Object
