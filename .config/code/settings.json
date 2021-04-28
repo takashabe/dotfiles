@@ -102,7 +102,7 @@
   ],
   // Mics...
   "explorer.confirmDelete": false,
-"workbench.colorTheme": "One Dark Pro",
+  "workbench.colorTheme": "One Dark Pro",
   "markdown.preview.fontSize": 18,
   "editor.lineHeight": 0,
   "editor.fontLigatures": false,
