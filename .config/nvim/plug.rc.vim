@@ -93,6 +93,7 @@ Plug 'chr4/nginx.vim', {'for': 'nginx'}
 Plug 'delphinus/vim-firestore', {'for': 'rule'}
 Plug 'mechatroner/rainbow_csv', {'for': ['csv', 'tsv']}
 Plug 'Glench/Vim-Jinja2-Syntax'
+Plug 'jparise/vim-graphql'
 
 " ==========================================================
 " Git
