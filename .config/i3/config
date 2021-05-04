@@ -194,23 +194,26 @@ bar {
   }
 }
 
-# border colors
+## border
+# window titleなどの設定
+# https://i3wm.org/docs/userguide.html#_default_border_style_for_new_windows
+for_window [class=".*"] border pixel 2
+## colors
 # class                 border  backgr. text    indicator child_border
-client.focused          #32cd32 #32cd32 #ffffff #32cd32   #32cd32
-client.focused_inactive #333333 #333333 #ffffff #333333   #333333
+client.focused          #333333 #61AFEF #282C34 #61AFEF   #61AFEF
+client.focused_inactive #333333 #282C34 #888888 #333333   #333333
 client.unfocused        #333333 #333333 #888888 #333333   #333333
 client.urgent           #333333 #333333 #ffffff #333333   #333333
 client.placeholder      #333333 #333333 #ffffff #333333   #333333
 client.background       #ffffff
 
-# i3 gaps and border
+## gaps
 # https://github.com/Airblader/i3
-for_window [class=".*"] border pixel 2
-gaps inner 5
-gaps outer 2
+gaps inner 0
+gaps outer 0
 
 # Autostart
 # fcitx
 exec --no-startup-id fcitx
-# feh(background image)
-exec --no-startup-id feh --bg-scale $HOME/Pictures/wallpapers/arch.jpg
+# feh(background image) どうせ見えないので無効化
+# exec --no-startup-id feh --bg-scale $HOME/Pictures/wallpapers/arch.jpg

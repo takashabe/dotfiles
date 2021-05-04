@@ -7,12 +7,12 @@ let plug_conf = expand('<sfile>:p:h') . '/plugins/'
 Plug 'joshdick/onedark.vim'
 Plug 'morhetz/gruvbox'
 Plug 'ryanoasis/vim-devicons'
-Plug 'micchy326/lightline-lsp-progress'
 Plug 'itchyny/lightline.vim'
 execute 'source' plug_conf . 'lightline.rc.vim'
 Plug 'Yggdroot/indentLine'
 execute 'source' plug_conf . 'indentLine.rc.vim'
 Plug 'rafi/awesome-vim-colorschemes'
+Plug 'arcticicestudio/nord-vim'
 
 " ==========================================================
 " Edit
@@ -23,12 +23,7 @@ execute 'source' plug_conf . 'vim-easy-align.rc.vim'
 Plug 'scrooloose/nerdcommenter'
 execute 'source' plug_conf . 'nerdcommenter.rc.vim'
 Plug 'liuchengxu/vista.vim'
-
-" for fcitx
-if has('unix') && !has('mac')
-  Plug 'fuenor/im_control.vim'
-  execute 'source' plug_conf . 'im_control.rc.vim'
-endif
+execute 'source' plug_conf . 'vista.rc.vim'
 
 " ==========================================================
 " Text Object
@@ -97,10 +92,19 @@ Plug 'dag/vim-fish', {'for': 'fish'}
 Plug 'chr4/nginx.vim', {'for': 'nginx'}
 Plug 'delphinus/vim-firestore', {'for': 'rule'}
 Plug 'mechatroner/rainbow_csv', {'for': ['csv', 'tsv']}
+Plug 'Glench/Vim-Jinja2-Syntax'
+Plug 'jparise/vim-graphql'
+
+" ==========================================================
+" Git
+" ==========================================================
+Plug 'lambdalisue/gina.vim'
+Plug 'tyru/open-browser.vim'
+Plug 'tyru/open-browser-github.vim'
+Plug 'airblade/vim-gitgutter'
 
 " ==========================================================
 " Others
 " ==========================================================
 Plug 'direnv/direnv.vim'
 Plug 'haya14busa/vim-gtrans'
-Plug 'lambdalisue/gina.vim'

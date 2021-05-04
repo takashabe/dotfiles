@@ -11,6 +11,17 @@ shift + cmd - j : yabai -m window --warp south
 shift + cmd - k : yabai -m window --warp north
 shift + cmd - l : yabai -m window --warp east
 
+# stack window
+shift + cmd - w : yabai -m window --stack next
+
+# forward window (with stack)
+# TODO: support display
+shift + cmd - f : yabai -m query --spaces --space \
+  | jq -re ".index" \
+  | xargs -I{} yabai -m query --windows --space {} \
+  | jq -sre "add | map(select(.minimized != 1)) | sort_by(.display, .frame.y, .frame.x, .id) | reverse | nth(index(map(select(.focused == 1))) - 1).id" \
+  | xargs -I{} yabai -m window --focus {}
+
 # rotate window
 shift + cmd - r : yabai -m space --rotate 90
 

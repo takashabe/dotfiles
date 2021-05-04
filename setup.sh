@@ -12,10 +12,10 @@ ln -s $HOME/dotfiles/.terraformrc $HOME/
 ln -s $HOME/dotfiles/.yabairc $HOME/
 ln -s $HOME/dotfiles/.skhdrc $HOME/
 ln -s $HOME/dotfiles/.myclirc $HOME/
+ln -s $HOME/dotfiles/.imwheelrc $HOME/
 
 ## $HOME/bin
 mkdir $HOME/bin
-cp $HOME/dotfiles/tmuxx $HOME/bin
 cp $HOME/dotfiles/diff-highlight $HOME/bin
 
 # $HOME/.config
@@ -39,15 +39,14 @@ ln -s $HOME/dotfiles/.config/code/vsicons.settings.json $CODE_PATH
 ln -s $HOME/dotfiles/.config/code/settings.json $CODE_PATH
 ln -s $HOME/dotfiles/.config/code/keybindings.json $CODE_PATH
 
-# keyremap for linux
 if [ $(uname) = "Linux" ]; then
   echo "=== Linux only ==="
   ln -s $HOME/dotfiles/.config/xremap/  $HOME/.config/xremap/
   ln -s $HOME/dotfiles/.config/xkeysnail/  $HOME/.config/xkeysnail/
-  sudo ln -s $HOME/dotfiles/etc/systemd/system/* /etc/systemd/system/
+  ln -s $HOME/dotfiles/.config/systemd/user/xkeysnail.service $HOME/.config/systemd/user/
+  ln -s $HOME/dotfiles/.config/systemd/user/imwheel.service $HOME/.config/systemd/user/
 fi
 
-# keyrepeat for Mac
 if [ $(uname) = "Darwin" ]; then
   # -int 1 == 15ms
   defaults write -g InitialKeyRepeat -int 10

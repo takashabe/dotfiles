@@ -1,0 +1,23 @@
+font:
+  normal:
+    family: SF Mono Square
+    style: Regular
+  bold:
+    family: SF Mono Square
+    style: Bold
+  italic:
+    family: SF Mono Square
+    style: Italic
+  size: 10.0
+
+# font:
+#   normal:
+#     family: Cica
+#     style: Regular
+#   bold:
+#     family: Cica
+#     style: Bold
+#   italic:
+#     family: Cica
+#     style: Italic
+#   size: 12.0

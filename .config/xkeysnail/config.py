@@ -28,3 +28,8 @@ define_keymap(lambda wm_class: wm_class not in ("Alacritty", "Code"), {
   # Close
   K("Super-q"): K("M-F4"),
 }, "macOS-like keys")
+
+# ESC + IME off for vim
+define_keymap(lambda wm_class: wm_class in ("Alacritty", "Code"), {
+  K("ESC"): [K("ESC"), K("MUHENKAN")]
+}, "vim")
