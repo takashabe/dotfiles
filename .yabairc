@@ -27,3 +27,4 @@ yabai -m rule --add app="Preview" manage=off
 yabai -m rule --add app="Keynote" manage=off
 yabai -m rule --add app="Docker" manage=off
 yabai -m rule --add app="draw.io" manage=off
+yabai -m rule --add app="Code" manage=off
