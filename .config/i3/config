@@ -178,7 +178,7 @@ bar {
   strip_workspace_numbers yes
   binding_mode_indicator yes
   tray_padding 1
-  tray_output primary
+  tray_output HDMI-0
   colors {
     background $background
     focused_background $background
@@ -215,5 +215,7 @@ gaps outer 0
 # Autostart
 # fcitx
 exec --no-startup-id fcitx
-# feh(background image) どうせ見えないので無効化
-# exec --no-startup-id feh --bg-scale $HOME/Pictures/wallpapers/arch.jpg
+# feh(background image)
+exec --no-startup-id feh --bg-scale $HOME/Pictures/wallpapers/arch.jpg
+# systemctl (何故かenableだけで自動起動しない…)
+exec --no-startup-id systemctl --user start imwheel.service
