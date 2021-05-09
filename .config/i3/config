@@ -219,3 +219,4 @@ exec --no-startup-id fcitx
 exec --no-startup-id feh --bg-scale $HOME/Pictures/wallpapers/arch.jpg
 # systemctl (何故かenableだけで自動起動しない…)
 exec --no-startup-id systemctl --user start imwheel.service
+exec --no-startup-id systemctl --user start xkeysnail.service
