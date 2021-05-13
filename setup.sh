@@ -28,6 +28,7 @@ ln -s $HOME/dotfiles/.config/rofi $HOME/.config/
 ln -s $HOME/dotfiles/.config/i3 $HOME/.config/
 ln -s $HOME/dotfiles/.config/i3blocks $HOME/.config/
 ln -s $HOME/dotfiles/.config/Xresources.d $HOME/.config/
+ln -s $HOME/dotfiles/.config/vim $HOME/.config/
 
 # vscode
 if [ $(uname) = "Linux" ]; then

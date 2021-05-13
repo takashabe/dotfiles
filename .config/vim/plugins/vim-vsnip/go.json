@@ -1,0 +1,28 @@
+{
+	"iferr": {
+		"prefix": "iferr",
+		"body": [
+			"$0if err != nil {",
+			"\treturn err",
+			"}"
+		]
+	},
+	"gomega_err": {
+		"prefix": "omgerr",
+		"body": [
+			"$0Ω(err).Should(BeNil())"
+		]
+	},
+	"gomega_diff": {
+		"prefix": "omgdiff",
+		"body": [
+			"$0Ω(diff).Should(BeEmpty())"
+		]
+	},
+	"diff": {
+		"prefix": "diff",
+		"body": [
+			"diff := cmp.Diff(tt.want, got$0)"
+		]
+	}
+}
