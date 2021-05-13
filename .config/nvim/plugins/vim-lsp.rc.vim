@@ -46,7 +46,6 @@ let g:lsp_settings['golangci-lint-langserver'] = {
   \    'command': ['golangci-lint', 'run',
   \      '--disable-all',
   \      '--enable', 'govet',
-  \      '--enable', 'golint',
   \      '--exclude-use-default=false',
   \      '--out-format', 'json',
   \      '--max-same-issues', '0',
