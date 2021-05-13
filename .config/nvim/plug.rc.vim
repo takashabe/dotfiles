@@ -24,6 +24,9 @@ Plug 'scrooloose/nerdcommenter'
 execute 'source' plug_conf . 'nerdcommenter.rc.vim'
 Plug 'liuchengxu/vista.vim'
 execute 'source' plug_conf . 'vista.rc.vim'
+Plug 'hrsh7th/vim-vsnip'
+Plug 'hrsh7th/vim-vsnip-integ'
+execute 'source' plug_conf . 'vim-vsnip.rc.vim'
 
 " ==========================================================
 " Text Object
