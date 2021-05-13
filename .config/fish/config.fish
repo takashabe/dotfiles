@@ -191,7 +191,8 @@ function go_install_binaries
     'github.com/rubenv/sql-migrate/sql-migrate@latest' \
     'github.com/swaggo/swag/cmd/swag@latest' \
     'github.com/xo/xo@latest' \
-    'github.com/99designs/gqlgen@latest'
+    'github.com/99designs/gqlgen@latest' \
+    'github.com/makiuchi-d/arelo@latest'
   pushd $HOME
   for uri in $GO_BINARIES
     echo "go install $uri ..."
