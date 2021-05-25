@@ -16,11 +16,6 @@ mouse:
   triple_click: { threshold: 300 }
   hide_when_typing: true
 
-  # Open the URL with "Ctrl-click"
-  url:
-    launcher: open
-    modifiers: Control
-
 cursor:
   style: Block
   unfocused_hollow: true
