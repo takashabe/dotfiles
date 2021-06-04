@@ -106,11 +106,14 @@ if [ -d /usr/share/nvm ] > /dev/null
   bass source /usr/share/nvm/bash_completion
   bass source /usr/share/nvm/install-nvm-exec
 else if [ -d (brew --prefix nvm) ]
-  # for homebrew nvm
-  # need https://github.com/jorgebucaran/nvm.fish
-  set -x NVM_DIR $HOME/.nvm
-  bass source (brew --prefix nvm)/nvm.sh
-  bass source (brew --prefix nvm)/etc/bash_completion.d/nvm
+  if status --is-interactive
+    # for homebrew nvm
+    # need https://github.com/jorgebucaran/nvm.fish
+    set -x NVM_DIR $HOME/.nvm
+    bass source (brew --prefix nvm)/nvm.sh
+    bass source (brew --prefix nvm)/etc/bash_completion.d/nvm
+    nvm use v14.16.1
+  end
 end
 
 # rbenv
