@@ -197,7 +197,7 @@ bar {
 ## border
 # window titleなどの設定
 # https://i3wm.org/docs/userguide.html#_default_border_style_for_new_windows
-for_window [class=".*"] border pixel 2
+for_window [class=".*"] border normal 3px
 ## colors
 # class                 border  backgr. text    indicator child_border
 client.focused          #333333 #61AFEF #282C34 #61AFEF   #61AFEF

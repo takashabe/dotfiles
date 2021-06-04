@@ -13,6 +13,7 @@ function! s:on_lsp_buffer_enabled() abort
   setlocal omnifunc=lsp#complete
 
   " map
+  nnoremap <buffer><silent> ga :<C-u>LspCodeAction<CR>
   nnoremap <buffer><silent> gd :<C-u>LspDefinition<CR>
   nnoremap <buffer><silent> gD :<C-u>LspReferences<CR>
   nnoremap <buffer><silent> gs :<C-u>LspDocumentSymbol<CR>
@@ -44,9 +45,7 @@ let g:lsp_settings['gopls'] = {
 let g:lsp_settings['golangci-lint-langserver'] = {
   \  'initialization_options': {
   \    'command': ['golangci-lint', 'run',
-  \      '--disable-all',
-  \      '--enable', 'govet',
-  \      '--exclude-use-default=false',
+  \      '--fast',
   \      '--out-format', 'json',
   \      '--max-same-issues', '0',
   \      '--max-issues-per-linter', '0'

@@ -2,8 +2,16 @@
 	"iferr": {
 		"prefix": "iferr",
 		"body": [
-			"$0if err != nil {",
-			"\treturn err",
+			"if err != nil {",
+			"\treturn $0err",
+			"}"
+		]
+	},
+	"iferrnil": {
+		"prefix": "iferrnil",
+		"body": [
+			"if err != nil {",
+			"\treturn $0nil, err",
 			"}"
 		]
 	},
