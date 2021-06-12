@@ -10,11 +10,11 @@
   "[go]": {
     "editor.tabSize": 2,
     "editor.insertSpaces": false,
-    "editor.formatOnSave": true,
+    "editor.formatOnSave": true
   },
   "go.useLanguageServer": true,
   "go.languageServerExperimentalFeatures": {
-    "diagnostics": true,
+    "diagnostics": true
   },
   "go.formatTool": "goimports",
   "go.lintTool": "golangci-lint",
@@ -98,11 +98,11 @@
       "commands": [
         "go.vet.workspace"
       ]
-    }
+    },
   ],
   // Mics...
   "explorer.confirmDelete": false,
-  "workbench.colorTheme": "One Dark Pro",
+"workbench.colorTheme": "One Dark Pro",
   "markdown.preview.fontSize": 18,
   "editor.lineHeight": 0,
   "editor.fontLigatures": false,
@@ -124,8 +124,8 @@
   "[javascript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "window.zoomLevel": 1,
   "[typescript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
+  "window.zoomLevel": 1,
 }
