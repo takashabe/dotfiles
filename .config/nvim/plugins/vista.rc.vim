@@ -1,9 +1,9 @@
 " keymap
-nnoremap <Leader>lt :Vista!!<CR>
+nnoremap <Leader>as :Vista!!<CR>
 
 " vista configurations
 let g:vista_default_executive = 'vim_lsp'
-let g:vista_fzf_preview = ['right:50%']
+let g:vista_fzf_preview = ['left:50%']
 let g:vista#renderer#enable_icon = 1
 
 let g:vista_icon_indent = ["󳄀󳄂 ", "󳄁󳄂 "]
