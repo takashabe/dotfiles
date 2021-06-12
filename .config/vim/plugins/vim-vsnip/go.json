@@ -32,5 +32,23 @@
 		"body": [
 			"diff := cmp.Diff(tt.want, got$0)"
 		]
+	},
+	"ctx": {
+		"prefix": "ctx",
+		"body": [
+			"ctx := context.Background()$0"
+		]
+	},
+	"asserterr": {
+		"prefix": "asserterr",
+		"body": [
+			"assert.NoError(t, err)$0"
+		]
+	},
+	"assertdiff": {
+		"prefix": "assertdiff",
+		"body": [
+			"assert.Empty(t, $0tt.want, got)"
+		]
 	}
 }

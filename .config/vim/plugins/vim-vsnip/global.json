@@ -1,0 +1,22 @@
+{
+  "todo": {
+    "prefix": "todo",
+    "body": [
+      "// TODO: $0"
+    ]
+  },
+  "fixme": {
+    "prefix": "fixme",
+    "body": [
+      "// FIXME: $0"
+    ]
+  },
+  "shebang_bash": {
+    "prefix": "bash",
+    "body": [
+      "#!/usr/bin/env bash",
+      "",
+      "set -eo pipefail$0"
+    ]
+  }
+}
