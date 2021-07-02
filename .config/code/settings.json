@@ -128,4 +128,6 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "window.zoomLevel": 1,
+  "vsicons.dontShowNewVersionMessage": true,
+  "redhat.telemetry.enabled": true,
 }
