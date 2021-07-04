@@ -13,6 +13,7 @@ ln -s $HOME/dotfiles/.yabairc $HOME/
 ln -s $HOME/dotfiles/.skhdrc $HOME/
 ln -s $HOME/dotfiles/.myclirc $HOME/
 ln -s $HOME/dotfiles/.imwheelrc $HOME/
+ln -s $HOME/dotfiles/.xprofile $HOME/
 
 ## $HOME/bin
 mkdir $HOME/bin
@@ -46,12 +47,15 @@ if [ $(uname) = "Linux" ]; then
   ln -s $HOME/dotfiles/.config/xkeysnail/  $HOME/.config/xkeysnail/
   ln -s $HOME/dotfiles/.config/systemd/user/xkeysnail.service $HOME/.config/systemd/user/
   ln -s $HOME/dotfiles/.config/systemd/user/imwheel.service $HOME/.config/systemd/user/
+  ln -s $HOME/dotfiles/.gitconfig.credential.linux $HOME/.gitconfig.credential
 fi
 
 if [ $(uname) = "Darwin" ]; then
   # -int 1 == 15ms
   defaults write -g InitialKeyRepeat -int 10
   defaults write -g KeyRepeat -int 1
+  # settings
+  ln -s $HOME/dotfiles/.gitconfig.credential.darwin $HOME/.gitconfig.credential
 fi
 
 # TODO homebrew, homebrew-cask, yay
