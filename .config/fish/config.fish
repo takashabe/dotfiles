@@ -298,3 +298,7 @@ end
 if status --is-interactive; and test (uname) = "Darwin"
   set -x PATH /usr/local/opt/mysql-client/bin $PATH
 end
+
+function rolling_update
+  paru -Syyu --noconfirm && go_install_binaries
+end
