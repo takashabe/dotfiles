@@ -37,10 +37,10 @@ alias vi vim
 set -x EDITOR vim
 
 ## alternative grep
-alias rg "rg --hidden --glob '!.git'"
+alias rg "rg --hidden --glob '!.git' -i"
 
 ## fzf
-set -x FZF_DEFAULT_COMMAND 'rg --files --hidden --glob "!.git/*"'
+set -x FZF_DEFAULT_COMMAND 'rg --files --hidden --glob "!.git/*" -i'
 set -x FZF_DEFAULT_OPTS '--height 60% --reverse --border --layout=reverse --inline-info'
 
 ## takashabe/fish-fzf
