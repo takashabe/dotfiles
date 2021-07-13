@@ -102,7 +102,7 @@
   ],
   // Mics...
   "explorer.confirmDelete": false,
-"workbench.colorTheme": "One Dark Pro",
+  "workbench.colorTheme": "One Dark Pro",
   "markdown.preview.fontSize": 18,
   "editor.lineHeight": 0,
   "editor.fontLigatures": false,
@@ -114,7 +114,7 @@
   "explorer.confirmDragAndDrop": false,
   "editor.renderWhitespace": "all",
   "workbench.startupEditor": "newUntitledFile",
-  "editor.fontFamily": "Menlo, Monaco, 'Courier New', monospace",
+  "editor.fontFamily": " Menlo, Monaco",
   "workbench.iconTheme": "vscode-icons",
   "[vue]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
