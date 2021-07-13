@@ -105,6 +105,7 @@ if [ -d /usr/share/nvm ] > /dev/null
   bass source /usr/share/nvm/nvm.sh
   bass source /usr/share/nvm/bash_completion
   bass source /usr/share/nvm/install-nvm-exec
+  nvm use v12.18.0 &> /dev/null
 else if [ -d (brew --prefix nvm) ]
   if status --is-interactive
     # for homebrew nvm
@@ -112,7 +113,7 @@ else if [ -d (brew --prefix nvm) ]
     set -x NVM_DIR $HOME/.nvm
     bass source (brew --prefix nvm)/nvm.sh
     bass source (brew --prefix nvm)/etc/bash_completion.d/nvm
-    nvm use v14.16.1
+    nvm use v12.18.0 &> /dev/null
   end
 end
 
