@@ -4,9 +4,6 @@ export GTK_IM_MODULE=fcitx
 export QT_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx
 
-xhost +SI:localuser:root
-xhost +SI:localuser:xkeysnail
-
 eval $(/usr/bin/gnome-keyring-daemon --start)
 export SSH_AUTH_SOCK
 

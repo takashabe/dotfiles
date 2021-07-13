@@ -1,1 +1,1 @@
-KERNEL="uinput", GROUP="uinput"
+KERNEL=="uinput", GROUP="uinput"

@@ -3,9 +3,11 @@ Description = xkeysnail
 
 [Service]
 KillMode    = process
-ExecStart   = /usr/bin/sudo /usr/bin/xkeysnail /home/takashabe/.config/xkeysnail/config.py
+ExecStartPre= /usr/bin/xhost +SI:localuser:takashabe
+ExecStart   = /usr/bin/xkeysnail /home/takashabe/.config/xkeysnail/config.py
 Type        = simple
 Restart     = always
+RestartSec  = 10s
 Environment = DISPLAY=:1
 
 [Install]
