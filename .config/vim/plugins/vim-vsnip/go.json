@@ -50,5 +50,18 @@
 		"body": [
 			"assert.Empty(t, $0tt.want, got)"
 		]
+	},
+	"gomega_tabletest": {
+		"prefix": ["omgtabletest", "omgtt"],
+		"body": [
+			"tests := []struct {",
+			"\tname string",
+			"}{}",
+			"for _, tt := range tests {",
+			"\ttt := tt",
+			"\tIt(tt.name, func() {",
+			"\t})",
+			"}"
+		]
 	}
 }
