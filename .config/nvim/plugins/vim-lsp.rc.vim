@@ -45,7 +45,6 @@ let g:lsp_settings['gopls'] = {
 let g:lsp_settings['golangci-lint-langserver'] = {
   \  'initialization_options': {
   \    'command': ['golangci-lint', 'run',
-  \      '--fast',
   \      '--out-format', 'json',
   \      '--max-same-issues', '0',
   \      '--max-issues-per-linter', '0'
