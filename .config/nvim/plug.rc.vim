@@ -27,6 +27,8 @@ execute 'source' plug_conf . 'vista.rc.vim'
 Plug 'hrsh7th/vim-vsnip'
 Plug 'hrsh7th/vim-vsnip-integ'
 execute 'source' plug_conf . 'vim-vsnip.rc.vim'
+Plug 'easymotion/vim-easymotion'
+execute 'source' plug_conf . 'vim-easymotion.rc.vim'
 
 " ==========================================================
 " Text Object
