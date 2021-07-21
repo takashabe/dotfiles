@@ -2,13 +2,13 @@
   "todo": {
     "prefix": "todo",
     "body": [
-      "// TODO: $0"
+      "TODO: $0"
     ]
   },
   "fixme": {
     "prefix": "fixme",
     "body": [
-      "// FIXME: $0"
+      "FIXME: $0"
     ]
   },
   "shebang_bash": {
