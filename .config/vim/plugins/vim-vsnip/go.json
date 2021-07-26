@@ -33,10 +33,16 @@
 			"diff := cmp.Diff(tt.want, got$0)"
 		]
 	},
-	"ctx": {
-		"prefix": "ctx",
+	"ctx_background": {
+		"prefix": "ctx_background",
 		"body": [
 			"ctx := context.Background()$0"
+		]
+	},
+	"ctx_args": {
+		"prefix": "ctx_args",
+		"body": [
+			"ctx context.Context"
 		]
 	},
 	"asserterr": {
