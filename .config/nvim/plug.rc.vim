@@ -104,6 +104,7 @@ Plug 'jparise/vim-graphql'
 " Git
 " ==========================================================
 Plug 'lambdalisue/gina.vim'
+Plug 'tpope/vim-fugitive'
 Plug 'tyru/open-browser.vim'
 Plug 'tyru/open-browser-github.vim'
 Plug 'airblade/vim-gitgutter'
