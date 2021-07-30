@@ -28,7 +28,9 @@
   ],
   "go.lintOnSave": "file",
   // Terminal
-  "terminal.integrated.shell.osx": "/usr/local/bin/fish",
+  "terminal.integrated.defaultProfile.osx": "/usr/local/bin/fish",
+  "terminal.integrated.defaultProfile.linux": "fish",
+  "terminal.integrated.defaultLocation": "editor",
   "vim.leader": ",",
   "vim.neovimPath": "",
   "vim.useSystemClipboard": true,
