@@ -112,11 +112,11 @@
   "files.associations": {
     "*.vim": "vimrc"
   },
-  "editor.fontSize": 13,
+  "editor.fontSize": 16,
   "explorer.confirmDragAndDrop": false,
   "editor.renderWhitespace": "all",
   "workbench.startupEditor": "newUntitledFile",
-  "editor.fontFamily": " Menlo, Monaco",
+  "editor.fontFamily": "SF Mono Square, Menlo, Monaco",
   "workbench.iconTheme": "vscode-icons",
   "[vue]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
