@@ -301,5 +301,5 @@ if status --is-interactive; and test (uname) = "Darwin"
 end
 
 function rolling_update
-  paru -Syyu --noconfirm && go_install_binaries
+  paru -Syyu --noconfirm && go_install_binaries && sudo freshclam
 end
