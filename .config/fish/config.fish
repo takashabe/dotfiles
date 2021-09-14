@@ -196,11 +196,12 @@ function go_install_binaries
     'github.com/swaggo/swag/cmd/swag@latest' \
     'github.com/99designs/gqlgen@latest' \
     'github.com/makiuchi-d/arelo@latest' \
-    'github.com/Songmu/ghch/cmd/ghch@latest'
+    'github.com/Songmu/ghch/cmd/ghch@latest' \
+    'github.com/skanehira/swagger-preview/cmd/spr@latest'
   pushd $HOME
   for uri in $GO_BINARIES
     echo "go install $uri ..."
-    go get -u $uri
+    go install $uri
   end
   popd
 end
