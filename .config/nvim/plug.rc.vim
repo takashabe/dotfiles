@@ -29,6 +29,7 @@ Plug 'hrsh7th/vim-vsnip-integ'
 execute 'source' plug_conf . 'vim-vsnip.rc.vim'
 Plug 'easymotion/vim-easymotion'
 execute 'source' plug_conf . 'vim-easymotion.rc.vim'
+Plug 'nicwest/vim-camelsnek'
 
 " ==========================================================
 " Text Object

@@ -75,5 +75,14 @@
 		"body": [
 			"2006/01/02 15:04:05"
 		]
+	},
+	"main": {
+		"prefix": "main",
+		"body": [
+			"package main",
+			"",
+			"func main() {",
+			"}"
+		]
 	}
 }
