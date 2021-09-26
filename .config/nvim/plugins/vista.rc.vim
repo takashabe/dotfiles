@@ -5,6 +5,7 @@ nnoremap <Leader>as :Vista!!<CR>
 let g:vista_default_executive = 'vim_lsp'
 let g:vista_fzf_preview = ['right:50%']
 let g:vista#renderer#enable_icon = 1
+let g:vista_sidebar_position = 'vertical topleft'
 
 let g:vista_icon_indent = ["󳄀󳄂 ", "󳄁󳄂 "]
 let g:vista#renderer#icons = {

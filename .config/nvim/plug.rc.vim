@@ -41,8 +41,10 @@ Plug 'tpope/vim-surround'
 " ==========================================================
 Plug 'mtth/scratch.vim'
 execute 'source' plug_conf . 'scratch.rc.vim'
-Plug 'preservim/nerdtree'
-execute 'source' plug_conf . 'nerdtree.rc.vim'
+Plug 'lambdalisue/fern.vim'
+execute 'source' plug_conf . 'fern.rc.vim'
+Plug 'lambdalisue/fern-git-status.vim'
+Plug 'lambdalisue/fern-renderer-devicons.vim'
 
 " ==========================================================
 " Process integration
