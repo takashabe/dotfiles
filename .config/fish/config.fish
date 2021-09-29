@@ -45,6 +45,7 @@ set -x FZF_DEFAULT_OPTS '--height 60% --reverse --border --layout=reverse --inli
 
 ## takashabe/fish-fzf
 set -x FZF_CD_IGNORE_CASE '.git|vendor/|node_modules'
+set -x FZF_CD_MAX_DEPTH 5
 
 # curl
 alias curl-android 'curl -A "Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.167 Mobile Safari/537.36"'
