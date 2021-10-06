@@ -34,6 +34,9 @@ Plug 'nicwest/vim-camelsnek'
 " ==========================================================
 " Text Object
 " ==========================================================
+Plug 'kana/vim-operator-user'
+execute 'source' plug_conf . 'operator.rc.vim'
+Plug 'tyru/operator-camelize.vim'
 Plug 'tpope/vim-surround'
 
 " ==========================================================
