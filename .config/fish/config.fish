@@ -176,6 +176,11 @@ function docker_clean
   docker stop (docker ps -a -q)
   docker rm (docker ps -a -q)
 end
+function docker_restart
+  docker stop (docker ps -a -q)
+  docker rm (docker ps -a -q)
+  docker compose up -d
+end
 
 # Golang
 set -x GOPATH $HOME/dev

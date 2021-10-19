@@ -197,7 +197,7 @@ bar {
 ## border
 # window titleなどの設定
 # https://i3wm.org/docs/userguide.html#_default_border_style_for_new_windows
-for_window [class=".*"] border pixel 2px
+for_window [class=".*"] border pixel 1px
 ## colors
 # class                 border  backgr. text    indicator child_border
 client.focused          #333333 #61AFEF #282C34 #61AFEF   #61AFEF
@@ -218,5 +218,6 @@ exec --no-startup-id fcitx5
 # feh(background image)
 exec --no-startup-id feh --bg-scale $HOME/Pictures/Lava.jpg
 # systemctl (何故かenableだけで自動起動しない…)
-exec --no-startup-id systemctl --user start imwheel.service
+# 邪魔なので一旦切ってみる
+# exec --no-startup-id systemctl --user start imwheel.service
 exec --no-startup-id systemctl --user start xkeysnail.service

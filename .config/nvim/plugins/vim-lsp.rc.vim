@@ -28,6 +28,8 @@ function! s:on_lsp_buffer_enabled() abort
   nnoremap <buffer><silent> gi :<C-u>LspImplementation<CR>
   nnoremap <buffer><silent> gr :<C-u>LspRename<CR>
   nnoremap <buffer><silent> ge :<C-u>LspDocumentDiagnostics<CR>
+  nnoremap } :<C-u>LspNextDiagnostic<CR>
+  nnoremap { :<C-u>LspPreviousDiagnostic<CR>
 endfunction
 
 augroup lsp_install
