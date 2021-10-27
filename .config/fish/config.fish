@@ -71,6 +71,7 @@ alias g 'git'
 alias gst 'git status'
 alias gb 'git branch'
 alias gc 'git commit -v'
+alias gpull 'git pull origin (git branch --contains | awk \'{print $2}\')'
 alias gpush 'git push origin HEAD'
 function gbp
   git branch -a --sort=-authordate | cut -b 3- | perl -pe 's#^remotes/origin/###' | perl -nlE 'say if !$c{$_}++' | grep -v -- "->" | fzf | xargs git checkout
