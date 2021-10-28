@@ -29,10 +29,14 @@ Plug 'hrsh7th/vim-vsnip-integ'
 execute 'source' plug_conf . 'vim-vsnip.rc.vim'
 Plug 'easymotion/vim-easymotion'
 execute 'source' plug_conf . 'vim-easymotion.rc.vim'
+Plug 'nicwest/vim-camelsnek'
 
 " ==========================================================
 " Text Object
 " ==========================================================
+Plug 'kana/vim-operator-user'
+execute 'source' plug_conf . 'operator.rc.vim'
+Plug 'tyru/operator-camelize.vim'
 Plug 'tpope/vim-surround'
 
 " ==========================================================
@@ -40,8 +44,10 @@ Plug 'tpope/vim-surround'
 " ==========================================================
 Plug 'mtth/scratch.vim'
 execute 'source' plug_conf . 'scratch.rc.vim'
-Plug 'preservim/nerdtree'
-execute 'source' plug_conf . 'nerdtree.rc.vim'
+Plug 'lambdalisue/fern.vim'
+execute 'source' plug_conf . 'fern.rc.vim'
+Plug 'lambdalisue/fern-git-status.vim'
+Plug 'lambdalisue/fern-renderer-devicons.vim'
 
 " ==========================================================
 " Process integration

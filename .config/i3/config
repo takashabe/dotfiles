@@ -218,5 +218,6 @@ exec --no-startup-id fcitx5
 # feh(background image)
 exec --no-startup-id feh --bg-scale $HOME/Pictures/Lava.jpg
 # systemctl (何故かenableだけで自動起動しない…)
-exec --no-startup-id systemctl --user start imwheel.service
+# 邪魔なので一旦切ってみる
+# exec --no-startup-id systemctl --user start imwheel.service
 exec --no-startup-id systemctl --user start xkeysnail.service

@@ -108,10 +108,13 @@
   "markdown.preview.fontSize": 18,
   "editor.lineHeight": 0,
   "editor.fontLigatures": false,
-  "editor.formatOnSave": true,
   "files.associations": {
     "*.vim": "vimrc"
   },
+  "window.zoomLevel": 1,
+  "vsicons.dontShowNewVersionMessage": true,
+  "redhat.telemetry.enabled": true,
+  // javascript
   "editor.fontSize": 16,
   "explorer.confirmDragAndDrop": false,
   "editor.renderWhitespace": "all",
@@ -119,17 +122,28 @@
   "editor.fontFamily": "SF Mono Square, Menlo, Monaco",
   "workbench.iconTheme": "vscode-icons",
   "[vue]": {
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": true
+    },
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "vetur.useWorkspaceDependencies": true,
   "vetur.experimental.templateInterpolationService": true,
   "[javascript]": {
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": true
+    },
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[typescript]": {
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": true
+    },
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "window.zoomLevel": 1,
-  "vsicons.dontShowNewVersionMessage": true,
-  "redhat.telemetry.enabled": true,
+  // eslintをvueでも適応させる
+  "eslint.validate": ["javascript", "typescript", "vue", "typescriptreact"],
+  // stylelintのauto fixはstylusだとバグってしまうので一旦false
+  "stylelint.autoFixOnSave": false,
+  
 }

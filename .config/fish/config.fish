@@ -45,6 +45,7 @@ set -x FZF_DEFAULT_OPTS '--height 60% --reverse --border --layout=reverse --inli
 
 ## takashabe/fish-fzf
 set -x FZF_CD_IGNORE_CASE '.git|vendor/|node_modules'
+set -x FZF_CD_MAX_DEPTH 5
 
 # curl
 alias curl-android 'curl -A "Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.167 Mobile Safari/537.36"'
@@ -70,6 +71,12 @@ alias g 'git'
 alias gst 'git status'
 alias gb 'git branch'
 alias gc 'git commit -v'
+
+alias gpush 'git push origin HEAD'
+function gpull
+ set fish_trace 1
+ git pull origin (git branch --contains | awk '{print $2}')
+end
 function gbp
   git branch -a --sort=-authordate | cut -b 3- | perl -pe 's#^remotes/origin/###' | perl -nlE 'say if !$c{$_}++' | grep -v -- "->" | fzf | xargs git checkout
 end
@@ -155,7 +162,7 @@ end
 
 ### docker, k8s
 alias dk 'docker'
-alias dkc 'docker-compose'
+alias dkc 'docker compose'
 alias k 'kubectl'
 alias kg 'kubectl get'
 alias kt 'kubectl top'
@@ -168,6 +175,11 @@ set -x COMPOSE_DOCKER_CLI_BUILD 1
 function docker_clean
   docker stop (docker ps -a -q)
   docker rm (docker ps -a -q)
+end
+function docker_restart
+  docker stop (docker ps -a -q)
+  docker rm (docker ps -a -q)
+  docker compose up -d
 end
 
 # Golang
@@ -190,11 +202,12 @@ function go_install_binaries
     'github.com/swaggo/swag/cmd/swag@latest' \
     'github.com/99designs/gqlgen@latest' \
     'github.com/makiuchi-d/arelo@latest' \
-    'github.com/Songmu/ghch/cmd/ghch@latest'
+    'github.com/Songmu/ghch/cmd/ghch@latest' \
+    'github.com/skanehira/swagger-preview/cmd/spr@latest'
   pushd $HOME
   for uri in $GO_BINARIES
     echo "go install $uri ..."
-    go get -u $uri
+    go install $uri
   end
   popd
 end

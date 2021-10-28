@@ -1,5 +1,6 @@
 #### bindings
 bind status C !git commit -v
+bind main ! ?git revert %(commit)
 
 #### display options
 # 表示内容の設定->コミットハッシュ:日付:Author:コミットメッセージ
@@ -8,6 +9,8 @@ set main-view = id:width=12 date author commit-title:graph=yes,refs=yes
 set split-view-height = 80%
 # 差分の前後表示行数
 set diff-context = 6
+# 空白を無視する(diff view)
+set ignore-space = at-eol
 
 # color
 color cursor          black green bold

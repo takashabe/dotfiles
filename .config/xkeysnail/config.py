@@ -31,5 +31,6 @@ define_keymap(lambda wm_class: wm_class not in ("Alacritty", "Code"), {
 
 # ESC + IME off for vim
 define_keymap(lambda wm_class: wm_class in ("Alacritty", "Code"), {
-  K("ESC"): [K("ESC"), K("MUHENKAN")]
+  # MUHENKAN=HANJA
+  K("ESC"): [K("ESC"), K("HANJA"), set_mark(False)],
 }, "vim")

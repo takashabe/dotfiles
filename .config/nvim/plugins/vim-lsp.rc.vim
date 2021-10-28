@@ -1,7 +1,12 @@
+let g:lsp_document_highlight_enabled = 1
 let g:lsp_diagnostics_enabled = 1
 let g:lsp_diagnostics_echo_cursor = 1
 let g:lsp_diagnostics_float_cursor = 1
 let g:lsp_text_edit_enabled = 0
+let g:lsp_semantic_enabled = 1
+let g:lsp_work_done_progress_enabled = 1
+
+highlight lspReference ctermfg=red guifg=red ctermbg=green guibg=green
 
 " debug
 " let g:lsp_log_verbose = 1
@@ -23,6 +28,8 @@ function! s:on_lsp_buffer_enabled() abort
   nnoremap <buffer><silent> gi :<C-u>LspImplementation<CR>
   nnoremap <buffer><silent> gr :<C-u>LspRename<CR>
   nnoremap <buffer><silent> ge :<C-u>LspDocumentDiagnostics<CR>
+  nnoremap } :<C-u>LspNextDiagnostic<CR>
+  nnoremap { :<C-u>LspPreviousDiagnostic<CR>
 endfunction
 
 augroup lsp_install
@@ -33,6 +40,7 @@ augroup END
 " vim-lsp-settings
 let g:lsp_settings_filetype_go = ['gopls', 'golangci-lint-langserver']
 let g:lsp_settings_filetype_terraform = ['terraform-ls']
+let g:lsp_settings_filetype_sql = ['sqls']
 
 let g:lsp_settings = {}
 let g:lsp_settings['gopls'] = {
@@ -45,6 +53,7 @@ let g:lsp_settings['gopls'] = {
 let g:lsp_settings['golangci-lint-langserver'] = {
   \  'initialization_options': {
   \    'command': ['golangci-lint', 'run',
+  \      '-E gosec',
   \      '--out-format', 'json',
   \      '--max-same-issues', '0',
   \      '--max-issues-per-linter', '0'
