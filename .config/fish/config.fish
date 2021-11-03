@@ -74,7 +74,6 @@ alias gc 'git commit -v'
 
 alias gpush 'git push origin HEAD'
 function gpull
-  set fish_trace 1
   git pull origin (git branch --contains | grep '^*' | awk '{print $2}')
 end
 function gbp
