@@ -110,8 +110,8 @@
   "editor.fontLigatures": false,
   "files.associations": {
     "*.vim": "vimrc"
-  },
-  "window.zoomLevel": 1,
+},
+"window.zoomLevel": 1,
   "vsicons.dontShowNewVersionMessage": true,
   "redhat.telemetry.enabled": true,
   // javascript
