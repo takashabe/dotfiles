@@ -33,8 +33,8 @@ set -x PROMPT_ENABLE_GCLOUD_PROJECT 1
 set -x PROMPT_SHOW_ERR_STATUS 1
 
 ## vim
-alias vi vim
-set -x EDITOR vim
+alias vi nvim
+set -x EDITOR nvim
 
 ## alternative grep
 alias rg "rg --hidden --glob '!.git' -i"

@@ -1,10 +1,11 @@
-let g:lsp_document_highlight_enabled = 1
-let g:lsp_diagnostics_enabled = 1
 let g:lsp_diagnostics_echo_cursor = 1
-let g:lsp_diagnostics_float_cursor = 1
-let g:lsp_text_edit_enabled = 0
+let g:lsp_diagnostics_float_cursor = 0
+let g:lsp_text_edit_enabled = 1
 let g:lsp_semantic_enabled = 1
 let g:lsp_work_done_progress_enabled = 1
+let g:lsp_diagnostics_virtual_text_enabled = 0
+let g:lsp_work_done_progress_enabled = 1
+let g:lsp_ignorecase = 1
 
 highlight lspReference ctermfg=red guifg=red ctermbg=green guibg=green
 

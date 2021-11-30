@@ -119,4 +119,9 @@ Plug 'airblade/vim-gitgutter'
 " Others
 " ==========================================================
 Plug 'direnv/direnv.vim'
-Plug 'haya14busa/vim-gtrans'
+if has('nvim')
+  Plug 'utahta/trans.nvim', {'do': 'make'}
+  execute 'source' plug_conf . 'trans.rc.vim'
+else
+  Plug 'haya14busa/vim-gtrans'
+end

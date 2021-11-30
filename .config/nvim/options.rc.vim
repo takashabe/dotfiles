@@ -191,7 +191,11 @@ set complete+=k            " 補完に辞書ファイル追加
 set completeopt-=preview   " 補完時にスクラッチウィンドウを表示しない
 
 " C-spaceでC-x補完を出す
-inoremap <C-@> <C-x>
+if has('nvim')
+  inoremap <C-space> <C-x>
+else
+  inoremap <C-@> <C-x>
+end
 
 "-------------------------------------------------------------------------------
 " 検索設定 Search
@@ -386,6 +390,7 @@ au BufNewFile,BufRead *.tsv set noexpandtab tabstop=2 shiftwidth=2
 set sh=fish
 tnoremap <silent> <C-q> <C-\><C-n>
 if has('nvim')
+  autocmd TermOpen * setlocal nonumber norelativenumber
   nnoremap <silent> <Leader>t :split term://fish<CR>:startinsert<CR>
 else
   nnoremap <silent> <Leader>t :term<CR>
