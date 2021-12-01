@@ -111,7 +111,7 @@ if [ -d /usr/share/nvm ] > /dev/null
   bass source /usr/share/nvm/nvm.sh
   bass source /usr/share/nvm/bash_completion
   bass source /usr/share/nvm/install-nvm-exec
-  nvm use v12.18.0 &> /dev/null
+  nvm use v14.17.6 &> /dev/null
 end
 if status --is-interactive; and command -v nodebrew > /dev/null
   set -x PATH $HOME/.nodebrew/current/bin $PATH
