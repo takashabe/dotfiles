@@ -145,5 +145,7 @@
   "eslint.validate": ["javascript", "typescript", "vue", "typescriptreact"],
   // stylelintのauto fixはstylusだとバグってしまうので一旦false
   "stylelint.autoFixOnSave": false,
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
   
 }
