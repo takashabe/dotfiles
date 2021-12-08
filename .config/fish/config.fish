@@ -265,6 +265,11 @@ function reload_network
   sudo ifconfig en0 up
 end
 
+function reload_keyboard
+  systemctl --user restart xkeysnail
+  reload_config
+end
+
 ## osx system functions
 function msleep
   osascript -e 'tell application "Finder" to sleep'
@@ -274,6 +279,10 @@ end
 if status --is-interactive; and test (uname) = "Linux"
   xset m 1/2 4
   xset r rate 200 60
+end
+
+function rolling_update
+  paru -Syyu --noconfirm && go_install_binaries && sudo freshclam
 end
 
 ## Terraform
@@ -304,8 +313,4 @@ end
 # mysql-client via homebrew
 if status --is-interactive; and test (uname) = "Darwin"
   set -x PATH /usr/local/opt/mysql-client/bin $PATH
-end
-
-function rolling_update
-  paru -Syyu --noconfirm && go_install_binaries && sudo freshclam
 end
