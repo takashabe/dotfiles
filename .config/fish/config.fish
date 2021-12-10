@@ -186,6 +186,7 @@ set -x GOPATH $HOME/dev
 set -x PATH $GOPATH/bin $GOROOT/bin $PATH
 set -x GO111MODULE on
 set -x GOTEST_CMD gotest
+# set -x GOROOT $GOPATH/src/go.googlesource.com/go
 ### Install golang tool binaries
 function go_install_binaries
   set -l GO_BINARIES \
