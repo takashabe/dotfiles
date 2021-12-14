@@ -12,7 +12,6 @@ highlight lspReference ctermfg=red guifg=red ctermbg=green guibg=green
 " debug
 " let g:lsp_log_verbose = 1
 " let g:lsp_log_file = expand('~/vim-lsp.log')
-" let g:asyncomplete_log_file = expand('~/asyncomplete.log')
 
 function! s:on_lsp_buffer_enabled() abort
   " omnifunc
