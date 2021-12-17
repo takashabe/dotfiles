@@ -192,7 +192,8 @@ set completeopt-=preview   " 補完時にスクラッチウィンドウを表示
 
 " C-spaceでC-x補完を出す
 if has('nvim')
-  inoremap <C-space> <C-x>
+  " coc#refreshに譲る
+  " inoremap <C-space> <C-x>
 else
   inoremap <C-@> <C-x>
 end

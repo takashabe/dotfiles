@@ -203,7 +203,8 @@ function go_install_binaries
     'github.com/99designs/gqlgen@latest' \
     'github.com/makiuchi-d/arelo@latest' \
     'github.com/Songmu/ghch/cmd/ghch@latest' \
-    'github.com/skanehira/swagger-preview/cmd/spr@latest'
+    'github.com/skanehira/swagger-preview/cmd/spr@latest' \
+    'github.com/nametake/golangci-lint-langserver@latest'
   pushd $HOME
   for uri in $GO_BINARIES
     echo "go install $uri ..."

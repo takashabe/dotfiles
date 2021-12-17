@@ -67,11 +67,16 @@ execute 'source' plug_conf . 'fzf.rc.vim'
 " ==========================================================
 " LanguageServer
 " ==========================================================
-Plug 'prabirshrestha/asyncomplete.vim'
-Plug 'prabirshrestha/asyncomplete-lsp.vim'
-Plug 'prabirshrestha/vim-lsp'
-execute 'source' plug_conf . 'vim-lsp.rc.vim'
-Plug 'mattn/vim-lsp-settings'
+if has('nvim')
+  Plug 'neoclide/coc.nvim', {'branch': 'release'}
+  execute 'source' plug_conf . 'coc.rc.vim'
+else
+  Plug 'prabirshrestha/asyncomplete.vim'
+  Plug 'prabirshrestha/asyncomplete-lsp.vim'
+  Plug 'prabirshrestha/vim-lsp'
+  execute 'source' plug_conf . 'vim-lsp.rc.vim'
+  Plug 'mattn/vim-lsp-settings'
+end
 
 " ==========================================================
 " Go

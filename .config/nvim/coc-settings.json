@@ -1,0 +1,22 @@
+{
+  "languageserver": {
+    "go": {
+      "command": "gopls",
+      "rootPatterns": ["go.mod"],
+      "trace.server": "verbose",
+      "filetypes": ["go"]
+    },
+    "golangci-lint-languageserver": {
+      "command": "golangci-lint-langserver",
+      "filetypes": ["go"],
+      "initializationOptions": {
+        "command": ["golangci-lint", "run",
+          "-E", "gosec",
+          "--out-format", "json",
+          "--max-same-issues", "0",
+          "--max-issues-per-linter", "0"
+        ]
+      }
+    }
+  }
+}
