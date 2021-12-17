@@ -59,8 +59,7 @@ execute 'source' plug_conf . 'vim-test.rc.vim'
 " ==========================================================
 " fzf
 " ==========================================================
-" require fzf binary
-Plug '/usr/local/opt/fzf'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 execute 'source' plug_conf . 'fzf.rc.vim'
 
