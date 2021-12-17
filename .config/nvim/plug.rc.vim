@@ -47,7 +47,7 @@ execute 'source' plug_conf . 'scratch.rc.vim'
 Plug 'lambdalisue/fern.vim'
 execute 'source' plug_conf . 'fern.rc.vim'
 Plug 'lambdalisue/fern-git-status.vim'
-Plug 'lambdalisue/fern-renderer-devicons.vim'
+Plug 'lambdalisue/fern-renderer-nerdfont.vim'
 
 " ==========================================================
 " Process integration
