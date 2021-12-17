@@ -33,7 +33,7 @@ set -x PROMPT_ENABLE_GCLOUD_PROJECT 1
 set -x PROMPT_SHOW_ERR_STATUS 1
 
 ## vim
-alias vi vim
+alias vi nvim
 set -x EDITOR nvim
 
 ## alternative grep
