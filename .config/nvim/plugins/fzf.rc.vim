@@ -17,3 +17,4 @@ nnoremap [fzf]b :Buffers<CR>
 nnoremap [fzf]s :Rg<Space>
 nnoremap [fzf]f :Files<CR>
 nnoremap [fzf]g :GFiles<CR>
+nnoremap [fzf]c :GFiles?<CR>

@@ -1,4 +1,4 @@
-let g:coc_global_extensions = ['coc-git', 'coc-lists']
+let g:coc_global_extensions = ['coc-git', 'coc-lists', 'coc-fzf-preview']
 
 " mappings
 inoremap <buffer><silent><expr> <C-Space> coc#refresh()
@@ -30,3 +30,11 @@ augroup coc_ts
   autocmd!
   autocmd FileType typescript,typescriptreact call <SID>coc_typescript_settings()
 augroup END
+
+" ##############################
+" coc-fzf-preview
+" ##############################
+" NOTE: depends fzf.vim
+nnoremap <silent> [fzf]e  :<C-u>CocCommand fzf-preview.CocCurrentDiagnostics<CR>
+nnoremap <silent> [fzf]d  :<C-u>CocCommand fzf-preview.CocDefinition<CR>
+nnoremap <silent> [fzf]D  :<C-u>CocCommand fzf-preview.CocReferences<CR>
