@@ -1,15 +1,15 @@
 let g:coc_global_extensions = ['coc-git', 'coc-lists', 'coc-fzf-preview']
 
 " mappings
-inoremap <buffer><silent><expr> <C-Space> coc#refresh()
-nmap <buffer><silent> gs :<C-u>call <SID>show_documentation()<CR>
-nmap <buffer><silent> gr <Plug>(coc-rename)
-nmap <buffer><silent> ga <Plug>(coc-codeaction-selected)iw
-nmap <buffer><silent> gd <Plug>(coc-definition)
-nmap <buffer><silent> gD <Plug>(coc-references)
-nmap <buffer><silent> gi <Plug>(coc-implementation)
-nmap <buffer><silent> }  <Plug>(coc-diagnostic-next)
-nmap <buffer><silent> {  <Plug>(coc-diagnostic-prev)
+inoremap <silent><expr> <C-Space> coc#refresh()
+nmap <silent> gs :<C-u>call <SID>show_documentation()<CR>
+nmap <silent> gr <Plug>(coc-rename)
+nmap <silent> ga <Plug>(coc-codeaction-selected)iw
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gD <Plug>(coc-references)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> }  <Plug>(coc-diagnostic-next)
+nmap <silent> {  <Plug>(coc-diagnostic-prev)
 
 function! s:show_documentation() abort
   if index(['vim','help'], &filetype) >= 0
