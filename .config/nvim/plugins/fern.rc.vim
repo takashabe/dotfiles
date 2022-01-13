@@ -1,3 +1,3 @@
 let g:fern#renderer = 'nerdfont'
 
-nnoremap <leader>ad :Fern . -reveal=%<CR>
+nnoremap <leader>ad :Fern . -drawer -width=50 -reveal=%<CR>
