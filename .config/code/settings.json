@@ -114,5 +114,6 @@
   // stylelintのauto fixはstylusだとバグってしまうので一旦false
   "stylelint.autoFixOnSave": false,
   "editor.formatOnSave": true,
-  "editor.defaultFormatter": "esbenp.prettier-vscode"
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "go.toolsManagement.autoUpdate": true
 }
