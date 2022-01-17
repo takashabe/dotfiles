@@ -221,3 +221,7 @@ exec --no-startup-id feh --bg-scale $HOME/Pictures/Lava.jpg
 # 邪魔なので一旦切ってみる
 # exec --no-startup-id systemctl --user start imwheel.service
 exec --no-startup-id systemctl --user start xkeysnail.service
+
+# Chromeのタブドラッグを滑らかにする
+# https://github.com/Syphdias/i3-chrome-tab-dragging
+# exec_always --no-startup-id ~/bin/i3-chrome-tab-dragging.py
