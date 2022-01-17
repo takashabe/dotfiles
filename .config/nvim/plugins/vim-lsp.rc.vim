@@ -41,22 +41,23 @@ augroup END
 let g:lsp_settings_filetype_go = ['gopls', 'golangci-lint-langserver']
 let g:lsp_settings_filetype_terraform = ['terraform-ls']
 let g:lsp_settings_filetype_sql = ['sqls']
-
-let g:lsp_settings = {}
-let g:lsp_settings['gopls'] = {
-  \  'initialization_options': {
-  \    'buildFlags': [
-  \      "-tags=integration",
-  \    ],
+let g:lsp_settings = {
+  \  'gopls': {
+  \    'args': ['-debug', 'localhost:6061'],
+  \    'initialization_options': {
+  \      'buildFlags': [
+  \        "-tags=integration",
+  \      ],
+  \    },
   \  },
-  \}
-let g:lsp_settings['golangci-lint-langserver'] = {
-  \  'initialization_options': {
-  \    'command': ['golangci-lint', 'run',
-  \      '-E gosec',
-  \      '--out-format', 'json',
-  \      '--max-same-issues', '0',
-  \      '--max-issues-per-linter', '0'
-  \    ],
-  \  },
+  \ 'golangci-lint-langserver': {
+  \    'initialization_options': {
+  \      'command': ['golangci-lint', 'run',
+  \        '-E gosec',
+  \        '--out-format', 'json',
+  \        '--max-same-issues', '0',
+  \        '--max-issues-per-linter', '0'
+  \      ],
+  \    },
+  \  }
   \}
