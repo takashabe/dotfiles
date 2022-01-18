@@ -28,6 +28,9 @@ if has('nvim')
   call plug#begin('~/.local/share/nvim/plugged')
   execute 'source' fnamemodify(expand('<sfile>'), ':h').'/plug.rc.vim'
   call plug#end()
+
+  " require after plug#end
+  execute 'source' plug_conf . 'nvim-treesitter.rc.vim'
 else
   call plug#begin('~/.vim/plugged')
   execute 'source' fnamemodify(expand('<sfile>'), ':h').'/plug.rc.vim'
@@ -39,4 +42,8 @@ execute 'source' fnamemodify(expand('<sfile>'), ':h').'/options.rc.vim'
 
 " colorscheme
 set background=dark
-colorscheme onedark
+if has('nvim')
+  colorscheme sonokai
+else
+  colorscheme onedark
+end

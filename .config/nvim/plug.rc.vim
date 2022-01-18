@@ -11,8 +11,12 @@ Plug 'itchyny/lightline.vim'
 execute 'source' plug_conf . 'lightline.rc.vim'
 Plug 'Yggdroot/indentLine'
 execute 'source' plug_conf . 'indentLine.rc.vim'
-Plug 'rafi/awesome-vim-colorschemes'
 Plug 'arcticicestudio/nord-vim'
+Plug 'sainnhe/edge'
+Plug 'sainnhe/sonokai'
+Plug 'ray-x/aurora'
+Plug 'olimorris/onedarkpro.nvim'
+execute 'source' plug_conf . 'colorscheme.rc.vim'
 
 " ==========================================================
 " Edit
@@ -109,6 +113,9 @@ Plug 'delphinus/vim-firestore', {'for': 'rule'}
 Plug 'mechatroner/rainbow_csv', {'for': ['csv', 'tsv']}
 Plug 'Glench/Vim-Jinja2-Syntax'
 Plug 'jparise/vim-graphql'
+if has('nvim')
+  Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+end
 
 " ==========================================================
 " Git
