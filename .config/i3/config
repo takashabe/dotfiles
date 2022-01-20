@@ -209,16 +209,15 @@ client.background       #ffffff
 
 ## gaps
 # https://github.com/Airblader/i3
-gaps inner 3
+gaps inner 10
 
 # Autostart
 exec --no-startup-id fcitx5
-exec --no-startup-id feh --bg-scale $HOME/Pictures/Lava.jpg
+exec --no-startup-id feh --bg-scale $HOME/Pictures/Arch-Linux-Wallpaper-4K.png
 # systemctl (何故かenableだけで自動起動しない…)
-# 邪魔なので一旦切ってみる
-# exec --no-startup-id systemctl --user start imwheel.service
+exec --no-startup-id systemctl --user start imwheel.service
 exec --no-startup-id systemctl --user start xkeysnail.service
 
 # Chromeのタブドラッグを滑らかにする
 # https://github.com/Syphdias/i3-chrome-tab-dragging
-# exec_always --no-startup-id ~/bin/i3-chrome-tab-dragging.py
+exec_always --no-startup-id ~/bin/i3-chrome-tab-dragging.py
