@@ -64,6 +64,8 @@ execute 'source' plug_conf . 'vim-test.rc.vim'
 " fzf
 " ==========================================================
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+execute 'source' plug_conf . 'fzf.rc.vim'
 Plug 'yuki-yano/fzf-preview.vim', { 'branch': 'release/rpc' }
 execute 'source' plug_conf . 'fzf-preview.rc.vim'
 

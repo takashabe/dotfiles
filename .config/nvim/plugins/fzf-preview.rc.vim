@@ -10,13 +10,3 @@ if has('nvim')
     let g:fzf_preview_grep_preview_cmd = 'COLORTERM=truecolor ' . g:fzf_preview_grep_preview_cmd
   endfunction
 end
-
-" Prefix
-nmap <Leader>f [fzf]
-noremap [fzf] <Nop>
-
-" fzf shortcut
-nnoremap <C-p>  :<C-u>FzfPreviewDirectoryFilesRpc<CR>
-nnoremap [fzf]f :<C-u>FzfPreviewDirectoryFilesRpc<CR>
-nnoremap [fzf]b :<C-u>FzfPreviewAllBuffersRpc<CR>
-nnoremap [fzf]s :<C-u>FzfPreviewProjectGrepRpc<Space>
