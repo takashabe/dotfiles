@@ -10,6 +10,7 @@ window:
   padding:
     x: 2
     y: 2
+  opacity: 1.0
 
 mouse:
   double_click: { threshold: 300 }
@@ -19,8 +20,6 @@ mouse:
 cursor:
   style: Block
   unfocused_hollow: true
-
-background_opacity: 1.0
 
 shell:
  # TODO: consider path macOS and linux
