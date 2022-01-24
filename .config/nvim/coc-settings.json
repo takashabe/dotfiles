@@ -38,5 +38,6 @@
       "initializationOptions": {},
       "settings": {}
     }
-  }
+  },
+  "snippets.textmateSnippetsRoots": ["/home/takashabe/.config/vim/plugins/vim-vsnip/"]
 }
