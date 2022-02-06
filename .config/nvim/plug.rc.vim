@@ -119,6 +119,7 @@ Plug 'jparise/vim-graphql'
 if has('nvim')
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 end
+Plug 'mattn/vim-sqlfmt'
 
 " ==========================================================
 " Git
