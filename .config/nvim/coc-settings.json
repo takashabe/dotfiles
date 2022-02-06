@@ -1,21 +1,5 @@
 {
   "languageserver": {
-    "golang": {
-      "command": "/usr/bin/gopls",
-      "args": ["-debug", "localhost:6060"],
-      "trace.server": "verbose",
-      "filetypes": ["go"],
-      "initializationOptions": {
-        "completeUnimported": true,
-        "matcher": "fuzzy",
-        "codelenses": {
-          "generate": true,
-          "test": true
-        }
-      },
-      "rootPatterns": ["go.mod", ".git/"],
-      "disableWorkspaceFolders": true
-    },
     "golangci-lint-languageserver": {
       "command": "golangci-lint-langserver",
       "filetypes": ["go"],
@@ -38,6 +22,9 @@
       "initializationOptions": {},
       "settings": {}
     }
+  },
+  "go.disable": {
+    "workspaceFolders": true
   },
   "snippets.textmateSnippetsRoots": ["/home/takashabe/.config/vim/plugins/vim-vsnip/"]
 }
