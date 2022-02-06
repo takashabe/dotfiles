@@ -348,9 +348,6 @@ hi Pmenu guibg=#666666
 hi PmenuSel guibg=#8cd0d3 guifg=#666666
 hi PmenuSbar guibg=#333333
 
-" ハイライト on
-syntax enable
-
 " 補完候補の色づけ for vim7
 hi PmenuSel cterm=reverse ctermfg=33 ctermbg=222 gui=reverse guifg=#3399ff guibg=#f0e68c
 
