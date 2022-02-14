@@ -2,9 +2,15 @@
 nnoremap <Leader>as :Vista!!<CR>
 
 " vista configurations
-let g:vista_default_executive = 'vim_lsp'
+if has('nvim')
+  let g:vista_default_executive = 'coc'
+else
+  let g:vista_default_executive = 'vim_lsp'
+end
+
 let g:vista_fzf_preview = ['right:50%']
 let g:vista#renderer#enable_icon = 1
+let g:vista_sidebar_width = 50
 let g:vista_sidebar_position = 'vertical topleft'
 
 let g:vista_icon_indent = ["󳄀󳄂 ", "󳄁󳄂 "]

@@ -17,6 +17,7 @@ Plug 'sainnhe/sonokai'
 Plug 'ray-x/aurora'
 Plug 'olimorris/onedarkpro.nvim'
 Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'edeneast/nightfox.nvim'
 execute 'source' plug_conf . 'colorscheme.rc.vim'
 
 " ==========================================================

@@ -19,3 +19,5 @@ nnoremap [fzf]b :Buffers<CR>
 nnoremap [fzf]s :Rg<Space>
 nnoremap [fzf]g :GFiles<CR>
 nnoremap [fzf]c :GFiles?<CR>
+" depends vista.vim
+nnoremap [fzf]v :Vista finder<CR>
