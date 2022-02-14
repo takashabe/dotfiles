@@ -43,9 +43,4 @@ execute 'source' fnamemodify(expand('<sfile>'), ':h').'/options.rc.vim'
 " colorscheme
 syntax enable
 set background=dark
-if has('nvim')
-  set t_Co=16
-  colorscheme sonokai
-else
-  colorscheme onedark
-end
+colorscheme sonokai

@@ -1,5 +1,5 @@
 import:
-  - /home/takashabe/.config/alacritty/theme_sonokai_atlantis.yml
+  - /home/takashabe/.config/alacritty/theme_sonokai_andromeda.yml
   - /home/takashabe/.config/alacritty/font.yml
   - /home/takashabe/.config/alacritty/keybinding.yml
 

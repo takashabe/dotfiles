@@ -73,7 +73,7 @@
   // Mics...
   "explorer.confirmDelete": false,
   "workbench.colorTheme": "One Dark Pro",
-  "markdown.preview.fontSize": 18,
+  "markdown.preview.fontSize": 14,
   "editor.lineHeight": 0,
   "editor.fontLigatures": false,
   "files.associations": {
@@ -83,7 +83,7 @@
   "vsicons.dontShowNewVersionMessage": true,
   "redhat.telemetry.enabled": true,
   // javascript
-  "editor.fontSize": 16,
+  "editor.fontSize": 14,
   "explorer.confirmDragAndDrop": false,
   "editor.renderWhitespace": "all",
   "workbench.startupEditor": "newUntitledFile",

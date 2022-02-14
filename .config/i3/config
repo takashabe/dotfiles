@@ -28,9 +28,6 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
-# start a terminal
-bindsym $mod+Return exec alacritty
-
 # kill focused window
 bindsym $mod+Shift+q kill
 bindsym --release button2 kill
@@ -170,7 +167,7 @@ set $white #c0c5ce
 
 bar {
   status_command i3blocks
-  font pango:SF Mono Square Regular 8
+  font pango:SF Mono Square Regular 10
   mode dock
   position top
   separator_symbol "│"
@@ -178,7 +175,7 @@ bar {
   strip_workspace_numbers yes
   binding_mode_indicator yes
   tray_padding 1
-  tray_output HDMI-0
+  tray_output DP-0
   colors {
     background $background
     focused_background $background
@@ -213,7 +210,7 @@ gaps inner 10
 
 # Autostart
 exec --no-startup-id fcitx5
-exec --no-startup-id feh --bg-scale $HOME/Pictures/Arch-Linux-Wallpaper-4K.png
+exec --no-startup-id feh --bg-scale $HOME/Pictures/mountain-landscape-sunrise-wallpaper-3440x1440_15.jpg
 # systemctl (何故かenableだけで自動起動しない…)
 exec --no-startup-id systemctl --user start imwheel.service
 exec --no-startup-id systemctl --user start xkeysnail.service
