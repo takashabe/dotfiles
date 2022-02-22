@@ -49,6 +49,8 @@ if [ $(uname) = "Linux" ]; then
   ln -s $HOME/dotfiles/.config/systemd/user/xkeysnail.service $HOME/.config/systemd/user/
   ln -s $HOME/dotfiles/.config/systemd/user/imwheel.service $HOME/.config/systemd/user/
   ln -s $HOME/dotfiles/.gitconfig.credential.linux $HOME/.gitconfig.credential
+  sudo ln -s $HOME/dotfiles/etc/kernel-update.path /etc/systemd/system/
+  sudo ln -s $HOME/dotfiles/etc/kernel-update.service /etc/systemd/system/
 fi
 
 if [ $(uname) = "Darwin" ]; then

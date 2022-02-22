@@ -1,0 +1,9 @@
+[Unit]
+Description=Copy Kernel to ESP
+
+[Path]
+PathChanged=/boot/initrd.img
+
+[Install]
+WantedBy=multi-user.target
+WantedBy=system-update.target
