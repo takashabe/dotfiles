@@ -147,7 +147,7 @@ end
 set -x GOOGLE_APPLICATION_CREDENTIALS "$HOME/.config/gcloud/application_default_credentials.json"
 if status --is-interactive
   if test (uname) = "Linux"
-    source "/opt/google-cloud-sdk/path.fish.inc"
+    source "/snap/google-cloud-sdk/current/path.fish.inc"
   else
     source "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.fish.inc"
     bass source "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.bash.inc"
@@ -316,3 +316,7 @@ end
 if status --is-interactive; and test (uname) = "Darwin"
   set -x PATH /usr/local/opt/mysql-client/bin $PATH
 end
+
+# volta
+set -gx VOLTA_HOME "$HOME/.volta"
+set -gx PATH "$VOLTA_HOME/bin" $PATH

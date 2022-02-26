@@ -23,6 +23,6 @@ cursor:
 
 shell:
  # TODO: consider path macOS and linux
- program: /usr/bin/fish
+ program: /home/linuxbrew/.linuxbrew/bin/fish
  args:
    - --login

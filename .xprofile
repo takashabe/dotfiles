@@ -12,8 +12,7 @@ xset r rate 200 60
 xset s off
 xset -dpms
 
-xrandr &&
-
-source $HOME/.screenlayout/basic.sh
-
-xrdb -merge $HOME/.Xresources &&
+# for archlinux
+# xrandr &&
+# source $HOME/.screenlayout/basic.sh
+# xrdb -merge $HOME/.Xresources &&
