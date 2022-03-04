@@ -1,4 +1,16 @@
-let g:coc_global_extensions = ['coc-lists', 'coc-fzf-preview']
+let g:coc_global_extensions = [
+      \'coc-lists',
+      \'coc-fzf-preview',
+      \'coc-snippets',
+      \'coc-diagnostic',
+      \'coc-go',
+      \'coc-tsserver',
+      \'coc-vetur',
+      \'coc-prettier',
+      \'coc-yaml',
+      \'coc-json',
+      \'coc-markdownlint',
+\]
 
 " mappings
 inoremap <silent><expr> <C-Space> coc#refresh()
