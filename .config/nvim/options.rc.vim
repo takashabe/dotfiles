@@ -382,6 +382,9 @@ au BufNewFile,BufRead *.go set noexpandtab tabstop=2 shiftwidth=2
 au BufNewFile,BufRead *.re set noexpandtab tabstop=2 shiftwidth=2
 au BufNewFile,BufRead *.tsv set noexpandtab tabstop=2 shiftwidth=2
 
+" yaml用のフォーマッタを使う https://github.com/UltiRequiem/yamlfmt
+au FileType yaml let &l:formatprg= "yamlfmt /dev/stdin"
+
 "-------------------------------------------------------------------------------
 " ターミナル Terminal
 "-------------------------------------------------------------------------------
