@@ -1,0 +1,7 @@
+[Unit]
+Description=Copy Kernel to ESP
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/cp -f /boot/vmlinuz /boot/efi/vmlinuz
+ExecStart=/usr/bin/cp -f /boot/initrd.img /boot/efi/initrd.img
