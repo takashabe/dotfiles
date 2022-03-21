@@ -31,9 +31,6 @@
   "terminal.integrated.defaultProfile.osx": "/usr/local/bin/fish",
   "terminal.integrated.defaultProfile.linux": "fish",
   "terminal.integrated.defaultLocation": "editor",
-  // vscode-neovim
-  "vscode-neovim.neovimExecutablePaths.linux": "/usr/bin/nvim",
-  // vscode-vim
   "vim.leader": ",",
   "vim.neovimPath": "",
   "vim.useSystemClipboard": true,
@@ -42,48 +39,83 @@
   // Keybind when normal-mode
   "vim.normalModeKeyBindingsNonRecursive": [
     {
-      "before": ["<leader>", "t"],
-      "commands": ["workbench.action.terminal.toggleTerminal"]
+      "before": [
+        "<leader>",
+        "t"
+      ],
+      "commands": [
+        "workbench.action.terminal.toggleTerminal"
+      ]
     },
     {
-      "before": [":"],
-      "commands": ["workbench.action.showCommands"]
+      "before": [
+        ":"
+      ],
+      "commands": [
+        "workbench.action.showCommands"
+      ]
     },
     {
-      "before": [";"],
-      "after": [":"]
+      "before": [
+        ";"
+      ],
+      "after": [
+        ":"
+      ]
     },
     {
-      "before": ["<leader>", "w"],
-      "commands": [":w"]
+      "before": [
+        "<leader>",
+        "w"
+      ],
+      "commands": [
+        ":w"
+      ]
     },
     {
-      "before": ["<leader>", "f", "f"],
-      "commands": ["workbench.action.quickOpen"]
+      "before": [
+        "<leader>",
+        "f",
+        "f"
+      ],
+      "commands": [
+        "workbench.action.quickOpen"
+      ]
     },
     {
-      "before": ["<leader>", "="],
-      "commands": ["wwm.aligncode"]
+      "before": [
+        "<leader>",
+        "="
+      ],
+      "commands": [
+        "wwm.aligncode"
+      ]
     },
     {
-      "before": ["<leader>", "l", "v"],
-      "commands": ["go.vet.workspace"]
-    }
+      "before": [
+        "<leader>",
+        "l",
+        "v"
+      ],
+      "commands": [
+        "go.vet.workspace"
+      ]
+    },
   ],
   // Mics...
   "explorer.confirmDelete": false,
   "workbench.colorTheme": "One Dark Pro",
-  "markdown.preview.fontSize": 14,
+  "markdown.preview.fontSize": 18,
   "editor.lineHeight": 0,
   "editor.fontLigatures": false,
   "files.associations": {
     "*.vim": "vimrc"
-  },
-  "window.zoomLevel": 1,
+},
+"window.zoomLevel": 1,
   "vsicons.dontShowNewVersionMessage": true,
   "redhat.telemetry.enabled": true,
   // javascript
-  "editor.fontSize": 14,
+  "editor.fontSize": 16,
   "explorer.confirmDragAndDrop": false,
   "editor.renderWhitespace": "all",
   "workbench.startupEditor": "newUntitledFile",
@@ -115,5 +147,5 @@
   "stylelint.autoFixOnSave": false,
   "editor.formatOnSave": true,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "go.toolsManagement.autoUpdate": true
+  
 }
