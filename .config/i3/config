@@ -1,7 +1,7 @@
 # Super(Win)
 set $mod Mod4
 
-font pango:SF Mono Square 10
+font pango:SF Mono Square 12
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -161,7 +161,7 @@ set $white #c0c5ce
 
 bar {
   status_command i3blocks
-  font pango:SF Mono Square Regular 10
+  font pango:SF Mono Square Regular 12
   mode dock
   position top
   separator_symbol "│"
@@ -204,7 +204,7 @@ gaps inner 10
 
 # Autostart
 exec --no-startup-id fcitx5
-exec --no-startup-id feh --bg-scale $HOME/Pictures/mountain-landscape-sunrise-wallpaper-3440x1440_15.jpg
+exec --no-startup-id feh --bg-scale $HOME/Pictures/Arch-Linux-Wallpaper-4K.png
 # systemctl (何故かenableだけで自動起動しない…)
 exec --no-startup-id systemctl --user start imwheel.service
 exec --no-startup-id systemctl --user start xkeysnail.service
