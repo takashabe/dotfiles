@@ -97,6 +97,12 @@ Plug 'buoto/gotests-vim', {'for': 'go'}
 execute 'source' plug_conf . 'gotests-vim.rc.vim'
 
 " ==========================================================
+" Rust
+" ==========================================================
+Plug 'rust-lang/rust.vim'
+execute 'source' plug_conf . 'rust.rc.vim'
+
+" ==========================================================
 " JavaScript
 " ==========================================================
 " TODO: lspに変えたい
