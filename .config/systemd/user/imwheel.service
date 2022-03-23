@@ -7,7 +7,7 @@ After=display-manager.service
 Type            = simple
 Restart         = always
 Environment     = DISPLAY=:1
-ExecStart       = /usr/bin/imwheel -d -b "4 5"
+ExecStart       = /usr/bin/imwheel -d -b "45"
 ExecStop        = /usr/bin/pkill imwheel
 RemainAfterExit = yes
 
