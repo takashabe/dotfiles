@@ -39,68 +39,33 @@
   // Keybind when normal-mode
   "vim.normalModeKeyBindingsNonRecursive": [
     {
-      "before": [
-        "<leader>",
-        "t"
-      ],
-      "commands": [
-        "workbench.action.terminal.toggleTerminal"
-      ]
+      "before": ["<leader>", "t"],
+      "commands": ["workbench.action.terminal.toggleTerminal"]
     },
     {
-      "before": [
-        ":"
-      ],
-      "commands": [
-        "workbench.action.showCommands"
-      ]
+      "before": [":"],
+      "commands": ["workbench.action.showCommands"]
     },
     {
-      "before": [
-        ";"
-      ],
-      "after": [
-        ":"
-      ]
+      "before": [";"],
+      "after": [":"]
     },
     {
-      "before": [
-        "<leader>",
-        "w"
-      ],
-      "commands": [
-        ":w"
-      ]
+      "before": ["<leader>", "w"],
+      "commands": [":w"]
     },
     {
-      "before": [
-        "<leader>",
-        "f",
-        "f"
-      ],
-      "commands": [
-        "workbench.action.quickOpen"
-      ]
+      "before": ["<leader>", "f", "f"],
+      "commands": ["workbench.action.quickOpen"]
     },
     {
-      "before": [
-        "<leader>",
-        "="
-      ],
-      "commands": [
-        "wwm.aligncode"
-      ]
+      "before": ["<leader>", "="],
+      "commands": ["wwm.aligncode"]
     },
     {
-      "before": [
-        "<leader>",
-        "l",
-        "v"
-      ],
-      "commands": [
-        "go.vet.workspace"
-      ]
-    },
+      "before": ["<leader>", "l", "v"],
+      "commands": ["go.vet.workspace"]
+    }
   ],
   // Mics...
   "explorer.confirmDelete": false,
@@ -110,11 +75,10 @@
   "editor.fontLigatures": false,
   "files.associations": {
     "*.vim": "vimrc"
-},
-"window.zoomLevel": 1,
+  },
+  "window.zoomLevel": 1,
   "vsicons.dontShowNewVersionMessage": true,
   "redhat.telemetry.enabled": true,
-  // javascript
   "editor.fontSize": 16,
   "explorer.confirmDragAndDrop": false,
   "editor.renderWhitespace": "all",
@@ -146,6 +110,5 @@
   // stylelintのauto fixはstylusだとバグってしまうので一旦false
   "stylelint.autoFixOnSave": false,
   "editor.formatOnSave": true,
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
-  
+  "editor.defaultFormatter": "esbenp.prettier-vscode"
 }
