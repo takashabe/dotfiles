@@ -160,7 +160,7 @@ function switch_gcloud
 end
 
 ### docker, k8s
-alias docker 'nerdctl'
+# alias docker 'nerdctl'
 alias dk 'docker'
 alias dkc 'docker compose'
 alias k 'kubectl'
