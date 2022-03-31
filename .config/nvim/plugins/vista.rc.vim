@@ -1,5 +1,5 @@
 " keymap
-nnoremap <Leader>as :Vista!!<CR>
+nnoremap <Leader>as :Vista<CR>
 
 " vista configurations
 if has('nvim')
