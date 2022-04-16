@@ -25,16 +25,7 @@ telepresence.log
 
 .envrc
 
-_memo*
-_tmp
-_tools
-_secret
-
-# license
-tmux-gruvbox-dark.conf
-
 venv/
-
 package-lock.json
 
 # firebase
@@ -43,3 +34,13 @@ firestore-debug.log
 
 # docker
 docker-compose.override.yml
+
+# go
+go.work
+go.work.sum
+
+# private memo
+_memo*
+_tmp
+_tools
+_secret
