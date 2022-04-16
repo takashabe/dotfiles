@@ -205,6 +205,7 @@ function go_install_binaries
     'github.com/makiuchi-d/arelo@latest' \
     'github.com/Songmu/ghch/cmd/ghch@latest' \
     'github.com/skanehira/swagger-preview/cmd/spr@latest' \
+    'github.com/golangci/golangci-lint@latest' \
     'github.com/nametake/golangci-lint-langserver@latest' \
     'github.com/k1LoW/tbls@latest'
   pushd $HOME
