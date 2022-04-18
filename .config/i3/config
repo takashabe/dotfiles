@@ -1,7 +1,7 @@
 # Super(Win)
 set $mod Mod4
 
-font pango:SF Mono Square 10
+font pango:SF Mono Square 8
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -161,7 +161,7 @@ set $white #c0c5ce
 
 bar {
   status_command i3blocks
-  font pango:SF Mono Square Regular 10
+  font pango:SF Mono Square Regular 8
   mode dock
   position top
   separator_symbol "│"
