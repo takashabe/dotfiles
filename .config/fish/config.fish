@@ -105,16 +105,12 @@ set -x PATH /usr/local/opt/openssl/bin $PATH
 
 
 # node
-if [ -d /usr/share/nvm ] > /dev/null
-  # for linux nvm
-  set -x NVM_DIR $HOME/.nvm
-  bass source /usr/share/nvm/nvm.sh
-  bass source /usr/share/nvm/bash_completion
-  bass source /usr/share/nvm/install-nvm-exec
-  nvm use v14.17.6 &> /dev/null
-end
 if status --is-interactive; and command -v nodebrew > /dev/null
   set -x PATH $HOME/.nodebrew/current/bin $PATH
+end
+if status --is-interactive; and command -v volta > /dev/null
+  set -x VOLTA_HOME $HOME/.volta
+  set -x PATH $VOLTA_HOME/bin $PATH
 end
 
 # rbenv
@@ -319,3 +315,5 @@ end
 if status --is-interactive; and test (uname) = "Darwin"
   set -x PATH /usr/local/opt/mysql-client/bin $PATH
 end
+set -gx VOLTA_HOME "$HOME/.volta"
+set -gx PATH "$VOLTA_HOME/bin" $PATH
