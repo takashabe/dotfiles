@@ -197,7 +197,6 @@ function go_install_binaries
     'github.com/fatih/gomodifytags@latest' \
     'github.com/rubenv/sql-migrate/sql-migrate@latest' \
     'github.com/swaggo/swag/cmd/swag@v1.7.8' \
-    'github.com/99designs/gqlgen@v0.15.1' \
     'github.com/makiuchi-d/arelo@latest' \
     'github.com/Songmu/ghch/cmd/ghch@latest' \
     'github.com/skanehira/swagger-preview/cmd/spr@latest' \
