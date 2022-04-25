@@ -71,14 +71,22 @@ alias g 'git'
 alias gst 'git status'
 alias gb 'git branch'
 alias gc 'git commit -v'
-
 alias gpush 'git push origin HEAD'
+
 function gpull
   git pull origin (git branch --show-current)
 end
+
+function gfetchprune
+  git fetch origin --prune
+  # PROTECT_BRANCHES defines at loacl.fish
+  git branch --merge | egrep -v "\*|^  ($PROTECT_BRANCHES)\$" | xargs git branch -d
+end
+
 function gbp
   git branch -a --sort=-authordate | cut -b 3- | perl -pe 's#^remotes/origin/###' | perl -nlE 'say if !$c{$_}++' | grep -v -- "->" | fzf | xargs git checkout
 end
+
 function gcm
   if test (count $argv) -lt 1
     echo 'require: branch name'
