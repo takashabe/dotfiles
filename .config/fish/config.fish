@@ -5,7 +5,6 @@
 ## basic command alias
 alias make 'make --no-print-directory'
 alias mv 'mv -i'
-alias diff 'colordiff'
 alias l 'exa -alh'
 alias ll 'exa -lh'
 alias ... 'cd ../..'
@@ -80,7 +79,11 @@ end
 function gfetchprune
   git fetch origin --prune
   # PROTECT_BRANCHES defines at loacl.fish
-  git branch --merge | egrep -v "\*|^  ($PROTECT_BRANCHES)\$" | xargs git branch -d
+  if git branch --merge | egrep -v "\*|^  ($PROTECT_BRANCHES)\$"
+    git branch --merge | egrep -v "\*|^  ($PROTECT_BRANCHES)\$" | xargs git branch -d
+  else
+    echo 'already updated'
+  end
 end
 
 function gbp
@@ -204,7 +207,7 @@ function go_install_binaries
     'github.com/rakyll/gotest@latest' \
     'github.com/fatih/gomodifytags@latest' \
     'github.com/rubenv/sql-migrate/sql-migrate@latest' \
-    'github.com/swaggo/swag/cmd/swag@v1.7.8' \
+    'github.com/swaggo/swag/cmd/swag@latest' \
     'github.com/makiuchi-d/arelo@latest' \
     'github.com/Songmu/ghch/cmd/ghch@latest' \
     'github.com/skanehira/swagger-preview/cmd/spr@latest' \
