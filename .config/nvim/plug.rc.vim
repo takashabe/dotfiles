@@ -124,10 +124,13 @@ Plug 'delphinus/vim-firestore', {'for': 'rule'}
 Plug 'mechatroner/rainbow_csv', {'for': ['csv', 'tsv']}
 Plug 'Glench/Vim-Jinja2-Syntax'
 Plug 'jparise/vim-graphql'
+Plug 'mattn/vim-sqlfmt'
+" nvim-treesitter
+" NOTE: load plugins/nvim-treesitter.rc.vim in init.vim
 if has('nvim')
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+  Plug 'romgrk/nvim-treesitter-context'
 end
-Plug 'mattn/vim-sqlfmt'
 
 " ==========================================================
 " Git

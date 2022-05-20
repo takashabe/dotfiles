@@ -22,8 +22,9 @@ nmap ga <Plug>(coc-codeaction-selected)iw
 nmap gi <Plug>(coc-implementation)
 nmap }  <Plug>(coc-diagnostic-next)
 nmap {  <Plug>(coc-diagnostic-prev)
-nnoremap ge  :<C-u>CocCommand fzf-preview.CocCurrentDiagnostics<CR>
-nnoremap gD  :<C-u>CocCommand fzf-preview.CocReferences<CR>
+nnoremap <silent> ge  :<C-u>CocCommand fzf-preview.CocCurrentDiagnostics<CR>
+nnoremap <silent> gD  :<C-u>CocCommand fzf-preview.CocReferences<CR>
+nnoremap <silent> go  :<C-u>CocCommand fzf-preview.CocOutline --add-fzf-arg=--exact --add-fzf-arg=--no-sort<CR>
 
 function! s:show_documentation() abort
   if index(['vim','help'], &filetype) >= 0
