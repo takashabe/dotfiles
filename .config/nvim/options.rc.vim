@@ -206,6 +206,11 @@ set ignorecase " 大文字小文字無視
 set smartcase  " 検索文字列に大文字が含まれている場合は区別して検索する
 set incsearch  " インクリメンタルサーチ
 set hlsearch   " 検索文字をハイライト
+
+" 辞書ファイルの読み込み
+" TODO: ファイルタイプごとに読み込みを変える && 複数読み込めるようにする
+set dictionary=$HOME/.vim/dict/work.dict
+
 "Escの2回押しでハイライト消去
 nmap <ESC><ESC> ;nohlsearch<CR><ESC>
 

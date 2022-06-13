@@ -3,6 +3,7 @@ let g:coc_global_extensions = [
       \'coc-fzf-preview',
       \'coc-snippets',
       \'coc-diagnostic',
+      \'coc-dictionary',
       \'coc-go',
       \'coc-tsserver',
       \'coc-vetur',

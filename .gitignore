@@ -9,6 +9,7 @@ common_ctags/
 \.vim/cache/
 \.vim/plugged/
 \.vim/autoload/plug.vim
+\.vim/sessions/default.vim
 *.un~
 Session.vim
 .netrwhist

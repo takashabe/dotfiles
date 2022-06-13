@@ -14,6 +14,7 @@ ln -s $HOME/dotfiles/.skhdrc $HOME/
 ln -s $HOME/dotfiles/.myclirc $HOME/
 ln -s $HOME/dotfiles/.imwheelrc $HOME/
 ln -s $HOME/dotfiles/.xprofile $HOME/
+ln -s $HOME/dotfiles/.vim $HOME/
 
 ## $HOME/bin
 mkdir $HOME/bin
