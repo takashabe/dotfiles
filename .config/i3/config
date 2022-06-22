@@ -208,7 +208,3 @@ exec --no-startup-id feh --bg-scale $HOME/Pictures/Arch-Linux-Wallpaper-4K.png
 # systemctl (何故かenableだけで自動起動しない…)
 exec --no-startup-id systemctl --user start imwheel.service
 exec --no-startup-id systemctl --user start xkeysnail.service
-
-# Chromeのタブドラッグを滑らかにする
-# https://github.com/Syphdias/i3-chrome-tab-dragging
-exec_always --no-startup-id ~/bin/i3-chrome-tab-dragging.py
