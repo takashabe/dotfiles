@@ -156,8 +156,9 @@ if status --is-interactive
   if test (uname) = "Linux"
     source "/opt/google-cloud-sdk/path.fish.inc"
   else
-    source "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.fish.inc"
-    bass source "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.bash.inc"
+    set -l base (brew --prefix)
+    source "$base/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.fish.inc"
+    bass source "$base/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.bash.inc"
   end
 end
 
@@ -324,4 +325,9 @@ end
 # mysql-client via homebrew
 if status --is-interactive; and test (uname) = "Darwin"
   set -x PATH /usr/local/opt/mysql-client/bin $PATH
+end
+
+# use docker(container) with lima
+if status --is-interactive; and test (uname) = "Darwin"
+  set -x DOCKER_HOST "unix://$HOME/.lima/docker/sock/docker.sock"
 end
