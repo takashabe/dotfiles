@@ -79,7 +79,7 @@
   "window.zoomLevel": 1,
   "vsicons.dontShowNewVersionMessage": true,
   "redhat.telemetry.enabled": true,
-  "editor.fontSize": 16,
+  "editor.fontSize": 14,
   "explorer.confirmDragAndDrop": false,
   "editor.renderWhitespace": "all",
   "workbench.startupEditor": "newUntitledFile",
@@ -110,5 +110,6 @@
   // stylelintのauto fixはstylusだとバグってしまうので一旦false
   "stylelint.autoFixOnSave": false,
   "editor.formatOnSave": true,
-  "editor.defaultFormatter": "esbenp.prettier-vscode"
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "go.toolsManagement.autoUpdate": true
 }
