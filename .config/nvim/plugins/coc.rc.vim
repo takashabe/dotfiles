@@ -35,6 +35,11 @@ function! s:show_documentation() abort
   endif
 endfunction
 
+augroup coc_go
+  autocmd!
+  autocmd BufWritePre *.go :call CocAction('runCommand', 'editor.action.organizeImport')
+augroup END
+
 " ##############################
 " typescript
 " ##############################

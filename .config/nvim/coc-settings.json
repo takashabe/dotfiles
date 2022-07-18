@@ -1,24 +1,28 @@
 {
+  "coc.preferences.formatOnSaveFiletypes": ["go"],
   "languageserver": {
     "golangci-lint-languageserver": {
       "command": "golangci-lint-langserver",
       "filetypes": ["go"],
       "initializationOptions": {
-        "command": ["golangci-lint", "run",
-          "-E", "gosec",
-          "--out-format", "json",
-          "--max-same-issues", "0",
-          "--max-issues-per-linter", "0"
+        "command": [
+          "golangci-lint",
+          "run",
+          "-E",
+          "gosec",
+          "--out-format",
+          "json",
+          "--max-same-issues",
+          "0",
+          "--max-issues-per-linter",
+          "0"
         ]
       }
     },
     "terraform": {
       "command": "terraform-ls",
       "args": ["serve"],
-      "filetypes": [
-        "terraform",
-        "tf"
-      ],
+      "filetypes": ["terraform", "tf"],
       "initializationOptions": {},
       "settings": {}
     }
@@ -27,5 +31,11 @@
     "workspaceFolders": true
   },
   "go.goplsPath": "/usr/bin/gopls",
-  "snippets.textmateSnippetsRoots": ["/home/takashabe/.config/vim/plugins/vim-vsnip/"]
+  "snippets.textmateSnippetsRoots": [
+    "/home/takashabe/.config/vim/plugins/vim-vsnip/"
+  ],
+  "sql.formatOptions": {
+    "language": "plsql",
+    "keywordCase": "upper"
+  }
 }

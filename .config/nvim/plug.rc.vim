@@ -55,6 +55,7 @@ Plug 'lambdalisue/fern.vim'
 execute 'source' plug_conf . 'fern.rc.vim'
 Plug 'lambdalisue/fern-git-status.vim'
 Plug 'lambdalisue/fern-renderer-nerdfont.vim'
+Plug 'simeji/winresizer'
 
 " ==========================================================
 " Process integration
@@ -129,7 +130,7 @@ Plug 'mattn/vim-sqlfmt'
 " NOTE: load plugins/nvim-treesitter.rc.vim in init.vim
 if has('nvim')
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-  Plug 'romgrk/nvim-treesitter-context'
+  Plug 'nvim-treesitter/nvim-treesitter-context'
 end
 
 " ==========================================================
