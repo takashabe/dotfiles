@@ -15,4 +15,4 @@
 [include]
   path = ~/.gitconfig.credential
 [pull]
-  rebase = true
+  rebase = false
