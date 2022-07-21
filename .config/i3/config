@@ -200,11 +200,13 @@ client.background       #ffffff
 
 ## gaps
 # https://github.com/Airblader/i3
-gaps inner 10
+gaps inner 5
 
 # Autostart
 exec --no-startup-id fcitx5
-exec --no-startup-id feh --bg-scale $HOME/Pictures/Arch-Linux-Wallpaper-4K.png
+exec --no-startup-id feh --bg-scale $HOME/Pictures/mountain-landscape-sunrise-wallpaper-3440x1440_15.jpg
 # systemctl (何故かenableだけで自動起動しない…)
 exec --no-startup-id systemctl --user start imwheel.service
 exec --no-startup-id systemctl --user start xkeysnail.service
+# https://github.com/olemartinorg/i3-alternating-layout
+exec --no-startup-id $HOME/bin/alternating_layouts.py
