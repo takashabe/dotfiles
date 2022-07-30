@@ -1,4 +1,4 @@
-"Firefox|Google-chrome|slack"
+"Firefox|Google-chrome|slack|Slack""
   None,      Up,   Button4, 3
   None,      Down, Button5, 2
   Shift_L,   Up,   Shift_L|Button4, 3

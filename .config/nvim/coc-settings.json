@@ -1,24 +1,28 @@
 {
+  "coc.preferences.formatOnSaveFiletypes": ["go"],
   "languageserver": {
     "golangci-lint-languageserver": {
       "command": "golangci-lint-langserver",
       "filetypes": ["go"],
       "initializationOptions": {
-        "command": ["golangci-lint", "run",
-          "-E", "gosec",
-          "--out-format", "json",
-          "--max-same-issues", "0",
-          "--max-issues-per-linter", "0"
+        "command": [
+          "golangci-lint",
+          "run",
+          "-E",
+          "gosec",
+          "--out-format",
+          "json",
+          "--max-same-issues",
+          "0",
+          "--max-issues-per-linter",
+          "0"
         ]
       }
     },
     "terraform": {
       "command": "terraform-ls",
       "args": ["serve"],
-      "filetypes": [
-        "terraform",
-        "tf"
-      ],
+      "filetypes": ["terraform", "tf"],
       "initializationOptions": {},
       "settings": {}
     }
@@ -26,5 +30,57 @@
   "go.disable": {
     "workspaceFolders": true
   },
-  "snippets.textmateSnippetsRoots": ["/home/takashabe/.config/vim/plugins/vim-vsnip/"]
+  "snippets.textmateSnippetsRoots": [
+    "/home/takashabe/.config/vim/plugins/vim-vsnip/"
+  ],
+  "sql.formatOptions": {
+    "language": "plsql",
+    "keywordCase": "upper"
+  },
+  "dls": {
+    "command": "diagnostic-languageserver",
+    "args": ["--stdio"],
+    "filetypes": ["yaml"],
+    "initializationOptions": {
+      "cacheDirectory": "/tmp/",
+      "linters": {
+        "actionlint": {
+          "command": "actionlint",
+          "rootPatterns": [],
+          "debounce": 100,
+          "isStdout": true,
+          "isStderr": false,
+          "offsetLine": 0,
+          "offsetColumn": 0,
+          "args": ["-oneline", "%relativepath"],
+          "sourceName": "actionlint",
+          "formatLines": 1,
+          "formatPattern": [
+            "^([^:]+):(\\d+):(\\d+):\\s+(.*)$",
+            {
+              "sourceName": 1,
+              "sourceNameFilter": true,
+              "line": 2,
+              "column": 3,
+              "endLine": 2,
+              "endColumn": 3,
+              "message": [4]
+            }
+          ],
+          "parseJson": {
+            "sourceName": "file",
+            "sourceNameFilter": true,
+            "line": "line",
+            "column": "column",
+            "endLine": "endLine",
+            "endColumn": "endColumn",
+            "message": "${message}"
+          }
+        }
+      },
+      "filetypes": {
+        "yaml": "actionlint"
+      }
+    }
+  }
 }

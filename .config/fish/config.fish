@@ -210,11 +210,9 @@ function go_install_binaries
     'github.com/rubenv/sql-migrate/sql-migrate@latest' \
     'github.com/swaggo/swag/cmd/swag@latest' \
     'github.com/makiuchi-d/arelo@latest' \
-    'github.com/Songmu/ghch/cmd/ghch@latest' \
     'github.com/skanehira/swagger-preview/cmd/spr@latest' \
     'github.com/golangci/golangci-lint@latest' \
-    'github.com/nametake/golangci-lint-langserver@latest' \
-    'github.com/k1LoW/tbls@latest'
+    'github.com/nametake/golangci-lint-langserver@latest'
   pushd $HOME
   for uri in $GO_BINARIES
     echo "go install $uri ..."
@@ -279,7 +277,7 @@ end
 
 function reload_keyboard
   systemctl --user restart xkeysnail
-  reload_config
+  systemctl --user restart imwheel
 end
 
 ## osx system functions
@@ -294,7 +292,7 @@ if status --is-interactive; and test (uname) = "Linux"
 end
 
 function rolling_update
-  paru -Syyu --noconfirm && go_install_binaries && sudo freshclam
+  paru -Syyu --noconfirm && go_install_binaries
 end
 
 ## Terraform
