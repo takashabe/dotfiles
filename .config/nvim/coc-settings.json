@@ -26,6 +26,5 @@
   "go.disable": {
     "workspaceFolders": true
   },
-  "go.goplsPath": "/usr/bin/gopls",
   "snippets.textmateSnippetsRoots": ["/home/takashabe/.config/vim/plugins/vim-vsnip/"]
 }
