@@ -326,8 +326,3 @@ end
 if status --is-interactive; and test (uname) = "Darwin"
   set -x PATH /usr/local/opt/mysql-client/bin $PATH
 end
-
-# use docker(container) with lima
-if status --is-interactive; and test (uname) = "Darwin"
-  set -x DOCKER_HOST "unix://$HOME/.lima/docker/sock/docker.sock"
-end
