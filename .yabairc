@@ -18,9 +18,6 @@ yabai -m config auto_balance off
 yabai -m config window_shadow on
 yabai -m config window_opacity off
 
-yabai -m rule --add app="iTerm" space=1
-yabai -m rule --add app="Firefox|Slack" space=2
-
 yabai -m rule --add app="^System Preferences$" manage=off
 yabai -m rule --add app="^Finder$" manage=off
 yabai -m rule --add app="Toggl Track" manage=off
