@@ -45,3 +45,6 @@ _memo*
 _tmp
 _tools
 _secret
+
+# alacritty
+.config/alacritty/alacritty.yml

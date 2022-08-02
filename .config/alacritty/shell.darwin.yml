@@ -1,0 +1,4 @@
+shell:
+  program: /opt/homebrew/bin/fish
+  args:
+    - --login
