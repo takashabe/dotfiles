@@ -2,7 +2,6 @@ lua <<EOF
 require'nvim-treesitter.configs'.setup {
   -- see: https://github.com/nvim-treesitter/nvim-treesitter#supported-languages
   ensure_installed = {
-    "cmake",
     "dockerfile",
     "fish",
     "go",
@@ -14,12 +13,8 @@ require'nvim-treesitter.configs'.setup {
     "json",
     "lua",
     "make",
-    "markdown",
     "python",
-    "regex",
-    "rego",
     "rust",
-    "sql",
     "toml",
     "tsx",
     "typescript",
