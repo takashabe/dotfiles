@@ -18,6 +18,9 @@ end
 
 set -x PATH $HOME/bin $PATH
 set -x PATH $HOME/.local/bin $PATH
+if status --is-interactive; and test (uname) = "Darwin"
+  set -x PATH /opt/homebrew/bin $PATH
+end
 
 ## Encoding
 set -x LANG en_US.UTF-8
@@ -317,9 +320,4 @@ end
 # mysql-client via homebrew
 if status --is-interactive; and test (uname) = "Darwin"
   set -x PATH /usr/local/opt/mysql-client/bin $PATH
-end
-
-# use docker(container) with lima
-if status --is-interactive; and test (uname) = "Darwin"
-  set -x DOCKER_HOST "unix://$HOME/.lima/docker/sock/docker.sock"
 end
