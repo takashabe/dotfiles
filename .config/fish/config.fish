@@ -13,6 +13,9 @@ alias ..... 'cd ../../../..'
 
 set -x PATH $HOME/bin $PATH
 set -x PATH $HOME/.local/bin $PATH
+if status --is-interactive; and test (uname) = "Darwin"
+  set -x PATH /opt/homebrew/bin $PATH
+end
 
 ## Encoding
 set -x LANG en_US.UTF-8
