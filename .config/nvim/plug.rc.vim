@@ -4,7 +4,12 @@ let plug_conf = expand('<sfile>:p:h') . '/plugins/'
 " ==========================================================
 " Apppearance
 " ==========================================================
-Plug 'joshdick/onedark.vim'
+if has('nvim')
+  Plug 'navarasu/onedark.nvim'
+else
+  Plug 'joshdick/onedark.vim'
+end
+
 Plug 'morhetz/gruvbox'
 Plug 'ryanoasis/vim-devicons'
 Plug 'itchyny/lightline.vim'

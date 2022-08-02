@@ -35,8 +35,9 @@
     "/home/takashabe/.config/vim/plugins/vim-vsnip/"
   ],
   "sql.formatOptions": {
-    "language": "plsql",
-    "keywordCase": "upper"
+    "language": "mysql",
+    "keywordCase": "upper",
+    "expressionWidth": 1000
   },
   "dls": {
     "command": "diagnostic-languageserver",
@@ -83,5 +84,6 @@
         "yaml": "actionlint"
       }
     }
-  }
+  },
+  "vetur.dev.vlsPath": "/home/takashabe/.volta/bin/vls"
 }

@@ -11,6 +11,11 @@ alias ... 'cd ../..'
 alias .... 'cd ../../..'
 alias ..... 'cd ../../../..'
 
+if status --is-interactive; and test (uname) = "Linux"
+  alias pbcopy 'xsel -bi'
+  alias pbpaste 'xsel -bo'
+end
+
 set -x PATH $HOME/bin $PATH
 set -x PATH $HOME/.local/bin $PATH
 
@@ -190,7 +195,7 @@ function docker_restart
   docker compose up -d
 end
 
-# Golang
+# Go
 set -x GOPATH $HOME/dev
 set -x PATH $GOPATH/bin $GOROOT/bin $PATH
 set -x GO111MODULE on
@@ -224,17 +229,15 @@ end
 ### Rust
 set -x PATH $HOME/.cargo/bin $PATH
 
-### history
+### fish history
 function history-merge --on-event fish_preexec
   history --save
   history --merge
 end
-
 function wrap_fzf_history
   history-merge
   fzf_history
 end
-
 function wrap_fzf_file
   fzf_file --preview "bat --style=numbers --color=always --line-range :500 {}"
 end
@@ -252,15 +255,6 @@ end
 
 # direnv
 direnv hook fish | source
-
-## note
-function diary_new
-  set -l diary_dir $GOPATH/src/github.com/takashabe/note/diary
-  set -l today (date "+%Y%m%d")
-
-  touch $diary_dir/$today.md
-  $EDITOR $diary_dir/$today.md
-end
 
 #### general function
 function reload_config

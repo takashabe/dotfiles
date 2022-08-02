@@ -36,6 +36,8 @@
   "vim.useSystemClipboard": true,
   "vim.visualstar": true,
   "vim.hlsearch": true,
+  // vscode-neovim
+  "vscode-neovim.neovimExecutablePaths.linux": "/usr/bin/nvim",
   // Keybind when normal-mode
   "vim.normalModeKeyBindingsNonRecursive": [
     {

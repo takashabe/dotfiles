@@ -3,7 +3,6 @@ require'nvim-treesitter.configs'.setup {
   -- see: https://github.com/nvim-treesitter/nvim-treesitter#supported-languages
   ensure_installed = {
     "cmake",
-    "comment",
     "dockerfile",
     "fish",
     "go",
