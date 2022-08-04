@@ -14,8 +14,22 @@ let g:coc_global_extensions = [
       \'coc-rust-analyzer',
 \]
 
-" mappings
+" ##############################
+" mapping
+" ##############################
+" completion. https://github.com/neoclide/coc.nvim#example-vim-configuration
+inoremap <silent><expr> <TAB>
+      \ coc#pum#visible() ? coc#pum#next(1):
+      \ CheckBackspace() ? "\<Tab>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
+function! CheckBackspace() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
 inoremap <silent><expr> <C-Space> coc#refresh()
+
 nmap gs :<C-u>call <SID>show_documentation()<CR>
 nmap gd <Plug>(coc-definition)
 nmap gr <Plug>(coc-rename)
