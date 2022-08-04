@@ -11,6 +11,7 @@ let g:coc_global_extensions = [
       \'coc-yaml',
       \'coc-json',
       \'coc-markdownlint',
+      \'coc-sql',
       \'coc-rust-analyzer',
 \]
 
