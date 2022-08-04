@@ -30,8 +30,11 @@
   "go.disable": {
     "workspaceFolders": true
   },
+  "go.goplsOptions": {
+    "usePlaceholders": true
+  },
   "snippets.textmateSnippetsRoots": [
-    "/home/takashabe/.config/vim/plugins/vim-vsnip/"
+    "/Users/takashabe/.config/vim/plugins/vim-vsnip/"
   ],
   "sql.formatOptions": {
     "language": "mysql",
