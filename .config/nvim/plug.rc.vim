@@ -137,6 +137,11 @@ if has('nvim')
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
   Plug 'nvim-treesitter/nvim-treesitter-context'
 end
+if has('nvim')
+  Plug 'nvim-lua/plenary.nvim'
+  Plug 'folke/todo-comments.nvim'
+  " execute 'source' plug_conf . 'todo-comments.rc.vim'
+end
 
 " ==========================================================
 " Git
