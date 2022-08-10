@@ -31,7 +31,7 @@
     "workspaceFolders": true
   },
   "go.goplsOptions": {
-    "usePlaceholders": true
+    "usePlaceholders": false
   },
   "snippets.textmateSnippetsRoots": [
     "/Users/takashabe/.config/vim/plugins/vim-vsnip/"
