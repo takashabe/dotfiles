@@ -191,7 +191,7 @@ bar {
 for_window [class=".*"] border pixel 1px
 ## colors
 # class                 border  backgr. text    indicator child_border
-client.focused          #333333 #61AFEF #282C34 #61AFEF   #61AFEF
+client.focused          #333333 #6CC190 #282C34 #6CC190   #6CC190
 client.focused_inactive #333333 #282C34 #888888 #333333   #333333
 client.unfocused        #333333 #333333 #888888 #333333   #333333
 client.urgent           #333333 #333333 #ffffff #333333   #333333
