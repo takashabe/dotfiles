@@ -6,6 +6,7 @@ let plug_conf = expand('<sfile>:p:h') . '/plugins/'
 " ==========================================================
 if has('nvim')
   Plug 'navarasu/onedark.nvim'
+  Plug 'luisiacc/gruvbox-baby', {'branch': 'main'}
 else
   Plug 'joshdick/onedark.vim'
 end
