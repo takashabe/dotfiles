@@ -209,4 +209,4 @@ exec --no-startup-id feh --bg-scale $HOME/Pictures/mountain-landscape-sunrise-wa
 exec --no-startup-id systemctl --user start imwheel.service
 exec --no-startup-id systemctl --user start xkeysnail.service
 # https://github.com/olemartinorg/i3-alternating-layout
-exec --no-startup-id $HOME/bin/alternating_layouts.py
+# exec --no-startup-id $HOME/bin/alternating_layouts.py
