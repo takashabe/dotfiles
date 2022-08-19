@@ -113,5 +113,6 @@
   "stylelint.autoFixOnSave": false,
   "editor.formatOnSave": true,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "go.toolsManagement.autoUpdate": true
+  "go.toolsManagement.autoUpdate": true,
+  "hediet.vscode-drawio.theme": "automatic"
 }
