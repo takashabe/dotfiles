@@ -34,7 +34,7 @@
     "usePlaceholders": true
   },
   "snippets.textmateSnippetsRoots": [
-    "/Users/takashabe/.config/vim/plugins/vim-vsnip/"
+    "~/.config/vim/plugins/vim-vsnip/"
   ],
   "sql.formatOptions": {
     "language": "mysql",
@@ -87,5 +87,5 @@
       }
     }
   },
-  "vetur.dev.vlsPath": "/Users/takashabe/.volta/bin/vls"
+  "vetur.dev.vlsPath": "~/.volta/bin/vls"
 }
