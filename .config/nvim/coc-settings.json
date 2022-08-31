@@ -41,51 +41,5 @@
     "keywordCase": "upper",
     "expressionWidth": 1000
   },
-  "dls": {
-    "command": "diagnostic-languageserver",
-    "args": ["--stdio"],
-    "filetypes": ["yaml"],
-    "initializationOptions": {
-      "cacheDirectory": "/tmp/",
-      "linters": {
-        "actionlint": {
-          "command": "actionlint",
-          "rootPatterns": [],
-          "debounce": 100,
-          "isStdout": true,
-          "isStderr": false,
-          "offsetLine": 0,
-          "offsetColumn": 0,
-          "args": ["-oneline", "%relativepath"],
-          "sourceName": "actionlint",
-          "formatLines": 1,
-          "formatPattern": [
-            "^([^:]+):(\\d+):(\\d+):\\s+(.*)$",
-            {
-              "sourceName": 1,
-              "sourceNameFilter": true,
-              "line": 2,
-              "column": 3,
-              "endLine": 2,
-              "endColumn": 3,
-              "message": [4]
-            }
-          ],
-          "parseJson": {
-            "sourceName": "file",
-            "sourceNameFilter": true,
-            "line": "line",
-            "column": "column",
-            "endLine": "endLine",
-            "endColumn": "endColumn",
-            "message": "${message}"
-          }
-        }
-      },
-      "filetypes": {
-        "yaml": "actionlint"
-      }
-    }
-  },
   "vetur.dev.vlsPath": "~/.volta/bin/vls"
 }

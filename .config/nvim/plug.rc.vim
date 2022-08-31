@@ -7,17 +7,19 @@ let plug_conf = expand('<sfile>:p:h') . '/plugins/'
 if has('nvim')
   Plug 'navarasu/onedark.nvim'
   Plug 'luisiacc/gruvbox-baby', {'branch': 'main'}
+  Plug 'shaunsingh/nord.nvim'
 else
   Plug 'joshdick/onedark.vim'
+  Plug 'arcticicestudio/nord-vim'
 end
 
+Plug 'cocopon/iceberg.vim'
 Plug 'morhetz/gruvbox'
 Plug 'ryanoasis/vim-devicons'
 Plug 'itchyny/lightline.vim'
 execute 'source' plug_conf . 'lightline.rc.vim'
 Plug 'Yggdroot/indentLine'
 execute 'source' plug_conf . 'indentLine.rc.vim'
-Plug 'arcticicestudio/nord-vim'
 Plug 'sainnhe/edge'
 Plug 'sainnhe/sonokai'
 Plug 'ray-x/aurora'
