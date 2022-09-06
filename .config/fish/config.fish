@@ -219,7 +219,7 @@ function go_install_binaries
     'github.com/swaggo/swag/cmd/swag@v1.8.4' \
     'github.com/makiuchi-d/arelo@latest' \
     'github.com/skanehira/swagger-preview/cmd/spr@latest' \
-    'github.com/golangci/golangci-lint@latest' \
+    'github.com/golangci/golangci-lint/cmd/golangci-lint@latest' \
     'github.com/nametake/golangci-lint-langserver@latest'
   pushd $HOME
   for uri in $GO_BINARIES
