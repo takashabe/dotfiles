@@ -216,7 +216,7 @@ function go_install_binaries
     'github.com/rakyll/gotest@latest' \
     'github.com/fatih/gomodifytags@latest' \
     'github.com/rubenv/sql-migrate/sql-migrate@latest' \
-    'github.com/swaggo/swag/cmd/swag@v1.8.4' \
+    'github.com/swaggo/swag/cmd/swag@master' \
     'github.com/makiuchi-d/arelo@latest' \
     'github.com/skanehira/swagger-preview/cmd/spr@latest' \
     'github.com/golangci/golangci-lint/cmd/golangci-lint@latest' \
