@@ -319,5 +319,6 @@ end
 
 # mysql-client via homebrew
 if status --is-interactive; and test (uname) = "Darwin"
+  fish_add_path /opt/homebrew/opt/mysql-client@5.7/bin
   eval $(/opt/homebrew/bin/brew shellenv)
 end
