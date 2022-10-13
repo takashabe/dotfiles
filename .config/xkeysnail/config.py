@@ -17,16 +17,14 @@ define_keymap(lambda wm_class: wm_class not in ("Alacritty", "Code"), {
   # Kill line
   K("C-k"): [K("Shift-end"), K("C-x"), set_mark(False)],
 
-  # Copy
   K("Super-x"): [K("C-x"), set_mark(False)],
   K("Super-c"): [K("C-c"), set_mark(False)],
   K("Super-v"): [K("C-v"), set_mark(False)],
-  # Undo
   K("Super-z"): [K("C-z"), set_mark(False)],
-  # Search
   K("Super-f"): K("C-f"),
-  # Close
-  K("Super-q"): K("M-F4"),
+  K("Super-t"): K("C-t"),
+  K("Super-w"): K("C-w"),
+  K("Super-l"): K("C-l"),
 }, "macOS-like keys")
 
 # ESC + IME off for vim
