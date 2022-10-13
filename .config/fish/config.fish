@@ -5,6 +5,7 @@
 ## basic command alias
 alias make 'make --no-print-directory'
 alias mv 'mv -i'
+alias sed 'gsed'
 alias l 'exa -alh'
 alias ll 'exa -lh'
 alias ... 'cd ../..'
@@ -105,9 +106,6 @@ function gcm
   end
   git switch -c $argv[1] origin/master
 end
-
-# gnu tools
-set -x PATH /usr/local/opt/gnu-sed/libexec/gnubin $PATH
 
 # for not supported 256-color
 alias ssh 'env TERM=xterm ssh'
@@ -319,5 +317,6 @@ end
 
 # mysql-client via homebrew
 if status --is-interactive; and test (uname) = "Darwin"
+  fish_add_path /opt/homebrew/opt/mysql-client@5.7/bin
   eval $(/opt/homebrew/bin/brew shellenv)
 end
