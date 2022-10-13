@@ -18,9 +18,6 @@ shift + cmd - w : yabai -m window --stack next
 shift + cmd - n : yabai -m window --focus stack.next
 shift + cmd - p : yabai -m window --focus stack.prev
 
-# toggle window fullscreen
-cmd + shift - w : yabai -m window --toggle zoom-fullscreen
-
 # reload yabai
 ctrl + cmd + shift - r : launchctl kickstart -k "gui/${UID}/homebrew.mxcl.yabai"
 
