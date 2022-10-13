@@ -1,6 +1,7 @@
-#### bindings
+#### bind
 bind status C !git commit -v
 bind main ! ?git revert %(commit)
+bind main R !git rebase -i %(commit)
 
 #### display options
 # 表示内容の設定->コミットハッシュ:日付:Author:コミットメッセージ
