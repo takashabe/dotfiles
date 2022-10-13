@@ -140,10 +140,10 @@ mode "resize" {
   # back to normal mode
   bindsym Return mode "default"
   bindsym Escape mode "default"
-  bindsym $mod+r mode "default"
+  bindsym $mod+Shift+r mode "default"
 }
 
-bindsym $mod+r mode "resize"
+bindsym $mod+Shift+r mode "resize"
 
 # colors
 # onedark like
