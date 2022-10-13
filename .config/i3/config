@@ -36,7 +36,7 @@ bindsym --release button2 kill
 bindsym $mod+d exec rofi -show drun
 
 # change focus
-bindsym $mod+Shfit+h focus left
+bindsym $mod+Shift+h focus left
 bindsym $mod+Shift+j focus down
 bindsym $mod+Shift+k focus up
 bindsym $mod+Shift+l focus right
@@ -118,11 +118,11 @@ bindsym $mod+Shift+9 move container to workspace number $ws9
 bindsym $mod+Shift+0 move container to workspace number $ws10
 
 # reload the configuration file
-bindsym $mod+Shift+c reload
+bindsym $mod+Ctrl+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-bindsym $mod+Shift+r restart
+bindsym $mod+Ctrl+Shift+r restart
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+Ctrl+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
