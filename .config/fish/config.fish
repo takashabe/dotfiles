@@ -5,7 +5,6 @@
 ## basic command alias
 alias make 'make --no-print-directory'
 alias mv 'mv -i'
-alias sed 'gsed'
 alias l 'exa -alh'
 alias ll 'exa -lh'
 alias ... 'cd ../..'
@@ -20,6 +19,7 @@ end
 set -x PATH $HOME/bin $PATH
 set -x PATH $HOME/.local/bin $PATH
 if status --is-interactive; and test (uname) = "Darwin"
+  alias sed 'gsed'
   set -x PATH /opt/homebrew/bin $PATH
 end
 
