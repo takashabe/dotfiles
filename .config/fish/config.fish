@@ -88,8 +88,8 @@ end
 function gfetchprune
   git fetch origin --prune
   # PROTECT_BRANCHES defines at loacl.fish
-  if git branch --merge | egrep -v "\*|^  ($PROTECT_BRANCHES)\$"
-    git branch --merge | egrep -v "\*|^  ($PROTECT_BRANCHES)\$" | xargs git branch -d
+  if git branch --merge | grep -E -v "\*|^  ($PROTECT_BRANCHES)\$"
+    git branch --merge | grep -E -v "\*|^  ($PROTECT_BRANCHES)\$" | xargs git branch -d
   else
     echo 'already updated'
   end
