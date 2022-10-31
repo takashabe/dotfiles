@@ -8,9 +8,11 @@ if has('nvim')
   Plug 'navarasu/onedark.nvim'
   Plug 'luisiacc/gruvbox-baby', {'branch': 'main'}
   Plug 'shaunsingh/nord.nvim'
+  Plug 'Mofiqul/dracula.nvim'
 else
   Plug 'joshdick/onedark.vim'
   Plug 'arcticicestudio/nord-vim'
+  Plug 'dracula/vim', { 'as': 'dracula' }
 end
 
 Plug 'cocopon/iceberg.vim'
@@ -24,7 +26,6 @@ Plug 'sainnhe/edge'
 Plug 'sainnhe/sonokai'
 Plug 'ray-x/aurora'
 Plug 'olimorris/onedarkpro.nvim'
-Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'edeneast/nightfox.nvim'
 execute 'source' plug_conf . 'colorscheme.rc.vim'
 Plug 'xiyaowong/nvim-transparent'

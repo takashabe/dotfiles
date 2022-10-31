@@ -1,5 +1,5 @@
 import:
-  - /home/takashabe/.config/alacritty/theme_edge.yml
+  - /home/takashabe/.config/alacritty/theme_dracula.yml
   - /home/takashabe/.config/alacritty/font.yml
   - /home/takashabe/.config/alacritty/keybinding.yml
   - /home/takashabe/.config/alacritty/shell.yml

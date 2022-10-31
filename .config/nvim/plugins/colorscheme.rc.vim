@@ -2,7 +2,7 @@
 let g:edge_style = 'neon'
 let g:sonokai_style = 'andromeda'
 let g:onedark_config = {
-    \ 'style': 'cool',
+    \ 'style': 'dark',
 \}
 
 augroup colorscheme_setting
