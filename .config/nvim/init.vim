@@ -31,7 +31,7 @@ if has('nvim')
 
   " require after plug#end
   execute 'source' plug_conf . 'nvim-treesitter.rc.vim'
-  execute 'source' plug_conf . 'todo-comments.rc.vim'
+  " execute 'source' plug_conf . 'todo-comments.rc.vim'
 else
   call plug#begin('~/.vim/plugged')
   execute 'source' fnamemodify(expand('<sfile>'), ':h').'/plug.rc.vim'
@@ -44,4 +44,4 @@ execute 'source' fnamemodify(expand('<sfile>'), ':h').'/options.rc.vim'
 " colorscheme
 syntax enable
 set background=dark
-colorscheme dracula
+colorscheme onedark
