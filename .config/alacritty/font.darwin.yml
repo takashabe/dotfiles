@@ -8,8 +8,8 @@ font:
   italic:
     family: SF Mono Square
     style: Italic
-  # size: 20.0 # 4K
-  size: 16.0 # Builtin
+  size: 20.0 # 4K
+  # size: 16.0 # Builtin
 #
 # font:
 #   normal:
