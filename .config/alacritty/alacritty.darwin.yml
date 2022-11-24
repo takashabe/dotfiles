@@ -12,6 +12,7 @@ window:
     x: 2
     y: 2
   opacity: 1.0
+  decorations: none
 
 mouse:
   double_click: { threshold: 300 }
