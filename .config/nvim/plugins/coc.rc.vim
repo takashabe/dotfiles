@@ -52,7 +52,7 @@ endfunction
 
 augroup coc_go
   autocmd!
-  autocmd BufWritePre *.go :call CocAction('runCommand', 'editor.action.organizeImport')
+  autocmd BufWritePre *.go :silent call CocAction('runCommand', 'editor.action.organizeImport')
 augroup END
 
 " ##############################

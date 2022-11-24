@@ -9,6 +9,8 @@ if has('nvim')
   Plug 'luisiacc/gruvbox-baby', {'branch': 'main'}
   Plug 'shaunsingh/nord.nvim'
   Plug 'Mofiqul/dracula.nvim'
+  Plug 'folke/tokyonight.nvim'
+  Plug 'EdenEast/nightfox.nvim'
 else
   Plug 'joshdick/onedark.vim'
   Plug 'arcticicestudio/nord-vim'
