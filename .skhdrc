@@ -1,17 +1,14 @@
-# close focused window
-cmd + shift - q : yabai -m window --close
-
 # focus window
-shift + cmd - h: yabai -m window --focus west || yabai -m display --focus west
-shift + cmd - l: yabai -m window --focus east || yabai -m display --focus east
-shift + cmd - j: yabai -m window --focus south || yabai -m display --focus south
-shift + cmd - k: yabai -m window --focus north || yabai -m display --focus north
+cmd - h: yabai -m window --focus west || yabai -m display --focus west
+cmd - l: yabai -m window --focus east || yabai -m display --focus east
+cmd - j: yabai -m window --focus south || yabai -m display --focus south
+cmd - k: yabai -m window --focus north || yabai -m display --focus north
 
 # move window
-ctrl + shift + cmd - h : yabai -m window --warp west
-ctrl + shift + cmd - j : yabai -m window --warp south
-ctrl + shift + cmd - k : yabai -m window --warp north
-ctrl + shift + cmd - l : yabai -m window --warp east
+shift + cmd - h : yabai -m window --warp west
+shift + cmd - j : yabai -m window --warp south
+shift + cmd - k : yabai -m window --warp north
+shift + cmd - l : yabai -m window --warp east
 
 # stack window
 shift + cmd - w : yabai -m window --stack next
@@ -19,7 +16,7 @@ shift + cmd - n : yabai -m window --focus stack.next
 shift + cmd - p : yabai -m window --focus stack.prev
 
 # reload yabai
-ctrl + cmd + shift - r : launchctl kickstart -k "gui/${UID}/homebrew.mxcl.yabai"
+shift + ctrl + cmd - r : launchctl kickstart -k "gui/${UID}/homebrew.mxcl.yabai"
 
 # disable the default evil shortcut
 cmd - h : yabai -m window --focus prev
