@@ -8,7 +8,7 @@ ExecStart   = /usr/bin/xkeysnail /home/takashabe/.config/xkeysnail/config.py
 Type        = simple
 Restart     = always
 RestartSec  = 10s
-Environment = DISPLAY=:1
+Environment = DISPLAY=:0
 
 [Install]
 WantedBy = default.target
