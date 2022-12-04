@@ -1,7 +1,7 @@
 # Super(Win)
 set $mod Mod4
 
-font pango:SF Mono Square 8
+font pango:SF Mono Square 14
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -36,10 +36,10 @@ bindsym --release button2 kill
 bindsym $mod+d exec rofi -show drun
 
 # change focus
-bindsym $mod+Shift+h focus left
-bindsym $mod+Shift+j focus down
-bindsym $mod+Shift+k focus up
-bindsym $mod+Shift+l focus right
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
@@ -48,16 +48,10 @@ bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
 # move focused window
-bindsym $mod+Ctrl+Shift+h move left
-bindsym $mod+Ctrl+Shift+j move down
-bindsym $mod+Ctrl+Shift+k move up
-bindsym $mod+Ctrl+Shift+l move right
-
-# alternatively, you can use the cursor keys:
-bindsym $mod+Shift+Left move left
-bindsym $mod+Shift+Down move down
-bindsym $mod+Shift+Up move up
-bindsym $mod+Shift+Right move right
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
 
 bindsym $mod+Ctrl+h split h
 bindsym $mod+Ctrl+v split v
@@ -161,7 +155,7 @@ set $white #c0c5ce
 
 bar {
   status_command i3blocks
-  font pango:SF Mono Square Regular 8
+  font pango:SF Mono Square Regular 14
   mode dock
   position top
   separator_symbol "│"
