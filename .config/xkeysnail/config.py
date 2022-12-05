@@ -25,7 +25,6 @@ define_keymap(lambda wm_class: wm_class not in ("Alacritty", "Code"), {
   K("Super-t"): K("C-t"),
   K("Super-r"): K("C-r"),
   K("Super-w"): K("C-w"),
-  K("Super-l"): K("C-l"),
 }, "macOS-like keys")
 
 # ESC + IME off for vim
