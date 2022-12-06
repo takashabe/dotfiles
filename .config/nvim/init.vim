@@ -44,4 +44,9 @@ execute 'source' fnamemodify(expand('<sfile>'), ':h').'/options.rc.vim'
 " colorscheme
 syntax enable
 set background=dark
-colorscheme onedark
+
+if has('nvim')
+  colorscheme catppuccin-macchiato " catppuccin-latte, catppuccin-frappe, catppuccin-macchiato, catppuccin-mocha
+else
+  colorscheme onedark
+endif
