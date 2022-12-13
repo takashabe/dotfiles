@@ -11,6 +11,7 @@ if has('nvim')
   Plug 'Mofiqul/dracula.nvim'
   Plug 'folke/tokyonight.nvim'
   Plug 'EdenEast/nightfox.nvim'
+  Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
 else
   Plug 'joshdick/onedark.vim'
   Plug 'arcticicestudio/nord-vim'
