@@ -5,6 +5,9 @@ let g:onedark_config = {
     \ 'style': 'dark',
 \}
 
+let g:everforest_background = 'hard'
+let g:everforest_better_performance = 1
+
 augroup colorscheme_setting
   au!
   autocmd User * hi CocMenuSel ctermfg=242 ctermbg=0 guifg=#2c2d30 guibg=#79b7eb guisp=none

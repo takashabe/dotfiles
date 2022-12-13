@@ -17,6 +17,7 @@ else
   Plug 'dracula/vim', { 'as': 'dracula' }
 end
 
+Plug 'sainnhe/everforest'
 Plug 'cocopon/iceberg.vim'
 Plug 'morhetz/gruvbox'
 Plug 'ryanoasis/vim-devicons'
