@@ -148,6 +148,7 @@ if has('nvim')
   " 重いので無効化しとく
   " Plug 'folke/todo-comments.nvim'
 end
+Plug 'ekalinin/Dockerfile.vim'
 
 " ==========================================================
 " Git
