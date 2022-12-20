@@ -9,7 +9,6 @@ if has('nvim')
   Plug 'luisiacc/gruvbox-baby', {'branch': 'main'}
   Plug 'shaunsingh/nord.nvim'
   Plug 'Mofiqul/dracula.nvim'
-  Plug 'folke/tokyonight.nvim'
   Plug 'EdenEast/nightfox.nvim'
   Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
 else
