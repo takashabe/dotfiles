@@ -1,3 +1,15 @@
+#############################
+# App specific
+#############################
+ctrl - l [
+  # 検索バーへのフォーカスをOS標準のショートカットで置換できないのでskhdでやる
+  # https://connect.mozilla.org/t5/ideas/macos-allow-custom-keyboard-shortcut-for-focusing-url-bar/idi-p/10239
+  "Firefox Developer Edition" : skhd -k "f6"
+]
+
+#############################
+# Global
+#############################
 # focus window
 cmd - h: yabai -m window --focus west || yabai -m display --focus west
 cmd - l: yabai -m window --focus east || yabai -m display --focus east

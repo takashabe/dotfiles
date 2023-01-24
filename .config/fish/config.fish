@@ -164,7 +164,6 @@ if status --is-interactive
   else
     set -l base (brew --prefix)
     source "$base/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.fish.inc"
-    bass source "$base/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.bash.inc"
   end
 end
 
