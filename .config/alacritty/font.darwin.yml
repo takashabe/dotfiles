@@ -8,7 +8,7 @@ font:
   italic:
     family: SF Mono Square
     style: Italic
-  size: 21.0 # 4K
+  size: 22.0 # 4K
   # size: 30.0 # 共有するとき
 #
 # font:
