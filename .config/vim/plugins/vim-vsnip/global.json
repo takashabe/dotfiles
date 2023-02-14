@@ -16,7 +16,7 @@
     "body": [
       "#!/usr/bin/env bash",
       "",
-      "set -eo pipefail$0"
+      "set -euo pipefail$0"
     ]
   }
 }
