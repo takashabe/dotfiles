@@ -6,6 +6,7 @@
 [core]
   quotepath = false
   excludesfile = ~/.gitignore
+  pager = bat
 [merge]
   tool = vimdiff
 [diff]
