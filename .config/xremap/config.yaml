@@ -1,0 +1,30 @@
+keymap:
+  - name: fake Emacs(macOS)
+    application:
+      not: [Alacritty, Code]
+    remap:
+      # Cursor
+      CTRL_L-b: left
+      CTRL_L-f: right
+      CTRL_L-p: up
+      CTRL_L-n: down
+      CTRL_L-h: backspace
+      # Beginning/End of line
+      CTRL_L-a: home
+      CTRL_L-e: end
+      # kill line
+      CTRL_L-k: [Shift-end, CTRL-x]
+      # macOS like
+      SUPER_L-x: CTRL-x
+      SUPER_L-c: CTRL-c
+      SUPER_L-v: CTRL-v
+      SUPER_L-z: CTRL-z
+      SUPER_L-f: CTRL-f
+      SUPER_L-t: CTRL-t
+      SUPER_L-r: CTRL-r
+      SUPER_L-w: CTRL-w
+  - name: ESC+IME off for vim
+    application:
+      only: [Alacritty, Code]
+    remap:
+      ESC: [esc, hanja]
