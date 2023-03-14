@@ -2,6 +2,7 @@ keymap:
   - name: fake Emacs(macOS)
     application:
       not: [Alacritty, Code]
+    exact_match: true
     remap:
       # Cursor
       CTRL_L-b: left
@@ -26,5 +27,6 @@ keymap:
   - name: ESC+IME off for vim
     application:
       only: [Alacritty, Code]
+    exact_match: true
     remap:
       ESC: [esc, hanja]
