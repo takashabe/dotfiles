@@ -57,6 +57,19 @@
 			"assert.Empty(t, $0tt.want, got)"
 		]
 	},
+	"table_driven_test": {
+		"prefix": ["tabledriventest", "tt"],
+		"body": [
+			"tests := []struct {",
+			"\tname string",
+			"}{}",
+			"for _, tt := range tests {",
+			"\ttt := tt",
+			"\tt.Run(tt.name, func(t *testing.T) {",
+			"\t})",
+			"}"
+		]
+	},
 	"gomega_tabletest": {
 		"prefix": ["omgtabletest", "omgtt"],
 		"body": [
