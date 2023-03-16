@@ -185,10 +185,10 @@ bar {
 ## border
 # window titleなどの設定
 # https://i3wm.org/docs/userguide.html#_default_border_style_for_new_windows
-for_window [class=".*"] border pixel 1px
+for_window [class=".*"] border pixel 2px
 ## colors
 # class                 border  backgr. text    indicator child_border
-client.focused          #333333 #6CC190 #282C34 #6CC190   #6CC190
+client.focused          #333333 #6CC190 #282C34 #2396ef   #2396ef
 client.focused_inactive #333333 #282C34 #888888 #333333   #333333
 client.unfocused        #333333 #333333 #888888 #333333   #333333
 client.urgent           #333333 #333333 #ffffff #333333   #333333
@@ -197,11 +197,11 @@ client.background       #ffffff
 
 ## gaps
 # https://github.com/Airblader/i3
-gaps inner 2
+gaps inner 5
 
 # Autostart
 exec --no-startup-id fcitx5
-exec --no-startup-id feh --bg-scale $HOME/Pictures/mountain-landscape-sunrise-wallpaper-3440x1440_15.jpg
+exec --no-startup-id feh --bg-scale $HOME/Pictures/Arch-Linux-Wallpaper-4K.png
 # systemctl (何故かenableだけで自動起動しない…)
 exec --no-startup-id systemctl --user start imwheel.service
 # https://github.com/olemartinorg/i3-alternating-layout

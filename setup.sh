@@ -46,10 +46,11 @@ ln -s $HOME/dotfiles/.config/code/keybindings.json $CODE_PATH
 
 if [ $(uname) = "Linux" ]; then
   echo "=== Linux only ==="
-  ln -s $HOME/dotfiles/.config/xremap/  $HOME/.config/xremap/
+  ln -s $HOME/dotfiles/.config/xremap/  $HOME/.config/
   ln -s $HOME/dotfiles/.config/xkeysnail  $HOME/.config/
   ln -s $HOME/dotfiles/.config/systemd/user/xkeysnail.service $HOME/.config/systemd/user/
   ln -s $HOME/dotfiles/.config/systemd/user/imwheel.service $HOME/.config/systemd/user/
+  ln -s $HOME/dotfiles/.config/systemd/user/xremap.service $HOME/.config/systemd/user/
   ln -s $HOME/dotfiles/.gitconfig.credential.linux $HOME/.gitconfig.credential
   # for ubuntu
   # sudo ln -s $HOME/dotfiles/etc/kernel-update.path /etc/systemd/system/
