@@ -120,7 +120,6 @@ set -g fish_user_paths "/usr/local/sbin" $fish_user_paths
 # openssl with homebrew
 set -x PATH /usr/local/opt/openssl/bin $PATH
 
-
 # node
 if status --is-interactive; and command -v nodebrew > /dev/null
   set -x PATH $HOME/.nodebrew/current/bin $PATH
@@ -129,6 +128,8 @@ if status --is-interactive; and command -v volta > /dev/null
   set -x VOLTA_HOME $HOME/.volta
   set -x PATH $VOLTA_HOME/bin $PATH
 end
+
+set -x NUXT_TELEMETRY_DISABLED 1
 
 # rbenv
 if status --is-interactive; and command -v rbenv > /dev/null
