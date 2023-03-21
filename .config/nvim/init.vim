@@ -46,7 +46,7 @@ syntax enable
 set background=dark
 
 if has('nvim')
-  colorscheme catppuccin-macchiato " catppuccin-latte, catppuccin-frappe, catppuccin-macchiato, catppuccin-mocha
+  colorscheme onedark
 else
   colorscheme onedark
 endif
