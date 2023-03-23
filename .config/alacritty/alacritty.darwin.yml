@@ -1,5 +1,5 @@
 import:
-  - /Users/takashabe/.config/alacritty/catppuccin-macchiato.yml
+  - /Users/takashabe/.config/alacritty/theme_onedark.yml
   - /Users/takashabe/.config/alacritty/font.darwin.yml
   - /Users/takashabe/.config/alacritty/keybinding.yml
   - /Users/takashabe/.config/alacritty/shell.darwin.yml

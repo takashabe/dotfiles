@@ -30,6 +30,9 @@
   "go.disable": {
     "workspaceFolders": true
   },
+  "go.goplsEnv": {
+    "GOFLAGS": "-tags=integration"
+  },
   "go.goplsOptions": {
     "usePlaceholders": true
   },

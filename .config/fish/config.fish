@@ -157,6 +157,9 @@ function reload_tmux
   echo "reload tmux"
 end
 
+# bat (https://github.com/sharkdp/bat)
+set -x BAT_THEME "TwoDark"
+
 ### gcloud
 set -x GOOGLE_APPLICATION_CREDENTIALS "$HOME/.config/gcloud/application_default_credentials.json"
 if status --is-interactive
