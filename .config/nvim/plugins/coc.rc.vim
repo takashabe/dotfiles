@@ -50,13 +50,17 @@ function! s:show_documentation() abort
   endif
 endfunction
 
+" ##############################
+" Go
+" ##############################
+
 augroup coc_go
   autocmd!
   autocmd BufWritePre *.go :silent call CocAction('runCommand', 'editor.action.organizeImport')
 augroup END
 
 " ##############################
-" typescript
+" TypeScript
 " ##############################
 function! s:coc_typescript_settings() abort
   nnoremap <silent> <buffer> [dev]f :<C-u>CocCommand eslint.executeAutofix<CR>:CocCommand prettier.formatFile<CR>
