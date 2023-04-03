@@ -1,5 +1,7 @@
 {
-  "coc.preferences.formatOnSaveFiletypes": ["go"],
+  "[go]": {
+    "coc.preferences.formatOnSave": true,
+  },
   "languageserver": {
     "golangci-lint-languageserver": {
       "command": "golangci-lint-langserver",
