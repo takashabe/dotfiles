@@ -34,7 +34,8 @@
     "GOFLAGS": "-tags=integration"
   },
   "go.goplsOptions": {
-    "usePlaceholders": true
+    "usePlaceholders": true,
+    "gofumpt": true
   },
   "snippets.textmateSnippetsRoots": [
     "~/.config/vim/plugins/vim-vsnip/"

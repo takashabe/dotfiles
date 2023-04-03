@@ -211,6 +211,7 @@ function go_install_binaries
     'github.com/golang/mock/gomock@latest' \
     'github.com/golang/mock/mockgen@latest' \
     'golang.org/x/tools/cmd/goimports@latest' \
+    'mvdan.cc/gofumpt@latest' \
     'github.com/google/pprof@latest' \
     'github.com/cweill/gotests/gotests@latest' \
     'github.com/haya14busa/gtrans@latest'  \
