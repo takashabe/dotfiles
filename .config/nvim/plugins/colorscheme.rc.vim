@@ -1,6 +1,6 @@
 " colorscheme関連の設定値をまとめて管理する
 let g:edge_style = 'neon'
-let g:sonokai_style = 'andromeda'
+let g:sonokai_style = 'atlantis'
 
 let g:everforest_background = 'hard'
 let g:everforest_better_performance = 1

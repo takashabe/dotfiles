@@ -46,7 +46,7 @@ syntax enable
 set background=dark
 
 if has('nvim')
-  colorscheme onedark
+  colorscheme nord
 else
   colorscheme onedark
 endif
