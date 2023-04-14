@@ -16,7 +16,7 @@ get-tmux-option() {
 
 main() {
   local theme
-  theme="$(get-tmux-option "@catppuccin_flavour" "mocha")"
+  theme="$(get-tmux-option "@catppuccin_flavour" "frappe")"
   tmux run -b "$CURRENT_DIR/catppuccin-${theme}.tmuxtheme"
 }
 
