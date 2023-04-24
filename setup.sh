@@ -63,6 +63,7 @@ if [ $(uname) = "Darwin" ]; then
   defaults write -g KeyRepeat -int 1
   # settings
   ln -s $HOME/dotfiles/.gitconfig.credential.darwin $HOME/.gitconfig.credential
+  ln -s $HOME/dotfiles/.config/sketchybar/  $HOME/.config/
 fi
 
 # TODO homebrew, homebrew-cask, yay
