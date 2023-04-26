@@ -7,6 +7,7 @@ let g:coc_global_extensions = [
       \'coc-go',
       \'coc-tsserver',
       \'coc-vetur',
+      \'coc-pyright',
       \'coc-prettier',
       \'coc-yaml',
       \'coc-json',
