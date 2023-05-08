@@ -166,8 +166,7 @@ if status --is-interactive
   if test (uname) = "Linux"
     source "/opt/google-cloud-sdk/path.fish.inc"
   else
-    set -l base (brew --prefix)
-    source "$base/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.fish.inc"
+    source "$(brew --prefix)/share/google-cloud-sdk/path.fish.inc"
   end
 end
 
