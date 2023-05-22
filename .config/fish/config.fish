@@ -222,7 +222,8 @@ function go_install_binaries
     'github.com/skanehira/swagger-preview/cmd/spr@latest' \
     'github.com/golangci/golangci-lint/cmd/golangci-lint@latest' \
     'github.com/nametake/golangci-lint-langserver@latest' \
-    'github.com/spf13/cobra-cli@latest'
+    'github.com/spf13/cobra-cli@latest' \
+    'github.com/josharian/impl@latest'
   pushd $HOME
   for uri in $GO_BINARIES
     echo "go install $uri ..."
