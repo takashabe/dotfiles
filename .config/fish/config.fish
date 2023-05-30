@@ -14,6 +14,8 @@ alias ..... 'cd ../../../..'
 if status --is-interactive; and test (uname) = "Linux"
   alias pbcopy 'xsel -bi'
   alias pbpaste 'xsel -bo'
+  set -x PATH /var/lib/snapd/snap/bin $PATH
+
 end
 
 set -x PATH $HOME/bin $PATH
