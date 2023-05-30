@@ -138,9 +138,9 @@ Plug 'mattn/vim-sqlfmt'
 " nvim-treesitter
 " NOTE: load plugins/nvim-treesitter.rc.vim in init.vim
 if has('nvim')
-  Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-  Plug 'nvim-treesitter/nvim-treesitter-context'
-  Plug 'nvim-lua/plenary.nvim'
+  " Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+  " Plug 'nvim-treesitter/nvim-treesitter-context'
+  " Plug 'nvim-lua/plenary.nvim'
   " 重いので無効化しとく
   " Plug 'folke/todo-comments.nvim'
 end
