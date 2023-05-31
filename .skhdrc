@@ -23,9 +23,9 @@ shift + cmd - k : yabai -m window --warp north
 shift + cmd - l : yabai -m window --warp east
 
 # stack window
-# shift + cmd - w : yabai -m window --stack next
-# shift + cmd - n : yabai -m window --focus stack.next
-# shift + cmd - p : yabai -m window --focus stack.prev
+shift + cmd - w : yabai -m window --stack next
+shift + cmd - n : yabai -m window --focus stack.next
+shift + cmd - p : yabai -m window --focus stack.prev
 
 # reload yabai
 shift + ctrl + cmd - r : launchctl kickstart -k "gui/${UID}/homebrew.mxcl.yabai"
