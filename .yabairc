@@ -38,3 +38,4 @@ yabai -m rule --add app="draw.io" manage=off
 yabai -m rule --add app="licecap" manage=off
 yabai -m rule --add app="Game Capture HD" manage=off
 yabai -m rule --add app="Excel" manage=off
+yabai -m rule --add app="Todoist" manage=off
