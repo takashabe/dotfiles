@@ -5,20 +5,10 @@
   "languageserver": {
     "golangci-lint-languageserver": {
       "command": "golangci-lint-langserver",
+      "rootPatterns": ["go.mod", ".git/"],
       "filetypes": ["go"],
       "initializationOptions": {
-        "command": [
-          "golangci-lint",
-          "run",
-          "-E",
-          "gosec",
-          "--out-format",
-          "json",
-          "--max-same-issues",
-          "0",
-          "--max-issues-per-linter",
-          "0"
-        ]
+        "command": ["golangci-lint", "run", "--out-format", "json", "--config", "~/.config/go/.golangci.yaml"]
       }
     },
     "terraform": {

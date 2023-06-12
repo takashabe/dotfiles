@@ -1,0 +1,4 @@
+linters:
+  fast: true
+  enable:
+    - gosec
