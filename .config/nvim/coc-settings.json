@@ -1,5 +1,5 @@
 {
-  "[go]": {
+  "[go][javascript][typescript][vue]": {
     "coc.preferences.formatOnSave": true,
   },
   "languageserver": {
@@ -27,7 +27,7 @@
   },
   "go.goplsOptions": {
     "usePlaceholders": true,
-    "gofumpt": true
+    "gofumpt": false,
   },
   "snippets.textmateSnippetsRoots": [
     "~/.config/vim/plugins/vim-vsnip/"

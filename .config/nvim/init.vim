@@ -30,8 +30,8 @@ if has('nvim')
   call plug#end()
 
   " require after plug#end
-  " execute 'source' plug_conf . 'nvim-treesitter.rc.vim'
-  " execute 'source' plug_conf . 'todo-comments.rc.vim'
+  execute 'source' plug_conf . 'nvim-treesitter.rc.vim'
+  " execute 'source' plug_conf . 'todo-comments.rc.vim' " todo-comments用
 else
   call plug#begin('~/.vim/plugged')
   execute 'source' fnamemodify(expand('<sfile>'), ':h').'/plug.rc.vim'
