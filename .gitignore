@@ -1,3 +1,6 @@
+# general
+**/tmp/
+
 ## Mac
 \.DS_Store
 
@@ -39,6 +42,7 @@ docker-compose.override.yml
 # go
 go.work
 go.work.sum
+.air.toml
 
 # private memo
 _memo*
