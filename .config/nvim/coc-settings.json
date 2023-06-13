@@ -3,7 +3,7 @@
     "coc.preferences.formatOnSave": true,
   },
   "languageserver": {
-    "golangci-lint-languageserver": {
+    "golangci-lint": {
       "command": "golangci-lint-langserver",
       "rootPatterns": ["go.mod", ".git/"],
       "filetypes": ["go"],
@@ -20,8 +20,9 @@
     }
   },
   "go.disable": {
-    "workspaceFolders": true
+    "workspaceFolders": true,
   },
+  "go.goplsPath": "~/dev/bin/gopls",
   "go.goplsEnv": {
     "GOFLAGS": "-tags=integration"
   },
