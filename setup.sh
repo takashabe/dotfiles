@@ -34,6 +34,7 @@ ln -s $HOME/dotfiles/.config/vim $HOME/.config/
 ln -s $HOME/dotfiles/.config/fontconfig $HOME/.config/
 ln -s $HOME/dotfiles/.config/wezterm $HOME/.config/
 ln -s $HOME/dotfiles/.config/go $HOME/.config/
+ln -s $HOME/dotfiles/.config/lazygit $HOME/.config/
 
 # vscode
 if [ $(uname) = "Linux" ]; then

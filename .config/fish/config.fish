@@ -10,6 +10,7 @@ alias ll 'exa -lh'
 alias ... 'cd ../..'
 alias .... 'cd ../../..'
 alias ..... 'cd ../../../..'
+alias lg 'lazygit'
 
 if status --is-interactive; and test (uname) = "Linux"
   alias pbcopy 'xsel -bi'
