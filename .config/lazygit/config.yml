@@ -1,3 +1,6 @@
+git:
+  commit:
+    verbose: always
 keybinding:
   universal:
     quit: 'Q'
