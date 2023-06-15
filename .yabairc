@@ -35,3 +35,5 @@ yabai -m rule --add app="draw.io" manage=off
 yabai -m rule --add app="Excel" manage=off
 yabai -m rule --add app="Todoist" manage=off
 yabai -m rule --add app="Focus To-Do" manage=off
+yabai -m rule --add app="TablePlus" manage=off
+yabai -m rule --add app="Postman" manage=off
