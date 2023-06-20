@@ -2,3 +2,6 @@ linters:
   fast: true
   enable:
     - gosec
+linters-settings:
+  govet:
+    check-shadowing: true
