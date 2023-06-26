@@ -22,7 +22,6 @@
   "go.disable": {
     "workspaceFolders": true,
   },
-  "go.goplsPath": "~/dev/bin/gopls",
   "go.goplsEnv": {
     "GOFLAGS": "-tags=integration"
   },
