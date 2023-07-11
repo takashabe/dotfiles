@@ -227,7 +227,8 @@ function go_install_binaries
     'github.com/nametake/golangci-lint-langserver@latest' \
     'github.com/spf13/cobra-cli@latest' \
     'github.com/josharian/impl@latest' \
-    'github.com/cosmtrek/air@latest'
+    'github.com/cosmtrek/air@latest' \
+    'golang.org/x/tools/gopls@v0.11.0'
   pushd $HOME
   for uri in $GO_BINARIES
     echo "go install $uri ..."

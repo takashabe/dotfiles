@@ -2,6 +2,13 @@
 let plug_conf = expand('<sfile>:p:h') . '/plugins/'
 
 " ==========================================================
+" Basic
+" ==========================================================
+if has('nvim')
+  Plug 'nvim-lua/plenary.nvim'
+end
+
+" ==========================================================
 " Apppearance
 " ==========================================================
 if has('nvim')
@@ -74,13 +81,18 @@ Plug 'vim-test/vim-test'
 execute 'source' plug_conf . 'vim-test.rc.vim'
 
 " ==========================================================
-" fzf
+" fuzzy finder
 " ==========================================================
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 execute 'source' plug_conf . 'fzf.rc.vim'
-Plug 'yuki-yano/fzf-preview.vim', { 'branch': 'release/rpc' }
-execute 'source' plug_conf . 'fzf-preview.rc.vim'
+if has('nvim')
+  Plug 'nvim-telescope/telescope.nvim', { 'branch': '0.1.x' }
+  " luafile ~/.config/nvim/plugins/telescope.rc.lua
+else
+  Plug 'yuki-yano/fzf-preview.vim', { 'branch': 'release/rpc' }
+  execute 'source' plug_conf . 'fzf-preview.rc.vim'
+end
 
 " ==========================================================
 " LanguageServer
@@ -140,7 +152,6 @@ Plug 'mattn/vim-sqlfmt'
 if has('nvim')
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
   Plug 'nvim-treesitter/nvim-treesitter-context'
-  Plug 'nvim-lua/plenary.nvim'
   " 重いので無効化しとく
   " Plug 'folke/todo-comments.nvim'
 end

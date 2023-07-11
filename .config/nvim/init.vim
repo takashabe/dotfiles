@@ -31,6 +31,7 @@ if has('nvim')
 
   " require after plug#end
   execute 'source' plug_conf . 'nvim-treesitter.rc.vim'
+  luafile ~/.config/nvim/plugins/telescope.rc.lua
   " execute 'source' plug_conf . 'todo-comments.rc.vim' " todo-comments用
 else
   call plug#begin('~/.vim/plugged')
@@ -46,7 +47,7 @@ syntax enable
 set background=dark
 
 if has('nvim')
-  colorscheme catppuccin-frappe
+  colorscheme catppuccin-mocha
 else
   colorscheme onedark
 endif

@@ -27,9 +27,6 @@ shift + cmd - l : yabai -m window --warp east
 # shift + cmd - n : yabai -m window --focus stack.next
 # shift + cmd - p : yabai -m window --focus stack.prev
 
-# reload yabai
-shift + ctrl + cmd - r : launchctl kickstart -k "gui/${UID}/homebrew.mxcl.yabai"
-
 # disable the default evil shortcut
 cmd - h : yabai -m window --focus prev
 cmd - m : yabai -m window --focus next
@@ -55,3 +52,6 @@ shift + cmd - 6 : yabai -m window --space 6
 shift + cmd - 7 : yabai -m window --space 7
 shift + cmd - 8 : yabai -m window --space 8
 shift + cmd - 9 : yabai -m window --space 9
+
+# 単純なキー置き換え
+ctrl - h : skhd -k "backspace"

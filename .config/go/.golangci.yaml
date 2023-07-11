@@ -1,7 +1,13 @@
 linters:
-  fast: true
+  disable-all: true
+  # see. https://golangci-lint.run/usage/linters/
   enable:
+    # default
+    - errcheck
+    - gosimple
+    - govet
+    - ineffassign
+    - staticcheck
+    - unused
+    # security
     - gosec
-linters-settings:
-  govet:
-    check-shadowing: true
