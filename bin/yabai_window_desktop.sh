@@ -22,5 +22,5 @@ yabai -m rule --add label=obsidian app="Obsidian" space=3
 
 ## display 2
 yabai -m rule --add label=edge app="Microsoft Edge" display=2 space=4
-yabai -m rule --add label=slack app="Slack" space=5
-yabai -m rule --add label=gather app="Gather" space=5
+yabai -m rule --add label=slack app="Slack" display=2 space=5
+yabai -m rule --add label=gather app="Gather" display=2 space=5
