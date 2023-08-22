@@ -58,23 +58,8 @@ set -x FZF_DEFAULT_OPTS '--height 60% --reverse --border --layout=reverse --inli
 set -x FZF_CD_IGNORE_CASE '.git|vendor/|node_modules'
 set -x FZF_CD_MAX_DEPTH 5
 
-# curl
-alias curl-android 'curl -A "Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.167 Mobile Safari/537.36"'
-alias curl-ios 'curl -A "Mozilla/5.0 (iPhone; CPU iPhone OS 10_3 like Mac OS X) AppleWebKit/602.1.50 (KHTML, like Gecko) CriOS/56.0.2924.75 Mobile/14E5239e Safari/602.1"'
-function curl-xml-ios
-  if test (count $argv) -lt 1
-    echo 'require: url'
-    return 128
-  end
-  curl-ios $argv[1] | xmllint --format -
-end
-function curl-xml-android
-  if test (count $argv) -lt 1
-    echo 'require: url'
-    return 128
-  end
-  curl-android $argv[1] | xmllint --format -
-end
+# postgres
+set -x PATH /opt/homebrew/opt/libpq/bin $PATH
 
 # git, github
 alias git 'hub'
