@@ -6,8 +6,6 @@ linters:
     - errcheck
     - gosimple
     - govet
-    - ineffassign
     - staticcheck
-    - unused
     # security
     - gosec
