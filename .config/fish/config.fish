@@ -206,14 +206,11 @@ function go_install_binaries
     'github.com/fatih/gomodifytags@latest' \
     'github.com/rubenv/sql-migrate/sql-migrate@latest' \
     'github.com/swaggo/swag/cmd/swag@master' \
-    'github.com/makiuchi-d/arelo@latest' \
     'github.com/skanehira/swagger-preview/cmd/spr@latest' \
     'github.com/golangci/golangci-lint/cmd/golangci-lint@latest' \
     'github.com/nametake/golangci-lint-langserver@latest' \
-    'github.com/spf13/cobra-cli@latest' \
     'github.com/josharian/impl@latest' \
-    'github.com/cosmtrek/air@latest' \
-    'golang.org/x/tools/gopls@v0.11.0'
+    'github.com/cosmtrek/air@latest'
   pushd $HOME
   for uri in $GO_BINARIES
     echo "go install $uri ..."
