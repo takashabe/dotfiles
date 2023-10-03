@@ -167,9 +167,11 @@ Plug 'tyru/open-browser-github.vim'
 Plug 'airblade/vim-gitgutter'
 
 " ==========================================================
-" Copilot
+" Generative AI
 " ==========================================================
 Plug 'github/copilot.vim'
+Plug 'MunifTanjim/nui.nvim'
+Plug 'Bryley/neoai.nvim'
 
 " ==========================================================
 " Others

@@ -32,6 +32,7 @@ if has('nvim')
   " require after plug#end
   execute 'source' plug_conf . 'nvim-treesitter.rc.vim'
   luafile ~/.config/nvim/plugins/telescope.rc.lua
+  luafile ~/.config/nvim/plugins/neoai.rc.lua
   " execute 'source' plug_conf . 'todo-comments.rc.vim' " todo-comments用
 else
   call plug#begin('~/.vim/plugged')
