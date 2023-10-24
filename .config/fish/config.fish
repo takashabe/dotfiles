@@ -119,6 +119,9 @@ end
 
 set -x NUXT_TELEMETRY_DISABLED 1
 
+# java
+set -x PATH /opt/homebrew/opt/openjdk/bin $PATH
+
 # rbenv
 if status --is-interactive; and command -v rbenv > /dev/null
   rbenv init - | source
