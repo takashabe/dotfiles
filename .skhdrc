@@ -29,7 +29,7 @@ alt - p : yabai -m window --focus stack.prev
 
 # disable the default evil shortcut
 cmd - h : yabai -m window --focus prev
-cmd - m : yabai -m window --focus next
+cmd - m : yabai -m window --minimize
 
 # workspaceにフォーカスを移す
 cmd - 1 : yabai -m space --focus 1
