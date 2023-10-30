@@ -20,6 +20,8 @@ yabai -m config window_border_radius         0
 yabai -m config active_window_border_color   0xFF6CC190
 yabai -m config normal_window_border_color   0x00000000
 
+yabai -m rule --add app="^Notification Cent.*$" layer=above
+yabai -m rule --add app="^Hammerspoon" sticky=on layer=above manage=off
 yabai -m rule --add app="^System Settings" manage=off
 yabai -m rule --add app="^Finder$" manage=off
 yabai -m rule --add app="zoom.us" manage=off
