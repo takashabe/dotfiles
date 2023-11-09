@@ -16,7 +16,7 @@ set -euo pipefail
 yabai -m rule --add label=alacritty app="Alacritty" display=1 space=1
 yabai -m rule --add label=vscode app="Code" display=1 space=1
 
-yabai -m rule --add label=edge app="Microsoft Edge" display=1 space=2
+yabai -m rule --add label=arc app="Arc" display=1 space=2
 
 ## display 2
 yabai -m rule --add label=obsidian app="Obsidian" display=2 space=3
