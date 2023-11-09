@@ -1,3 +1,4 @@
+let g:coc_node_path = '/Users/takashabe/.volta/bin/node'
 let g:coc_global_extensions = [
       \'coc-lists',
       \'coc-fzf-preview',
