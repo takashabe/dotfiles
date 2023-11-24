@@ -223,7 +223,7 @@ function go_install_binaries
   popd
 end
 
-### Rust
+# Rust
 set -x PATH $HOME/.cargo/bin $PATH
 
 # Python
