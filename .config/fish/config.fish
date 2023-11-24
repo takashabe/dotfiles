@@ -45,6 +45,7 @@ set -x PROMPT_SHOW_ERR_STATUS 1
 
 ## vim
 alias vi nvim
+alias vim nvim
 set -x EDITOR nvim
 
 ## alternative grep
