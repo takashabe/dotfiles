@@ -199,7 +199,7 @@ set -x GOTEST_CMD gotest
 ### Install golang tool binaries
 function go_install_binaries
   set -l GO_BINARIES \
-    'github.com/golang/mock/gomock@latest' \
+    'go.uber.org/mock/mockgen@latest' \
     'github.com/golang/mock/mockgen@latest' \
     'golang.org/x/tools/cmd/goimports@latest' \
     'mvdan.cc/gofumpt@latest' \
