@@ -226,6 +226,9 @@ end
 ### Rust
 set -x PATH $HOME/.cargo/bin $PATH
 
+# Python
+set -x CLOUDSDK_PYTHON_SITEPACKAGES 1
+
 ### fish history
 function history-merge --on-event fish_preexec
   history --save
