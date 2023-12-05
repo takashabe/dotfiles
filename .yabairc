@@ -38,3 +38,4 @@ yabai -m rule --add app="TablePlus" manage=off
 yabai -m rule --add app="Postman" manage=off
 yabai -m rule --add app="OrbStack" manage=off
 yabai -m rule --add app="Activity Monitor" manage=off
+yabai -m rule --add app="Kindle" manage=off
