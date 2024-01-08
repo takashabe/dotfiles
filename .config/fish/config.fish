@@ -22,6 +22,7 @@ end
 set -x PATH $HOME/bin $PATH
 set -x PATH $HOME/.local/bin $PATH
 if status --is-interactive; and test (uname) = "Darwin"
+  # gnu coreutils
   alias sed 'gsed'
   set -x PATH /opt/homebrew/bin $PATH
 end
