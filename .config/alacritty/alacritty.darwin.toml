@@ -1,0 +1,23 @@
+import = [
+   "/Users/takashabe/.config/alacritty/themes/catppuccin-mocha.toml",
+   "/Users/takashabe/.config/alacritty/font.darwin.toml",
+   "/Users/takashabe/.config/alacritty/keybinding.toml",
+   "/Users/takashabe/.config/alacritty/shell.darwin.toml",
+]
+
+[cursor]
+style = "Block"
+
+[env]
+TERM = "alacritty"
+
+[mouse]
+hide_when_typing = true
+
+[window]
+decorations = "none"
+opacity = 1.0
+
+[window.padding]
+x = 2
+y = 2
