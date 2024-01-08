@@ -1,4 +1,0 @@
-# git管理下にalacritty.ymlを置くのをやめて、こんな漢字でimportだけするファイルを個別に作る
-import:
-# - /home/takashabe/.config/alacritty/alacritty.linux.yml
-  - /Users/takashabe/.config/alacritty/alacritty.darwin.yml
