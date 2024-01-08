@@ -1,8 +1,8 @@
 import = [
    "/Users/takashabe/.config/alacritty/themes/catppuccin-mocha.toml",
-   "/Users/takashabe/.config/alacritty/font.darwin.toml",
-   "/Users/takashabe/.config/alacritty/keybinding.toml",
-   "/Users/takashabe/.config/alacritty/shell.darwin.toml",
+   "/Users/takashabe/.config/alacritty/darwin/font.toml",
+   "/Users/takashabe/.config/alacritty/darwin/keybinding.toml",
+   "/Users/takashabe/.config/alacritty/darwin/shell.toml",
 ]
 
 [cursor]
