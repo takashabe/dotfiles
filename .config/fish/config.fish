@@ -272,7 +272,7 @@ end
 
 function randomize_mac_address
   # for macos
-  sudo spoof randomize en0
+  sudo spoof-mac randomize en0
 end
 
 function reload_keyboard
