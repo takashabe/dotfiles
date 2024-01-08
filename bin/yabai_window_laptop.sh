@@ -18,6 +18,7 @@ yabai -m rule --add label=vscode app="Code" space=1
 yabai -m rule --add label=arc app="Arc" space=2
 
 yabai -m rule --add label=obsidian app="Obsidian" space=3
+yabai -m rule --add label=notion app="Notion" space=3
 
 yabai -m rule --add label=slack app="Slack" space=4
 yabai -m rule --add label=gather app="Gather" space=4
