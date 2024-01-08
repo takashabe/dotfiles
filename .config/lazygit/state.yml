@@ -1,14 +1,14 @@
 lastupdatecheck: 0
 recentrepos:
-- /Users/takashabe/dev/src/github.com/takashabe/ctxfmt
+- /Users/takashabe/dev/src/github.com/takashabe/zenn-casone
 - /Users/takashabe/dev/src/github.com/CastingONE/castingone
+- /Users/takashabe/dev/src/github.com/takashabe/ctxfmt
 - /Users/takashabe/dev/src/github.com/CastingONE/casone-lite-web
 - /Users/takashabe/dotfiles
 - /Users/takashabe/dev/src/github.com/yutaronakayama/otelsql-trace-test
 - /Users/takashabe/dev/src/github.com/CastingONE/sandbox
 - /Users/takashabe/dev/src/github.com/takashabe/goldie
 - /Users/takashabe/dev/src/github.com/sebdah/goldie
-- /Users/takashabe/dev/src/github.com/takashabe/zenn-casone
 startuppopupversion: 5
 customcommandshistory: []
 hidecommandlog: false
