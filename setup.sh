@@ -18,7 +18,7 @@ ln -s $HOME/dotfiles/.vim $HOME/
 
 ## $HOME/bin
 mkdir $HOME/bin
-cp -s $HOME/dotfiles/bin/* $HOME/bin/
+ln -s $HOME/dotfiles/bin/* $HOME/bin/
 
 # $HOME/.config
 ln -s $HOME/dotfiles/.config/fish/config.fish $HOME/.config/fish/
