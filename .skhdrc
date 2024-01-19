@@ -52,6 +52,3 @@ shift + cmd - 6 : yabai -m window --space 6
 shift + cmd - 7 : yabai -m window --space 7
 shift + cmd - 8 : yabai -m window --space 8
 shift + cmd - 9 : yabai -m window --space 9
-
-# 単純なキー置き換え
-ctrl - h : skhd -k "backspace"
