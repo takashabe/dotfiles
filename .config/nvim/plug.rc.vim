@@ -27,7 +27,7 @@ end
 Plug 'sainnhe/everforest'
 Plug 'cocopon/iceberg.vim'
 Plug 'morhetz/gruvbox'
-Plug 'ryanoasis/vim-devicons'
+Plug 'nvim-tree/nvim-web-devicons'
 Plug 'itchyny/lightline.vim'
 execute 'source' plug_conf . 'lightline.rc.vim'
 Plug 'Yggdroot/indentLine'
@@ -165,6 +165,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'tyru/open-browser.vim'
 Plug 'tyru/open-browser-github.vim'
 Plug 'airblade/vim-gitgutter'
+Plug 'pwntester/octo.nvim'
 
 " ==========================================================
 " Generative AI
