@@ -44,6 +44,7 @@ compose.override.*
 go.work
 go.work.sum
 .air.toml
+coverage.html
 
 # private memo
 _memo*
