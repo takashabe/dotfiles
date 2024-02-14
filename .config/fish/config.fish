@@ -215,7 +215,10 @@ function go_install_binaries
     'github.com/golangci/golangci-lint/cmd/golangci-lint@latest' \
     'github.com/nametake/golangci-lint-langserver@latest' \
     'github.com/josharian/impl@latest' \
-    'github.com/cosmtrek/air@latest'
+    'github.com/cosmtrek/air@latest' \
+    'google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest' \
+    'google.golang.org/protobuf/cmd/protoc-gen-go@latest' \
+    'github.com/GoogleCloudPlatform/protoc-gen-bq-schema@latest'
   pushd $HOME
   for uri in $GO_BINARIES
     echo "go install $uri ..."
