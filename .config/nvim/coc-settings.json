@@ -23,11 +23,12 @@
     "workspaceFolders": true,
   },
   "go.goplsEnv": {
-    "GOFLAGS": "-tags=integration"
+    "GOFLAGS": "-tags=integration,candidate_email_communication_handler,staff_email_communication_handler,tenant_handler"
   },
   "go.goplsOptions": {
     "usePlaceholders": true,
     "gofumpt": true,
+    "verboseOutput": true,
   },
   "snippets.textmateSnippetsRoots": [
     "~/.config/vim/plugins/vim-vsnip/"
