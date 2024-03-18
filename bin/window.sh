@@ -21,7 +21,7 @@ declare -A app_to_space=(
     ["Code"]=1
     ["Arc"]=2
     ["Obsidian"]=3
-    ["Notion"]=3
+    ["Focus To-Do"]=3
     ["Slack"]=4
     ["Gather"]=4
 )
