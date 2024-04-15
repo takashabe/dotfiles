@@ -1,15 +1,24 @@
 [font]
-size = 19.0
 # size = 32.0
 
+# size = 19.0
+# [font.bold]
+# family = "SF Mono Square"
+# style = "Bold"
+# [font.italic]
+# family = "SF Mono Square"
+# style = "Italic"
+# [font.normal]
+# family = "SF Mono Square"
+# style = "Regular"
+
+size = 17.0
 [font.bold]
-family = "SF Mono Square"
+family = "Pending Mono NF"
 style = "Bold"
-
 [font.italic]
-family = "SF Mono Square"
+family = "Pending Mono NF"
 style = "Italic"
-
 [font.normal]
-family = "SF Mono Square"
+family = "Pending Mono NF"
 style = "Regular"
