@@ -52,5 +52,11 @@ _tmp
 _tools
 _secret
 
-# alacritty
+## alacritty
 .config/alacritty/alacritty.yml
+
+## ko (container build)
+_build.json
+
+## lazygit
+.config/lazygit/state.yml
