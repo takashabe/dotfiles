@@ -37,8 +37,8 @@ set -x XDG_CACHE_HOME $HOME/.cache
 set -x XDG_CONFIG_HOME $HOME/.config
 
 ## Prompt
-set -x PROMPT_ICON "(*'-')"
-set -x PROMPT_ERROR_ICON "(*;_;)"
+set -x PROMPT_ICON "🐟"
+set -x PROMPT_ERROR_ICON "🍣"
 set -x PROMPT_ENABLE_K8S_CONTEXT 0
 set -x PROMPT_ENABLE_K8S_NAMESPACE 0
 set -x PROMPT_ENABLE_GCLOUD_PROJECT 1
