@@ -11,6 +11,7 @@ alias ... 'cd ../..'
 alias .... 'cd ../../..'
 alias ..... 'cd ../../../..'
 alias lg 'lazygit'
+alias ld 'lazydocker'
 
 if status --is-interactive; and test (uname) = "Linux"
   alias pbcopy 'xsel -bi'
