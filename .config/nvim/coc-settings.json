@@ -38,5 +38,10 @@
     "keywordCase": "upper",
     "expressionWidth": 1000
   },
-  "vetur.dev.vlsPath": "~/.volta/bin/vls"
+  "vetur.dev.vlsPath": "~/.volta/bin/vls",
+  "workspace.ignoredFolders": [
+    "$HOME",
+    "$HOME/.cargo/**",
+    "$HOME/.rustup/**"
+  ]
 }

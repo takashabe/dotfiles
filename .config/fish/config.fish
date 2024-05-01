@@ -231,6 +231,9 @@ end
 
 # Rust
 set -x PATH $HOME/.cargo/bin $PATH
+if status --is-interactive
+  source "$HOME/.cargo/env.fish"
+end
 
 # Python
 set -x CLOUDSDK_PYTHON_SITEPACKAGES 1
