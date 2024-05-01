@@ -156,6 +156,7 @@ if has('nvim')
   " Plug 'folke/todo-comments.nvim'
 end
 Plug 'ekalinin/Dockerfile.vim'
+Plug 'toppair/peek.nvim', {'do': 'deno task --quiet build:fast'}
 
 " ==========================================================
 " Git
