@@ -166,7 +166,6 @@ Plug 'tpope/vim-fugitive'
 Plug 'tyru/open-browser.vim'
 Plug 'tyru/open-browser-github.vim'
 Plug 'airblade/vim-gitgutter'
-Plug 'pwntester/octo.nvim'
 
 " ==========================================================
 " Generative AI
