@@ -6,6 +6,7 @@ let g:coc_global_extensions = [
       \'coc-diagnostic',
       \'coc-dictionary',
       \'coc-go',
+      \'coc-lua',
       \'coc-tsserver',
       \'coc-vetur',
       \'coc-pyright',
