@@ -1,7 +1,7 @@
 [font]
 # size = 32.0
 
-# size = 19.0
+# size = 20.0
 # [font.bold]
 # family = "SF Mono Square"
 # style = "Bold"
@@ -13,6 +13,7 @@
 # style = "Regular"
 
 size = 17.0
+# size = 28.0
 [font.bold]
 family = "Pending Mono NF"
 style = "Bold"
