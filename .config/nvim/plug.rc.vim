@@ -152,8 +152,7 @@ Plug 'mattn/vim-sqlfmt'
 if has('nvim')
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
   Plug 'nvim-treesitter/nvim-treesitter-context'
-  " 重いので無効化しとく
-  " Plug 'folke/todo-comments.nvim'
+  Plug 'folke/todo-comments.nvim' " 重い可能性あり
 end
 Plug 'ekalinin/Dockerfile.vim'
 Plug 'toppair/peek.nvim', {'do': 'deno task --quiet build:fast'}
@@ -165,7 +164,11 @@ Plug 'lambdalisue/gina.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'tyru/open-browser.vim'
 Plug 'tyru/open-browser-github.vim'
-Plug 'airblade/vim-gitgutter'
+if has('nvim')
+  Plug 'lewis6991/gitsigns.nvim'
+else
+  Plug 'airblade/vim-gitgutter'
+end
 
 " ==========================================================
 " Generative AI
