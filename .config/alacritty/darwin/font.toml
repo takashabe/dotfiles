@@ -1,7 +1,8 @@
 [font]
-# size = 32.0
-
+### sfmono-square
+# https://github.com/delphinus/homebrew-sfmono-square/tree/v1.2.2
 # size = 20.0
+# # size = 32.0
 # [font.bold]
 # family = "SF Mono Square"
 # style = "Bold"
@@ -12,14 +13,30 @@
 # family = "SF Mono Square"
 # style = "Regular"
 
-size = 17.0
+### pending-mono
+# https://github.com/yuru7/pending-mono
+# size = 17.0
+# # size = 28.0
+# [font.bold]
+# family = "Pending Mono NF"
+# style = "Bold"
+# [font.italic]
+# family = "Pending Mono NF"
+# style = "Italic"
+# [font.normal]
+# family = "Pending Mono NF"
+# style = "Regular"
+
+### udev-gothic
+# https://github.com/yuru7/udev-gothic
+size = 18.0
 # size = 28.0
 [font.bold]
-family = "Pending Mono NF"
+family = "UDEV Gothic 35NF"
 style = "Bold"
 [font.italic]
-family = "Pending Mono NF"
+family = "UDEV Gothic 35NF"
 style = "Italic"
 [font.normal]
-family = "Pending Mono NF"
+family = "UDEV Gothic 35NF"
 style = "Regular"
