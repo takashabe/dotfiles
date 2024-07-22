@@ -23,7 +23,7 @@
     "workspaceFolders": true,
   },
   "go.goplsEnv": {
-    "GOFLAGS": "-tags=integration,candidate_email_communication_handler,staff_email_communication_handler,tenant_handler,admin_handler,delivery_handler"
+    "GOFLAGS": "-tags=integration,tenant_handler,segment_handler,overview_handler,notification_handler"
   },
   "go.goplsOptions": {
     "usePlaceholders": true,

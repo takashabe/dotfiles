@@ -66,12 +66,12 @@ Plug 'tpope/vim-surround'
 " Window/Buffer
 " ==========================================================
 Plug 'mtth/scratch.vim'
+Plug 'simeji/winresizer'
 execute 'source' plug_conf . 'scratch.rc.vim'
 Plug 'lambdalisue/fern.vim'
 execute 'source' plug_conf . 'fern.rc.vim'
 Plug 'lambdalisue/fern-git-status.vim'
 Plug 'lambdalisue/fern-renderer-nerdfont.vim'
-Plug 'simeji/winresizer'
 
 " ==========================================================
 " Process integration
