@@ -66,7 +66,7 @@ nbsp: 不可視のスペース]]
 opt.listchars = {
   tab = " ",
   trail = "·",
-  --eol = ""
+  eol = "",
 }
 -- ノーマルモードから出るまでの時間を短縮
 opt.ttimeoutlen = 1
@@ -87,13 +87,21 @@ opt.undofile = true
 opt.fillchars:append("eob: ")
 opt.helplang = { "ja", "en" }
 opt.wrap = true
---fold
-opt.fillchars = { fold = " " }
-opt.foldmethod = "indent"
-opt.foldenable = false
-opt.foldlevel = 99
-opt.foldmethod = "expr"
-opt.foldexpr = "nvim_treesitter#foldexpr()"
---マウスの設定
-vim.cmd.aunmenu({ "PopUp.How-to\\ disable\\ mouse" })
-vim.cmd.aunmenu({ "PopUp.-1-" })
+
+-- ===============================
+-- 編集関連
+-- ===============================
+-- yeでそのカーソル位置にある単語をレジスタに追加
+vim.api.nvim_set_keymap('n', 'ye', ':let @"=expand("<cword>")<CR>', { noremap = true, silent = true })
+-- Visualモードでのpで選択範囲をレジスタの内容に置き換える
+vim.api.nvim_set_keymap('v', 'p', '<Esc>:let current_reg = @"<CR>gvdi<C-R>=current_reg<CR><Esc>', { noremap = true, silent = true })
+-- tabをスペースに変換して入力する
+vim.opt.expandtab = true
+-- ; と : を入れ替え
+vim.api.nvim_set_keymap('n', ';', ':', { noremap = true })
+vim.api.nvim_set_keymap('n', ':', ';', { noremap = true })
+-- 末尾空白を削除
+vim.api.nvim_create_autocmd('BufWritePre', {
+  pattern = '*',
+  command = [[%s/\s\+$//e]]
+})
