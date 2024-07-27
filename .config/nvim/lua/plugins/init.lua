@@ -1,7 +1,10 @@
 return {
-  -- UI
-  { "MunifTanjim/nui.nvim", lazy = true },
-  'stevearc/dressing.nvim',
+  -- LSP
+  { "neovim/nvim-lspconfig", dependencies = {
+      "williamboman/mason.nvim",
+      "williamboman/mason-lspconfig.nvim",
+    },
+  },
 
   -- Util
   "folke/persistence.nvim",
