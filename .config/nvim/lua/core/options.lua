@@ -87,6 +87,7 @@ opt.undofile = true
 opt.fillchars:append("eob: ")
 opt.helplang = { "ja", "en" }
 opt.wrap = true
+opt.syntax = on
 
 -- ===============================
 -- 編集関連

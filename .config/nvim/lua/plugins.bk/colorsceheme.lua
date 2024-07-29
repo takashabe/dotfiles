@@ -1,14 +1,12 @@
 return {
   -- colorschemes
-  { "ellisonleao/gruvbox.nvim" },
   { "folke/tokyonight.nvim", opts = { styke = "moon" }, },
-  { "catppuccin/nvim" },
+  { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
 
-  -- Configure LazyVim to load gruvbox
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "tokyonight",
+      colorscheme = "catppuccin",
     },
   }
 }

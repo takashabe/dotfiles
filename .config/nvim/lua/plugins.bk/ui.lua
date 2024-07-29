@@ -25,11 +25,6 @@ return {
     },
   },
 
-  {
-    "nvim-lualine/lualine.nvim",
-    dependencies = { 'nvim-tree/nvim-web-devicons' },
-  },
-
   { "MunifTanjim/nui.nvim", },
   { "stevearc/dressing.nvim", },
 }
