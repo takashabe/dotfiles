@@ -1,7 +1,8 @@
 return {
   -- telescope
   {
-    "nvim-telescope/telescope.nvim", dependencies = { 'nvim-lua/plenary.nvim', },
+    "nvim-telescope/telescope.nvim",
+    dependencies = { 'nvim-lua/plenary.nvim', },
     config = function()
       require('plugins.config.telescope')
     end,
@@ -13,6 +14,15 @@ return {
     build = ":TSUpdate",
     config = function()
       require('plugins.config.treesitter')
+    end,
+  },
+
+  -- UI
+  {
+    'nvim-lualine/lualine.nvim',
+    dependencies = { 'nvim-tree/nvim-web-devicons' },
+    config = function()
+      require('plugins.config.lualine')
     end,
   },
 
