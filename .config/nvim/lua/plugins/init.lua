@@ -1,4 +1,16 @@
 return {
+  -- lsp
+  {
+    "neovim/nvim-lspconfig",
+    dependencies = {
+      "williamboman/mason.nvim",
+      "williamboman/mason-lspconfig.nvim",
+    },
+    config = function()
+      require('plugins.config.lsp')
+    end,
+  },
+
   -- telescope
   {
     "nvim-telescope/telescope.nvim",
