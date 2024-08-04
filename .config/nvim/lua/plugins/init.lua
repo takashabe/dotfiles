@@ -17,6 +17,20 @@ return {
     end,
   },
 
+  -- Editor
+  {
+    "nvim-neo-tree/neo-tree.nvim",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-tree/nvim-web-devicons",
+      "MunifTanjim/nui.nvim",
+      "3rd/image.nvim",
+    },
+    config = function()
+      require('plugins.config.neotree')
+    end,
+  },
+
   -- UI
   {
     'nvim-lualine/lualine.nvim',
