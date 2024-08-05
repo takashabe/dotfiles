@@ -4,7 +4,6 @@ local opt = vim.opt
 opt.number = true
 opt.title = true
 opt.cmdheight = 1
-opt.termguicolors = true
 opt.updatetime = 100
 opt.textwidth = 0
 opt.signcolumn = "auto"
@@ -66,10 +65,11 @@ extends: ウィンドウの幅が狭くて右に省略された文字がある�
 precedes: ウィンドウの幅が狭くて左に省略された文字がある記号
 nbsp: 不可視のスペース]]
 opt.listchars = {
-  tab = " ",
+  tab = "»-",
   trail = "·",
   eol = "",
 }
+
 -- ノーマルモードから出るまでの時間を短縮
 opt.ttimeoutlen = 1
 -- 仮想編集を有効
@@ -109,3 +109,6 @@ vim.api.nvim_create_autocmd('BufWritePre', {
   command = [[%s/\s\+$//e]]
 })
 
+-- 保存/終了を簡単に
+vim.api.nvim_set_keymap('n', '<Leader>w', ':w<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<Leader>q', ':q<CR>', { noremap = true, silent = true })
