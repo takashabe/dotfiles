@@ -113,4 +113,27 @@ return {
 
   -- colorscheme
   { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
+
+  -- misc
+  {
+    "uga-rosa/translate.nvim",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    keys = {
+      { "<leader>tr", "<Cmd>Translate JA<CR>", mode = { "n" }, desc = "Translate" },
+    },
+    opts = {
+      default = {
+        command = "google",
+        output = "split",
+      },
+      preset = {
+        output = {
+          split = {
+            border = "rounded",
+            height = 15,
+          },
+        },
+      },
+    },
+  },
 }
