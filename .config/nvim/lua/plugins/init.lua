@@ -1,4 +1,25 @@
 return {
+  -- copilot
+  {
+    "zbirenbaum/copilot.lua",
+    cmd = "Copilot",
+    build = ":Copilot auth",
+    opts = {
+      suggestion = { enabled = false },
+      panel = { enabled = false },
+      filetypes = {
+        markdown = true,
+        help = true,
+      },
+    },
+  },
+  {
+    "zbirenbaum/copilot-cmp",
+    config = function ()
+      require("copilot_cmp").setup()
+    end
+  },
+
   -- cmp
   "hrsh7th/cmp-nvim-lsp",
   "hrsh7th/cmp-buffer",
@@ -23,6 +44,7 @@ return {
         }),
         sources = cmp.config.sources({
           { name = 'nvim_lsp' },
+          { name = 'copilot' },
           { name = 'vsnip' }, -- For vsnip users.
         }, {
           { name = 'buffer' },
