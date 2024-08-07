@@ -113,6 +113,7 @@ return {
       require('plugins.config.treesitter')
     end,
   },
+  { 'nvim-treesitter/nvim-treesitter-context', },
 
   -- Editor
   {
