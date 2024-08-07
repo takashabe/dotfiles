@@ -5,13 +5,17 @@ return {
     cmd = "Copilot",
     build = ":Copilot auth",
     opts = {
-      suggestion = { enabled = false },
+      suggestion = { enabled = true },
       panel = { enabled = false },
       filetypes = {
-        markdown = true,
-        help = true,
+        ["*"] = true,
       },
     },
+    -- 遅延で起動させる
+    event = "InsertEnter",
+    config = function()
+      require("copilot").setup({})
+    end,
   },
   {
     "zbirenbaum/copilot-cmp",
