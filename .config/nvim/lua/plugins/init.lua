@@ -1,28 +1,6 @@
 return {
   -- copilot
-  {
-    "zbirenbaum/copilot.lua",
-    cmd = "Copilot",
-    build = ":Copilot auth",
-    opts = {
-      suggestion = { enabled = true },
-      panel = { enabled = false },
-      filetypes = {
-        ["*"] = true,
-      },
-    },
-    -- 遅延で起動させる
-    event = "InsertEnter",
-    config = function()
-      require("copilot").setup({})
-    end,
-  },
-  {
-    "zbirenbaum/copilot-cmp",
-    config = function ()
-      require("copilot_cmp").setup()
-    end
-  },
+  { "github/copilot.vim", },
 
   -- cmp
   "hrsh7th/cmp-nvim-lsp",
