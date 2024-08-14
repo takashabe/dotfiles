@@ -1,6 +1,4 @@
-lua <<EOF
 require'nvim-treesitter.configs'.setup {
-  -- see: https://github.com/nvim-treesitter/nvim-treesitter#supported-languages
   ensure_installed = {
     "c",
     "cpp",
@@ -23,12 +21,12 @@ require'nvim-treesitter.configs'.setup {
     "vue",
     "yaml",
   },
+
   sync_install = true,
+  auto_install = true,
+
   highlight = {
     enable = true,
-  },
-  indent = {
-    enable = false,
+    additional_vim_regex_highlighting = false,
   },
 }
-EOF

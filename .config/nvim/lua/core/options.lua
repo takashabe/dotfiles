@@ -1,0 +1,158 @@
+vim.g.mapleader = ","
+
+local opt = vim.opt
+opt.number = true
+opt.title = true
+opt.cmdheight = 1
+opt.updatetime = 100
+opt.textwidth = 0
+opt.signcolumn = "auto"
+opt.background = "dark"
+opt.clipboard = { "unnamed", "unnamedplus" }
+-- tab時の見かけのスペース数
+opt.tabstop = 2
+-- 自動的に挿入される量
+opt.shiftwidth = 2
+-- 検索時の強調表示
+opt.inccommand = "split"
+-- Windowsでパスの区切り文字をスラッシュで扱う
+-- 対応する括弧を強調表示
+opt.showmatch = true
+opt.matchtime = 1
+opt.swapfile = false
+opt.shadafile = "NONE"
+opt.mouse = "a"
+opt.fileencoding = "utf-8"
+opt.spelllang = "en_us"
+opt.fileformats = { "unix", "dos", "mac" }
+-- 検索系
+-- 検索文字列が小文字の場合は大文字小文字を区別なく検索する
+opt.ignorecase = true
+-- 検索文字列に大文字が含まれている場合は区別して検索する
+opt.smartcase = true
+-- 検索文字列入力時に順次対象文字列にヒットさせる
+opt.incsearch = true
+-- 検索時に最後まで行ったら最初に戻る
+opt.wrapscan = true
+-- 検索語をハイライト非表示
+opt.hlsearch = true
+-- 括弧をハイライト表示
+opt.showmatch = true
+-- 括弧秒数を調整
+opt.matchtime = 1
+-- cmp 設定
+opt.completeopt = { "menu", "menuone", "noselect" }
+-- キーの待ち時間設定
+opt.timeout = true
+opt.timeoutlen = 300
+-- インデント
+opt.autoindent = true
+opt.smartindent = true
+-- 改行時にtabをスペースに変換
+-- (インサート時に(Ctrl+v)+tabでtab挿入)
+opt.expandtab = true
+--行の改行を防ぐ
+opt.linebreak = true
+-- 制御文字を表示
+opt.list = true
+-- 制御文字をカスタマイズ
+--[[
+tab: タブ
+trail: 行末（行最後の文字から改行まで）の半角スペース
+eol: 改行
+space: 半角スペース
+extends: ウィンドウの幅が狭くて右に省略された文字がある記号
+precedes: ウィンドウの幅が狭くて左に省略された文字がある記号
+nbsp: 不可視のスペース]]
+opt.listchars = {
+  tab = "»-",
+  trail = "·",
+  --  eol = "",
+}
+
+-- ノーマルモードから出るまでの時間を短縮
+opt.ttimeoutlen = 1
+-- 仮想編集を有効
+opt.virtualedit = "onemore"
+-- -エラー時の音を画面表示に
+opt.visualbell = true
+opt.wildignore =
+".git,.hg,.svn,*.pyc,*.o,*.out,*.jpg,*.jpeg,*.png,*.gif,*.zip,**/tmp/**,*.DS_Store,**/node_modules/**,**/bower_modules/**"
+opt.fileencoding = "utf-8"
+opt.termguicolors = true
+-- 行を跨いで移動出来る様にする
+opt.whichwrap = "b,s,h,l,[,],<,>,~"
+-- undoの永続化
+opt.undodir = vim.fn.stdpath("state")
+opt.undofile = true
+-- ファイル末尾の記号を消す
+opt.fillchars:append("eob: ")
+opt.helplang = { "ja", "en" }
+opt.wrap = true
+opt.syntax = on
+
+-- ===============================
+-- 編集関連
+-- ===============================
+-- yeでそのカーソル位置にある単語をレジスタに追加
+vim.api.nvim_set_keymap('n', 'ye', ':let @"=expand("<cword>")<CR>', { noremap = true, silent = true })
+-- Visualモードでのpで選択範囲をレジスタの内容に置き換える
+vim.api.nvim_set_keymap('v', 'p', '<Esc>:let current_reg = @"<CR>gvdi<C-R>=current_reg<CR><Esc>',
+  { noremap = true, silent = true })
+-- tabをスペースに変換して入力する
+vim.opt.expandtab = true
+-- ; と : を入れ替え
+vim.api.nvim_set_keymap('n', ';', ':', { noremap = true })
+vim.api.nvim_set_keymap('n', ':', ';', { noremap = true })
+-- 末尾空白を削除
+vim.api.nvim_create_autocmd('BufWritePre', {
+  pattern = '*',
+  command = [[%s/\s\+$//e]]
+})
+
+-- 保存/終了を簡単に
+vim.api.nvim_set_keymap('n', '<Leader>w', ':w<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<Leader>q', ':q<CR>', { noremap = true, silent = true })
+
+vim.api.nvim_create_autocmd({ "BufWritePre" }, {
+  -- pattern = "*.go",
+  pattern = "*",
+  callback = function()
+    local params = vim.lsp.util.make_range_params()
+    params.context = { only = { "source.organizeImports" } }
+    -- buf_request_sync defaults to a 1000ms timeout. Depending on your
+    -- machine and codebase, you may want longer. Add an additional
+    -- argument after params if you find that you have to write the file
+    -- twice for changes to be saved.
+    -- E.g., vim.lsp.buf_request_sync(0, "textDocument/codeAction", params, 3000)
+    local result = vim.lsp.buf_request_sync(0, "textDocument/codeAction", params)
+    for cid, res in pairs(result or {}) do
+      for _, r in pairs(res.result or {}) do
+        if r.edit then
+          local enc = (vim.lsp.get_client_by_id(cid) or {}).offset_encoding or "utf-16"
+          vim.lsp.util.apply_workspace_edit(r.edit, enc)
+        end
+      end
+    end
+    vim.lsp.buf.format({ async = false })
+  end,
+})
+
+-- ===============================
+-- ファイルタイプ
+-- ===============================
+-- 特定のfiletypeではハードタブを使うようにする
+vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
+  pattern = { "*.go", "*.re", "*.tsv", "*.mk", "Makefile" },
+  callback = function()
+    vim.bo.expandtab = false
+    vim.bo.tabstop = 2
+    vim.bo.shiftwidth = 2
+  end,
+})
+
+-- filetypeの設定
+vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
+  pattern = "*.tf",
+  command = "set filetype=terraform",
+})
