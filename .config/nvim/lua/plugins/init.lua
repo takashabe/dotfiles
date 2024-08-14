@@ -11,7 +11,7 @@ return {
     "hrsh7th/nvim-cmp",
     config = function()
       -- nvim-cmp setup
-      local cmp = require'cmp'
+      local cmp = require 'cmp'
       cmp.setup({
         window = {
           -- completion = cmp.config.window.bordered(),
@@ -111,9 +111,13 @@ return {
   {
     'nvim-lualine/lualine.nvim',
     dependencies = { 'nvim-tree/nvim-web-devicons' },
-    config = function()
-      require('plugins.config.lualine')
-    end,
+    opts = {
+      sections = {
+        lualine_c = {
+          { "filename", path = 1 },
+        },
+      },
+    },
   },
 
   -- colorscheme
