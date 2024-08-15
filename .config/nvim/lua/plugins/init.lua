@@ -9,6 +9,13 @@ return {
   "hrsh7th/cmp-cmdline",
   {
     "hrsh7th/nvim-cmp",
+    opts = function(_, opts)
+      opts.sources = opts.sources or {}
+      table.insert(opts.sources, {
+        name = "lazydev",
+        group_index = 0, -- set group index to 0 to skip loading LuaLS completions
+      })
+    end,
     config = function()
       -- nvim-cmp setup
       local cmp = require 'cmp'
@@ -78,6 +85,16 @@ return {
   {
     "nvim-telescope/telescope.nvim",
     dependencies = { 'nvim-lua/plenary.nvim', },
+    keys = {
+      { '<C-p>',      function() require('telescope.builtin').find_files() end,  mode = 'n' }, -- vscodeライクにCmd-pにしたい
+      { '<leader>ff', function() require('telescope.builtin').find_files() end,  mode = 'n' },
+      { '<leader>fg', function() require('telescope.builtin').live_grep() end,   mode = 'n' },
+      { '<leader>fb', function() require('telescope.builtin').buffers() end,     mode = 'n' },
+      { '<leader>fh', function() require('telescope.builtin').help_tags() end,   mode = 'n' },
+      { '<leader>fd', function() require('telescope.builtin').diagnostics() end, mode = 'n' },
+      { '<leader>fk', function() require('telescope.builtin').keymaps() end,     mode = 'n' },
+      { '<leader>f?', function() require('telescope.builtin').commands() end,    mode = 'n' },
+    },
     config = function()
       require('plugins.config.telescope')
     end,
@@ -105,6 +122,111 @@ return {
     config = function()
       require('plugins.config.neotree')
     end,
+  },
+  {
+    "folke/which-key.nvim",
+    event = "VeryLazy",
+    opts_extend = { "spec" },
+    opts = {
+      defaults = {},
+      spec = {
+        {
+          mode = { "n", "v" },
+          { "<leader><tab>", group = "tabs" },
+          { "<leader>c", group = "code" },
+          { "<leader>f", group = "file/find" },
+          { "<leader>g", group = "git" },
+          { "<leader>gh", group = "hunks" },
+          { "<leader>q", group = "quit/session" },
+          { "<leader>s", group = "search" },
+          { "<leader>u", group = "ui", icon = { icon = "󰙵 ", color = "cyan" } },
+          { "<leader>x", group = "diagnostics/quickfix", icon = { icon = "󱖫 ", color = "green" } },
+          { "[", group = "prev" },
+          { "]", group = "next" },
+          { "g", group = "goto" },
+          { "gs", group = "surround" },
+          { "z", group = "fold" },
+          {
+            "<leader>b",
+            group = "buffer",
+            expand = function()
+              return require("which-key.extras").expand.buf()
+            end,
+          },
+          {
+            "<leader>w",
+            group = "windows",
+            proxy = "<c-w>",
+            expand = function()
+              return require("which-key.extras").expand.win()
+            end,
+          },
+          -- better descriptions
+          { "gx", desc = "Open with system app" },
+        },
+      },
+    },
+    keys = {
+      {
+        "<leader>?",
+        function()
+          require("which-key").show({ global = false })
+        end,
+        desc = "Buffer Keymaps (which-key)",
+      },
+      {
+        "<c-w><space>",
+        function()
+          require("which-key").show({ keys = "<c-w>", loop = true })
+        end,
+        desc = "Window Hydra Mode (which-key)",
+      },
+    },
+    config = function(_, opts)
+      local wk = require("which-key")
+      wk.setup(opts)
+      if not vim.tbl_isempty(opts.defaults) then
+        LazyVim.warn("which-key: opts.defaults is deprecated. Please use opts.spec instead.")
+        wk.register(opts.defaults)
+      end
+    end,
+  },
+  {
+    "folke/trouble.nvim",
+    opts = {}, -- for default options, refer to the configuration section for custom setup.
+    cmd = "Trouble",
+    keys = {
+      {
+        "<leader>xx",
+        "<cmd>Trouble diagnostics toggle<cr>",
+        desc = "Diagnostics (Trouble)",
+      },
+      {
+        "<leader>xX",
+        "<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
+        desc = "Buffer Diagnostics (Trouble)",
+      },
+      {
+        "<leader>cs",
+        "<cmd>Trouble symbols toggle focus=false<cr>",
+        desc = "Symbols (Trouble)",
+      },
+      {
+        "<leader>cl",
+        "<cmd>Trouble lsp toggle focus=false win.position=right<cr>",
+        desc = "LSP Definitions / references / ... (Trouble)",
+      },
+      {
+        "<leader>xL",
+        "<cmd>Trouble loclist toggle<cr>",
+        desc = "Location List (Trouble)",
+      },
+      {
+        "<leader>xQ",
+        "<cmd>Trouble qflist toggle<cr>",
+        desc = "Quickfix List (Trouble)",
+      },
+    },
   },
 
   -- UI
@@ -142,6 +264,21 @@ return {
             height = 15,
           },
         },
+      },
+    },
+  },
+  {
+    "folke/lazydev.nvim",
+    dependencies = {
+      { "Bilal2453/luvit-meta", lazy = true },
+      { "hrsh7th/nvim-cmp" },
+    },
+    ft = "lua", -- only load on lua files
+    opts = {
+      library = {
+        -- See the configuration section for more details
+        -- Load luvit types when the `vim.uv` word is found
+        { path = "luvit-meta/library", words = { "vim%.uv" } },
       },
     },
   },
