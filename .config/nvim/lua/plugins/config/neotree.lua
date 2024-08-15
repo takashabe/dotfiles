@@ -6,5 +6,11 @@ require("neo-tree").setup({
     mappings = {
       ["P"] = { "toggle_preview", config = { use_float = true, use_image_nvim = true } },
     }
-  }
+  },
+  filesystem = {
+    filtered_items = {
+      visible = true,
+      hide_by_name = { "node_modules", "vendor", ".git", ".cache", ".idea", ".vscode", ".DS_Store" },
+    },
+  },
 })
