@@ -86,18 +86,21 @@ return {
     "nvim-telescope/telescope.nvim",
     dependencies = { 'nvim-lua/plenary.nvim', },
     keys = {
-      { '<C-p>',      function() require('telescope.builtin').find_files() end,  mode = 'n' }, -- vscodeライクにCmd-pにしたい
-      { '<leader>ff', function() require('telescope.builtin').find_files() end,  mode = 'n' },
-      { '<leader>fg', function() require('telescope.builtin').live_grep() end,   mode = 'n' },
-      { '<leader>fb', function() require('telescope.builtin').buffers() end,     mode = 'n' },
-      { '<leader>fh', function() require('telescope.builtin').help_tags() end,   mode = 'n' },
-      { '<leader>fd', function() require('telescope.builtin').diagnostics() end, mode = 'n' },
-      { '<leader>fk', function() require('telescope.builtin').keymaps() end,     mode = 'n' },
-      { '<leader>f?', function() require('telescope.builtin').commands() end,    mode = 'n' },
+      { '<C-p>',      function() require('telescope.builtin').find_files() end,              mode = 'n' }, -- vscodeライクにCmd-pにしたい
+      { '<leader>ff', function() require('telescope.builtin').find_files() end,              mode = 'n' },
+      { '<leader>fg', function() require('telescope.builtin').live_grep() end,               mode = 'n' },
+      { '<leader>fb', function() require('telescope.builtin').buffers() end,                 mode = 'n' },
+      { '<leader>fh', function() require('telescope.builtin').help_tags() end,               mode = 'n' },
+      { '<leader>fd', function() require('telescope.builtin').diagnostics() end,             mode = 'n' },
+      { '<leader>fk', function() require('telescope.builtin').keymaps() end,                 mode = 'n' },
+      { '<leader>f?', function() require('telescope.builtin').commands() end,                mode = 'n' },
+      { '<leader>fs', function() require('telescope.builtin').extension.aerial.aerial() end, mode = 'n' },
     },
-    config = function()
-      require('plugins.config.telescope')
-    end,
+    opts = {
+      function()
+        require("telescope").load_extension("aerial")
+      end,
+    },
   },
 
   -- treesitter
@@ -289,6 +292,12 @@ return {
         map("n", "<leader>ghD", function() gs.diffthis("~") end, "Diff This ~")
         map({ "o", "x" }, "ih", ":<C-U>Gitsigns select_hunk<CR>", "GitSigns Select Hunk")
       end,
+    },
+  },
+  {
+    "stevearc/aerial.nvim",
+    keys = {
+      { "<leader>cs", "<cmd>AerialToggle!<cr>", desc = "Aerial (Symbols)" },
     },
   },
 
