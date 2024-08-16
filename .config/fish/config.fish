@@ -360,7 +360,7 @@ end
 # コマンド実行時間が一定時間を超えていればnotificationを表示
 function __postexec_notify_on_long_running_commands --on-event fish_postexec
     # インタラクティブなコマンドは通知しない
-    set --function interactive_commands vi vim nvim man less zed pgcli psql
+    set --function interactive_commands vi vim nvim man less zed pgcli psql lg lazygit ld lazydocker
     set --function command (string split ' ' $argv[1])
     if contains $command $interactive_commands
         return
