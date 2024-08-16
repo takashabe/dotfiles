@@ -334,3 +334,43 @@ if status --is-interactive; and test (uname) = "Darwin"
   fish_add_path /opt/homebrew/opt/mysql-client@5.7/bin
   eval $(/opt/homebrew/bin/brew shellenv)
 end
+
+# コマンド実行時間が一定時間を超えていればnotificationを表示
+#function fish_preexec --on-event fish_preexec
+#  set -g __fish_command_timer (date +%s)
+#  set -g __fish_current_command $argv[1]
+#end
+#function fish_postexec --on-event fish_postexec
+#  if test -n "$__fish_command_timer"
+#    set -l elapsed_time (math (date +%s) - $__fish_command_timer)
+#    set -e __fish_command_timer
+#
+#    set -l threshold 0
+#    set -l blacklist 'vi' 'nvim' 'zed' 'code' 'pgcli'
+#
+#    set -l cmd_name (echo $__fish_current_command | awk '{print $1}')
+#    if test $elapsed_time -gt $threshold
+#      if not contains $cmd_name $blacklist
+#        osascript -e "display notification \"$cmd_nameが$elapsed_time秒で完了しました\" with title \"コマンド実行通知\""
+#      end
+#    end
+#  end
+#end
+
+# コマンド実行時間が一定時間を超えていればnotificationを表示
+function __postexec_notify_on_long_running_commands --on-event fish_postexec
+    # インタラクティブなコマンドは通知しない
+    set --function interactive_commands vi vim nvim man less zed pgcli psql
+    set --function command (string split ' ' $argv[1])
+    if contains $command $interactive_commands
+        return
+    end
+
+    # 通知するコマンドの実行時間が閾値を超えた場合に通知を行う (milliseconds)
+    set threshold_duration 5000
+    if test $CMD_DURATION -gt $limit_duration
+        set --function duration_in_seconds (math $CMD_DURATION / 1000)
+        set --function notification_message "Completed command: '$command[1]' after $duration_in_seconds seconds."
+        osascript -e "display notification \"$notification_message\" with title \"Command Notification\""
+    end
+end
