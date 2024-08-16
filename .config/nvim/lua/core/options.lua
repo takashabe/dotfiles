@@ -65,9 +65,9 @@ extends: ウィンドウの幅が狭くて右に省略された文字がある�
 precedes: ウィンドウの幅が狭くて左に省略された文字がある記号
 nbsp: 不可視のスペース]]
 opt.listchars = {
-  tab = "»-",
-  trail = "·",
-  --  eol = "",
+    tab = "»-",
+    trail = "·",
+    --  eol = "",
 }
 
 -- ノーマルモードから出るまでの時間を短縮
@@ -98,7 +98,7 @@ opt.syntax = on
 vim.api.nvim_set_keymap('n', 'ye', ':let @"=expand("<cword>")<CR>', { noremap = true, silent = true })
 -- Visualモードでのpで選択範囲をレジスタの内容に置き換える
 vim.api.nvim_set_keymap('v', 'p', '<Esc>:let current_reg = @"<CR>gvdi<C-R>=current_reg<CR><Esc>',
-  { noremap = true, silent = true })
+    { noremap = true, silent = true })
 -- tabをスペースに変換して入力する
 vim.opt.expandtab = true
 -- ; と : を入れ替え
@@ -106,53 +106,55 @@ vim.api.nvim_set_keymap('n', ';', ':', { noremap = true })
 vim.api.nvim_set_keymap('n', ':', ';', { noremap = true })
 -- 末尾空白を削除
 vim.api.nvim_create_autocmd('BufWritePre', {
-  pattern = '*',
-  command = [[%s/\s\+$//e]]
+    pattern = '*',
+    command = [[%s/\s\+$//e]]
 })
 
 -- 保存/終了を簡単に
 vim.api.nvim_set_keymap('n', '<Leader>w', ':w<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<Leader>q', ':q<CR>', { noremap = true, silent = true })
 
-vim.api.nvim_create_autocmd({ "BufWritePre" }, {
-  -- pattern = "*.go",
-  pattern = "*",
-  callback = function()
-    local params = vim.lsp.util.make_range_params()
-    params.context = { only = { "source.organizeImports" } }
-    -- buf_request_sync defaults to a 1000ms timeout. Depending on your
-    -- machine and codebase, you may want longer. Add an additional
-    -- argument after params if you find that you have to write the file
-    -- twice for changes to be saved.
-    -- E.g., vim.lsp.buf_request_sync(0, "textDocument/codeAction", params, 3000)
-    local result = vim.lsp.buf_request_sync(0, "textDocument/codeAction", params)
-    for cid, res in pairs(result or {}) do
-      for _, r in pairs(res.result or {}) do
-        if r.edit then
-          local enc = (vim.lsp.get_client_by_id(cid) or {}).offset_encoding or "utf-16"
-          vim.lsp.util.apply_workspace_edit(r.edit, enc)
-        end
-      end
-    end
-    vim.lsp.buf.format({ async = false })
-  end,
-})
+vim.api.nvim_create_autocmd(
+    'BufWritePre',
+    {
+        pattern = { "*.go", "*.tf", "*.mk", "Makefile" },
+        callback = function()
+            local params = vim.lsp.util.make_range_params()
+            params.context = { only = { "source.organizeImports" } }
+            -- buf_request_sync defaults to a 1000ms timeout. Depending on your
+            -- machine and codebase, you may want longer. Add an additional
+            -- argument after params if you find that you have to write the file
+            -- twice for changes to be saved.
+            -- E.g., vim.lsp.buf_request_sync(0, "textDocument/codeAction", params, 3000)
+            local result = vim.lsp.buf_request_sync(0, "textDocument/codeAction", params)
+            for cid, res in pairs(result or {}) do
+                for _, r in pairs(res.result or {}) do
+                    if r.edit then
+                        local enc = (vim.lsp.get_client_by_id(cid) or {}).offset_encoding or "utf-16"
+                        vim.lsp.util.apply_workspace_edit(r.edit, enc)
+                    end
+                end
+            end
+            vim.lsp.buf.format({ async = false })
+        end,
+    }
+)
 
 -- ===============================
 -- ファイルタイプ
 -- ===============================
 -- 特定のfiletypeではハードタブを使うようにする
 vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
-  pattern = { "*.go", "*.re", "*.tsv", "*.mk", "Makefile" },
-  callback = function()
-    vim.bo.expandtab = false
-    vim.bo.tabstop = 2
-    vim.bo.shiftwidth = 2
-  end,
+    pattern = { "*.go", "*.re", "*.tsv", "*.mk", "Makefile" },
+    callback = function()
+        vim.bo.expandtab = false
+        vim.bo.tabstop = 2
+        vim.bo.shiftwidth = 2
+    end,
 })
 
 -- filetypeの設定
 vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
-  pattern = "*.tf",
-  command = "set filetype=terraform",
+    pattern = "*.tf",
+    command = "set filetype=terraform",
 })
