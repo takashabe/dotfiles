@@ -336,41 +336,29 @@ if status --is-interactive; and test (uname) = "Darwin"
 end
 
 # コマンド実行時間が一定時間を超えていればnotificationを表示
-#function fish_preexec --on-event fish_preexec
-#  set -g __fish_command_timer (date +%s)
-#  set -g __fish_current_command $argv[1]
-#end
-#function fish_postexec --on-event fish_postexec
-#  if test -n "$__fish_command_timer"
-#    set -l elapsed_time (math (date +%s) - $__fish_command_timer)
-#    set -e __fish_command_timer
-#
-#    set -l threshold 0
-#    set -l blacklist 'vi' 'nvim' 'zed' 'code' 'pgcli'
-#
-#    set -l cmd_name (echo $__fish_current_command | awk '{print $1}')
-#    if test $elapsed_time -gt $threshold
-#      if not contains $cmd_name $blacklist
-#        osascript -e "display notification \"$cmd_nameが$elapsed_time秒で完了しました\" with title \"コマンド実行通知\""
-#      end
-#    end
-#  end
-#end
-
-# コマンド実行時間が一定時間を超えていればnotificationを表示
 function __postexec_notify_on_long_running_commands --on-event fish_postexec
-    # インタラクティブなコマンドは通知しない
-    set --function interactive_commands vi vim nvim man less zed pgcli psql tig lg lazygit ld lazydocker
-    set --function command (string split ' ' $argv[1])
-    if contains $command $interactive_commands
-        return
-    end
+  # インタラクティブなコマンドは通知しない
+  set --function interactive_commands vi vim nvim man less zed pgcli psql tig lg lazygit ld lazydocker
+  set --function command (string split ' ' $argv[1])
+  if contains $command $interactive_commands
+    return
+  end
 
-    # 通知するコマンドの実行時間が閾値を超えた場合に通知を行う (milliseconds)
-    set threshold_duration 5000
-    if test $CMD_DURATION -gt $limit_duration
-        set --function duration_in_seconds (math $CMD_DURATION / 1000)
-        set --function notification_message "Completed command: '$command[1]' after $duration_in_seconds seconds."
-        osascript -e "display notification \"$notification_message\" with title \"Command Notification\""
+  echo "CMD_DURATION: $CMD_DURATION\n"
+  echo "args: $argv\n"
+
+  # 通知するコマンドの実行時間が閾値を超えた場合に通知を行う (milliseconds)
+  set -l threshold_duration 10
+  set -l display_cmd_length 20
+  if test $CMD_DURATION -gt $threshold_duration
+    # 実行コマンドの先頭30文字を通知する
+    set -l full_command (string join ' ' $argv)
+    set -l display_command (string sub -s 1 -l $display_cmd_length $full_command)
+    if test (string length $full_command) -gt $display_cmd_length
+      set display_command (string join '' $display_command '...')
     end
+    set -l duration_in_seconds (math "floor($CMD_DURATION / 1000)")
+    set -l notification_message "'$display_command' finished. took $duration_in_seconds s"
+    osascript -e "display notification \"$notification_message\" with title \"Command Notification\""
+  end
 end
