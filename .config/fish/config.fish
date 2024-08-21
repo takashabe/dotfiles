@@ -344,11 +344,8 @@ function __postexec_notify_on_long_running_commands --on-event fish_postexec
     return
   end
 
-  echo "CMD_DURATION: $CMD_DURATION\n"
-  echo "args: $argv\n"
-
   # 通知するコマンドの実行時間が閾値を超えた場合に通知を行う (milliseconds)
-  set -l threshold_duration 10
+  set -l threshold_duration 10000
   set -l display_cmd_length 20
   if test $CMD_DURATION -gt $threshold_duration
     # 実行コマンドの先頭30文字を通知する
