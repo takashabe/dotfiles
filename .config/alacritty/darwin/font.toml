@@ -30,7 +30,7 @@
 ### udev-gothic
 # https://github.com/yuru7/udev-gothic
 size = 18.0
-# size = 28.0
+# size = 35.0
 [font.bold]
 family = "UDEV Gothic 35NF"
 style = "Bold"
