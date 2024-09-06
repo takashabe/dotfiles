@@ -38,6 +38,10 @@ lspconfig.gopls.setup({
       },
       staticcheck = true,
       gofumpt = true,
+      usePlaceholders = true,
+      buildFlags = {
+        "-tags=delivery_handler,notification_handler",
+      },
     },
   },
 })
