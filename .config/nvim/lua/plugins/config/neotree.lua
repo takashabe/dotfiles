@@ -10,6 +10,8 @@ require("neo-tree").setup({
   filesystem = {
     filtered_items = {
       visible = true,
+      hide_hidden = false,
+      hide_dotfiles = false,
       hide_by_name = { "node_modules", "vendor", ".git", ".cache", ".idea", ".vscode", ".DS_Store" },
     },
   },
