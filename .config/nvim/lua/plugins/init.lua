@@ -300,6 +300,7 @@ return {
       { "<leader>cs", "<cmd>AerialToggle!<cr>", desc = "Aerial (Symbols)" },
     },
   },
+  { 'echasnovski/mini.comment', },
 
   -- UI
   {
@@ -316,6 +317,7 @@ return {
 
   -- colorscheme
   { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
+  { "folke/tokyonight.nvim", lazy = false, priority = 1000 },
 
   -- misc
   {
