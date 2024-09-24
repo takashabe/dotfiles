@@ -30,8 +30,8 @@ for app in "${!app_to_space[@]}"; do
   target_space=${app_to_space[$app]}
   window_ids=$(yabai -m query --windows | jq -r ".[] | select(.app == \"$app\").id")
   for id in $window_ids; do
-    if [ ! -z "$id" ]; then
-      yabai -m window $id --space $target_space
+    if [ -n "$id" ]; then
+      yabai -m window "$id" --space "$target_space"
     fi
   done
 done
