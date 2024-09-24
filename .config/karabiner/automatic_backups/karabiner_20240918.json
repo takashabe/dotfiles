@@ -5,6 +5,7 @@
                 "rules": [
                     {
                         "description": "control + [ to esc",
+                        "enabled": false,
                         "manipulators": [
                             {
                                 "from": {
@@ -21,6 +22,7 @@
                     },
                     {
                         "description": "コマンドキーを単体で押したときに、英数・かなキーを送信する。（左コマンドキーは英数、右コマンドキーはかな）",
+                        "enabled": false,
                         "manipulators": [
                             {
                                 "from": {
