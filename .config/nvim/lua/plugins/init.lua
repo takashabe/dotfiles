@@ -232,6 +232,32 @@ return {
     },
   },
   {
+    "stevearc/aerial.nvim",
+    keys = {
+      { "<leader>cs", "<cmd>AerialToggle!<cr>", desc = "Aerial (Symbols)" },
+    },
+  },
+  { 'echasnovski/mini.comment', },
+
+  -- UI
+  {
+    'nvim-lualine/lualine.nvim',
+    dependencies = { 'nvim-tree/nvim-web-devicons' },
+    opts = {
+      sections = {
+        lualine_c = {
+          { "filename", path = 1 },
+        },
+      },
+    },
+  },
+
+  -- colorscheme
+  { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
+  { "folke/tokyonight.nvim", lazy = false, priority = 1000 },
+
+  -- git
+  {
     "lewis6991/gitsigns.nvim",
     event = "VeryLazy",
     opts = {
@@ -295,29 +321,13 @@ return {
     },
   },
   {
-    "stevearc/aerial.nvim",
-    keys = {
-      { "<leader>cs", "<cmd>AerialToggle!<cr>", desc = "Aerial (Symbols)" },
-    },
-  },
-  { 'echasnovski/mini.comment', },
-
-  -- UI
-  {
-    'nvim-lualine/lualine.nvim',
-    dependencies = { 'nvim-tree/nvim-web-devicons' },
+    "pwntester/octo.nvim",
     opts = {
-      sections = {
-        lualine_c = {
-          { "filename", path = 1 },
-        },
-      },
+      enable_builtin = true,
+      default_to_projects_v2 = true,
+      picker = "telescope",
     },
   },
-
-  -- colorscheme
-  { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
-  { "folke/tokyonight.nvim", lazy = false, priority = 1000 },
 
   -- misc
   {
