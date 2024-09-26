@@ -90,6 +90,10 @@ function gbp
   git branch -a --sort=-authordate | cut -b 3- | perl -pe 's#^remotes/origin/###' | perl -nlE 'say if !$c{$_}++' | grep -v -- "->" | fzf | xargs git checkout
 end
 
+function ghp
+  fzf_gh_pr_checkout
+end
+
 function gcm
   if test (count $argv) -lt 1
     echo 'require: branch name'
