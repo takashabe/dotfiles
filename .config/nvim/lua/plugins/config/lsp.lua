@@ -41,6 +41,17 @@ lspconfig.gopls.setup({
       usePlaceholders = true,
       buildFlags = {
         "-tags=delivery_handler,notification_handler",
+lspconfig.sqls.setup({
+  on_attach = function(client, bufnr)
+    require('sqls').on_attach(client, bufnr)
+  end,
+  settings = {
+    sqls = {
+      connections = {
+        {
+          driver = 'postgresql',
+          dataSourceName = 'host=127.0.0.1 port=5432 user=postgres password=password dbname=postgres sslmode=disable',
+        },
       },
     },
   },

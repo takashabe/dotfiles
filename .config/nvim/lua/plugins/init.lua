@@ -329,6 +329,10 @@ return {
     },
   },
 
+  -- lang
+  { 'nanotee/sqls.nvim', },
+
+
   -- misc
   {
     "uga-rosa/translate.nvim",
