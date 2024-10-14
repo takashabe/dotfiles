@@ -40,7 +40,12 @@ lspconfig.gopls.setup({
       gofumpt = true,
       usePlaceholders = true,
       buildFlags = {
-        "-tags=delivery_handler,notification_handler",
+        "-tags=delivery_handler notification_handler segment_handler",
+      },
+    },
+  },
+})
+
 lspconfig.sqls.setup({
   on_attach = function(client, bufnr)
     require('sqls').on_attach(client, bufnr)
