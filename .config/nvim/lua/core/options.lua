@@ -53,22 +53,9 @@ opt.smartindent = true
 opt.expandtab = true
 --行の改行を防ぐ
 opt.linebreak = true
--- 制御文字を表示
+-- 制御文字
 opt.list = true
--- 制御文字をカスタマイズ
---[[
-tab: タブ
-trail: 行末（行最後の文字から改行まで）の半角スペース
-eol: 改行
-space: 半角スペース
-extends: ウィンドウの幅が狭くて右に省略された文字がある記号
-precedes: ウィンドウの幅が狭くて左に省略された文字がある記号
-nbsp: 不可視のスペース]]
-opt.listchars = {
-  tab = "»-",
-  trail = "·",
-  --  eol = "",
-}
+opt.listchars = "tab:▸\\ ,trail:·,extends:→,precedes:←"
 
 -- ノーマルモードから出るまでの時間を短縮
 opt.ttimeoutlen = 1
@@ -89,7 +76,10 @@ opt.undofile = true
 opt.fillchars:append("eob: ")
 opt.helplang = { "ja", "en" }
 opt.wrap = true
-opt.syntax = on
+-- ステータスライン
+opt.laststatus = 2
+opt.cmdheight = 2
+opt.ruler = true
 
 -- ===============================
 -- 編集関連
