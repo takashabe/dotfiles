@@ -51,7 +51,7 @@ alias vim nvim
 set -x EDITOR nvim
 
 ## alternative grep
-alias rg "rg --hidden --glob '!.git' -i"
+alias rg "rg --hidden --glob '!.git/*' --glob '!node_modules/*' --glob '!vendor/*' -i"
 
 ## fzf
 set -x FZF_DEFAULT_COMMAND 'rg --files --hidden --glob "!.git/*" -i'
