@@ -164,6 +164,14 @@ return {
     end,
   },
   {
+    "kylechui/nvim-surround",
+    event = "VeryLazy",
+    config = function()
+      require("nvim-surround").setup({
+      })
+    end
+  },
+  {
     "folke/which-key.nvim",
     event = "VeryLazy",
     opts_extend = { "spec" },
