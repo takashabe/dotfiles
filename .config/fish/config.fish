@@ -206,7 +206,6 @@ set -x GOTEST_CMD gotest
 function go_install_binaries
   set -l GO_BINARIES \
     'go.uber.org/mock/mockgen@latest' \
-    'github.com/golang/mock/mockgen@latest' \
     'golang.org/x/tools/cmd/goimports@latest' \
     'mvdan.cc/gofumpt@latest' \
     'golang.org/x/tools/gopls@latest' \
