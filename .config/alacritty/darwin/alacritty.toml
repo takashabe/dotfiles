@@ -1,9 +1,3 @@
-import = [
-   "/Users/takashabe/.config/alacritty/themes/catppuccin-frappe.toml",
-   "/Users/takashabe/.config/alacritty/darwin/font.toml",
-   "/Users/takashabe/.config/alacritty/darwin/keybinding.toml",
-   "/Users/takashabe/.config/alacritty/darwin/shell.toml",
-]
 
 [cursor]
 style = "Block"
@@ -24,3 +18,11 @@ y = 2
 
 [scrolling]
 history = 100000
+
+[general]
+import = [
+   "/Users/takashabe/.config/alacritty/themes/catppuccin-frappe.toml",
+   "/Users/takashabe/.config/alacritty/darwin/font.toml",
+   "/Users/takashabe/.config/alacritty/darwin/keybinding.toml",
+   "/Users/takashabe/.config/alacritty/darwin/shell.toml",
+]

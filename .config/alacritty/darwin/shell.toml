@@ -1,3 +1,4 @@
-[shell]
+[terminal]
+[terminal.shell]
 args = ["--login"]
 program = "/opt/homebrew/bin/fish"
