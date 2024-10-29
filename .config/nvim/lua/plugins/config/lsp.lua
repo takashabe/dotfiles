@@ -41,7 +41,7 @@ lspconfig.gopls.setup({
       gofumpt = true,
       usePlaceholders = true,
       buildFlags = {
-        "-tags=delivery_handler notification_handler segment_handler",
+        "-tags=delivery_handler notification_handler segment_handler overview_handler",
       },
     },
   },
