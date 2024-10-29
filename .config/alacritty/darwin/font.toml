@@ -1,17 +1,17 @@
 [font]
 ### sfmono-square
 # https://github.com/delphinus/homebrew-sfmono-square/tree/v1.2.2
-# size = 19.0
-# # size = 32.0
-# [font.bold]
-# family = "SF Mono Square"
-# style = "Bold"
-# [font.italic]
-# family = "SF Mono Square"
-# style = "Italic"
-# [font.normal]
-# family = "SF Mono Square"
-# style = "Regular"
+size = 20.0
+# size = 32.0
+[font.bold]
+family = "SF Mono Square"
+style = "Bold"
+[font.italic]
+family = "SF Mono Square"
+style = "Italic"
+[font.normal]
+family = "SF Mono Square"
+style = "Regular"
 
 ### pending-mono
 # https://github.com/yuru7/pending-mono
@@ -29,17 +29,17 @@
 
 ### udev-gothic
 # https://github.com/yuru7/udev-gothic
-size = 17.0
-# size = 25.0
-[font.bold]
-family = "UDEV Gothic 35NF"
-style = "Bold"
-[font.italic]
-family = "UDEV Gothic 35NF"
-style = "Italic"
-[font.normal]
-family = "UDEV Gothic 35NF"
-style = "Regular"
+# size = 17.0
+# # size = 25.0
+# [font.bold]
+# family = "UDEV Gothic 35NF"
+# style = "Bold"
+# [font.italic]
+# family = "UDEV Gothic 35NF"
+# style = "Italic"
+# [font.normal]
+# family = "UDEV Gothic 35NF"
+# style = "Regular"
 
 ### Moralerspace Neon
 # https://github.com/yuru7/moralerspace
