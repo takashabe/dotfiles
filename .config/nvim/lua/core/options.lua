@@ -25,17 +25,6 @@ opt.mouse = "a"
 opt.fileencoding = "utf-8"
 opt.spelllang = "en_us"
 opt.fileformats = { "unix", "dos", "mac" }
--- 検索系
--- 検索文字列が小文字の場合は大文字小文字を区別なく検索する
-opt.ignorecase = true
--- 検索文字列に大文字が含まれている場合は区別して検索する
-opt.smartcase = true
--- 検索文字列入力時に順次対象文字列にヒットさせる
-opt.incsearch = true
--- 検索時に最後まで行ったら最初に戻る
-opt.wrapscan = true
--- 検索語をハイライト非表示
-opt.hlsearch = true
 -- 括弧をハイライト表示
 opt.showmatch = true
 -- 括弧秒数を調整
@@ -80,6 +69,22 @@ opt.wrap = true
 opt.laststatus = 2
 opt.cmdheight = 2
 opt.ruler = true
+-- カーソル行をハイライト
+opt.cursorline = true
+
+-- ===============================
+-- 検索
+-- ===============================
+-- 検索文字列が小文字の場合は大文字小文字を区別なく検索する
+opt.ignorecase = true
+-- 検索文字列に大文字が含まれている場合は区別して検索する
+opt.smartcase = true
+-- 検索文字列入力時に順次対象文字列にヒットさせる
+opt.incsearch = true
+-- 検索時に最後まで行ったら最初に戻る
+opt.wrapscan = true
+-- 検索語をハイライト非表示
+opt.hlsearch = true
 
 -- ===============================
 -- 編集関連
@@ -103,29 +108,6 @@ vim.api.nvim_create_autocmd('BufWritePre', {
 -- 保存/終了を簡単に
 vim.api.nvim_set_keymap('n', '<Leader>w', ':w<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<Leader>q', ':q<CR>', { noremap = true, silent = true })
-
-vim.api.nvim_create_autocmd( 'BufWritePre', {
-  pattern = { "*.go", "*.tf", "*.mk", "Makefile" },
-  callback = function()
-    local params = vim.lsp.util.make_range_params()
-    params.context = { only = { "source.organizeImports" } }
-    -- buf_request_sync defaults to a 1000ms timeout. Depending on your
-    -- machine and codebase, you may want longer. Add an additional
-    -- argument after params if you find that you have to write the file
-    -- twice for changes to be saved.
-    -- E.g., vim.lsp.buf_request_sync(0, "textDocument/codeAction", params, 3000)
-    local result = vim.lsp.buf_request_sync(0, "textDocument/codeAction", params)
-    for cid, res in pairs(result or {}) do
-      for _, r in pairs(res.result or {}) do
-        if r.edit then
-          local enc = (vim.lsp.get_client_by_id(cid) or {}).offset_encoding or "utf-16"
-          vim.lsp.util.apply_workspace_edit(r.edit, enc)
-        end
-      end
-    end
-    vim.lsp.buf.format({ async = false })
-  end,
-})
 
 -- ===============================
 -- ファイルタイプ
