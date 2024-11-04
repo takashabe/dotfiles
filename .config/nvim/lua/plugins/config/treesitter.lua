@@ -8,7 +8,7 @@ require'nvim-treesitter.configs'.setup {
     "gomod",
     "gowork",
     "graphql",
-    "hcl",
+    "hcl", -- includes terraform
     "html",
     "json",
     "lua",
