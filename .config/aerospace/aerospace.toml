@@ -1,7 +1,7 @@
 start-at-login = true
 
 after-login-command = []
-after-startup-command = []
+after-startup-command = ['layout accordion --window-id 9']
 
 enable-normalization-flatten-containers = true
 enable-normalization-opposite-orientation-for-nested-containers = true
@@ -27,11 +27,56 @@ preset = 'qwerty'
 #                 See: https://nikitabobko.github.io/AeroSpace/guide#assign-workspaces-to-monitors
 [gaps]
 inner.horizontal = 10
-inner.vertical = 10
-outer.left = 10
-outer.bottom = 10
-outer.top = 10
-outer.right = 10
+inner.vertical   = 10
+outer.left       = 10
+outer.bottom     = 10
+outer.top        = 10
+outer.right      = 10
+
+#######################################
+# workspace settings
+#######################################
+# 通常時はディスプレイ2枚で、たまにラップトップ1枚の想定
+[workspace-to-monitor-force-assignment]
+1 = [1]    # coding
+2 = [1]    # browsing
+3 = [2, 1] # note taking
+4 = [2, 1] # communication
+9 = [1]    # others
+
+# メインworkspace群
+[[on-window-detected]]
+if.app-id = 'org.alacritty'
+run = 'move-node-to-workspace 1'
+
+[[on-window-detected]]
+if.app-id = 'company.thebrowser.Browser'
+run = 'move-node-to-workspace 2'
+
+[[on-window-detected]]
+if.app-id = 'md.obsidian'
+run = 'move-node-to-workspace 3'
+
+[[on-window-detected]]
+if.app-id = 'com.todoist.mac.Todoist'
+run = 'move-node-to-workspace 3'
+
+[[on-window-detected]]
+if.app-id = 'com.tinyspeck.slackmacgap'
+run = 'move-node-to-workspace 4'
+
+[[on-window-detected]]
+if.app-id = 'com.gather.Gather'
+run = 'move-node-to-workspace 4'
+
+# たまに開くが常用しないアプリケーションをまとめておく
+[[on-window-detected]]
+if.app-id = 'com.spotify.client'
+run = 'move-node-to-workspace 9'
+
+[[on-window-detected]]
+if.app-id = 'com.tinyapp.TablePlus'
+run = 'move-node-to-workspace 9'
 
 #######################################
 # Main mode
@@ -97,7 +142,6 @@ cmd-6 = 'workspace 6'
 cmd-7 = 'workspace 7'
 cmd-8 = 'workspace 8'
 cmd-9 = 'workspace 9'
-cmd-0 = 'workspace 10'
 
 # 指定のworkspaceにwindowを移動する
 cmd-shift-1 = 'move-node-to-workspace 1'
@@ -109,7 +153,6 @@ cmd-shift-6 = 'move-node-to-workspace 6'
 cmd-shift-7 = 'move-node-to-workspace 7'
 cmd-shift-8 = 'move-node-to-workspace 8'
 cmd-shift-9 = 'move-node-to-workspace 9'
-cmd-shift-0 = 'move-node-to-workspace 10'
 
 # 直前のworkspaceに切り替える
 alt-tab = 'workspace-back-and-forth'
