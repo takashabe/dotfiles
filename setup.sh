@@ -1,7 +1,6 @@
 #!/bin/bash
 
 ## .rc files for home directory
-ln -s $HOME/dotfiles/.vimrc $HOME/
 ln -s $HOME/dotfiles/.tmux.conf $HOME/
 ln -s $HOME/dotfiles/.gitconfig $HOME/
 ln -s $HOME/dotfiles/.gitignore $HOME/
@@ -14,7 +13,6 @@ ln -s $HOME/dotfiles/.skhdrc $HOME/
 ln -s $HOME/dotfiles/.myclirc $HOME/
 ln -s $HOME/dotfiles/.imwheelrc $HOME/
 ln -s $HOME/dotfiles/.xprofile $HOME/
-ln -s $HOME/dotfiles/.vim $HOME/
 
 ## $HOME/bin
 mkdir $HOME/bin
@@ -30,12 +28,10 @@ ln -s $HOME/dotfiles/.config/rofi $HOME/.config/
 ln -s $HOME/dotfiles/.config/i3 $HOME/.config/
 ln -s $HOME/dotfiles/.config/i3blocks $HOME/.config/
 ln -s $HOME/dotfiles/.config/Xresources.d $HOME/.config/
-ln -s $HOME/dotfiles/.config/vim $HOME/.config/
 ln -s $HOME/dotfiles/.config/fontconfig $HOME/.config/
 ln -s $HOME/dotfiles/.config/wezterm $HOME/.config/
 ln -s $HOME/dotfiles/.config/go $HOME/.config/
 ln -s $HOME/dotfiles/.config/lazygit $HOME/.config/
-ln -s $HOME/dotfiles/.config/sqls $HOME/.config/
 
 # vscode
 if [ $(uname) = "Linux" ]; then
@@ -61,6 +57,7 @@ if [ $(uname) = "Linux" ]; then
 fi
 
 if [ $(uname) = "Darwin" ]; then
+  echo "=== macOS only ==="
   # -int 1 == 15ms
   defaults write -g InitialKeyRepeat -int 10
   defaults write -g KeyRepeat -int 1
