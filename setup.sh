@@ -64,6 +64,7 @@ if [ $(uname) = "Darwin" ]; then
   # settings
   ln -s $HOME/dotfiles/.gitconfig.credential.darwin $HOME/.gitconfig.credential
   ln -s $HOME/dotfiles/.config/sketchybar/  $HOME/.config/
+  ln -s $HOME/dotfiles/.config/aerospace/ $HOME/.config/
 fi
 
 # TODO homebrew, homebrew-cask, yay
