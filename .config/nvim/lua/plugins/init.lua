@@ -95,17 +95,21 @@ return {
   -- telescope
   {
     "nvim-telescope/telescope.nvim",
-    dependencies = { 'nvim-lua/plenary.nvim', },
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+      'LukasPietzschmann/telescope-tabs',
+    },
     keys = {
-      { '<C-p>',      function() require('telescope.builtin').find_files() end,              mode = 'n' }, -- vscodeライクにCmd-pにしたい
-      { '<leader>ff', function() require('telescope.builtin').find_files() end,              mode = 'n' },
-      { '<leader>fg', function() require('telescope.builtin').live_grep() end,               mode = 'n' },
-      { '<leader>fb', function() require('telescope.builtin').buffers() end,                 mode = 'n' },
-      { '<leader>fh', function() require('telescope.builtin').help_tags() end,               mode = 'n' },
-      { '<leader>fd', function() require('telescope.builtin').diagnostics() end,             mode = 'n' },
-      { '<leader>fk', function() require('telescope.builtin').keymaps() end,                 mode = 'n' },
-      { '<leader>f?', function() require('telescope.builtin').commands() end,                mode = 'n' },
-      { '<leader>fs', function() require('telescope.builtin').extension.aerial.aerial() end, mode = 'n' },
+      { '<C-p>',      function() require('telescope.builtin').find_files() end,      mode = 'n' }, -- vscodeライクにCmd-pにしたい
+      { '<leader>ff', function() require('telescope.builtin').find_files() end,      mode = 'n' },
+      { '<leader>fg', function() require('telescope.builtin').live_grep() end,       mode = 'n' },
+      { '<leader>fb', function() require('telescope.builtin').buffers() end,         mode = 'n' },
+      { '<leader>fh', function() require('telescope.builtin').help_tags() end,       mode = 'n' },
+      { '<leader>fd', function() require('telescope.builtin').diagnostics() end,     mode = 'n' },
+      { '<leader>fk', function() require('telescope.builtin').keymaps() end,         mode = 'n' },
+      { '<leader>f?', function() require('telescope.builtin').commands() end,        mode = 'n' },
+      { '<leader>fs', function() require('telescope').extension.aerial.aerial() end, mode = 'n' },
+      { '<leader>ft', function() require('telescope-tabs').list_tabs() end,          mode = 'n' },
     },
     opts = {
       defaults = {
@@ -147,6 +151,7 @@ return {
       },
       function()
         require("telescope").load_extension("aerial")
+        require('telescope').load_extension 'telescope-tabs'
       end,
     },
   },
@@ -290,8 +295,11 @@ return {
   {
     "stevearc/aerial.nvim",
     keys = {
-      { "<leader>cs", "<cmd>AerialToggle!<cr>", desc = "Aerial (Symbols)" },
+      { "<leader>as", "<cmd>AerialToggle!<cr>", desc = "Aerial (Symbols)" },
     },
+    config = function()
+      require("aerial").setup()
+    end
   },
   { 'echasnovski/mini.comment', },
   {
