@@ -315,6 +315,20 @@ return {
       { "<c-s>", mode = { "c" }, function() require("flash").toggle() end, desc = "Toggle Flash Search" },
     },
   },
+  {
+    "mhartington/formatter.nvim",
+    config = function()
+      require("formatter").setup({
+        filetype = {
+          json = {require("formatter.filetypes.json").biome},
+          javascript = {require("formatter.filetypes.javascript").biome},
+          javascriptreact = {require("formatter.filetypes.javascriptreact").biome},
+          typescript = {require("formatter.filetypes.typescript").biome},
+          typescriptreact = {require("formatter.filetypes.typescriptreact").biome},
+        },
+      })
+    end,
+  },
 
   -- UI
   {
