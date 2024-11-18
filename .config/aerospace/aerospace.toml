@@ -116,11 +116,11 @@ run = 'move-node-to-workspace 9'
 alt-slash = 'layout tiles horizontal vertical'
 alt-comma = 'layout accordion horizontal vertical'
 
-# focusを移動する
-alt-h = 'focus left'
-alt-j = 'focus down'
-alt-k = 'focus up'
-alt-l = 'focus right'
+# モニタをまたいでfocusを移動する
+alt-h = 'focus --boundaries all-monitors-outer-frame --boundaries-action wrap-around-all-monitors left'
+alt-j = 'focus --boundaries all-monitors-outer-frame --boundaries-action wrap-around-all-monitors down'
+alt-k = 'focus --boundaries all-monitors-outer-frame --boundaries-action wrap-around-all-monitors up'
+alt-l = 'focus --boundaries all-monitors-outer-frame --boundaries-action wrap-around-all-monitors right'
 
 # focusされているwindowを移動する
 alt-shift-h = 'move left'
@@ -157,6 +157,8 @@ cmd-shift-9 = 'move-node-to-workspace 9'
 # 直前のworkspaceに切り替える
 alt-tab = 'workspace-back-and-forth'
 
+# workspaceをモニタ間で移動する
+alt-shift-tab = 'move-workspace-to-monitor next'
 
 #######################################
 # Service mode
