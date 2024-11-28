@@ -38,11 +38,13 @@ outer.right      = 10
 #######################################
 # 通常時はディスプレイ2枚で、たまにラップトップ1枚の想定
 [workspace-to-monitor-force-assignment]
-1 = [1]    # coding
+1 = [1]    # terminal
 2 = [1]    # browsing
 3 = [2, 1] # note taking
 4 = [2, 1] # communication
-9 = [1]    # others
+5 = [1]    # IDE
+6 = [1]    # development tools
+9 = [1]    # background
 
 # メインworkspace群
 [[on-window-detected]]
@@ -52,11 +54,13 @@ run = 'move-node-to-workspace 1'
 [[on-window-detected]]
 if.app-id = 'company.thebrowser.Browser'
 run = 'move-node-to-workspace 2'
+[[on-window-detected]]
+if.app-id = 'org.mozilla.com.zen.browser'
+run = 'move-node-to-workspace 2'
 
 [[on-window-detected]]
 if.app-id = 'md.obsidian'
 run = 'move-node-to-workspace 3'
-
 [[on-window-detected]]
 if.app-id = 'com.todoist.mac.Todoist'
 run = 'move-node-to-workspace 3'
@@ -64,24 +68,25 @@ run = 'move-node-to-workspace 3'
 [[on-window-detected]]
 if.app-id = 'com.tinyspeck.slackmacgap'
 run = 'move-node-to-workspace 4'
-
 [[on-window-detected]]
 if.app-id = 'com.gather.Gather'
 run = 'move-node-to-workspace 4'
 
-# floating app
 [[on-window-detected]]
-if.app-id = 'com.openai.chat'
-run = 'layout floating'
+if.app-id = 'com.microsoft.VSCode'
+run = 'move-node-to-workspace 5'
 
-# たまに開くが常用しないアプリケーションをまとめておく
+[[on-window-detected]]
+if.app-id = 'com.tinyapp.TablePlus'
+run = 'move-node-to-workspace 6'
+[[on-window-detected]]
+if.app-id = 'com.postmanlabs.mac'
+run = 'move-node-to-workspace 6'
+
 [[on-window-detected]]
 if.app-id = 'com.spotify.client'
 run = 'move-node-to-workspace 9'
 
-[[on-window-detected]]
-if.app-id = 'com.tinyapp.TablePlus'
-run = 'move-node-to-workspace 9'
 
 #######################################
 # Main mode
