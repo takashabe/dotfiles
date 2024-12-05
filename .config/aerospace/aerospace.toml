@@ -44,6 +44,7 @@ outer.right      = 10
 4 = [2, 1] # communication
 5 = [1]    # IDE
 6 = [1]    # development tools
+7 = [1]    # development tools#2
 9 = [1]    # background
 
 # メインworkspace群
@@ -75,6 +76,9 @@ run = 'move-node-to-workspace 4'
 [[on-window-detected]]
 if.app-id = 'com.microsoft.VSCode'
 run = 'move-node-to-workspace 5'
+[[on-window-detected]]
+if.app-id = 'dev.zed.Zed'
+run = 'move-node-to-workspace 5'
 
 [[on-window-detected]]
 if.app-id = 'com.tinyapp.TablePlus'
@@ -82,6 +86,10 @@ run = 'move-node-to-workspace 6'
 [[on-window-detected]]
 if.app-id = 'com.postmanlabs.mac'
 run = 'move-node-to-workspace 6'
+
+[[on-window-detected]]
+if.app-id = 'com.devtoys'
+run = 'move-node-to-workspace 7'
 
 [[on-window-detected]]
 if.app-id = 'com.spotify.client'
