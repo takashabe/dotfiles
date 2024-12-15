@@ -186,6 +186,27 @@ return {
       require('plugins.config.neotree')
     end,
   },
+  -- nvim-tree
+  {
+    "nvim-tree/nvim-tree.lua",
+    version = "*",
+    lazy = false,
+    dependencies = {
+      "nvim-tree/nvim-web-devicons",
+    },
+    config = function()
+      require("nvim-tree").setup {
+        view = {
+          side = "left",
+          -- min, maxを指定することで自動的にリサイズされる
+          width = {
+            min = 30,
+            max = 80,
+          },
+        },
+      }
+    end,
+  },
   {
     "kylechui/nvim-surround",
     event = "VeryLazy",
