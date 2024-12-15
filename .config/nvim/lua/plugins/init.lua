@@ -91,6 +91,13 @@ return {
 			return opts
 		end,
 	},
+  {
+    -- lsp progressを描画する
+    "j-hui/fidget.nvim",
+    config = function()
+      require("fidget").setup()
+    end,
+  },
 
   -- telescope
   {
