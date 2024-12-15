@@ -7,6 +7,8 @@
   quotepath = false
   excludesfile = ~/.gitignore
   pager = delta
+  fsmonitor = true
+  untrackedcache = true
 [interactive]
     diffFilter = delta --color-only
 [delta]
@@ -24,3 +26,6 @@
   path = ~/.gitconfig.credential
 [pull]
   rebase = false
+[scalar]
+	repo = /Users/takashabe/dev/src/github.com/CastingONE/castingone
+	repo = /Users/takashabe/dev/src/github.com/CastingONE/review-castingone

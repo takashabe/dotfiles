@@ -1,5 +1,10 @@
 # general
 **/tmp/
+# private memo
+_memo*
+_tmp*
+_tools
+_secret
 
 ## Mac
 \.DS_Store
@@ -45,12 +50,6 @@ go.work
 go.work.sum
 .air.toml
 coverage.html
-
-# private memo
-_memo*
-_tmp
-_tools
-_secret
 
 ## alacritty
 .config/alacritty/alacritty.yml
