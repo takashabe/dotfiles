@@ -224,7 +224,8 @@ function go_install_binaries
     'google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest' \
     'google.golang.org/protobuf/cmd/protoc-gen-go@latest' \
     'github.com/GoogleCloudPlatform/protoc-gen-bq-schema@latest' \
-    'github.com/pwaller/goimports-update-ignore@latest'
+    'github.com/pwaller/goimports-update-ignore@latest' \
+    'github.com/onsi/ginkgo/v2/ginkgo@latest'
   pushd $HOME
   for uri in $GO_BINARIES
     echo "go install $uri ..."
