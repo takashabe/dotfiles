@@ -51,6 +51,15 @@ outer.right      = 10
 [[on-window-detected]]
 if.app-id = 'org.alacritty'
 run = 'move-node-to-workspace 1'
+[[on-window-detected]]
+if.app-id="com.mitchellh.ghostty"
+run= [
+  # macOSネイティブのタブがAerospaceでうまく扱えないため、floatingにする. tmuxでタブを使っていれば問題はない
+  # https://ghostty.org/docs/help/macos-tiling-wms#workarounds
+  # https://github.com/nikitabobko/AeroSpace/issues/68
+  # 'layout floating',
+  'move-node-to-workspace 1',
+]
 
 [[on-window-detected]]
 if.app-id = 'company.thebrowser.Browser'

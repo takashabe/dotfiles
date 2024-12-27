@@ -1,0 +1,17 @@
+# https://ghostty.org/docs/config
+command = /opt/homebrew/bin/fish
+
+shell-integration = fish
+
+font-family = ""
+font-family = "UDEV Gothic NF"
+font-size = 17
+
+window-padding-x = 10
+window-padding-y = 10
+
+theme = catppuccin-frappe
+
+macos-non-native-fullscreen = visible-menu
+macos-titlebar-style = hidden
+
