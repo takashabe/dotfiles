@@ -55,7 +55,10 @@ alias rg "rg --hidden --glob '!.git/*' --glob '!node_modules/*' --glob '!vendor/
 
 ## fzf
 set -x FZF_DEFAULT_COMMAND 'rg --files --hidden --glob "!.git/*" -i'
-set -x FZF_DEFAULT_OPTS '--height 60% --tmux --reverse --border --layout=reverse --inline-info'
+# tmuxを使うバージョン
+set -x FZF_DEFAULT_OPTS '--height 80% --tmux --reverse --border --layout=reverse --inline-info'
+# tmuxを使わないバージョン(ghosttyネイティブにした)
+# set -x FZF_DEFAULT_OPTS '--height 80% --reverse --border --layout=reverse --inline-info'
 
 ## takashabe/fish-fzf
 set -x FZF_CD_IGNORE_CASE '.git|vendor/|node_modules'

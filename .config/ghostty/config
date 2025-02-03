@@ -1,4 +1,5 @@
 # https://ghostty.org/docs/config
+
 command = /opt/homebrew/bin/fish
 
 shell-integration = fish
@@ -7,11 +8,39 @@ font-family = ""
 font-family = "UDEV Gothic NF"
 font-size = 18
 
-window-padding-x = 10
-window-padding-y = 10
+# リガチャを無効にする
+font-feature = -calt
+font-feature = -liga
+font-feature = -dlig
+
+window-padding-x = 8
+window-padding-y = 8
 
 theme = catppuccin-frappe
 
-macos-non-native-fullscreen = visible-menu
+# カーソルを見やすくする
+cursor-opacity = 0.8
+cursor-style = block
+cursor-style-blink = false
+
+# titlebarのスタイルを設定する
+# non-native-fullscreenを有効にする場合、ネイティブのタブは使えなくなる
+# macos-non-native-fullscreen = false
+# macos-titlebar-style = transparent
+# tmuxを使うならこっちの設定がスッキリしていて良い
+macos-non-native-fullscreen = true
 macos-titlebar-style = hidden
 
+mouse-hide-while-typing = true
+# 標準のマウススクロールが遅いので早くする
+mouse-scroll-multiplier = 4
+
+copy-on-select = true
+
+# keybind = ctrl+t>n=new_tab
+# keybind = ctrl+t>shift+backslash=new_split:right
+# keybind = ctrl+t>minus=new_split:down
+keybind = super+shift+equal=increase_font_size:1
+keybind = super+minus=decrease_font_size:1
+
+auto-update-channel = tip
