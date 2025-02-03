@@ -27,16 +27,6 @@ vim.keymap.set('n', 'gf', '<cmd>lua vim.lsp.buf.formatting()<CR>')
 vim.keymap.set('n', 'g]', '<cmd>lua vim.diagnostic.goto_next()<CR>')
 vim.keymap.set('n', 'g[', '<cmd>lua vim.diagnostic.goto_prev()<CR>')
 
--- 共通設定
-for _, server in ipairs(lspconfig.util.available_servers()) do
-  lspconfig[server].setup({
-    on_attach = function(client, bufnr)
-      -- treesitterで担保されるため、semantic tokensを無効化する
-      client.server_capabilities.semanticTokensProvider = nil
-    end,
-  })
-end
-
 lspconfig.gopls.setup({
   settings = {
     gopls = {
