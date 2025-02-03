@@ -1,6 +1,70 @@
 return {
-  -- copilot
+  -- llm
   { "github/copilot.vim", },
+  {
+    "zbirenbaum/copilot-cmp",
+    config = function ()
+      require("copilot_cmp").setup()
+    end
+  },
+  {
+    "CopilotC-Nvim/CopilotChat.nvim",
+    dependencies = {
+      { "github/copilot.vim" }, -- or zbirenbaum/copilot.lua
+      { "nvim-lua/plenary.nvim", branch = "master" }, -- for curl, log and async functions
+    },
+    build = "make tiktoken", -- Only on MacOS or Linux
+    opts = {
+      debug = true,
+      proxy = nil,
+      allow_insecure = false,
+      model = 'claude-3.5-sonnet',
+      temperature = 0.1,
+      prompts = {
+        Explain = '/COPILOT_EXPLAIN 選択したコードの説明を段落をつけて書いてください。',
+        Fix = '/COPILOT_FIX このコードには問題があります。バグを修正したコードに書き換えてください。',
+        Optimize = '/COPILOT_OPTIMIZE 選択したコードを最適化し、パフォーマンスと可読性を向上させてください。',
+        Docs = '/COPILOT_DOCS 選択したコードのドキュメントを書いてください。ドキュメントをコメントとして追加した元のコードを含むコードブロックで回答してください。使用するプログラミング言語に最も適したドキュメントスタイルを使用してください（例：JavaScriptのJSDoc、Pythonのdocstringsなど）',
+        Tests = '/COPILOT_TESTS 選択したコードの詳細な単体テスト関数を書いてください。',
+        FixDiagnostic = '/COPILOT_FIXDIAGNOSTIC ファイル内の次のような診断上の問題を解決してください：',
+        Commit = '/COPILOT_COMMIT この変更をコミットしてください。Conventional Commitメッセージを使用してください。',
+      },
+      window = {
+        layout = 'vertical',
+        width = 0.3,
+        height = 0.3,
+        relative = 'editor',
+        border = 'single',
+        row = 0,
+        col = 0,
+        title = 'Copilot Chat',
+        footer = nil,
+        zindex = 1,
+      },
+    },
+    keys = {
+      {
+        -- CopilotChat Quick
+        "<leader>ccq",
+        function()
+          local input = vim.fn.input("Quick Chat: ")
+          if input ~= "" then
+            require("CopilotChat").ask(input, { selection = require("CopilotChat.select").buffer })
+          end
+        end,
+        desc = "CopilotChat - Quick chat",
+      },
+      {
+        -- CopilotChat Prompt actions
+        "<leader>ccp",
+        function()
+          local actions = require("CopilotChat.actions")
+          require("CopilotChat.integrations.telescope").pick(actions.prompt_actions())
+        end,
+        desc = "CopilotChat - Prompt actions",
+      },
+    },
+  },
 
   -- cmp
   "hrsh7th/cmp-nvim-lsp",
@@ -57,6 +121,14 @@ return {
           { name = 'cmdline' }
         }),
         matching = { disallow_symbol_nonprefix_matching = false }
+      })
+
+      cmp.setup.filetype('copilot-chat', {
+        sources = {
+          { name = 'copilot' },
+          { name = 'buffer' },
+          { name = 'snippets' },
+        },
       })
     end,
     dependencies = {
