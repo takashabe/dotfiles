@@ -3,6 +3,7 @@ require'nvim-treesitter.configs'.setup {
     "c",
     "cpp",
     "cmake",
+    "diff",
     "fish",
     "go",
     "gomod",

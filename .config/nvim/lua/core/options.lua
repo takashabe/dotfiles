@@ -30,7 +30,7 @@ opt.showmatch = true
 -- 括弧秒数を調整
 opt.matchtime = 1
 -- cmp 設定
-opt.completeopt = { "menu", "menuone", "noselect" }
+opt.completeopt = { "menuone", "popup", "noinsert" }
 -- キーの待ち時間設定
 opt.timeout = true
 opt.timeoutlen = 300
