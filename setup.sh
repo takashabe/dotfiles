@@ -33,6 +33,7 @@ ln -s $HOME/dotfiles/.config/wezterm $HOME/.config/
 ln -s $HOME/dotfiles/.config/go $HOME/.config/
 ln -s $HOME/dotfiles/.config/lazygit $HOME/.config/
 ln -s $HOME/dotfiles/.config/ghostty $HOME/.config/
+ln -s $HOME/dotfiles/.config/tmuxp $HOME/.config/
 
 # vscode
 if [ $(uname) = "Linux" ]; then

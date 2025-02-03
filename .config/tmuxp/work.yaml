@@ -1,0 +1,32 @@
+session_name: work
+windows:
+  - development:
+    start_directory: $GOPATH/src/github.com/CastingONE/castingone/go
+  - backend:
+    start_directory: $GOPATH/src/github.com/CastingONE/castingone/go
+    layout: even-horizontal
+    panes:
+      - shell_command:
+        - cd tenant
+        - docker compose up -d
+        - make load-fixtures
+        - air
+      - shell_command:
+        - cd messenger
+        - air
+      - shell_command:
+        - pwd
+  - frontend:
+    start_directory: $GOPATH/src/github.com/CastingONE/casone-lite-web-nextjs
+    layout: even-horizontal
+    panes:
+      - shell_command:
+        - cd apps/tenant
+        - npm install
+        - npm run dev
+      - shell_command:
+        - cd apps/staff
+        - npm install
+        - npm run dev
+      - shell_command:
+        - pwd

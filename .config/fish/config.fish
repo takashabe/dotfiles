@@ -137,19 +137,6 @@ if status --is-interactive; and command -v rbenv > /dev/null
   rbenv init - | source
 end
 
-# tmux
-if status --is-interactive
-  if test -z $TMUX
-    if tmux has-session > /dev/null ^ /dev/null
-      # attach tmux session with percol like tool
-      set -l sid (tmux list-sessions | grep '' | fzf | cut -d: -f1)
-      command tmux -u attach-session -t $sid
-    else
-      command tmux -u new-session
-    end
-  end
-end
-
 # z
 set -x Z_DATA $HOME/.z
 
