@@ -29,3 +29,6 @@
 [scalar]
 	repo = /Users/takashabe/dev/src/github.com/CastingONE/castingone
 	repo = /Users/takashabe/dev/src/github.com/CastingONE/review-castingone
+	repo = /Users/takashabe/dev/src/github.com/CastingONE/casone-lite-web-nextjs
+[maintenance]
+	repo = /Users/takashabe/dev/src/github.com/CastingONE/casone-lite-web-nextjs
