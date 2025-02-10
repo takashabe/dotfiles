@@ -23,7 +23,7 @@ return {
       { "zbirenbaum/copilot.lua" },
       { "nvim-lua/plenary.nvim", branch = "master" }, -- for curl, log and async functions
     },
-    build = "make tiktoken", -- Only on MacOS or Linux
+    build = "make tiktoken",                          -- Only on MacOS or Linux
     opts = {
       debug = true,
       proxy = nil,
@@ -34,7 +34,8 @@ return {
         Explain = '/COPILOT_EXPLAIN 選択したコードの説明を段落をつけて書いてください。',
         Fix = '/COPILOT_FIX このコードには問題があります。バグを修正したコードに書き換えてください。',
         Optimize = '/COPILOT_OPTIMIZE 選択したコードを最適化し、パフォーマンスと可読性を向上させてください。',
-        Docs = '/COPILOT_DOCS 選択したコードのドキュメントを書いてください。ドキュメントをコメントとして追加した元のコードを含むコードブロックで回答してください。使用するプログラミング言語に最も適したドキュメントスタイルを使用してください（例：JavaScriptのJSDoc、Pythonのdocstringsなど）',
+        Docs =
+        '/COPILOT_DOCS 選択したコードのドキュメントを書いてください。ドキュメントをコメントとして追加した元のコードを含むコードブロックで回答してください。使用するプログラミング言語に最も適したドキュメントスタイルを使用してください（例：JavaScriptのJSDoc、Pythonのdocstringsなど）',
         Tests = '/COPILOT_TESTS 選択したコードの詳細な単体テスト関数を書いてください。',
         FixDiagnostic = '/COPILOT_FIXDIAGNOSTIC ファイル内の次のような診断上の問題を解決してください：',
         Commit = '/COPILOT_COMMIT この変更をコミットしてください。Conventional Commitメッセージを使用してください。',
@@ -93,7 +94,7 @@ return {
     config = function()
       -- nvim-cmp setup
       local cmp = require 'cmp'
-      cmp.setup({
+      cmp.setup {
         window = {
           -- completion = cmp.config.window.bordered(),
           -- documentation = cmp.config.window.bordered(),
@@ -111,7 +112,6 @@ return {
           { name = 'vsnip' }, -- For vsnip users.
           { name = 'buffer' },
         }),
-      })
 
       -- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
       cmp.setup.cmdline({ '/', '?' }, {
@@ -162,17 +162,17 @@ return {
       require('plugins.config.lsp')
     end,
   },
-	{
-		'nvimtools/none-ls.nvim', -- none-ls is an active community fork of null-ls
-		opts = function(_, opts)
-			local nls = require('null-ls')
-			opts.sources = vim.list_extend(opts.sources or {}, {
-				nls.builtins.code_actions.gomodifytags,
-				nls.builtins.code_actions.impl,
-			})
-			return opts
-		end,
-	},
+  {
+    'nvimtools/none-ls.nvim', -- none-ls is an active community fork of null-ls
+    opts = function(_, opts)
+      local nls = require('null-ls')
+      opts.sources = vim.list_extend(opts.sources or {}, {
+        nls.builtins.code_actions.gomodifytags,
+        nls.builtins.code_actions.impl,
+      })
+      return opts
+    end,
+  },
   {
     -- lsp progressを描画する
     "j-hui/fidget.nvim",
@@ -356,14 +356,6 @@ return {
         desc = "Window Hydra Mode (which-key)",
       },
     },
-    config = function(_, opts)
-      local wk = require("which-key")
-      wk.setup(opts)
-      if not vim.tbl_isempty(opts.defaults) then
-        LazyVim.warn("which-key: opts.defaults is deprecated. Please use opts.spec instead.")
-        wk.register(opts.defaults)
-      end
-    end,
   },
   {
     "folke/trouble.nvim",
@@ -403,26 +395,16 @@ return {
     },
   },
   {
-    "stevearc/aerial.nvim",
-    keys = {
-      { "<leader>as", "<cmd>AerialToggle!<cr>", desc = "Aerial (Symbols)" },
-    },
-    config = function()
-      require("aerial").setup()
-    end
-  },
-  { 'echasnovski/mini.comment', },
-  {
     "folke/flash.nvim",
     event = "VeryLazy",
     opts = {},
     -- stylua: ignore
     keys = {
-      { "s", mode = { "n" }, function() require("flash").jump() end, desc = "Flash" },
-      { "S", mode = { "n" }, function() require("flash").treesitter() end, desc = "Flash Treesitter" },
-      { "r", mode = "o", function() require("flash").remote() end, desc = "Remote Flash" },
-      { "R", mode = { "o", "x" }, function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
-      { "<c-s>", mode = { "c" }, function() require("flash").toggle() end, desc = "Toggle Flash Search" },
+      { "s",     mode = { "n" },      function() require("flash").jump() end,              desc = "Flash" },
+      { "S",     mode = { "n" },      function() require("flash").treesitter() end,        desc = "Flash Treesitter" },
+      { "r",     mode = "o",          function() require("flash").remote() end,            desc = "Remote Flash" },
+      { "R",     mode = { "o", "x" }, function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
+      { "<c-s>", mode = { "c" },      function() require("flash").toggle() end,            desc = "Toggle Flash Search" },
     },
   },
   {
@@ -430,11 +412,11 @@ return {
     config = function()
       require("formatter").setup({
         filetype = {
-          json = {require("formatter.filetypes.json").biome},
-          javascript = {require("formatter.filetypes.javascript").biome},
-          javascriptreact = {require("formatter.filetypes.javascriptreact").biome},
-          typescript = {require("formatter.filetypes.typescript").biome},
-          typescriptreact = {require("formatter.filetypes.typescriptreact").biome},
+          json = { require("formatter.filetypes.json").biome },
+          javascript = { require("formatter.filetypes.javascript").biome },
+          javascriptreact = { require("formatter.filetypes.javascriptreact").biome },
+          typescript = { require("formatter.filetypes.typescript").biome },
+          typescriptreact = { require("formatter.filetypes.typescriptreact").biome },
         },
       })
     end,
@@ -481,8 +463,8 @@ return {
   { 'RRethy/vim-illuminate' },
 
   -- colorscheme
-  { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
-  { "folke/tokyonight.nvim", lazy = false, priority = 1000 },
+  { "catppuccin/nvim",                         name = "catppuccin", priority = 1000 },
+  { "folke/tokyonight.nvim",                   lazy = false,        priority = 1000 },
 
   -- git
   {
