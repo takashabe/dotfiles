@@ -12,4 +12,19 @@ return {
       }
     end,
   },
+  -- lspsaga
+  {
+    'nvimdev/lspsaga.nvim',
+    config = function()
+      require('lspsaga').setup({
+        lightbulb = {
+          sign = false, -- re-renderが走るのを抑制する
+        },
+      })
+    end,
+    dependencies = {
+      'nvim-treesitter/nvim-treesitter', -- optional
+      'nvim-tree/nvim-web-devicons',     -- optional
+    },
+  },
 }
