@@ -93,6 +93,9 @@ return {
     end,
     config = function()
       -- nvim-cmp setup
+      local lspkind = require 'lspkind'
+      lspkind.init {}
+
       local cmp = require 'cmp'
       cmp.setup {
         window = {
@@ -112,6 +115,41 @@ return {
           { name = 'vsnip' }, -- For vsnip users.
           { name = 'buffer' },
         }),
+        formatting = ({
+          format = lspkind.cmp_format({
+            maxwidth = 80,
+            mode = 'symbol_text',
+            symbol_map = {
+              Text = "󰉿",
+              Method = "󰆧",
+              Function = "󰊕",
+              Constructor = "",
+              Field = "󰜢",
+              Variable = "󰀫",
+              Class = "󰠱",
+              Interface = "",
+              Module = "",
+              Property = "󰜢",
+              Unit = "󰑭",
+              Value = "󰎠",
+              Enum = "",
+              Keyword = "󰌋",
+              Snippet = "",
+              Color = "󰏘",
+              File = "󰈙",
+              Reference = "󰈇",
+              Folder = "󰉋",
+              EnumMember = "",
+              Constant = "󰏿",
+              Struct = "󰙅",
+              Event = "",
+              Operator = "󰆕",
+              TypeParameter = "",
+              Copilot = "",
+            },
+          }),
+        }),
+      }
 
       -- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
       cmp.setup.cmdline({ '/', '?' }, {
@@ -148,6 +186,7 @@ return {
       'hrsh7th/cmp-vsnip', -- For vsnip users.
       'hrsh7th/vim-vsnip', -- For vsnip users.
       'zbirenbaum/copilot-cmp',
+      'onsails/lspkind-nvim',
     }
   },
 
