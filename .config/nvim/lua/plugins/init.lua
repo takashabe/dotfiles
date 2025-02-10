@@ -1,16 +1,27 @@
 return {
   -- llm
-  { "github/copilot.vim", },
+  -- { "github/copilot.vim", },
+  {
+    "zbirenbaum/copilot.lua",
+    cmd = "Copilot",
+    config = function()
+      require("copilot").setup({
+        suggestion = { enabled = false },
+        panel = { enabled = false },
+      })
+    end,
+  },
   {
     "zbirenbaum/copilot-cmp",
     config = function ()
       require("copilot_cmp").setup()
-    end
+    end,
   },
   {
     "CopilotC-Nvim/CopilotChat.nvim",
     dependencies = {
-      { "github/copilot.vim" }, -- or zbirenbaum/copilot.lua
+      -- { "github/copilot.vim" }, -- or zbirenbaum/copilot.lua
+      { "zbirenbaum/copilot.lua" },
       { "nvim-lua/plenary.nvim", branch = "master" }, -- for curl, log and async functions
     },
     build = "make tiktoken", -- Only on MacOS or Linux
@@ -99,9 +110,8 @@ return {
           { name = 'nvim_lsp' },
           { name = 'copilot' },
           { name = 'vsnip' }, -- For vsnip users.
-        }, {
           { name = 'buffer' },
-        })
+        }),
       })
 
       -- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
@@ -138,6 +148,7 @@ return {
       'hrsh7th/cmp-cmdline',
       'hrsh7th/cmp-vsnip', -- For vsnip users.
       'hrsh7th/vim-vsnip', -- For vsnip users.
+      'zbirenbaum/copilot-cmp',
     }
   },
 
