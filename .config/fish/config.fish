@@ -145,6 +145,10 @@ function reload_tmux
   echo "reload tmux"
 end
 
+# aquaproj/aqua
+# https://github.com/aquaproj/aqua
+set -x AQUA_GLOBAL_CONFIG "$HOME/.config/aqua/aqua.yaml"
+
 # bat (https://github.com/sharkdp/bat)
 set -x BAT_THEME "TwoDark"
 

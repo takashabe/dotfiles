@@ -1,0 +1,7 @@
+registries:
+  - type: standard
+    ref: v4.306.0
+
+packages:
+- name: nektos/act@v0.2.72
+- name: sqldef/sqldef/psqldef@v0.17.29
