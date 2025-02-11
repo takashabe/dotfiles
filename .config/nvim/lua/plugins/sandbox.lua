@@ -18,7 +18,16 @@ return {
     config = function()
       require('lspsaga').setup({
         lightbulb = {
-          sign = false, -- re-renderが走るのを抑制する
+          -- re-renderが走るのを抑制する
+          enable = false,
+        },
+        ui = {
+          border = 'single',
+        },
+        diagnostic = {
+          -- 挿入モード中に更新しない
+          update_in_insert = false,
+          code_action = { enable = false },
         },
       })
     end,
