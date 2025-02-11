@@ -54,7 +54,7 @@ lspconfig.gopls.setup({
       gofumpt = true,
       usePlaceholders = true,
       buildFlags = {
-        "-tags=delivery_handler notification_handler segment_handler overview_handler candidate_handler tenant_handler api_handler job_delivery_periodical_setting_handler free_delivery_periodical_setting_handler batch_periodical_free_delivery_handler job_handler email_communication_handler batch_handler",
+        "-tags=analytics_handler delivery_handler notification_handler segment_handler overview_handler candidate_handler tenant_handler api_handler job_delivery_periodical_setting_handler free_delivery_periodical_setting_handler batch_periodical_free_delivery_handler job_handler email_communication_handler batch_handler",
       },
     },
   },
