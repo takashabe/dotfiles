@@ -12,7 +12,7 @@ return {
   },
   {
     "zbirenbaum/copilot-cmp",
-    config = function ()
+    config = function()
       require("copilot_cmp").setup()
     end,
   },
@@ -215,9 +215,27 @@ return {
   {
     -- lsp progressを描画する
     "j-hui/fidget.nvim",
+    opts = {
+      notification = {
+        window = { blend = 0 }, -- 透明度設定（デフォルトは 100）
+      },
+    },
+  },
+  {
+    -- lspの診断情報を表示する
+    "dnlhc/glance.nvim",
     config = function()
-      require("fidget").setup()
     end,
+  },
+  {
+    "dnlhc/glance.nvim",
+    cmd = "Glance",
+    -- keys = {
+    --   { "gd", "<CMD>Glance definitions<CR>", desc = "Go to Definition (Glance)" },
+    --   { "gr", "<CMD>Glance references<CR>", desc = "Find References (Glance)" },
+    --   { "gi", "<CMD>Glance implementations<CR>", desc = "Find Implementations (Glance)" },
+    --   { "gt", "<CMD>Glance type_definitions<CR>", desc = "Find Type Definitions (Glance)" },
+    -- },
   },
 
   -- telescope
@@ -236,14 +254,10 @@ return {
       { '<leader>fd', function() require('telescope.builtin').diagnostics() end,     mode = 'n' },
       { '<leader>fk', function() require('telescope.builtin').keymaps() end,         mode = 'n' },
       { '<leader>f?', function() require('telescope.builtin').commands() end,        mode = 'n' },
-      { '<leader>fs', function() require('telescope').extension.aerial.aerial() end, mode = 'n' },
       { '<leader>ft', function() require('telescope-tabs').list_tabs() end,          mode = 'n' },
     },
     opts = {
       defaults = {
-        file_ignore_patterns = {
-          ".git", "node_modules", "vendor",
-        },
         vimgrep_arguments = {
           "rg",
           "--follow",        -- Follow symbolic links
@@ -278,7 +292,6 @@ return {
         },
       },
       function()
-        require("telescope").load_extension("aerial")
         require('telescope').load_extension 'telescope-tabs'
       end,
     },
@@ -307,7 +320,6 @@ return {
       require('plugins.config.neotree')
     end,
   },
-  -- nvim-tree
   {
     "nvim-tree/nvim-tree.lua",
     version = "*",
@@ -398,7 +410,7 @@ return {
   },
   {
     "folke/trouble.nvim",
-    opts = {}, -- for default options, refer to the configuration section for custom setup.
+    opts = {},
     cmd = "Trouble",
     keys = {
       {
