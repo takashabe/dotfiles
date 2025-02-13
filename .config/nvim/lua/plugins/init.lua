@@ -246,15 +246,15 @@ return {
       'LukasPietzschmann/telescope-tabs',
     },
     keys = {
-      { '<C-p>',      function() require('telescope.builtin').find_files() end,      mode = 'n' }, -- vscodeライクにCmd-pにしたい
-      { '<leader>ff', function() require('telescope.builtin').find_files() end,      mode = 'n' },
-      { '<leader>fg', function() require('telescope.builtin').live_grep() end,       mode = 'n' },
-      { '<leader>fb', function() require('telescope.builtin').buffers() end,         mode = 'n' },
-      { '<leader>fh', function() require('telescope.builtin').help_tags() end,       mode = 'n' },
-      { '<leader>fd', function() require('telescope.builtin').diagnostics() end,     mode = 'n' },
-      { '<leader>fk', function() require('telescope.builtin').keymaps() end,         mode = 'n' },
-      { '<leader>f?', function() require('telescope.builtin').commands() end,        mode = 'n' },
-      { '<leader>ft', function() require('telescope-tabs').list_tabs() end,          mode = 'n' },
+      -- { '<C-p>',      function() require('telescope.builtin').find_files() end,      mode = 'n' }, -- vscodeライクにCmd-pにしたい
+      -- { '<leader>ff', function() require('telescope.builtin').find_files() end,      mode = 'n' },
+      -- { '<leader>fg', function() require('telescope.builtin').live_grep() end,       mode = 'n' },
+      -- { '<leader>fb', function() require('telescope.builtin').buffers() end,         mode = 'n' },
+      -- { '<leader>fh', function() require('telescope.builtin').help_tags() end,       mode = 'n' },
+      -- { '<leader>fd', function() require('telescope.builtin').diagnostics() end,     mode = 'n' },
+      -- { '<leader>fk', function() require('telescope.builtin').keymaps() end,         mode = 'n' },
+      -- { '<leader>f?', function() require('telescope.builtin').commands() end,        mode = 'n' },
+      -- { '<leader>ft', function() require('telescope-tabs').list_tabs() end,          mode = 'n' },
     },
     opts = {
       defaults = {

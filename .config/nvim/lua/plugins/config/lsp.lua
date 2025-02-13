@@ -14,11 +14,10 @@ mason_lspconfig.setup_handlers({
   end,
 })
 
-vim.keymap.set('n', 'K',  '<cmd>lua vim.lsp.buf.hover()<CR>')
-vim.keymap.set('n', 'gr', '<cmd>Glance references<CR>')
-vim.keymap.set('n', 'gd', '<cmd>Glance definitions<CR>')
-vim.keymap.set('n', 'gi', '<cmd>Glance implementations<CR>')
-vim.keymap.set('n', 'gt', '<cmd>Glance type_definitions<CR>')
+-- vim.keymap.set('n', 'gr', '<cmd>Glance references<CR>')
+-- vim.keymap.set('n', 'gd', '<cmd>Glance definitions<CR>')
+-- vim.keymap.set('n', 'gi', '<cmd>Glance implementations<CR>')
+-- vim.keymap.set('n', 'gt', '<cmd>Glance type_definitions<CR>')
 vim.keymap.set('n', 'gn', '<cmd>lua vim.lsp.buf.rename()<CR>')
 vim.keymap.set('n', 'ga', '<cmd>lua vim.lsp.buf.code_action()<CR>')
 vim.keymap.set('n', 'ge', '<cmd>lua vim.diagnostic.open_float()<CR>')
@@ -36,7 +35,7 @@ lspconfig.gopls.setup({
       gofumpt = true,
       usePlaceholders = true,
       buildFlags = {
-        "-tags=analytics_handler delivery_handler notification_handler segment_handler overview_handler candidate_handler tenant_handler api_handler job_delivery_periodical_setting_handler free_delivery_periodical_setting_handler batch_periodical_free_delivery_handler job_handler email_communication_handler batch_handler",
+        "-tags=analytics_handler delivery_handler notification_handler segment_handler overview_handler candidate_handler tenant_handler api_handler job_delivery_periodical_setting_handler free_delivery_periodical_setting_handler batch_periodical_free_delivery_handler job_handler email_communication_handler batch_handler webhook_handler batch_periodical_job_delivery_handler",
       },
     },
   },
