@@ -212,31 +212,6 @@ return {
       return opts
     end,
   },
-  {
-    -- lsp progressを描画する
-    "j-hui/fidget.nvim",
-    opts = {
-      notification = {
-        window = { blend = 0 }, -- 透明度設定（デフォルトは 100）
-      },
-    },
-  },
-  {
-    -- lspの診断情報を表示する
-    "dnlhc/glance.nvim",
-    config = function()
-    end,
-  },
-  {
-    "dnlhc/glance.nvim",
-    cmd = "Glance",
-    -- keys = {
-    --   { "gd", "<CMD>Glance definitions<CR>", desc = "Go to Definition (Glance)" },
-    --   { "gr", "<CMD>Glance references<CR>", desc = "Find References (Glance)" },
-    --   { "gi", "<CMD>Glance implementations<CR>", desc = "Find Implementations (Glance)" },
-    --   { "gt", "<CMD>Glance type_definitions<CR>", desc = "Find Type Definitions (Glance)" },
-    -- },
-  },
 
   -- telescope
   {
@@ -481,32 +456,6 @@ return {
       sections = {
         lualine_c = {
           { "filename", path = 1 },
-        },
-      },
-    },
-  },
-  {
-    "lukas-reineke/indent-blankline.nvim",
-    main = "ibl",
-    opts = {
-      indent = {
-        char = "│",
-        tab_char = "│",
-      },
-      scope = { show_start = false, show_end = false },
-      exclude = {
-        filetypes = {
-          "help",
-          "alpha",
-          "dashboard",
-          "neo-tree",
-          "Trouble",
-          "trouble",
-          "lazy",
-          "mason",
-          "notify",
-          "toggleterm",
-          "lazyterm",
         },
       },
     },

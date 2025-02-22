@@ -22,16 +22,37 @@ return {
       -- or leave it empty to use the default settings
       -- refer to the configuration section below
       bigfile      = { enabled = false },
-      dashboard    = { enabled = false },
+      dashboard    = {
+        enabled = true,
+        sections = {
+          { section = "header" },
+          { section = "keys", gap = 1, padding = 1 },
+          { section = "startup" },
+          -- zshがちゃんと動かないのでコメントアウト
+          -- {
+          --   section = "terminal",
+          --   cmd = "pokemon-colorscripts -r --no-title; sleep .1",
+          --   random = 10,
+          --   pane = 2,
+          --   indent = 4,
+          --   height = 30,
+          -- },
+        },
+      },
       explorer     = { enabled = true },
-      indent       = { enabled = false },
-      input        = { enabled = false },
-      picker       = { enabled = true },
+      indent       = {
+        enabled = true,
+        animate = {
+          enabled = false,
+        },
+      },
+      input        = { enabled = true },
+      picker       = { enabled = true, },
       notifier     = { enabled = true },
       quickfile    = { enabled = false },
       scope        = { enabled = false },
       scroll       = { enabled = false },
-      statuscolumn = { enabled = false },
+      statuscolumn = { enabled = true },
       words        = { enabled = true },
     },
     keys = {
@@ -86,4 +107,21 @@ return {
       { "[[",         function() Snacks.words.jump(-vim.v.count1) end, desc = "Prev Reference", mode = { "n", "t" } },
     },
   },
+  config = function()
+    -- lsp_progress を通知するようにする. fidget.nvimの代替
+    vim.api.nvim_create_autocmd("LspProgress", {
+      ---@param ev {data: {client_id: integer, params: lsp.ProgressParams}}
+      callback = function(ev)
+        local spinner = { "⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏" }
+        vim.notify(vim.lsp.status(), "info", {
+          id = "lsp_progress",
+          title = "LSP Progress",
+          opts = function(notif)
+            notif.icon = ev.data.params.value.kind == "end" and " "
+            or spinner[math.floor(vim.uv.hrtime() / (1e6 * 80)) % #spinner + 1]
+          end,
+        })
+      end,
+    })
+  end,
 }
