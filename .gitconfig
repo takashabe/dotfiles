@@ -1,3 +1,6 @@
+[include]
+  path = ~/dotfiles/.config/git/catpuccin.gitconfig
+
 [user]
   email = i@takashabe.dev
   name = takashabe
@@ -16,6 +19,8 @@
     light = false
     side-by-side = true
     line-numbers = true
+    true-color = auto
+    features = catpuccin-mocha
 [merge]
   tool = vimdiff
 [diff]
