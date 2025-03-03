@@ -68,6 +68,10 @@ if [ $(uname) = "Darwin" ]; then
   ln -s $HOME/dotfiles/.gitconfig.credential.darwin $HOME/.gitconfig.credential
   ln -s $HOME/dotfiles/.config/sketchybar/  $HOME/.config/
   ln -s $HOME/dotfiles/.config/aerospace/ $HOME/.config/
+  # enable key repeat for vscode
+  # https://twismik0.hatenablog.com/entry/2017/08/14/115502
+  defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool false
+  defaults write com.microsoft.VSCodeInsiders ApplePressAndHoldEnabled -bool false
 fi
 
 # TODO homebrew, homebrew-cask, yay
