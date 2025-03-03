@@ -74,6 +74,9 @@ run = 'move-node-to-workspace 3'
 [[on-window-detected]]
 if.app-id = 'com.todoist.mac.Todoist'
 run = 'move-node-to-workspace 3'
+[[on-window-detected]]
+if.app-id = 'com.openai.chat'
+run = 'move-node-to-workspace 3'
 
 [[on-window-detected]]
 if.app-id = 'com.tinyspeck.slackmacgap'
@@ -87,6 +90,9 @@ run = 'move-node-to-workspace 4'
 
 [[on-window-detected]]
 if.app-id = 'com.microsoft.VSCode'
+run = 'move-node-to-workspace 5'
+[[on-window-detected]]
+if.app-id = 'com.microsoft.VSCodeInsiders'
 run = 'move-node-to-workspace 5'
 [[on-window-detected]]
 if.app-id = 'dev.zed.Zed'
