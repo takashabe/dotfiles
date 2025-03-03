@@ -1,6 +1,10 @@
 git:
-  commit:
-    verbose: always
+  paging:
+    colorArg: always
+    pager: delta --dark --paging=never
+    useConfig: false
 keybinding:
   universal:
     quit: 'Q'
+gui:
+  nerdFontsVersion: '3'
