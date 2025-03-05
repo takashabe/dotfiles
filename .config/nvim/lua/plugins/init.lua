@@ -28,7 +28,7 @@ return {
       debug = true,
       proxy = nil,
       allow_insecure = false,
-      model = 'claude-3.5-sonnet',
+      model = 'claude-3.7-sonnet',
       temperature = 0.1,
       prompts = {
         Explain = '/COPILOT_EXPLAIN 選択したコードの説明を段落をつけて書いてください。',
