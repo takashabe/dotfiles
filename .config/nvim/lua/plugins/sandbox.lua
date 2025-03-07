@@ -53,7 +53,7 @@ return {
       },
       notifier     = { enabled = true },
       quickfile    = { enabled = false },
-      scope        = { enabled = false },
+      scope        = { enabled = true },
       scroll       = { enabled = false },
       statuscolumn = { enabled = true },
       words        = { enabled = true },
@@ -81,7 +81,6 @@ return {
       { "<leader>fq", function() Snacks.picker.qflist() end, desc = "Quickfix List" },
       { "<leader>f?", function() Snacks.picker.commands() end, desc = "Commands" },
       -- LSP
-      -- glanceとどっち取るか悩み中. g* のキーマップとしてvim.lsp系は定義してあるのでコンフリクト注意
       { "gd", function() Snacks.picker.lsp_definitions() end, desc = "Goto Definition" },
       { "gD", function() Snacks.picker.lsp_declarations() end, desc = "Goto Declaration" },
       { "gt", function() Snacks.picker.lsp_type_definitions() end, desc = "Goto Type Definition" },
