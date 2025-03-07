@@ -36,6 +36,10 @@
 	repo = /Users/takashabe/dev/src/github.com/CastingONE/review-castingone
 	repo = /Users/takashabe/dev/src/github.com/CastingONE/casone-lite-web-nextjs
 	repo = /Users/takashabe/dotfiles
+	repo = /Users/takashabe/dev/src/github.com/qmk/qmk_firmware
+	repo = /Users/takashabe/dev/src/github.com/takashabe/qmk_firmware
 [maintenance]
 	repo = /Users/takashabe/dev/src/github.com/CastingONE/casone-lite-web-nextjs
 	repo = /Users/takashabe/dotfiles
+	repo = /Users/takashabe/dev/src/github.com/qmk/qmk_firmware
+	repo = /Users/takashabe/dev/src/github.com/takashabe/qmk_firmware
