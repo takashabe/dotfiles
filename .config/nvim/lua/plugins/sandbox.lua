@@ -45,7 +45,12 @@ return {
         },
       },
       input        = { enabled = true },
-      picker       = { enabled = true, },
+      picker       = {
+        enabled = true,
+        source = {
+          todo_comments = { hidden = true }, -- https://github.com/folke/todo-comments.nvim
+        },
+      },
       notifier     = { enabled = true },
       quickfile    = { enabled = false },
       scope        = { enabled = false },
@@ -93,11 +98,12 @@ return {
       { "<leader>gS", function() Snacks.picker.git_stash() end, desc = "Git Stash" },
       { "<leader>gd", function() Snacks.picker.git_diff() end, desc = "Git Diff (Hunks)" },
       { "<leader>gf", function() Snacks.picker.git_log_file() end, desc = "Git Log File" },
-      -- Grep
+      -- Grep/Search
       { "<leader>sb", function() Snacks.picker.lines() end, desc = "Buffer Lines" },
       { "<leader>sB", function() Snacks.picker.grep_buffers() end, desc = "Grep Open Buffers" },
       { "<leader>sg", function() Snacks.picker.grep() end, desc = "Grep" },
       { "<leader>sw", function() Snacks.picker.grep_word() end, desc = "Visual selection or word", mode = { "n", "x" } },
+      { "<leader>st", function() Snacks.picker.todo_comments() end, desc = "Todo comments" },
       -- Other
       { "<leader>gg", function() Snacks.lazygit() end, desc = "Lazygit" },
       { "<leader>un", function() Snacks.notifier.hide() end, desc = "Dismiss All Notifications" },
@@ -122,4 +128,9 @@ return {
       end,
     })
   end,
+  {
+    "folke/todo-comments.nvim",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    opts = {},
+  },
 }
