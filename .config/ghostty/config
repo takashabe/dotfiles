@@ -5,8 +5,12 @@ command = /opt/homebrew/bin/fish
 shell-integration = fish
 
 font-family = ""
-font-family = "UDEV Gothic NF"
-font-size = 18
+# font-family = "UDEV Gothic NF"
+font-family = "Moralerspace Argon HWNF"
+# font-family = "Moralerspace Krypton HWNF"
+# font-family = "Moralerspace Neon HWNF"
+# font-family = "Moralerspace Radon HWNF"
+font-size = 16
 
 # リガチャを無効にする
 font-feature = -calt
