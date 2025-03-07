@@ -3,14 +3,12 @@ return {
   -- 2025/01/15 align系で良さそう
   {
     'echasnovski/mini.align',
-    config = function()
-      require('mini.align').setup {
+    opts = {
         mappings = {
           start = '<leader>ga',
           start_with_preview = '<leader>gA',
         },
-      }
-    end,
+    },
   },
   -- 2025/02/11 色々できる系のプラグイン. folke-san製品
   {
