@@ -1,3 +1,7 @@
+-- ghost_text の色を設定
+local colors = require("catppuccin.palettes").get_palette("frappe")
+vim.api.nvim_set_hl(0, 'BlinkCmpGhostText', { fg = colors.overlay0, italic = true })
+
 return {
   {
     'saghen/blink.cmp',
