@@ -25,7 +25,10 @@ vim.keymap.set('n', 'gf', '<cmd>lua vim.lsp.buf.formatting()<CR>')
 vim.keymap.set('n', 'g]', '<cmd>lua vim.diagnostic.goto_next()<CR>')
 vim.keymap.set('n', 'g[', '<cmd>lua vim.diagnostic.goto_prev()<CR>')
 
+local capabilities = require('blink.cmp').get_lsp_capabilities()
+
 lspconfig.gopls.setup({
+  capabilities = capabilities,
   settings = {
     gopls = {
       analyses = {
@@ -42,6 +45,7 @@ lspconfig.gopls.setup({
 })
 
 lspconfig.sqls.setup({
+  capabilities = capabilities,
   on_attach = function(client, bufnr)
     require('sqls').on_attach(client, bufnr)
   end,
