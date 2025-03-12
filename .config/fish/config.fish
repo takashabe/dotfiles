@@ -147,7 +147,8 @@ end
 
 # aquaproj/aqua
 # https://github.com/aquaproj/aqua
-set -x AQUA_GLOBAL_CONFIG "$HOME/.config/aqua/aqua.yaml"
+set -x AQUA_GLOBAL_CONFIG "$XDG_CONFIG_HOME/aqua/aqua.yaml"
+set -x PATH "$XDG_DATA_HOME/aquaproj-aqua/bin" $PATH
 
 # bat (https://github.com/sharkdp/bat)
 set -x BAT_THEME "TwoDark"
@@ -220,7 +221,8 @@ function go_install_binaries
     'github.com/GoogleCloudPlatform/protoc-gen-bq-schema@latest' \
     'github.com/pwaller/goimports-update-ignore@latest' \
     'github.com/onsi/ginkgo/v2/ginkgo@latest' \
-    'github.com/sqldef/sqldef/cmd/psqldef@latest'
+    'github.com/sqldef/sqldef/cmd/psqldef@latest' \
+    'github.com/aquaproj/aqua/v2/cmd/aqua@latest'
   pushd $HOME
   for uri in $GO_BINARIES
     echo "go install $uri ..."
