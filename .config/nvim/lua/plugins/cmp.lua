@@ -46,7 +46,10 @@ return {
       },
       completion = {
         accept = { auto_brackets = { enabled = true } },
-        documentation = { auto_show = true, auto_show_delay_ms = 200 },
+        documentation = {
+          auto_show = true,
+          auto_show_delay_ms = 200,
+        },
         ghost_text = { enabled = true },
         menu = {
           draw = {
@@ -69,7 +72,19 @@ return {
           },
         },
         default = { "lsp", "path", "snippets", "buffer", "copilot" },
-      }
+      },
+      cmdline = {
+        enabled = true,
+        keymap = {
+          ["<CR>"] = { "accept_and_enter", "fallback" },
+          ['<Tab>'] = { 'show', 'accept' },
+        },
+        completion = {
+          menu = {
+            auto_show = true,
+          },
+        }
+      },
     },
     opts_extend = { "sources.default" } -- 設定を再定義せずに拡張可能
   }
