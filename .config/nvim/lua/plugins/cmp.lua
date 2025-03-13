@@ -71,12 +71,20 @@ return {
             async = true,
           },
         },
+        -- cmdlineで短い文字数で補完が出ると煩わしい
+        min_keyword_length = function(ctx)
+          -- :wq, :qa -> menu doesn't popup
+          -- :Lazy, :wqa -> menu popup
+          if ctx.mode == "cmdline" and ctx.line:find("^%l+$") ~= nil then
+            return 3
+          end
+          return 0
+        end,
         default = { "lsp", "path", "snippets", "buffer", "copilot" },
       },
       cmdline = {
         enabled = true,
         keymap = {
-          ["<CR>"] = { "accept_and_enter", "fallback" },
           ['<Tab>'] = { 'show', 'accept' },
         },
         completion = {
