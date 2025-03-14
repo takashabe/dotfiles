@@ -1,10 +1,11 @@
 return {
   { "nvim-tree/nvim-web-devicons", opts = {} },
-  -- snacks
+
   {
     "folke/snacks.nvim",
     priority = 1000,
     lazy = false,
+    ---@type snacks.Config
     opts = {
       -- your configuration comes here
       -- or leave it empty to use the default settings
@@ -563,14 +564,14 @@ return {
       "folke/lazydev.nvim",
       dependencies = {
         { "Bilal2453/luvit-meta", lazy = true },
-        { "hrsh7th/nvim-cmp" },
+        { "saghen/blink.cmp" },
       },
       ft = "lua", -- only load on lua files
       opts = {
         library = {
-          -- See the configuration section for more details
-          -- Load luvit types when the `vim.uv` word is found
-          { path = "luvit-meta/library", words = { "vim%.uv" } },
+          "lazy.nvim",
+          "snacks.nvim",
+          { path = "${3rd}/luv/library", words = { "vim%.uv" } },
         },
       },
     },

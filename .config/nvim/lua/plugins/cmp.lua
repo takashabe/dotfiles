@@ -70,6 +70,11 @@ return {
             score_offset = 100,
             async = true,
           },
+          lazydev = {
+            name = "LazyDev",
+            module = "lazydev.integrations.blink",
+            score_offset = 100,
+          },
         },
         -- cmdlineで短い文字数で補完が出ると煩わしい
         min_keyword_length = function(ctx)
