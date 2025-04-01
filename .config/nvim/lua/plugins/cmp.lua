@@ -5,10 +5,11 @@ vim.api.nvim_set_hl(0, 'BlinkCmpGhostText', { fg = colors.overlay0, italic = tru
 return {
   {
     'saghen/blink.cmp',
-    version = '*', -- リリースタグを使用して事前ビルドされたバイナリをダウンロード
+    version = '*',                    -- リリースタグを使用して事前ビルドされたバイナリをダウンロード
     dependencies = {
       'rafamadriz/friendly-snippets', -- スニペット用
       'giuxtaposition/blink-cmp-copilot',
+      'Kaiser-Yang/blink-cmp-avante',
     },
     opts = {
       keymap = { preset = 'default' },
@@ -54,8 +55,8 @@ return {
         menu = {
           draw = {
             columns = {
-              { "label", "label_description", gap = 1 },
-              { "kind_icon", "kind", gap = 1 }
+              { "label",     "label_description", gap = 1 },
+              { "kind_icon", "kind",              gap = 1 }
             },
           },
         },
@@ -75,6 +76,13 @@ return {
             module = "lazydev.integrations.blink",
             score_offset = 100,
           },
+          avante = {
+            module = 'blink-cmp-avante',
+            name = 'Avante',
+            opts = {
+              -- options for blink-cmp-avante
+            }
+          },
         },
         -- cmdlineで短い文字数で補完が出ると煩わしい
         min_keyword_length = function(ctx)
@@ -85,7 +93,7 @@ return {
           end
           return 0
         end,
-        default = { "lsp", "path", "snippets", "buffer", "copilot" },
+        default = { "lsp", "path", "snippets", "buffer", "copilot", "avante" },
       },
       cmdline = {
         enabled = true,
@@ -102,4 +110,3 @@ return {
     opts_extend = { "sources.default" } -- 設定を再定義せずに拡張可能
   }
 }
-
