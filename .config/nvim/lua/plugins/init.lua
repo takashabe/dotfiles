@@ -41,6 +41,7 @@ return {
           source = {
             todo_comments = { hidden = true }, -- https://github.com/folke/todo-comments.nvim
           },
+          formatters = { file = { truncate = 200 } },
         },
         notifier     = { enabled = true },
         quickfile    = { enabled = false },
