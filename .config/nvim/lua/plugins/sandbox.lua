@@ -6,6 +6,15 @@ return {
     version = false, -- Never set this value to "*"! Never!
     opts = {
       provider = "copilot",
+      copilot = {
+        model = "claude-3.7-sonnet",
+      },
+      behaviour = {
+        enable_cursor_planning_mode = true,
+      },
+      file_selector = {
+        provider = "snacks",
+      },
     },
     build = "make",
     dependencies = {
