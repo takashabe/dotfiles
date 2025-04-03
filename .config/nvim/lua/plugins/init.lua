@@ -56,7 +56,6 @@ return {
         { "<leader>/",       function() Snacks.picker.grep({ hidden = true }) end, desc = "Grep" },
         { "<leader>:",       function() Snacks.picker.command_history() end,       desc = "Command History" },
         { "<leader>n",       function() Snacks.picker.notifications() end,         desc = "Notification History" },
-        { "<leader>e",       function() Snacks.explorer() end,                     desc = "File Explorer" },
         -- fuzzy finder
         { "<leader>fb",      function() Snacks.picker.buffers() end,               desc = "Buffers" },
         { "<leader>ff",      function() Snacks.picker.files({ hidden = true }) end, desc = "Find Files" },
@@ -226,9 +225,25 @@ return {
         "MunifTanjim/nui.nvim",
         "3rd/image.nvim",
       },
-      config = function()
-        require('plugins.config.neotree')
-      end,
+      keys = {
+        { "<leader>e", "<cmd>Neotree filesystem reveal left<cr>", desc = "Neo-tree File Explorer" },
+      },
+      opts = {
+        -- TODO: git_status周りの設定
+        window = {
+          mappings = {
+            ["P"] = { "toggle_preview", config = { use_float = true, use_image_nvim = true } },
+          }
+        },
+        filesystem = {
+          filtered_items = {
+            visible = true,
+            hide_hidden = false,
+            hide_dotfiles = false,
+            hide_by_name = { "node_modules", "vendor", ".git", ".cache", ".idea", ".vscode", ".DS_Store" },
+          },
+        },
+      },
     },
     {
       "nvim-tree/nvim-tree.lua",
