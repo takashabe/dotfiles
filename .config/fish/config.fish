@@ -221,7 +221,6 @@ function go_install_binaries
     'github.com/GoogleCloudPlatform/protoc-gen-bq-schema@latest' \
     'github.com/pwaller/goimports-update-ignore@latest' \
     'github.com/onsi/ginkgo/v2/ginkgo@latest' \
-    'github.com/sqldef/sqldef/cmd/psqldef@latest' \
     'github.com/aquaproj/aqua/v2/cmd/aqua@latest'
   pushd $HOME
   for uri in $GO_BINARIES
