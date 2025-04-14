@@ -6,7 +6,8 @@ shell-integration = fish
 
 font-family = ""
 # font-family = "UDEV Gothic NF"
-font-family = "Moralerspace Argon HWNF"
+font-family = "UDEV Gothic 35NF"
+# font-family = "Moralerspace Argon HWNF"
 # font-family = "Moralerspace Krypton HWNF"
 # font-family = "Moralerspace Neon HWNF"
 # font-family = "Moralerspace Radon HWNF"
