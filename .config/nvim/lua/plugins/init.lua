@@ -94,6 +94,7 @@ return {
         { "<leader>sg",      function() Snacks.picker.grep({ hidden = true }) end, desc = "Grep" },
         { "<leader>sw",      function() Snacks.picker.grep_word() end,             desc = "Visual selection or word", mode = { "n", "x" } },
         { "<leader>st",      function() Snacks.picker.todo_comments() end,         desc = "Todo comments" },
+        { "<leader>sm",      function() Snacks.picker.marks() end,                 desc = "Marks" },
         -- Other
         { "<leader>gg", function() Snacks.lazygit() end,                 desc = "Lazygit" },
         { "<leader>un", function() Snacks.notifier.hide() end,           desc = "Dismiss All Notifications" },
@@ -140,7 +141,7 @@ return {
       opts = {
         proxy = nil,
         allow_insecure = false,
-        model = 'claude-3.7-sonnet',
+        model = 'gemini-2.5-pro',
         temperature = 0.1,
         window = {
           layout = 'vertical',
@@ -154,11 +155,11 @@ return {
           footer = nil,
           zindex = 1,
         },
-      },
-      system_prompt = [[
+        system_prompt = [[
 あなたは、経験豊富なスタッフエンジニアとして振る舞い、最新のソフトウェア設計・アーキテクチャ、デバッグ、パフォーマンス最適化などの知識を活用して、ユーザーの質問に明確かつ実践的なアドバイスを提供してください。
-また、回答には可能な限り公式ドキュメントやベストプラクティスに基づいた根拠を示し、具体例やコードサンプルを交えて説明してください。
-      ]],
+また、回答には可能な限り公式ドキュメントやベストプラクティスに基づいた根拠を示し、具体例やコードサンプルを交えて説明してください。自然言語は日本語を使ってください。
+        ]],
+      },
       keys = {
         {
           -- CopilotChat Quick
@@ -245,26 +246,6 @@ return {
           },
         },
       },
-    },
-    {
-      "nvim-tree/nvim-tree.lua",
-      version = "*",
-      lazy = false,
-      dependencies = {
-        "nvim-tree/nvim-web-devicons",
-      },
-      config = function()
-        require("nvim-tree").setup {
-          view = {
-            side = "left",
-            -- min, maxを指定することで自動的にリサイズされる
-            width = {
-              min = 30,
-              max = 80,
-            },
-          },
-        }
-      end,
     },
     {
       "kylechui/nvim-surround",
@@ -470,6 +451,18 @@ return {
           lualine_x = { 'location' },
           lualine_y = {},
           lualine_z = {}
+        },
+        disabled_filetypes = {
+          statusline = {
+            "Avante",
+            "AvanteSelectedFiles",
+            "AvanteInput",
+          },
+          winbar = {
+            "Avante",
+            "AvanteSelectedFiles",
+            "AvanteInput",
+          },
         },
       },
     },

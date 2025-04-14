@@ -66,7 +66,7 @@ opt.fillchars:append("eob: ")
 opt.helplang = { "ja", "en" }
 opt.wrap = true
 -- ステータスライン
-opt.laststatus = 2
+opt.laststatus = 3
 opt.cmdheight = 2
 opt.ruler = true
 -- カーソル行をハイライト

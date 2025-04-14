@@ -7,10 +7,11 @@ return {
     opts = {
       provider = "copilot",
       copilot = {
-        model = "claude-3.7-sonnet",
+        model = "gemini-2.5-pro",
       },
       behaviour = {
         enable_cursor_planning_mode = true,
+        use_cwd_as_project_root = true, -- モノレポで開いたところをルートと認識して欲しい
       },
       file_selector = {
         provider = "snacks",
