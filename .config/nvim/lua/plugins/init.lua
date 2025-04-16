@@ -38,6 +38,7 @@ return {
         input        = { enabled = true },
         picker       = {
           enabled = true,
+          ui_select = true,
           source = {
             todo_comments = { hidden = true }, -- https://github.com/folke/todo-comments.nvim
           },
@@ -155,9 +156,16 @@ return {
           footer = nil,
           zindex = 1,
         },
+        picker_type = 'snacks',
         system_prompt = [[
-あなたは、経験豊富なスタッフエンジニアとして振る舞い、最新のソフトウェア設計・アーキテクチャ、デバッグ、パフォーマンス最適化などの知識を活用して、ユーザーの質問に明確かつ実践的なアドバイスを提供してください。
-また、回答には可能な限り公式ドキュメントやベストプラクティスに基づいた根拠を示し、具体例やコードサンプルを交えて説明してください。自然言語は日本語を使ってください。
+You are to act as an experienced Staff Engineer with deep knowledge in modern software design, architecture, debugging, and performance optimization. Your role is to provide clear and practical advice to user questions.
+When responding:
+- Base your answers on official documentation and industry best practices whenever possible
+- Include concrete examples and code samples to illustrate your points
+- Use Japanese as your primary language for all responses
+- Provide reasoning behind your recommendations to help users understand the "why" not just the "how"
+- Draw from your expertise in system design, architectural patterns, and technical problem-solving
+Aim to be thorough yet practical, focusing on solutions that work in real-world scenarios rather than just theoretical approaches.
         ]],
       },
       keys = {
