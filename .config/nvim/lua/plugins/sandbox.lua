@@ -119,9 +119,9 @@ return {
       { "<leader>ca", "<cmd>CodeCompanionAction<CR>", desc = "Explain Code" },
       { "<leader>ct", "<cmd>CodeCompanionChat<CR>",   desc = "Toggle CodeCompanion" },
     },
-    -- init = function()
-    --   require("plugins.custom.spinner"):init()
-    -- end
+    init = function()
+      require("plugins.custom.spinner"):init()
+    end
   },
   {
     "MeanderingProgrammer/render-markdown.nvim",
