@@ -19,145 +19,146 @@ return {
           { section = "startup" },
           -- zshがちゃんと動かないのでコメントアウト
           -- {
-            --   section = "terminal",
-            --   cmd = "pokemon-colorscripts -r --no-title; sleep .1",
-            --   random = 10,
-            --   pane = 2,
-            --   indent = 4,
-            --   height = 30,
-            -- },
-          },
+          --   section = "terminal",
+          --   cmd = "pokemon-colorscripts -r --no-title; sleep .1",
+          --   random = 10,
+          --   pane = 2,
+          --   indent = 4,
+          --   height = 30,
+          -- },
         },
-        explorer     = { enabled = true },
-        indent       = {
-          enabled = true,
-          animate = {
-            enabled = false,
-          },
-        },
-        input        = { enabled = true },
-        picker       = {
-          enabled = true,
-          ui_select = true,
-          source = {
-            todo_comments = { hidden = true }, -- https://github.com/folke/todo-comments.nvim
-          },
-          formatters = { file = { truncate = 200 } },
-        },
-        notifier     = { enabled = true },
-        quickfile    = { enabled = false },
-        scope        = { enabled = true },
-        scroll       = { enabled = false },
-        statuscolumn = { enabled = true },
-        words        = { enabled = true },
       },
-      keys = {
-        -- Top Pickers & Explorer
-        { "<leader><space>", function() Snacks.picker.smart() end,                 desc = "Smart Find Files" },
-        { "<leader>,",       function() Snacks.picker.buffers() end,               desc = "Buffers" },
-        { "<leader>/",       function() Snacks.picker.grep({ hidden = true }) end, desc = "Grep" },
-        { "<leader>:",       function() Snacks.picker.command_history() end,       desc = "Command History" },
-        { "<leader>n",       function() Snacks.picker.notifications() end,         desc = "Notification History" },
-        -- fuzzy finder
-        { "<leader>fb",      function() Snacks.picker.buffers() end,               desc = "Buffers" },
-        { "<leader>ff",      function() Snacks.picker.files({ hidden = true }) end, desc = "Find Files" },
-        { "<C-p>",           function() Snacks.picker.files({ hidden = true }) end, desc = "Find Files" },
-        { "<leader>fg",      function() Snacks.picker.git_files() end,             desc = "Find Git Files" },
-        { "<leader>fr",      function() Snacks.picker.recent() end,                desc = "Recent" },
-        { "<leader>fn",      function() Snacks.notifier.show_history() end,        desc = "Notification History" },
-        { "<leader>fd",      function() Snacks.picker.diagnostics() end,           desc = "Diagnostics" },
-        { "<leader>fk",      function() Snacks.picker.keymaps() end,               desc = "Keymaps" },
-        { '<leader>f/',      function() Snacks.picker.search_history() end,        desc = "Search History" },
-        { "<leader>fc",      function() Snacks.picker.command_history() end,       desc = "Command History" },
-        { "<leader>fl",      function() Snacks.picker.loclist() end,               desc = "Location List" },
-        { "<leader>fq",      function() Snacks.picker.qflist() end,                desc = "Quickfix List" },
-        { "<leader>f?",      function() Snacks.picker.commands() end,              desc = "Commands" },
-        -- LSP
-        { "gd",              function() Snacks.picker.lsp_definitions() end,       desc = "Goto Definition" },
-        { "gD",              function() Snacks.picker.lsp_declarations() end,      desc = "Goto Declaration" },
-        { "gt",              function() Snacks.picker.lsp_type_definitions() end,  desc = "Goto Type Definition" },
-        { "gr",              function() Snacks.picker.lsp_references() end,        nowait = true,                     desc = "References" },
-        { "gi",              function() Snacks.picker.lsp_implementations() end,   desc = "Goto Implementation" },
-        { "<leader>ss",      function() Snacks.picker.lsp_symbols() end,           desc = "LSP Symbols" },
-        { "<leader>sS",      function() Snacks.picker.lsp_workspace_symbols() end, desc = "LSP Workspace Symbols" },
-        -- git
-        { "<leader>gb",      function() Snacks.picker.git_branches() end,          desc = "Git Branches" },
-        { "<leader>gB",      function() Snacks.gitbrowse() end,                    desc = "Git Browse",               mode = { "n", "v" } },
-        { "<leader>gl",      function() Snacks.picker.git_log() end,               desc = "Git Log" },
-        { "<leader>gL",      function() Snacks.picker.git_log_line() end,          desc = "Git Log Line" },
-        { "<leader>gs",      function() Snacks.picker.git_status() end,            desc = "Git Status" },
-        { "<leader>gS",      function() Snacks.picker.git_stash() end,             desc = "Git Stash" },
-        { "<leader>gd",      function() Snacks.picker.git_diff() end,              desc = "Git Diff (Hunks)" },
-        { "<leader>gf",      function() Snacks.picker.git_log_file() end,          desc = "Git Log File" },
-        -- Grep/Search
-        { "<leader>sb",      function() Snacks.picker.lines() end,                 desc = "Buffer Lines" },
-        { "<leader>sB",      function() Snacks.picker.grep_buffers() end,          desc = "Grep Open Buffers" },
-        { "<leader>sg",      function() Snacks.picker.grep({ hidden = true }) end, desc = "Grep" },
-        { "<leader>sw",      function() Snacks.picker.grep_word() end,             desc = "Visual selection or word", mode = { "n", "x" } },
-        { "<leader>st",      function() Snacks.picker.todo_comments() end,         desc = "Todo comments" },
-        { "<leader>sm",      function() Snacks.picker.marks() end,                 desc = "Marks" },
-        -- Other
-        { "<leader>gg", function() Snacks.lazygit() end,                 desc = "Lazygit" },
-        { "<leader>un", function() Snacks.notifier.hide() end,           desc = "Dismiss All Notifications" },
-        { "<c-/>",      function() Snacks.terminal() end,                desc = "Toggle Terminal" },
-        { "<c-_>",      function() Snacks.terminal() end,                desc = "which_key_ignore" },
-        { "]]",         function() Snacks.words.jump(vim.v.count1) end,  desc = "Next Reference", mode = { "n", "t" } },
-        { "[[",         function() Snacks.words.jump(-vim.v.count1) end, desc = "Prev Reference", mode = { "n", "t" } },
+      explorer     = { enabled = true },
+      indent       = {
+        enabled = true,
+        animate = {
+          enabled = false,
+        },
       },
+      input        = { enabled = true },
+      picker       = {
+        enabled = true,
+        ui_select = true,
+        sources = {
+          todo_comments = { hidden = true }, -- https://github.com/folke/todo-comments.nvim
+          files         = { hidden = true },
+        },
+        formatters = { file = { truncate = 200 } },
+      },
+      notifier     = { enabled = true },
+      quickfile    = { enabled = false },
+      scope        = { enabled = true },
+      scroll       = { enabled = false },
+      statuscolumn = { enabled = true },
+      words        = { enabled = true },
     },
-    config = function()
-      -- lsp_progress を通知するようにする. fidget.nvimの代替
-      vim.api.nvim_create_autocmd("LspProgress", {
-        ---@param ev {data: {client_id: integer, params: lsp.ProgressParams}}
-        callback = function(ev)
-          local spinner = { "⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏" }
-          vim.notify(vim.lsp.status(), "info", {
-            id = "lsp_progress",
-            title = "LSP Progress",
-            opts = function(notif)
-              notif.icon = ev.data.params.value.kind == "end" and " "
-            end,
-          })
-        end,
-      })
-    end,
-
-    -- ai
-    {
-      "zbirenbaum/copilot.lua",
-      config = function()
-        require("copilot").setup({
-          suggestion = { enabled = true },
-          panel = { enabled = false },
+    keys = {
+      -- Top Pickers & Explorer
+      { "<leader><space>", function() Snacks.picker.smart() end,                 desc = "Smart Find Files" },
+      { "<leader>,",       function() Snacks.picker.buffers() end,               desc = "Buffers" },
+      { "<leader>/",       function() Snacks.picker.grep({ hidden = true }) end, desc = "Grep" },
+      { "<leader>:",       function() Snacks.picker.command_history() end,       desc = "Command History" },
+      { "<leader>n",       function() Snacks.picker.notifications() end,         desc = "Notification History" },
+      -- fuzzy finder
+      { "<leader>fb",      function() Snacks.picker.buffers() end,               desc = "Buffers" },
+      { "<leader>ff",      function() Snacks.picker.files() end,                 desc = "Find Files" },
+      { "<C-p>",           function() Snacks.picker.files() end,                 desc = "Find Files" },
+      { "<leader>fg",      function() Snacks.picker.git_files() end,             desc = "Find Git Files" },
+      { "<leader>fr",      function() Snacks.picker.recent() end,                desc = "Recent" },
+      { "<leader>fn",      function() Snacks.notifier.show_history() end,        desc = "Notification History" },
+      { "<leader>fd",      function() Snacks.picker.diagnostics() end,           desc = "Diagnostics" },
+      { "<leader>fk",      function() Snacks.picker.keymaps() end,               desc = "Keymaps" },
+      { '<leader>f/',      function() Snacks.picker.search_history() end,        desc = "Search History" },
+      { "<leader>fc",      function() Snacks.picker.command_history() end,       desc = "Command History" },
+      { "<leader>fl",      function() Snacks.picker.loclist() end,               desc = "Location List" },
+      { "<leader>fq",      function() Snacks.picker.qflist() end,                desc = "Quickfix List" },
+      { "<leader>f?",      function() Snacks.picker.commands() end,              desc = "Commands" },
+      -- LSP
+      { "gd",              function() Snacks.picker.lsp_definitions() end,       desc = "Goto Definition" },
+      { "gD",              function() Snacks.picker.lsp_declarations() end,      desc = "Goto Declaration" },
+      { "gt",              function() Snacks.picker.lsp_type_definitions() end,  desc = "Goto Type Definition" },
+      { "gr",              function() Snacks.picker.lsp_references() end,        nowait = true,                     desc = "References" },
+      { "gi",              function() Snacks.picker.lsp_implementations() end,   desc = "Goto Implementation" },
+      { "<leader>ss",      function() Snacks.picker.lsp_symbols() end,           desc = "LSP Symbols" },
+      { "<leader>sS",      function() Snacks.picker.lsp_workspace_symbols() end, desc = "LSP Workspace Symbols" },
+      -- git
+      { "<leader>gb",      function() Snacks.picker.git_branches() end,          desc = "Git Branches" },
+      { "<leader>gB",      function() Snacks.gitbrowse() end,                    desc = "Git Browse",               mode = { "n", "v" } },
+      { "<leader>gl",      function() Snacks.picker.git_log() end,               desc = "Git Log" },
+      { "<leader>gL",      function() Snacks.picker.git_log_line() end,          desc = "Git Log Line" },
+      { "<leader>gs",      function() Snacks.picker.git_status() end,            desc = "Git Status" },
+      { "<leader>gS",      function() Snacks.picker.git_stash() end,             desc = "Git Stash" },
+      { "<leader>gd",      function() Snacks.picker.git_diff() end,              desc = "Git Diff (Hunks)" },
+      { "<leader>gf",      function() Snacks.picker.git_log_file() end,          desc = "Git Log File" },
+      -- Grep/Search
+      { "<leader>sb",      function() Snacks.picker.lines() end,                 desc = "Buffer Lines" },
+      { "<leader>sB",      function() Snacks.picker.grep_buffers() end,          desc = "Grep Open Buffers" },
+      { "<leader>sg",      function() Snacks.picker.grep({ hidden = true }) end, desc = "Grep" },
+      { "<leader>sw",      function() Snacks.picker.grep_word() end,             desc = "Visual selection or word", mode = { "n", "x" } },
+      { "<leader>st",      function() Snacks.picker.todo_comments() end,         desc = "Todo comments" },
+      { "<leader>sm",      function() Snacks.picker.marks() end,                 desc = "Marks" },
+      -- Other
+      { "<leader>gg",      function() Snacks.lazygit() end,                      desc = "Lazygit" },
+      { "<leader>un",      function() Snacks.notifier.hide() end,                desc = "Dismiss All Notifications" },
+      { "<c-/>",           function() Snacks.terminal() end,                     desc = "Toggle Terminal" },
+      { "<c-_>",           function() Snacks.terminal() end,                     desc = "which_key_ignore" },
+      { "]]",              function() Snacks.words.jump(vim.v.count1) end,       desc = "Next Reference",           mode = { "n", "t" } },
+      { "[[",              function() Snacks.words.jump(-vim.v.count1) end,      desc = "Prev Reference",           mode = { "n", "t" } },
+    },
+  },
+  config = function()
+    -- lsp_progress を通知するようにする. fidget.nvimの代替
+    vim.api.nvim_create_autocmd("LspProgress", {
+      ---@param ev {data: {client_id: integer, params: lsp.ProgressParams}}
+      callback = function(ev)
+        local spinner = { "⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏" }
+        vim.notify(vim.lsp.status(), "info", {
+          id = "lsp_progress",
+          title = "LSP Progress",
+          opts = function(notif)
+            notif.icon = ev.data.params.value.kind == "end" and " "
+          end,
         })
       end,
+    })
+  end,
+
+  -- ai
+  {
+    "zbirenbaum/copilot.lua",
+    config = function()
+      require("copilot").setup({
+        suggestion = { enabled = true },
+        panel = { enabled = false },
+      })
+    end,
+  },
+  {
+    "CopilotC-Nvim/CopilotChat.nvim",
+    dependencies = {
+      { "zbirenbaum/copilot.lua" },
+      { "nvim-lua/plenary.nvim" },
     },
-    {
-      "CopilotC-Nvim/CopilotChat.nvim",
-      dependencies = {
-        { "zbirenbaum/copilot.lua" },
-        { "nvim-lua/plenary.nvim" },
+    build = "make tiktoken",
+    opts = {
+      proxy = nil,
+      allow_insecure = false,
+      model = 'gemini-2.5-pro',
+      temperature = 0.1,
+      window = {
+        layout = 'vertical',
+        width = 0.3,
+        height = 0.3,
+        relative = 'editor',
+        border = 'single',
+        row = 0,
+        col = 0,
+        title = 'Copilot Chat',
+        footer = nil,
+        zindex = 1,
       },
-      build = "make tiktoken",
-      opts = {
-        proxy = nil,
-        allow_insecure = false,
-        model = 'gemini-2.5-pro',
-        temperature = 0.1,
-        window = {
-          layout = 'vertical',
-          width = 0.3,
-          height = 0.3,
-          relative = 'editor',
-          border = 'single',
-          row = 0,
-          col = 0,
-          title = 'Copilot Chat',
-          footer = nil,
-          zindex = 1,
-        },
-        picker_type = 'snacks',
-        system_prompt = [[
+      picker_type = 'snacks',
+      system_prompt = [[
 You are to act as an experienced Staff Engineer with deep knowledge in modern software design, architecture, debugging, and performance optimization. Your role is to provide clear and practical advice to user questions.
 When responding:
 - Base your answers on official documentation and industry best practices whenever possible
