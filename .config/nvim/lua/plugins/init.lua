@@ -590,6 +590,7 @@ Aim to be thorough yet practical, focusing on solutions that work in real-world 
         library = {
           "lazy.nvim",
           "snacks.nvim",
+          "codecompanion.nvim",
           { path = "${3rd}/luv/library", words = { "vim%.uv" } },
         },
       },

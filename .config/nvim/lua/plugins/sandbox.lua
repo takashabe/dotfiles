@@ -52,14 +52,86 @@ return {
           },
         },
       },
-      {
-        -- Make sure to set this up properly if you have lazy=true
-        'MeanderingProgrammer/render-markdown.nvim',
-        opts = {
-          file_types = { "markdown", "Avante" },
+    },
+  },
+  {
+    "olimorris/codecompanion.nvim",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-treesitter/nvim-treesitter",
+      "zbirenbaum/copilot.lua",
+      "j-hui/fidget.nvim",
+    },
+    opts = {
+      debug = true,
+      auto_follow_cursor = false,
+      display = {
+        border = "rounded",
+        width = 80,
+        height = 12,
+        chat = {
+          show_header_separator = true,
+          separator = "─",
+          show_references = true,
+          show_settings = true,
+          show_token_count = true,
+          start_in_insert_mode = true,
+        }
+      },
+      keymaps = {
+        close = "q",
+        accept = "<CR>",
+        toggle_diff_view = "<leader>td",
+      },
+      strategies = {
+        chat = {
+          adapter = "copilot",
+          roles = {
+            llm = function(adapter)
+              return "  CodeCompanion (" .. adapter.formatted_name .. ")"
+            end,
+            user = "  Me",
+          },
         },
-        ft = { "markdown", "Avante" },
+        inline = {
+          adapter = "copilot",
+        },
+      },
+      languages = "Japanese",
+      adapters = {
+        copilot = function()
+          return require("codecompanion.adapters").extend("copilot", {
+            schema = {
+              model = {
+                -- default = "claude-3.7-sonnet",
+                default = "gemini-2.5-pro",
+              },
+              max_tokens = {
+                default = 50000, -- デフォは15000
+              },
+            },
+          })
+        end,
       },
     },
+    keys = {
+      { "<leader>co", "<cmd>CodeCompanion<CR>",       desc = "CodeCompanion" },
+      { "<leader>ca", "<cmd>CodeCompanionAction<CR>", desc = "Explain Code" },
+      { "<leader>ct", "<cmd>CodeCompanionChat<CR>",   desc = "Toggle CodeCompanion" },
+    },
+    -- init = function()
+    --   require("plugins.custom.spinner"):init()
+    -- end
+  },
+  {
+    "MeanderingProgrammer/render-markdown.nvim",
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter",
+      "nvim-tree/nvim-web-devicons",
+    },
+    ft = { "markdown", "markdown.mdx", "Avante", "codecompanion" },
+    opts = {
+      file_types = { "markdown", "Avante", "codecompanion" },
+    }
   }
 }
