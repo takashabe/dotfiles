@@ -1,6 +1,8 @@
 return {
-  { "nvim-tree/nvim-web-devicons", opts = {} },
-
+  {
+    "nvim-tree/nvim-web-devicons",
+    opts = {}
+  },
   {
     "folke/snacks.nvim",
     priority = 1000,
@@ -168,438 +170,438 @@ When responding:
 - Draw from your expertise in system design, architectural patterns, and technical problem-solving
 Aim to be thorough yet practical, focusing on solutions that work in real-world scenarios rather than just theoretical approaches.
         ]],
-      },
-      keys = {
-        {
-          -- CopilotChat Quick
-          "<leader>ccq",
-          function()
-            local input = vim.fn.input("Quick Chat: ")
-            if input ~= "" then
-              require("CopilotChat").ask(input, { selection = require("CopilotChat.select").buffer })
-            end
-          end,
-          desc = "CopilotChat - Quick chat",
-        },
-        {
-          -- CopilotChat Prompt actions
-          "<leader>ccp",
-          function()
-            require("CopilotChat").select_prompt()
-          end,
-          desc = "CopilotChat - Prompt actions",
-        },
-      },
     },
-
-    -- lsp
-    {
-      "neovim/nvim-lspconfig",
-      dependencies = {
-        "williamboman/mason.nvim",
-        "williamboman/mason-lspconfig.nvim",
-        "saghen/blink.cmp",
-      },
-      config = function()
-        require('plugins.config.lsp')
-      end,
-    },
-    {
-      'nvimtools/none-ls.nvim', -- none-ls is an active community fork of null-ls
-      opts = function(_, opts)
-        local nls = require('null-ls')
-        opts.sources = vim.list_extend(opts.sources or {}, {
-          nls.builtins.code_actions.gomodifytags,
-          nls.builtins.code_actions.impl,
-        })
-        return opts
-      end,
-    },
-
-
-    -- treesitter
-    {
-      "nvim-treesitter/nvim-treesitter",
-      build = ":TSUpdate",
-      config = function()
-        require('plugins.config.treesitter')
-      end,
-    },
-    { 'nvim-treesitter/nvim-treesitter-context', },
-
-    -- Editor
-    {
-      "nvim-neo-tree/neo-tree.nvim",
-      dependencies = {
-        "nvim-lua/plenary.nvim",
-        "nvim-tree/nvim-web-devicons",
-        "MunifTanjim/nui.nvim",
-        "3rd/image.nvim",
-      },
-      keys = {
-        { "<leader>e", "<cmd>Neotree filesystem reveal left<cr>", desc = "Neo-tree File Explorer" },
-      },
-      opts = {
-        -- TODO: git_status周りの設定
-        window = {
-          mappings = {
-            ["P"] = { "toggle_preview", config = { use_float = true, use_image_nvim = true } },
-          }
-        },
-        filesystem = {
-          filtered_items = {
-            visible = true,
-            hide_hidden = false,
-            hide_dotfiles = false,
-            hide_by_name = { "node_modules", "vendor", ".git", ".cache", ".idea", ".vscode", ".DS_Store" },
-          },
-        },
-      },
-    },
-    {
-      "kylechui/nvim-surround",
-      event = "VeryLazy",
-      config = function()
-        require("nvim-surround").setup({
-        })
-      end
-    },
-    {
-      "folke/which-key.nvim",
-      event = "VeryLazy",
-      opts_extend = { "spec" },
-      opts = {
-        defaults = {},
-        spec = {
-          {
-            mode = { "n", "v" },
-            { "<leader><tab>", group = "tabs" },
-            { "<leader>c", group = "code" },
-            { "<leader>f", group = "file/find" },
-            { "<leader>g", group = "git" },
-            { "<leader>gh", group = "hunks" },
-            { "<leader>q", group = "quit/session" },
-            { "<leader>s", group = "search" },
-            { "<leader>u", group = "ui", icon = { icon = "󰙵 ", color = "cyan" } },
-            { "<leader>x", group = "diagnostics/quickfix", icon = { icon = "󱖫 ", color = "green" } },
-            { "[", group = "prev" },
-            { "]", group = "next" },
-            { "g", group = "goto" },
-            { "gs", group = "surround" },
-            { "z", group = "fold" },
-            {
-              "<leader>b",
-              group = "buffer",
-              expand = function()
-                return require("which-key.extras").expand.buf()
-              end,
-            },
-            {
-              "<leader>w",
-              group = "windows",
-              proxy = "<c-w>",
-              expand = function()
-                return require("which-key.extras").expand.win()
-              end,
-            },
-            -- better descriptions
-            { "gx", desc = "Open with system app" },
-          },
-        },
-      },
-      keys = {
-        {
-          "<leader>?",
-          function()
-            require("which-key").show({ global = false })
-          end,
-          desc = "Buffer Keymaps (which-key)",
-        },
-        {
-          "<c-w><space>",
-          function()
-            require("which-key").show({ keys = "<c-w>", loop = true })
-          end,
-          desc = "Window Hydra Mode (which-key)",
-        },
-      },
-    },
-    {
-      "folke/trouble.nvim",
-      opts = {},
-      cmd = "Trouble",
-      keys = {
-        {
-          "<leader>xx",
-          "<cmd>Trouble diagnostics toggle<cr>",
-          desc = "Diagnostics (Trouble)",
-        },
-        {
-          "<leader>xX",
-          "<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
-          desc = "Buffer Diagnostics (Trouble)",
-        },
-        {
-          "<leader>cs",
-          "<cmd>Trouble symbols toggle focus=false<cr>",
-          desc = "Symbols (Trouble)",
-        },
-        {
-          "<leader>cl",
-          "<cmd>Trouble lsp toggle focus=false win.position=right<cr>",
-          desc = "LSP Definitions / references / ... (Trouble)",
-        },
-        {
-          "<leader>xL",
-          "<cmd>Trouble loclist toggle<cr>",
-          desc = "Location List (Trouble)",
-        },
-        {
-          "<leader>xQ",
-          "<cmd>Trouble qflist toggle<cr>",
-          desc = "Quickfix List (Trouble)",
-        },
-      },
-    },
-    {
-      "folke/flash.nvim",
-      event = "VeryLazy",
-      opts = {},
-      -- stylua: ignore
-      keys = {
-        { "s",     mode = { "n" },      function() require("flash").jump() end,              desc = "Flash" },
-        { "S",     mode = { "n" },      function() require("flash").treesitter() end,        desc = "Flash Treesitter" },
-        { "r",     mode = "o",          function() require("flash").remote() end,            desc = "Remote Flash" },
-        { "R",     mode = { "o", "x" }, function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
-        { "<c-s>", mode = { "c" },      function() require("flash").toggle() end,            desc = "Toggle Flash Search" },
-      },
-    },
-    {
-      'echasnovski/mini.align',
-      opts = {
-        mappings = {
-          start = '<leader>ga',
-          start_with_preview = '<leader>gA',
-        },
-      },
-    },
-
-    -- UI
-    {
-      "folke/noice.nvim",
-      event = "VeryLazy",
-      dependencies = {
-        "MunifTanjim/nui.nvim",
-        "rcarriga/nvim-notify",
-      },
-      opts = {
-        cmdline = {
-          view = "cmdline_popup",
-          opts = {
-            position = {
-              row = "60%",
-            },
-          },
-        },
-        messages = {
-          view_search = "virtualtext",
-        },
-        lsp = {
-          override = {
-            ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
-            ["vim.lsp.util.stylize_markdown"] = true,
-            ["cmp.entry.get_documentation"] = true,
-          },
-        },
-        routes = {
-          {
-            filter = {
-              event = "msg_show",
-              kind = "",
-              find = "written",
-            },
-            opts = { skip = true },
-          },
-        },
-        presets = {
-          bottom_search = true,
-          command_palette = true,
-          long_message_to_split = true,
-          inc_rename = true,
-          lsp_doc_border = true,
-        },
-        notify = {
-          -- 通知はsnacks.nvimに任せる. pickerでとりやすいため
-          enabled = false,
-        },
-      },
-    },
-    {
-      "folke/todo-comments.nvim",
-      dependencies = { "nvim-lua/plenary.nvim" },
-      opts = {},
-    },
-    {
-      'nvim-lualine/lualine.nvim',
-      dependencies = { 'nvim-tree/nvim-web-devicons' },
-      opts = {
-        sections = {
-          lualine_a = { 'mode' },
-          lualine_b = { 'branch', 'diff', 'diagnostics' },
-          lualine_c = {
-            { 'filename', path = 1 },
-          },
-          lualine_x = { 'selectioncount', 'encoding', 'fileformat', 'filetype' },
-          lualine_y = { 'progress' },
-          lualine_z = { 'location' }
-        },
-        inactive_sections = {
-          lualine_a = {},
-          lualine_b = {},
-          lualine_c = { 'filename' },
-          lualine_x = { 'location' },
-          lualine_y = {},
-          lualine_z = {}
-        },
-        disabled_filetypes = {
-          statusline = {
-            "Avante",
-            "AvanteSelectedFiles",
-            "AvanteInput",
-          },
-          winbar = {
-            "Avante",
-            "AvanteSelectedFiles",
-            "AvanteInput",
-          },
-        },
-      },
-    },
-    { 'RRethy/vim-illuminate' },
-
-    -- colorscheme
-    { "catppuccin/nvim",                         name = "catppuccin", priority = 1000 },
-    { "folke/tokyonight.nvim",                   lazy = false,        priority = 1000 },
-
-    -- git
-    {
-      "lewis6991/gitsigns.nvim",
-      event = "VeryLazy",
-      opts = {
-        signs = {
-          add = { text = "▎" },
-          change = { text = "▎" },
-          delete = { text = "" },
-          topdelete = { text = "" },
-          changedelete = { text = "▎" },
-          untracked = { text = "▎" },
-        },
-        signs_staged = {
-          add = { text = "▎" },
-          change = { text = "▎" },
-          delete = { text = "" },
-          topdelete = { text = "" },
-          changedelete = { text = "▎" },
-        },
-        current_line_blame = true,
-        current_line_blame_opts = {
-          virt_text = true,
-          virt_text_pos = "eol",
-          delay = 500,
-        },
-        on_attach = function(buffer)
-          local gs = package.loaded.gitsigns
-
-          local function map(mode, l, r, desc)
-            vim.keymap.set(mode, l, r, { buffer = buffer, desc = desc })
+    keys = {
+      {
+        -- CopilotChat Quick
+        "<leader>ccq",
+        function()
+          local input = vim.fn.input("Quick Chat: ")
+          if input ~= "" then
+            require("CopilotChat").ask(input, { selection = require("CopilotChat.select").buffer })
           end
-
-          -- stylua: ignore start
-          map("n", "]h", function()
-            if vim.wo.diff then
-              vim.cmd.normal({ "]c", bang = true })
-            else
-              gs.nav_hunk("next")
-            end
-          end, "Next Hunk")
-          map("n", "[h", function()
-            if vim.wo.diff then
-              vim.cmd.normal({ "[c", bang = true })
-            else
-              gs.nav_hunk("prev")
-            end
-          end, "Prev Hunk")
-          map("n", "]H", function() gs.nav_hunk("last") end, "Last Hunk")
-          map("n", "[H", function() gs.nav_hunk("first") end, "First Hunk")
-          map({ "n", "v" }, "<leader>ghs", ":Gitsigns stage_hunk<CR>", "Stage Hunk")
-          map({ "n", "v" }, "<leader>ghr", ":Gitsigns reset_hunk<CR>", "Reset Hunk")
-          map("n", "<leader>ghS", gs.stage_buffer, "Stage Buffer")
-          map("n", "<leader>ghu", gs.undo_stage_hunk, "Undo Stage Hunk")
-          map("n", "<leader>ghR", gs.reset_buffer, "Reset Buffer")
-          map("n", "<leader>ghp", gs.preview_hunk_inline, "Preview Hunk Inline")
-          map("n", "<leader>ghb", function() gs.blame_line({ full = true }) end, "Blame Line")
-          map("n", "<leader>ghB", function() gs.blame() end, "Blame Buffer")
-          map("n", "<leader>ghd", gs.diffthis, "Diff This")
-          map("n", "<leader>ghD", function() gs.diffthis("~") end, "Diff This ~")
-          map({ "o", "x" }, "ih", ":<C-U>Gitsigns select_hunk<CR>", "GitSigns Select Hunk")
         end,
+        desc = "CopilotChat - Quick chat",
+      },
+      {
+        -- CopilotChat Prompt actions
+        "<leader>ccp",
+        function()
+          require("CopilotChat").select_prompt()
+        end,
+        desc = "CopilotChat - Prompt actions",
       },
     },
-    {
-      "pwntester/octo.nvim",
-      opts = {
-        enable_builtin = true,
-        default_to_projects_v2 = true,
-        picker = "snacks",
-      },
+  },
+
+  -- lsp
+  {
+    "neovim/nvim-lspconfig",
+    dependencies = {
+      "williamboman/mason.nvim",
+      "williamboman/mason-lspconfig.nvim",
+      "saghen/blink.cmp",
     },
+    config = function()
+      require('plugins.config.lsp')
+    end,
+  },
+  {
+    'nvimtools/none-ls.nvim', -- none-ls is an active community fork of null-ls
+    opts = function(_, opts)
+      local nls = require('null-ls')
+      opts.sources = vim.list_extend(opts.sources or {}, {
+        nls.builtins.code_actions.gomodifytags,
+        nls.builtins.code_actions.impl,
+      })
+      return opts
+    end,
+  },
 
-    -- lang
-    { 'nanotee/sqls.nvim', },
 
+  -- treesitter
+  {
+    "nvim-treesitter/nvim-treesitter",
+    build = ":TSUpdate",
+    config = function()
+      require('plugins.config.treesitter')
+    end,
+  },
+  { 'nvim-treesitter/nvim-treesitter-context', },
 
-    -- misc
-    {
-      "uga-rosa/translate.nvim",
-      dependencies = { "nvim-lua/plenary.nvim" },
-      keys = {
-        { "<leader>tr", "<Cmd>Translate JA<CR>", mode = { "n" }, desc = "Translate" },
+  -- Editor
+  {
+    "nvim-neo-tree/neo-tree.nvim",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-tree/nvim-web-devicons",
+      "MunifTanjim/nui.nvim",
+      "3rd/image.nvim",
+    },
+    keys = {
+      { "<leader>e", "<cmd>Neotree filesystem reveal left<cr>", desc = "Neo-tree File Explorer" },
+    },
+    opts = {
+      -- TODO: git_status周りの設定
+      window = {
+        mappings = {
+          ["P"] = { "toggle_preview", config = { use_float = true, use_image_nvim = true } },
+        }
       },
-      opts = {
-        default = {
-          command = "google",
-          output = "split",
+      filesystem = {
+        filtered_items = {
+          visible = true,
+          hide_hidden = false,
+          hide_dotfiles = false,
+          hide_by_name = { "node_modules", "vendor", ".git", ".cache", ".idea", ".vscode", ".DS_Store" },
         },
-        preset = {
-          output = {
-            split = {
-              border = "rounded",
-              height = 15,
-            },
+      },
+    },
+  },
+  {
+    "kylechui/nvim-surround",
+    event = "VeryLazy",
+    config = function()
+      require("nvim-surround").setup({
+      })
+    end
+  },
+  {
+    "folke/which-key.nvim",
+    event = "VeryLazy",
+    opts_extend = { "spec" },
+    opts = {
+      defaults = {},
+      spec = {
+        {
+          mode = { "n", "v" },
+          { "<leader><tab>", group = "tabs" },
+          { "<leader>c", group = "code" },
+          { "<leader>f", group = "file/find" },
+          { "<leader>g", group = "git" },
+          { "<leader>gh", group = "hunks" },
+          { "<leader>q", group = "quit/session" },
+          { "<leader>s", group = "search" },
+          { "<leader>u", group = "ui", icon = { icon = "󰙵 ", color = "cyan" } },
+          { "<leader>x", group = "diagnostics/quickfix", icon = { icon = "󱖫 ", color = "green" } },
+          { "[", group = "prev" },
+          { "]", group = "next" },
+          { "g", group = "goto" },
+          { "gs", group = "surround" },
+          { "z", group = "fold" },
+          {
+            "<leader>b",
+            group = "buffer",
+            expand = function()
+              return require("which-key.extras").expand.buf()
+            end,
+          },
+          {
+            "<leader>w",
+            group = "windows",
+            proxy = "<c-w>",
+            expand = function()
+              return require("which-key.extras").expand.win()
+            end,
+          },
+          -- better descriptions
+          { "gx", desc = "Open with system app" },
+        },
+      },
+    },
+    keys = {
+      {
+        "<leader>?",
+        function()
+          require("which-key").show({ global = false })
+        end,
+        desc = "Buffer Keymaps (which-key)",
+      },
+      {
+        "<c-w><space>",
+        function()
+          require("which-key").show({ keys = "<c-w>", loop = true })
+        end,
+        desc = "Window Hydra Mode (which-key)",
+      },
+    },
+  },
+  {
+    "folke/trouble.nvim",
+    opts = {},
+    cmd = "Trouble",
+    keys = {
+      {
+        "<leader>xx",
+        "<cmd>Trouble diagnostics toggle<cr>",
+        desc = "Diagnostics (Trouble)",
+      },
+      {
+        "<leader>xX",
+        "<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
+        desc = "Buffer Diagnostics (Trouble)",
+      },
+      {
+        "<leader>cs",
+        "<cmd>Trouble symbols toggle focus=false<cr>",
+        desc = "Symbols (Trouble)",
+      },
+      {
+        "<leader>cl",
+        "<cmd>Trouble lsp toggle focus=false win.position=right<cr>",
+        desc = "LSP Definitions / references / ... (Trouble)",
+      },
+      {
+        "<leader>xL",
+        "<cmd>Trouble loclist toggle<cr>",
+        desc = "Location List (Trouble)",
+      },
+      {
+        "<leader>xQ",
+        "<cmd>Trouble qflist toggle<cr>",
+        desc = "Quickfix List (Trouble)",
+      },
+    },
+  },
+  {
+    "folke/flash.nvim",
+    event = "VeryLazy",
+    opts = {},
+    -- stylua: ignore
+    keys = {
+      { "s",     mode = { "n" },      function() require("flash").jump() end,              desc = "Flash" },
+      { "S",     mode = { "n" },      function() require("flash").treesitter() end,        desc = "Flash Treesitter" },
+      { "r",     mode = "o",          function() require("flash").remote() end,            desc = "Remote Flash" },
+      { "R",     mode = { "o", "x" }, function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
+      { "<c-s>", mode = { "c" },      function() require("flash").toggle() end,            desc = "Toggle Flash Search" },
+    },
+  },
+  {
+    'echasnovski/mini.align',
+    opts = {
+      mappings = {
+        start = '<leader>ga',
+        start_with_preview = '<leader>gA',
+      },
+    },
+  },
+
+  -- UI
+  {
+    "folke/noice.nvim",
+    event = "VeryLazy",
+    dependencies = {
+      "MunifTanjim/nui.nvim",
+      "rcarriga/nvim-notify",
+    },
+    opts = {
+      cmdline = {
+        view = "cmdline_popup",
+        opts = {
+          position = {
+            row = "60%",
+          },
+        },
+      },
+      messages = {
+        view_search = "virtualtext",
+      },
+      lsp = {
+        override = {
+          ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
+          ["vim.lsp.util.stylize_markdown"] = true,
+          ["cmp.entry.get_documentation"] = true,
+        },
+      },
+      routes = {
+        {
+          filter = {
+            event = "msg_show",
+            kind = "",
+            find = "written",
+          },
+          opts = { skip = true },
+        },
+      },
+      presets = {
+        bottom_search = true,
+        command_palette = true,
+        long_message_to_split = true,
+        inc_rename = true,
+        lsp_doc_border = true,
+      },
+      notify = {
+        -- 通知はsnacks.nvimに任せる. pickerでとりやすいため
+        enabled = false,
+      },
+    },
+  },
+  {
+    "folke/todo-comments.nvim",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    opts = {},
+  },
+  {
+    'nvim-lualine/lualine.nvim',
+    dependencies = { 'nvim-tree/nvim-web-devicons' },
+    opts = {
+      sections = {
+        lualine_a = { 'mode' },
+        lualine_b = { 'branch', 'diff', 'diagnostics' },
+        lualine_c = {
+          { 'filename', path = 1 },
+        },
+        lualine_x = { 'selectioncount', 'encoding', 'fileformat', 'filetype' },
+        lualine_y = { 'progress' },
+        lualine_z = { 'location' }
+      },
+      inactive_sections = {
+        lualine_a = {},
+        lualine_b = {},
+        lualine_c = { 'filename' },
+        lualine_x = { 'location' },
+        lualine_y = {},
+        lualine_z = {}
+      },
+      disabled_filetypes = {
+        statusline = {
+          "Avante",
+          "AvanteSelectedFiles",
+          "AvanteInput",
+        },
+        winbar = {
+          "Avante",
+          "AvanteSelectedFiles",
+          "AvanteInput",
+        },
+      },
+    },
+  },
+  { 'RRethy/vim-illuminate' },
+
+  -- colorscheme
+  { "catppuccin/nvim",                         name = "catppuccin", priority = 1000 },
+  { "folke/tokyonight.nvim",                   lazy = false,        priority = 1000 },
+
+  -- git
+  {
+    "lewis6991/gitsigns.nvim",
+    event = "VeryLazy",
+    opts = {
+      signs = {
+        add = { text = "▎" },
+        change = { text = "▎" },
+        delete = { text = "" },
+        topdelete = { text = "" },
+        changedelete = { text = "▎" },
+        untracked = { text = "▎" },
+      },
+      signs_staged = {
+        add = { text = "▎" },
+        change = { text = "▎" },
+        delete = { text = "" },
+        topdelete = { text = "" },
+        changedelete = { text = "▎" },
+      },
+      current_line_blame = true,
+      current_line_blame_opts = {
+        virt_text = true,
+        virt_text_pos = "eol",
+        delay = 500,
+      },
+      on_attach = function(buffer)
+        local gs = package.loaded.gitsigns
+
+        local function map(mode, l, r, desc)
+          vim.keymap.set(mode, l, r, { buffer = buffer, desc = desc })
+        end
+
+        -- stylua: ignore start
+        map("n", "]h", function()
+          if vim.wo.diff then
+            vim.cmd.normal({ "]c", bang = true })
+          else
+            gs.nav_hunk("next")
+          end
+        end, "Next Hunk")
+        map("n", "[h", function()
+          if vim.wo.diff then
+            vim.cmd.normal({ "[c", bang = true })
+          else
+            gs.nav_hunk("prev")
+          end
+        end, "Prev Hunk")
+        map("n", "]H", function() gs.nav_hunk("last") end, "Last Hunk")
+        map("n", "[H", function() gs.nav_hunk("first") end, "First Hunk")
+        map({ "n", "v" }, "<leader>ghs", ":Gitsigns stage_hunk<CR>", "Stage Hunk")
+        map({ "n", "v" }, "<leader>ghr", ":Gitsigns reset_hunk<CR>", "Reset Hunk")
+        map("n", "<leader>ghS", gs.stage_buffer, "Stage Buffer")
+        map("n", "<leader>ghu", gs.undo_stage_hunk, "Undo Stage Hunk")
+        map("n", "<leader>ghR", gs.reset_buffer, "Reset Buffer")
+        map("n", "<leader>ghp", gs.preview_hunk_inline, "Preview Hunk Inline")
+        map("n", "<leader>ghb", function() gs.blame_line({ full = true }) end, "Blame Line")
+        map("n", "<leader>ghB", function() gs.blame() end, "Blame Buffer")
+        map("n", "<leader>ghd", gs.diffthis, "Diff This")
+        map("n", "<leader>ghD", function() gs.diffthis("~") end, "Diff This ~")
+        map({ "o", "x" }, "ih", ":<C-U>Gitsigns select_hunk<CR>", "GitSigns Select Hunk")
+      end,
+    },
+  },
+  {
+    "pwntester/octo.nvim",
+    opts = {
+      enable_builtin = true,
+      default_to_projects_v2 = true,
+      picker = "snacks",
+    },
+  },
+
+  -- lang
+  { 'nanotee/sqls.nvim', },
+
+
+  -- misc
+  {
+    "uga-rosa/translate.nvim",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    keys = {
+      { "<leader>tr", "<Cmd>Translate JA<CR>", mode = { "n" }, desc = "Translate" },
+    },
+    opts = {
+      default = {
+        command = "google",
+        output = "split",
+      },
+      preset = {
+        output = {
+          split = {
+            border = "rounded",
+            height = 15,
           },
         },
       },
     },
-    {
-      "folke/lazydev.nvim",
-      dependencies = {
-        { "Bilal2453/luvit-meta", lazy = true },
-        { "saghen/blink.cmp" },
-      },
-      ft = "lua", -- only load on lua files
-      opts = {
-        library = {
-          "lazy.nvim",
-          "snacks.nvim",
-          "codecompanion.nvim",
-          { path = "${3rd}/luv/library", words = { "vim%.uv" } },
-        },
+  },
+  {
+    "folke/lazydev.nvim",
+    dependencies = {
+      { "Bilal2453/luvit-meta", lazy = true },
+      { "saghen/blink.cmp" },
+    },
+    ft = "lua", -- only load on lua files
+    opts = {
+      library = {
+        "lazy.nvim",
+        "snacks.nvim",
+        "codecompanion.nvim",
+        { path = "${3rd}/luv/library", words = { "vim%.uv" } },
       },
     },
-    {
-      "keaising/im-select.nvim",
-      config = function()
-        require("im_select").setup({})
-      end,
-    },
-  }
+  },
+  {
+    "keaising/im-select.nvim",
+    config = function()
+      require("im_select").setup({})
+    end,
+  },
+}
