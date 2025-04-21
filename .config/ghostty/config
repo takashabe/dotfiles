@@ -48,4 +48,4 @@ copy-on-select = true
 keybind = super+shift+equal=increase_font_size:1
 keybind = super+minus=decrease_font_size:1
 
-auto-update-channel = tip
+auto-update-channel = stable
