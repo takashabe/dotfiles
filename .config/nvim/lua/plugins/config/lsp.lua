@@ -14,10 +14,6 @@ mason_lspconfig.setup_handlers({
   end,
 })
 
--- vim.keymap.set('n', 'gr', '<cmd>Glance references<CR>')
--- vim.keymap.set('n', 'gd', '<cmd>Glance definitions<CR>')
--- vim.keymap.set('n', 'gi', '<cmd>Glance implementations<CR>')
--- vim.keymap.set('n', 'gt', '<cmd>Glance type_definitions<CR>')
 vim.keymap.set('n', 'gn', '<cmd>lua vim.lsp.buf.rename()<CR>')
 vim.keymap.set('n', 'ga', '<cmd>lua vim.lsp.buf.code_action()<CR>')
 vim.keymap.set('n', 'ge', '<cmd>lua vim.diagnostic.open_float()<CR>')
