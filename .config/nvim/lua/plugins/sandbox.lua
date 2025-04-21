@@ -97,21 +97,23 @@ return {
           adapter = "copilot",
         },
       },
-      languages = "Japanese",
       adapters = {
         copilot = function()
           return require("codecompanion.adapters").extend("copilot", {
             schema = {
               model = {
-                -- default = "claude-3.7-sonnet",
-                default = "gemini-2.5-pro",
+                default = "claude-3.7-sonnet",
+                -- default = "gemini-2.5-pro",
               },
               max_tokens = {
-                default = 50000, -- デフォは15000
+                default = 100000, -- デフォは15000
               },
             },
           })
         end,
+      },
+      opts = {
+        language = "Japanese",
       },
     },
     keys = {
