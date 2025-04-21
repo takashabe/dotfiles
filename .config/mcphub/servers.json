@@ -1,0 +1,16 @@
+{
+  "mcpServers": {
+    "git": {
+      "disabled": false,
+      "command": "uv",
+      "args": [
+        "tool",
+        "run",
+        "mcp-server-git"
+      ]
+    }
+  },
+  "nativeMCPServers": [
+    
+  ]
+}

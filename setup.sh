@@ -35,6 +35,7 @@ ln -s $HOME/dotfiles/.config/lazygit $HOME/.config/
 ln -s $HOME/dotfiles/.config/ghostty $HOME/.config/
 ln -s $HOME/dotfiles/.config/tmuxp $HOME/.config/
 ln -s $HOME/dotfiles/.config/bat $HOME/.config/
+ln -s $HOME/dotfiles/.config/mcphub $HOME/.config/
 
 # vscode
 if [ $(uname) = "Linux" ]; then
