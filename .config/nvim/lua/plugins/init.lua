@@ -245,7 +245,13 @@ Aim to be thorough yet practical, focusing on solutions that work in real-world 
       -- TODO: git_status周りの設定
       window = {
         mappings = {
-          ["P"] = { "toggle_preview", config = { use_float = true, use_image_nvim = true } },
+          ["P"] = {
+            "toggle_preview",
+            config = {
+              use_float = true,
+              use_image_nvim = true,
+            },
+          },
         }
       },
       filesystem = {
@@ -603,5 +609,12 @@ Aim to be thorough yet practical, focusing on solutions that work in real-world 
     config = function()
       require("im_select").setup({})
     end,
+  },
+  {
+    "3rd/image.nvim",
+    build = false, -- so that it doesn't build the rock https://github.com/3rd/image.nvim/issues/91#issuecomment-2453430239
+    opts = {
+      processor = "magick_cli",
+    }
   },
 }
