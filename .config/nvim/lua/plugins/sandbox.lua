@@ -63,12 +63,10 @@ return {
       "j-hui/fidget.nvim",
     },
     opts = {
-      debug = true,
-      auto_follow_cursor = false,
+      debug = false,
+      auto_follow_cursor = true,
       display = {
         border = "rounded",
-        width = 80,
-        height = 12,
         chat = {
           show_header_separator = true,
           separator = "─",
@@ -76,6 +74,12 @@ return {
           show_settings = true,
           show_token_count = true,
           start_in_insert_mode = true,
+          window = {
+            layout = "vertical",
+            -- width = 80,
+            width = 0.23,
+            position = "right",
+          },
         }
       },
       keymaps = {
