@@ -217,7 +217,33 @@ Aim to be thorough yet practical, focusing on solutions that work in real-world 
       return opts
     end,
   },
-
+  {
+    "stevearc/conform.nvim",
+    event = { "BufWritePre" },
+    cmd = { "ConformInfo" },
+    keys = {
+      {
+        "<leader>gf",
+        function()
+          require("conform").format({ async = true, lsp_fallback = true })
+        end,
+        mode = "n",
+        desc = "Format buffer",
+      },
+    },
+    opts = {
+      notify_on_error = true,
+      formatters_by_ft = {
+        go = {}, -- goplsを使う
+        tf = { "terraform_fmt" },
+        lua = { "stylua" },
+      },
+      format_on_save = {
+        lsp_fallback = true,
+        timeout_ms = 500,
+      },
+    },
+  },
 
   -- treesitter
   {
