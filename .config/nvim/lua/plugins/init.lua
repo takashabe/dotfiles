@@ -509,9 +509,10 @@ Aim to be thorough yet practical, focusing on solutions that work in real-world 
     opts = {
       notify_on_error = true,
       formatters_by_ft = {
-        go = {}, -- goplsを使う
+        go = {}, -- goplsにFallbackさせる
         tf = { "terraform_fmt" },
         lua = { "stylua" },
+        sql = { "sqlfmt" },
       },
       format_on_save = {
         lsp_fallback = true,
