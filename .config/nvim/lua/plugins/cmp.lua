@@ -1,21 +1,21 @@
 -- ghost_text の色を設定
 local colors = require("catppuccin.palettes").get_palette("frappe")
-vim.api.nvim_set_hl(0, 'BlinkCmpGhostText', { fg = colors.overlay0, italic = true })
+vim.api.nvim_set_hl(0, "BlinkCmpGhostText", { fg = colors.overlay0, italic = true })
 
 return {
   {
-    'saghen/blink.cmp',
-    version = '*',                    -- リリースタグを使用して事前ビルドされたバイナリをダウンロード
+    "saghen/blink.cmp",
+    version = "*", -- リリースタグを使用して事前ビルドされたバイナリをダウンロード
     dependencies = {
-      'rafamadriz/friendly-snippets', -- スニペット用
-      'giuxtaposition/blink-cmp-copilot',
-      'Kaiser-Yang/blink-cmp-avante',
+      "rafamadriz/friendly-snippets", -- スニペット用
+      "Kaiser-Yang/blink-cmp-avante",
+      "fang2hou/blink-copilot",
     },
     opts = {
-      keymap = { preset = 'default' },
+      keymap = { preset = "default" },
       appearance = {
         use_nvim_cmp_as_default = true,
-        nerd_font_variant = 'mono',
+        nerd_font_variant = "mono",
         kind_icons = {
           Text = "󰉿",
           Method = "󰆧",
@@ -55,8 +55,8 @@ return {
         menu = {
           draw = {
             columns = {
-              { "label",     "label_description", gap = 1 },
-              { "kind_icon", "kind",              gap = 1 }
+              { "label", "label_description", gap = 1 },
+              { "kind_icon", "kind", gap = 1 },
             },
           },
         },
@@ -67,7 +67,7 @@ return {
         providers = {
           copilot = {
             name = "copilot",
-            module = "blink-cmp-copilot",
+            module = "blink-copilot",
             score_offset = 100,
             async = true,
           },
@@ -77,11 +77,11 @@ return {
             score_offset = 100,
           },
           avante = {
-            module = 'blink-cmp-avante',
-            name = 'Avante',
+            module = "blink-cmp-avante",
+            name = "Avante",
             opts = {
               -- options for blink-cmp-avante
-            }
+            },
           },
         },
         -- cmdlineで短い文字数で補完が出ると煩わしい
@@ -98,15 +98,15 @@ return {
       cmdline = {
         enabled = true,
         keymap = {
-          ['<Tab>'] = { 'show', 'accept' },
+          ["<Tab>"] = { "show", "accept" },
         },
         completion = {
           menu = {
             auto_show = true,
           },
-        }
+        },
       },
     },
-    opts_extend = { "sources.default" } -- 設定を再定義せずに拡張可能
-  }
+    opts_extend = { "sources.default" }, -- 設定を再定義せずに拡張可能
+  },
 }
