@@ -8,7 +8,6 @@ return {
     version = "*", -- リリースタグを使用して事前ビルドされたバイナリをダウンロード
     dependencies = {
       "rafamadriz/friendly-snippets", -- スニペット用
-      "Kaiser-Yang/blink-cmp-avante",
       "fang2hou/blink-copilot",
     },
     opts = {
@@ -76,13 +75,6 @@ return {
             module = "lazydev.integrations.blink",
             score_offset = 100,
           },
-          avante = {
-            module = "blink-cmp-avante",
-            name = "Avante",
-            opts = {
-              -- options for blink-cmp-avante
-            },
-          },
         },
         -- cmdlineで短い文字数で補完が出ると煩わしい
         min_keyword_length = function(ctx)
@@ -93,7 +85,7 @@ return {
           end
           return 0
         end,
-        default = { "lsp", "path", "snippets", "buffer", "copilot", "avante" },
+        default = { "lsp", "path", "snippets", "buffer", "copilot" },
       },
       cmdline = {
         enabled = true,

@@ -770,18 +770,6 @@ Aim to be thorough yet practical, focusing on solutions that work in real-world 
         lualine_y = {},
         lualine_z = {},
       },
-      disabled_filetypes = {
-        statusline = {
-          "Avante",
-          "AvanteSelectedFiles",
-          "AvanteInput",
-        },
-        winbar = {
-          "Avante",
-          "AvanteSelectedFiles",
-          "AvanteInput",
-        },
-      },
     },
   },
   { "RRethy/vim-illuminate" },
