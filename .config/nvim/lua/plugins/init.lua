@@ -420,7 +420,7 @@ return {
     opts = {
       proxy = nil,
       allow_insecure = false,
-      model = "gemini-2.5-pro",
+      model = "claude-sonnet-4",
       temperature = 0.1,
       window = {
         layout = "vertical",
