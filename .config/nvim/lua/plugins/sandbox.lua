@@ -100,4 +100,13 @@ return {
       file_types = { "markdown", "codecompanion" },
     },
   },
+  {
+    "stevearc/overseer.nvim",
+    keys = {
+      { "<Leader>tr", "<CMD>OverseerRun<CR>" },
+      { "<Leader>tt", "<CMD>OverseerToggle<CR>" },
+      { "<Leader>tq", "<CMD>OverseerQuickAction<CR>" },
+    },
+    opts = {},
+  },
 }
