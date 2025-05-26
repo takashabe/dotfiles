@@ -59,3 +59,8 @@ _build.json
 
 ## lazygit
 .config/lazygit/state.yml
+
+## aider
+.aider.*
+!.aider.conf.yml
+!.aider.model.settings.yml
