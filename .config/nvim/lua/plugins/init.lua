@@ -856,27 +856,6 @@ Aim to be thorough yet practical, focusing on solutions that work in real-world 
 
   -- misc
   {
-    "uga-rosa/translate.nvim",
-    dependencies = { "nvim-lua/plenary.nvim" },
-    keys = {
-      { "<leader>tr", "<Cmd>Translate JA<CR>", mode = { "n" }, desc = "Translate" },
-    },
-    opts = {
-      default = {
-        command = "google",
-        output = "split",
-      },
-      preset = {
-        output = {
-          split = {
-            border = "rounded",
-            height = 15,
-          },
-        },
-      },
-    },
-  },
-  {
     "folke/lazydev.nvim",
     dependencies = {
       { "Bilal2453/luvit-meta", lazy = true },
