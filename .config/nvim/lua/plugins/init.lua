@@ -512,7 +512,7 @@ Aim to be thorough yet practical, focusing on solutions that work in real-world 
         go = {}, -- goplsにFallbackさせる
         tf = { "terraform_fmt" },
         lua = { "stylua" },
-        sql = { "sqlfmt" },
+        sql = {},
       },
       format_on_save = {
         lsp_fallback = true,
@@ -883,5 +883,25 @@ Aim to be thorough yet practical, focusing on solutions that work in real-world 
     opts = {
       processor = "magick_cli",
     },
+  },
+  {
+    "MeanderingProgrammer/render-markdown.nvim",
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter",
+      "nvim-tree/nvim-web-devicons",
+    },
+    ft = { "markdown", "markdown.mdx", "codecompanion" },
+    opts = {
+      file_types = { "markdown", "codecompanion" },
+    },
+  },
+  {
+    "stevearc/overseer.nvim",
+    keys = {
+      { "<Leader>tr", "<CMD>OverseerRun<CR>" },
+      { "<Leader>tt", "<CMD>OverseerToggle<CR>" },
+      { "<Leader>tq", "<CMD>OverseerQuickAction<CR>" },
+    },
+    opts = {},
   },
 }
