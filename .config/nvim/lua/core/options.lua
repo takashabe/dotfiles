@@ -53,7 +53,7 @@ opt.virtualedit = "onemore"
 -- -エラー時の音を画面表示に
 opt.visualbell = true
 opt.wildignore =
-".git,.hg,.svn,*.pyc,*.o,*.out,*.jpg,*.jpeg,*.png,*.gif,*.zip,**/tmp/**,*.DS_Store,**/node_modules/**,**/bower_modules/**"
+  ".git,.hg,.svn,*.pyc,*.o,*.out,*.jpg,*.jpeg,*.png,*.gif,*.zip,**/tmp/**,*.DS_Store,**/node_modules/**,**/bower_modules/**"
 opt.fileencoding = "utf-8"
 opt.termguicolors = true
 -- 行を跨いで移動出来る様にする
@@ -99,24 +99,28 @@ opt.hlsearch = true
 -- 編集関連
 -- ===============================
 -- yeでそのカーソル位置にある単語をレジスタに追加
-vim.api.nvim_set_keymap('n', 'ye', ':let @"=expand("<cword>")<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "ye", ':let @"=expand("<cword>")<CR>', { noremap = true, silent = true })
 -- Visualモードでのpで選択範囲をレジスタの内容に置き換える
-vim.api.nvim_set_keymap('v', 'p', '<Esc>:let current_reg = @"<CR>gvdi<C-R>=current_reg<CR><Esc>',
-  { noremap = true, silent = true })
+vim.api.nvim_set_keymap(
+  "v",
+  "p",
+  '<Esc>:let current_reg = @"<CR>gvdi<C-R>=current_reg<CR><Esc>',
+  { noremap = true, silent = true }
+)
 -- tabをスペースに変換して入力する
 vim.opt.expandtab = true
 -- ; と : を入れ替え
-vim.api.nvim_set_keymap('n', ';', ':', { noremap = true })
-vim.api.nvim_set_keymap('n', ':', ';', { noremap = true })
+vim.api.nvim_set_keymap("n", ";", ":", { noremap = true })
+vim.api.nvim_set_keymap("n", ":", ";", { noremap = true })
 -- 末尾空白を削除
-vim.api.nvim_create_autocmd('BufWritePre', {
-  pattern = '*',
-  command = [[%s/\s\+$//e]]
+vim.api.nvim_create_autocmd("BufWritePre", {
+  pattern = "*",
+  command = [[%s/\s\+$//e]],
 })
 
 -- 保存/終了を簡単に
-vim.api.nvim_set_keymap('n', '<Leader>w', ':w<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<Leader>q', ':q<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<Leader>w", ":w<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<Leader>q", ":q<CR>", { noremap = true, silent = true })
 
 -- ===============================
 -- ファイルタイプ
