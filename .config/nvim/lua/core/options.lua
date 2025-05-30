@@ -72,6 +72,15 @@ opt.ruler = true
 -- カーソル行をハイライト
 opt.cursorline = true
 
+-- カーソルの形状設定
+-- n: ノーマルモード (block)
+-- v: ビジュアルモード (block)
+-- i: インサートモード (vertical bar)
+-- r: 置換モード (underscore)
+-- c: コマンドラインモード (vertical bar)
+-- t: ターミナルモード (vertical bar)
+opt.guicursor = "n-v:block,i-ci-ve:ver25,r-cr:hor20,o:hor50,t:ver25"
+
 -- ===============================
 -- 検索
 -- ===============================
