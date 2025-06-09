@@ -119,6 +119,13 @@ run = 'move-node-to-workspace 7'
 if.app-id = 'com.spotify.client'
 run = 'move-node-to-workspace 9'
 
+# タイルにすると邪魔になるアプリケーション群
+[[on-window-detected]]
+if.app-id = "com.apple.finder"
+run = 'layout floating'
+[[on-window-detected]]
+if.app-id = "com.microsoft.Excel"
+run = 'layout floating'
 
 #######################################
 # Main mode
