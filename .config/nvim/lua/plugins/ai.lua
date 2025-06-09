@@ -16,12 +16,11 @@ return {
           show_header_separator = true,
           separator = "─",
           show_references = true,
-          show_settings = true,
+          show_settings = false,
           show_token_count = true,
           start_in_insert_mode = true,
           window = {
             layout = "vertical",
-            -- width = 80,
             width = 0.23,
             position = "right",
           },
@@ -50,10 +49,8 @@ return {
         copilot = function()
           return require("codecompanion.adapters").extend("copilot", {
             schema = {
-              model = {
-                default = "claude-sonnet-4",
-                -- default = "gemini-2.5-pro",
-              },
+              --  NOTE: 通常時はpremium requestを抑えたいのでデフォルトモデルを利用する. モデルを切り替えるときは `<ga>` でchange adapterする
+              -- https://docs.github.com/en/copilot/managing-copilot/monitoring-usage-and-entitlements/about-premium-requests#model-multipliers
               max_tokens = {
                 default = 120000, -- デフォは15000
               },
