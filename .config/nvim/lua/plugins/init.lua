@@ -583,6 +583,7 @@ Aim to be thorough yet practical, focusing on solutions that work in real-world 
         {
           mode = { "n", "v" },
           { "<leader><tab>", group = "tabs" },
+          { "<leader>a", group = "AI" },
           { "<leader>c", group = "code" },
           { "<leader>f", group = "file/find" },
           { "<leader>g", group = "git" },

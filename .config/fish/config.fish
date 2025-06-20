@@ -44,6 +44,10 @@ set -x PROMPT_ENABLE_K8S_CONTEXT 1
 set -x PROMPT_ENABLE_K8S_NAMESPACE 0
 set -x PROMPT_ENABLE_GCLOUD_PROJECT 1
 set -x PROMPT_SHOW_ERR_STATUS 1
+set -x GIT_WORKTREE_PREFIX ".git/.wkit-worktrees/"
+
+## claude-code
+set -x PATH $HOME/.claude/local $PATH
 
 ## vim
 alias vi nvim
@@ -89,20 +93,31 @@ function gfetchprune
   end
 end
 
+# ブランチ一覧をfzfで選択してチェックアウトする
 function gbp
   git branch -a --sort=-authordate | cut -b 3- | perl -pe 's#^remotes/origin/###' | perl -nlE 'say if !$c{$_}++' | grep -v -- "->" | fzf | xargs git checkout
 end
 
+# GitHubのPRからブランチをfzfで選択してチェックアウトする
 function ghp
   fzf_gh_pr_checkout
 end
 
-function gcm
-  if test (count $argv) -lt 1
-    echo 'require: branch name'
-    return 128
+# git worktree listをfzfで選択してcdする
+function gwl
+  fzf_wkit_list_cd
+end
+
+# git worktreeとブランチを同時に作成する
+function gwa
+  if test (count $argv) -eq 0
+    echo "Usage: gwa <branch-name>"
+    return 1
   end
-  git switch -c $argv[1] origin/master
+
+  wkit add $argv[1]
+  cd (command wkit switch $argv[1])
+  commandline -f repaint
 end
 
 # for not supported 256-color
@@ -220,8 +235,7 @@ function go_install_binaries
     'google.golang.org/protobuf/cmd/protoc-gen-go@latest' \
     'github.com/GoogleCloudPlatform/protoc-gen-bq-schema@latest' \
     'github.com/pwaller/goimports-update-ignore@latest' \
-    'github.com/onsi/ginkgo/v2/ginkgo@latest' \
-    'github.com/aquaproj/aqua/v2/cmd/aqua@latest'
+    'github.com/onsi/ginkgo/v2/ginkgo@latest'
   pushd $HOME
   for uri in $GO_BINARIES
     echo "go install $uri ..."
