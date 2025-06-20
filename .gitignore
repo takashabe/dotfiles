@@ -64,3 +64,9 @@ _build.json
 .aider.*
 !.aider.conf.yml
 !.aider.model.settings.yml
+
+## Claude code
+**/.claude/*.local.json
+
+## wkit
+.wkit.toml
