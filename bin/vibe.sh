@@ -2,7 +2,7 @@
 
 set -euo pipefail
 
-max_pane=4
+max_pane=3
 pane_count=$(tmux list-panes | wc -l)
 
 [ $pane_count -gt $max_pane ] && { echo "エラー: pane数が多すぎます（$pane_count > $max_pane）"; exit 1; }
@@ -19,6 +19,6 @@ pane_count=$(tmux list-panes | wc -l)
 # レイアウト調整
 tmux select-pane -t 0 && tmux resize-pane -x 50%
 for ((i=1; i<$max_pane; i++)); do
-  tmux select-pane -t $i && tmux resize-pane -y 33%
+  tmux select-pane -t $i && tmux resize-pane -y 50%
 done
 tmux select-pane -t 0
