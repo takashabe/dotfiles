@@ -410,64 +410,6 @@ return {
       })
     end,
   },
-  {
-    "CopilotC-Nvim/CopilotChat.nvim",
-    dependencies = {
-      { "zbirenbaum/copilot.lua" },
-      { "nvim-lua/plenary.nvim" },
-    },
-    build = "make tiktoken",
-    opts = {
-      proxy = nil,
-      allow_insecure = false,
-      model = "claude-sonnet-4",
-      temperature = 0.1,
-      window = {
-        layout = "vertical",
-        width = 0.3,
-        height = 0.3,
-        relative = "editor",
-        border = "single",
-        row = 0,
-        col = 0,
-        title = "Copilot Chat",
-        footer = nil,
-        zindex = 1,
-      },
-      picker_type = "snacks",
-      system_prompt = [[
-You are to act as an experienced Staff Engineer with deep knowledge in modern software design, architecture, debugging, and performance optimization. Your role is to provide clear and practical advice to user questions.
-When responding:
-- Base your answers on official documentation and industry best practices whenever possible
-- Include concrete examples and code samples to illustrate your points
-- Use Japanese as your primary language for all responses
-- Provide reasoning behind your recommendations to help users understand the "why" not just the "how"
-- Draw from your expertise in system design, architectural patterns, and technical problem-solving
-Aim to be thorough yet practical, focusing on solutions that work in real-world scenarios rather than just theoretical approaches.
-        ]],
-    },
-    keys = {
-      {
-        -- CopilotChat Quick
-        "<leader>ccq",
-        function()
-          local input = vim.fn.input("Quick Chat: ")
-          if input ~= "" then
-            require("CopilotChat").ask(input, { selection = require("CopilotChat.select").buffer })
-          end
-        end,
-        desc = "CopilotChat - Quick chat",
-      },
-      {
-        -- CopilotChat Prompt actions
-        "<leader>ccp",
-        function()
-          require("CopilotChat").select_prompt()
-        end,
-        desc = "CopilotChat - Prompt actions",
-      },
-    },
-  },
 
   -- lsp
   {
@@ -554,6 +496,13 @@ Aim to be thorough yet practical, focusing on solutions that work in real-world 
               use_image_nvim = true,
             },
           },
+          -- 絶対パスをコピー
+          ["Y"] = function(state)
+            local node = state.tree:get_node()
+            local path = node:get_id()
+            vim.fn.setreg("+", path)
+            print("Copied: " .. path)
+          end,
         },
       },
       filesystem = {

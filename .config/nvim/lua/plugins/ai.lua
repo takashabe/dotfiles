@@ -1,4 +1,24 @@
+-- claude code用の一時的なide integration用コード
+-- https://github.com/coder/claudecode.nvim/issues/52
+vim.env.CLAUDE_CONFIG_DIR = vim.fn.expand("~/.config/claude")
+
 return {
+  {
+    "coder/claudecode.nvim",
+    config = true,
+    keys = {
+      { "<leader>ac", "<cmd>ClaudeCode<cr>", desc = "Toggle Claude" },
+      { "<leader>ar", "<cmd>ClaudeCode --resume<cr>", desc = "Resume Claude" },
+      { "<leader>aC", "<cmd>ClaudeCode --continue<cr>", desc = "Continue Claude" },
+      { "<leader>as", "<cmd>ClaudeCodeSend<cr>", mode = "v", desc = "Send to Claude" },
+      {
+        "<leader>as",
+        "<cmd>ClaudeCodeTreeAdd<cr>",
+        desc = "Add file",
+        ft = { "NvimTree", "neo-tree" },
+      },
+    },
+  },
   {
     "olimorris/codecompanion.nvim",
     dependencies = {
