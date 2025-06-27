@@ -37,15 +37,28 @@ outer.right      = 10
 # workspace settings
 #######################################
 # 通常時はディスプレイ2枚で、たまにラップトップ1枚の想定
+# [workspace-to-monitor-force-assignment]
+# 1 = [1]    # terminal
+# 2 = [1]    # browsing
+# 3 = [2, 1] # note taking
+# 4 = [2, 1] # communication
+# 5 = [1]    # IDE
+# 6 = [1]    # development tools
+# 7 = [1]    # development tools#2
+# 8 = [2]    # external monitor sandbox
+# 9 = [1]    # background
+
+# 外部作業時. builtinディスプレイが2として認識されるときに使う
 [workspace-to-monitor-force-assignment]
-1 = [1]    # terminal
-2 = [1]    # browsing
-3 = [2, 1] # note taking
-4 = [2, 1] # communication
-5 = [1]    # IDE
-6 = [1]    # development tools
-7 = [1]    # development tools#2
-9 = [1]    # background
+1 = [2]    # terminal
+2 = [2]    # browsing
+3 = [1, 2] # note taking
+4 = [1, 2] # communication
+5 = [2]    # IDE
+6 = [2]    # development tools
+7 = [2]    # development tools#2
+8 = [1]    # external monitor sandbox
+9 = [2]    # background
 
 # メインworkspace群
 [[on-window-detected]]
