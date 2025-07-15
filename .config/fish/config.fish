@@ -48,7 +48,6 @@ set -x GIT_WORKTREE_PREFIX ".git/.wkit-worktrees/"
 
 ## claude-code
 set -x PATH $HOME/.claude/local $PATH
-set -x CLAUDE_CONFIG_DIR $HOME/.config/claude
 
 ## vim
 alias vi nvim

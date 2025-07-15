@@ -1,7 +1,3 @@
--- claude code用の一時的なide integration用コード
--- https://github.com/coder/claudecode.nvim/issues/52
-vim.env.CLAUDE_CONFIG_DIR = vim.fn.expand("~/.config/claude")
-
 return {
   {
     "coder/claudecode.nvim",
