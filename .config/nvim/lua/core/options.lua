@@ -81,6 +81,12 @@ opt.cursorline = true
 -- t: ターミナルモード (vertical bar)
 opt.guicursor = "n-v:block,i-ci-ve:ver25,r-cr:hor20,o:hor50,t:ver25"
 
+-- Alt-w でウインドウ移動出来るようにする
+-- Terminalモードで<ESC>が他の機能に割り当てられている場合が多いため、Altを使う
+vim.keymap.set("n", "<A-w>", "<C-w>w", { noremap = true, silent = true })
+vim.keymap.set("i", "<A-w>", "<Esc><C-w>w", { noremap = true, silent = true })
+vim.keymap.set("t", "<A-w>", "<C-\\><C-n><C-w>w", { noremap = true, silent = true })
+
 -- ===============================
 -- 検索
 -- ===============================
