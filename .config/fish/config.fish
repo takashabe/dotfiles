@@ -375,3 +375,5 @@ function __postexec_notify_on_long_running_commands --on-event fish_postexec
     osascript -e "display notification \"$notification_message\" with title \"Command Notification\""
   end
 end
+
+string match -q "$TERM_PROGRAM" "kiro" and . (kiro --locate-shell-integration-path fish)
