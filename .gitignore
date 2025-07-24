@@ -66,7 +66,8 @@ _build.json
 !.aider.model.settings.yml
 
 ## Claude code
-**/.claude/*.local.json
+**/.claude/settings.local.json
+**/.claude/tasks/
 
 ## wkit
-.wkit.toml
+.wkit.yaml
