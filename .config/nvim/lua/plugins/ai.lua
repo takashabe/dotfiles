@@ -1,91 +1,26 @@
 return {
   {
     "coder/claudecode.nvim",
+    dependencies = { "folke/snacks.nvim" },
     config = true,
     keys = {
+      { "<leader>a", nil, desc = "AI/Claude Code" },
       { "<leader>ac", "<cmd>ClaudeCode<cr>", desc = "Toggle Claude" },
+      { "<leader>af", "<cmd>ClaudeCodeFocus<cr>", desc = "Focus Claude" },
       { "<leader>ar", "<cmd>ClaudeCode --resume<cr>", desc = "Resume Claude" },
       { "<leader>aC", "<cmd>ClaudeCode --continue<cr>", desc = "Continue Claude" },
+      { "<leader>ab", "<cmd>ClaudeCodeAdd %<cr>", desc = "Add current buffer" },
       { "<leader>as", "<cmd>ClaudeCodeSend<cr>", mode = "v", desc = "Send to Claude" },
       {
         "<leader>as",
         "<cmd>ClaudeCodeTreeAdd<cr>",
         desc = "Add file",
-        ft = { "NvimTree", "neo-tree" },
+        ft = { "NvimTree", "neo-tree", "oil" },
       },
+      -- Diff management
+      { "<leader>aa", "<cmd>ClaudeCodeDiffAccept<cr>", desc = "Accept diff" },
+      { "<leader>ad", "<cmd>ClaudeCodeDiffDeny<cr>", desc = "Deny diff" },
     },
-  },
-  {
-    "olimorris/codecompanion.nvim",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "nvim-treesitter/nvim-treesitter",
-      "zbirenbaum/copilot.lua",
-      "j-hui/fidget.nvim",
-    },
-    opts = {
-      debug = false,
-      auto_follow_cursor = true,
-      display = {
-        border = "rounded",
-        chat = {
-          show_header_separator = true,
-          separator = "─",
-          show_references = true,
-          show_settings = false,
-          show_token_count = true,
-          start_in_insert_mode = true,
-          window = {
-            layout = "vertical",
-            width = 0.23,
-            position = "right",
-          },
-        },
-      },
-      keymaps = {
-        close = "q",
-        accept = "<CR>",
-        toggle_diff_view = "<leader>td",
-      },
-      strategies = {
-        chat = {
-          adapter = "copilot",
-          roles = {
-            llm = function(adapter)
-              return "  CodeCompanion (" .. adapter.formatted_name .. ")"
-            end,
-            user = "  Me",
-          },
-        },
-        inline = {
-          adapter = "copilot",
-        },
-      },
-      adapters = {
-        copilot = function()
-          return require("codecompanion.adapters").extend("copilot", {
-            schema = {
-              --  NOTE: 通常時はpremium requestを抑えたいのでデフォルトモデルを利用する. モデルを切り替えるときは `<ga>` でchange adapterする
-              -- https://docs.github.com/en/copilot/managing-copilot/monitoring-usage-and-entitlements/about-premium-requests#model-multipliers
-              max_tokens = {
-                default = 120000, -- デフォは15000
-              },
-            },
-          })
-        end,
-      },
-      opts = {
-        language = "Japanese",
-      },
-    },
-    keys = {
-      { "<leader>co", "<cmd>CodeCompanion<CR>", desc = "CodeCompanion" },
-      { "<leader>ca", "<cmd>CodeCompanionAction<CR>", desc = "Explain Code" },
-      { "<leader>ct", "<cmd>CodeCompanionChat<CR>", desc = "Toggle CodeCompanion" },
-    },
-    init = function()
-      require("plugins.custom.spinner"):init()
-    end,
   },
   {
     "ravitemer/mcphub.nvim",
