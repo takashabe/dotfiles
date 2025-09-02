@@ -454,12 +454,18 @@ return {
         go = {}, -- goplsにFallbackさせる
         tf = { "terraform_fmt" },
         lua = { "stylua" },
-        sql = {},
       },
-      format_on_save = {
-        lsp_fallback = true,
-        timeout_ms = 500,
-      },
+      format_on_save = function(bufnr)
+        -- SQLファイルでは自動フォーマットを無効化
+        if vim.bo[bufnr].filetype == "sql" then
+          return
+        end
+
+        return {
+          lsp_fallback = true,
+          timeout_ms = 500,
+        }
+      end,
     },
   },
 
