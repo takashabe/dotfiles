@@ -67,7 +67,11 @@ _build.json
 
 ## Claude code
 **/.claude/settings.local.json
-**/.claude/tasks/
+
+**/.serena/
 
 ## wkit
 .wkit.yaml
+
+## temp
+out-*/
