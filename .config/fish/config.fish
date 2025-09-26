@@ -237,6 +237,7 @@ function go_install_binaries
     'github.com/GoogleCloudPlatform/protoc-gen-bq-schema@latest' \
     'github.com/pwaller/goimports-update-ignore@latest' \
     'github.com/onsi/ginkgo/v2/ginkgo@latest' \
+    'github.com/kisielk/godepgraph@latest' \
     'mvdan.cc/gofumpt@latest'
   pushd $HOME
   for uri in $GO_BINARIES
@@ -303,6 +304,10 @@ end
 function reload_keyboard
   systemctl --user restart xkeysnail
   systemctl --user restart imwheel
+end
+
+function get_global_ip
+  curl -s https://httpbin.org/ip
 end
 
 ## osx system functions
@@ -377,3 +382,6 @@ function __postexec_notify_on_long_running_commands --on-event fish_postexec
 end
 
 string match -q "$TERM_PROGRAM" "kiro" and . (kiro --locate-shell-integration-path fish)
+
+
+
