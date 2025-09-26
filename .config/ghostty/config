@@ -21,7 +21,7 @@ font-feature = -dlig
 window-padding-x = 8
 window-padding-y = 8
 
-theme = Catppuccin Frappe
+theme = Catppuccin Mocha
 
 # カーソルを見やすくする
 cursor-opacity = 0.8
