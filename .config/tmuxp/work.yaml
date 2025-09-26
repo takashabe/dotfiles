@@ -1,32 +1,34 @@
 session_name: work
 windows:
   - development:
-    start_directory: $GOPATH/src/github.com/CastingONE/castingone/go
+    start_directory: $GOPATH/src/github.com/CastingONE/castingone
   - backend:
-    start_directory: $GOPATH/src/github.com/CastingONE/castingone/go
+    start_directory: $GOPATH/src/github.com/CastingONE/castingone
     layout: even-horizontal
     panes:
       - shell_command:
-        - cd tenant
-        - docker compose up -d
-        - make load-fixtures
-        - air
+          - cd go/tenant
+          - docker compose up -d
+          - make load-fixtures
+          - air 2>&1 | humanlog
       - shell_command:
-        - cd messenger
-        - air
+          - cd messenger
+          - air 2>&1 | humanlog
       - shell_command:
-        - pwd
+          - pwd
   - frontend:
     start_directory: $GOPATH/src/github.com/CastingONE/casone-lite-web-nextjs
     layout: even-horizontal
     panes:
       - shell_command:
-        - cd apps/tenant
-        - npm install
-        - npm run dev
+          - cd apps/tenant
+          - npm install
+          - npm run dev
       - shell_command:
-        - cd apps/staff
-        - npm install
-        - npm run dev
+          - cd apps/staff
+          - npm install
+          - npm run dev
       - shell_command:
-        - pwd
+          - pwd
+  - review:
+    start_directory: $GOPATH/src/github.com/CastingONE/castingone/.git/.wkit-worktrees/local/review
