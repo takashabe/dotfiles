@@ -133,6 +133,9 @@ run = 'move-node-to-workspace 5'
 [[on-window-detected]]
 if.app-id = 'dev.kiro.desktop'
 run = 'move-node-to-workspace 5'
+[[on-window-detected]]
+if.app-id = 'com.google.antigravity'
+run = 'move-node-to-workspace 5'
 
 [[on-window-detected]]
 if.app-id = 'com.tinyapp.TablePlus'

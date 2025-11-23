@@ -60,15 +60,21 @@ _build.json
 ## lazygit
 .config/lazygit/state.yml
 
-## aider
+# aider
 .aider.*
 !.aider.conf.yml
 !.aider.model.settings.yml
 
-## Claude code
+# claude code
 **/.claude/settings.local.json
-
 **/.serena/
+**/.spec-workflow/
+**/.prompt
+
+# codex cli
+.codex/*
+!.codex/AGENTS.md
+!.codex/config.toml
 
 ## wkit
 .wkit.yaml

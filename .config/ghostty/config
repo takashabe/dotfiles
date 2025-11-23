@@ -21,7 +21,8 @@ font-feature = -dlig
 window-padding-x = 8
 window-padding-y = 8
 
-theme = Catppuccin Mocha
+# theme = Catppuccin Mocha
+theme = TokyoNight Night
 
 # カーソルを見やすくする
 cursor-opacity = 0.8
