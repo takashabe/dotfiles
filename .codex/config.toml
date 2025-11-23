@@ -1,0 +1,41 @@
+# reference: https://github.com/openai/codex/blob/main/docs/config.md
+model = "gpt-5.1-codex-max"
+model_verbosity = "medium"
+sandbox_mode = "workspace-write"
+approval_policy = "on-failure"
+
+# 何の設定か分からないので保留
+# file_opener = "cursor" # or vscode
+notify = ["bash","-lc","afplay /System/Library/Sounds/Ping.aiff"]
+
+[sandbox_workspace_write]
+network_access = true
+
+[tui]
+notifications = ["agent-turn-complete","approval-requested"]
+
+[shell_environment_policy]
+inherit = "core"
+
+##############################
+# MCPサーバの設定
+##############################
+experimental_use_rmcp_client = true
+
+[mcp_servers.context7]
+command = "npx"
+args = ["-y", "@upstash/context7-mcp@latest"]
+
+[mcp_servers.serena]
+command = "uvx"
+args = ["--from", "git+https://github.com/oraios/serena", "serena", "start-mcp-server", "--context", "codex", "--enable-web-dashboard", "false"]
+
+[mcp_servers.deepwiki]
+url = "https://mcp.deepwiki.com/mcp"
+
+[mcp_servers.github]
+url = "https://api.githubcopilot.com/mcp/"
+bearer_token_env_var = "GITHUB_PAT_CODEX"
+
+[notice]
+"hide_gpt-5.1-codex-max_migration_prompt" = true
