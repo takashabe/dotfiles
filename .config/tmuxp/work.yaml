@@ -8,11 +8,9 @@ windows:
     panes:
       - shell_command:
           - cd go/tenant
-          - docker compose up -d
-          - make load-fixtures
           - air 2>&1 | humanlog
       - shell_command:
-          - cd messenger
+          - cd go/messenger
           - air 2>&1 | humanlog
       - shell_command:
           - pwd

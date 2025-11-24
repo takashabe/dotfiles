@@ -14,10 +14,8 @@ alias lg 'lazygit'
 alias ld 'lazydocker'
 
 if status --is-interactive; and test (uname) = "Linux"
-  alias pbcopy 'xsel -bi'
-  alias pbpaste 'xsel -bo'
-  set -x PATH /var/lib/snapd/snap/bin $PATH
-
+  alias pbcopy 'wl-copy'
+  alias pbpaste 'wl-paste'
 end
 
 set -x PATH $HOME/bin $PATH
@@ -72,7 +70,7 @@ set -x FZF_CD_MAX_DEPTH 5
 set -x PATH /opt/homebrew/opt/libpq/bin $PATH
 
 # git, github
-alias git 'hub'
+# alias git 'hub'
 alias g 'git'
 alias gst 'git status'
 alias gb 'git branch'
@@ -382,6 +380,3 @@ function __postexec_notify_on_long_running_commands --on-event fish_postexec
 end
 
 string match -q "$TERM_PROGRAM" "kiro" and . (kiro --locate-shell-integration-path fish)
-
-
-

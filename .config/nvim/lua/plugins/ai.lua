@@ -1,25 +1,85 @@
 return {
   {
-    "coder/claudecode.nvim",
-    dependencies = { "folke/snacks.nvim" },
-    config = true,
-    keys = {
-      { "<leader>a", nil, desc = "AI/Claude Code" },
-      { "<leader>ac", "<cmd>ClaudeCode<cr>", desc = "Toggle Claude" },
-      { "<leader>af", "<cmd>ClaudeCodeFocus<cr>", desc = "Focus Claude" },
-      { "<leader>ar", "<cmd>ClaudeCode --resume<cr>", desc = "Resume Claude" },
-      { "<leader>aC", "<cmd>ClaudeCode --continue<cr>", desc = "Continue Claude" },
-      { "<leader>ab", "<cmd>ClaudeCodeAdd %<cr>", desc = "Add current buffer" },
-      { "<leader>as", "<cmd>ClaudeCodeSend<cr>", mode = "v", desc = "Send to Claude" },
-      {
-        "<leader>as",
-        "<cmd>ClaudeCodeTreeAdd<cr>",
-        desc = "Add file",
-        ft = { "NvimTree", "neo-tree", "oil" },
+    "folke/sidekick.nvim",
+    opts = {
+      cli = {
+        mux = {
+          backend = "tmux",
+          enabled = false,
+        },
+        win = {
+          keys = {
+            nav_left = false,
+            nav_down = false,
+            nav_up = false,
+            nav_right = false,
+          },
+        },
       },
-      -- Diff management
-      { "<leader>aa", "<cmd>ClaudeCodeDiffAccept<cr>", desc = "Accept diff" },
-      { "<leader>ad", "<cmd>ClaudeCodeDiffDeny<cr>", desc = "Deny diff" },
+      nes = {
+        enabled = false,
+      },
+    },
+    -- stylua: ignore
+    keys = {
+      {
+        "<tab>",
+        function()
+          -- if there is a next edit, jump to it, otherwise apply it if any
+          if not require("sidekick").nes_jump_or_apply() then
+            return "<Tab>" -- fallback to normal tab
+          end
+        end,
+        expr = true,
+        desc = "Goto/Apply Next Edit Suggestion",
+      },
+      {
+        "<leader>aa",
+        function() require("sidekick.cli").toggle() end,
+        desc = "Sidekick Toggle CLI",
+      },
+      {
+        "<leader>aS",
+        function() require("sidekick.cli").select() end,
+        -- Or to select only installed tools:
+        -- require("sidekick.cli").select({ filter = { installed = true } })
+        desc = "Select CLI",
+      },
+      {
+        "<leader>at",
+        function() require("sidekick.cli").send({ msg = "{this}" }) end,
+        mode = { "x", "n" },
+        desc = "Send This",
+      },
+      {
+        "<leader>av",
+        function() require("sidekick.cli").send({ msg = "{selection}" }) end,
+        mode = { "x" },
+        desc = "Send Visual Selection",
+      },
+      {
+        "<leader>ap",
+        function() require("sidekick.cli").prompt() end,
+        mode = { "n", "x" },
+        desc = "Sidekick Select Prompt",
+      },
+      {
+        "<C-.>",
+        function() require("sidekick.cli").focus() end,
+        mode = { "n", "x", "i", "t" },
+        desc = "Sidekick Switch Focus",
+      },
+      -- Example of a keybinding to open Claude directly
+      {
+        "<leader>ac",
+        function() require("sidekick.cli").toggle({ name = "claude", focus = true }) end,
+        desc = "Sidekick Toggle Claude",
+      },
+      {
+        "<leader>aC",
+        function() require("sidekick.cli").toggle({ name = "codex", focus = true }) end,
+        desc = "Sidekick Toggle Codex",
+      },
     },
   },
   {
