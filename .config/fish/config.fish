@@ -276,8 +276,7 @@ function fish_user_key_bindings
   bind \cu fzf_z
   bind \co wrap_fzf_file
   bind \cg fzf_cd
-
-  bind "[1;2F" kill-line
+  bind \ck kill-line
 end
 
 # direnv
