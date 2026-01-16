@@ -454,6 +454,7 @@ return {
         go = {}, -- goplsにFallbackさせる
         tf = { "terraform_fmt" },
         lua = { "stylua" },
+        kdl = { "kdlfmt" },
       },
       format_on_save = function(bufnr)
         -- SQLファイルでは自動フォーマットを無効化
