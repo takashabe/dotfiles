@@ -13,14 +13,14 @@
   fsmonitor = false # 不安定なので停止する(daemon terminatedが頻出)
   untrackedcache = true
 [interactive]
-    diffFilter = delta --color-only
+  diffFilter = delta --color-only
 [delta]
-    navigate = true
-    light = false
-    side-by-side = true
-    line-numbers = true
-    true-color = auto
-    features = catpuccin-mocha
+  navigate = true
+  light = false
+  side-by-side = true
+  line-numbers = true
+  true-color = auto
+  features = catpuccin-mocha
 [merge]
   tool = vimdiff
 [diff]
@@ -32,14 +32,14 @@
 [pull]
   rebase = false
 [scalar]
-	repo = /Users/takashabe/dev/src/github.com/CastingONE/castingone
-	repo = /Users/takashabe/dev/src/github.com/CastingONE/review-castingone
-	repo = /Users/takashabe/dev/src/github.com/CastingONE/casone-lite-web-nextjs
-	repo = /Users/takashabe/dotfiles
-	repo = /Users/takashabe/dev/src/github.com/qmk/qmk_firmware
-	repo = /Users/takashabe/dev/src/github.com/takashabe/qmk_firmware
+  repo = /Users/takashabe/dev/src/github.com/CastingONE/castingone
+  repo = /Users/takashabe/dev/src/github.com/CastingONE/review-castingone
+  repo = /Users/takashabe/dev/src/github.com/CastingONE/casone-lite-web-nextjs
+  repo = /Users/takashabe/dotfiles
+  repo = /Users/takashabe/dev/src/github.com/qmk/qmk_firmware
+  repo = /Users/takashabe/dev/src/github.com/takashabe/qmk_firmware
 [maintenance]
-	repo = /Users/takashabe/dev/src/github.com/CastingONE/casone-lite-web-nextjs
-	repo = /Users/takashabe/dotfiles
-	repo = /Users/takashabe/dev/src/github.com/qmk/qmk_firmware
-	repo = /Users/takashabe/dev/src/github.com/takashabe/qmk_firmware
+  repo = /Users/takashabe/dev/src/github.com/CastingONE/casone-lite-web-nextjs
+  repo = /Users/takashabe/dotfiles
+  repo = /Users/takashabe/dev/src/github.com/qmk/qmk_firmware
+  repo = /Users/takashabe/dev/src/github.com/takashabe/qmk_firmware
