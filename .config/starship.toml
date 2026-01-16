@@ -1,0 +1,88 @@
+# ------------------------------------------------------------------
+# Performance Tuning (macOS I/O対策)
+# ------------------------------------------------------------------
+
+# コマンド全体のタイムアウトを80msに設定
+# これを超えたらモジュール表示を諦め、即座にプロンプトを返す
+command_timeout = 80
+
+# ディレクトリ走査のタイムアウト
+scan_timeout = 10
+
+# モジュール間の空行を削除
+add_newline = false
+
+# ------------------------------------------------------------------
+# Layout
+# ------------------------------------------------------------------
+
+format = """
+$directory\
+$git_branch\
+$custom\
+$git_status\
+$fill\
+$gcloud\
+$time\
+$line_break\
+$character"""
+
+# ------------------------------------------------------------------
+# Modules
+# ------------------------------------------------------------------
+
+[directory]
+style = "blue bold"
+truncation_length = 3
+truncation_symbol = "…/"
+# ディレクトリの書き込み権限チェック(I/O)をスキップして高速化
+read_only = ""
+
+[git_branch]
+symbol = " "
+style = "green"
+
+# Custom: Git Worktree Indicator
+# 軽量なチェックのみ行う
+[custom.worktree]
+when = 'git rev-parse --is-inside-work-tree 2> /dev/null'
+command = """
+if [ -f "$(git rev-parse --show-toplevel)/.git" ]; then
+    echo "🌲"
+fi
+"""
+style = "bold purple"
+format = "[$output]($style) "
+shell = ["bash", "--noprofile", "--norc"]
+
+[git_status]
+disabled = false
+style = "red bold"
+# 計算コストの高い情報($ahead_behind等)は排除
+format = '([$all_status]($style) )'
+# 重い処理を無効化
+ignore_submodules = true
+
+# Google Cloud
+[gcloud]
+disabled = false
+symbol = " "
+style = "bold yellow"
+format = 'on [$symbol$project]($style) '
+
+# 右寄せ後の情報
+[fill]
+symbol = " "
+
+[time]
+disabled = false
+time_format = "%R"
+style = "bold bright-black"
+format = 'at [ $time]($style)'
+
+[line_break]
+disabled = false
+
+[character]
+success_symbol = "[➜](bold green)"
+error_symbol = "[✗](bold red)"
