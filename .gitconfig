@@ -10,7 +10,7 @@
   quotepath = false
   excludesfile = ~/.gitignore
   pager = delta
-  fsmonitor = true
+  fsmonitor = false # 不安定なので停止する(daemon terminatedが頻出)
   untrackedcache = true
 [interactive]
     diffFilter = delta --color-only
