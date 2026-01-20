@@ -5,14 +5,10 @@ ln -s $HOME/dotfiles/.tmux.conf $HOME/
 ln -s $HOME/dotfiles/.gitconfig $HOME/
 ln -s $HOME/dotfiles/.gitignore $HOME/
 ln -s $HOME/dotfiles/.tigrc $HOME/
-ln -s $HOME/dotfiles/.Xresources $HOME/
-ln -s $HOME/dotfiles/.screenlayout $HOME/
 ln -s $HOME/dotfiles/.terraformrc $HOME/
 ln -s $HOME/dotfiles/.yabairc $HOME/
 ln -s $HOME/dotfiles/.skhdrc $HOME/
 ln -s $HOME/dotfiles/.myclirc $HOME/
-ln -s $HOME/dotfiles/.imwheelrc $HOME/
-ln -s $HOME/dotfiles/.xprofile $HOME/
 ln -s $HOME/dotfiles/.codex $HOME/
 ln -s $HOME/dotfiles/.claude $HOME/
 
@@ -40,6 +36,7 @@ ln -s $HOME/dotfiles/.config/bat $HOME/.config/
 ln -s $HOME/dotfiles/.config/mcphub $HOME/.config/
 ln -s $HOME/dotfiles/.config/gitui $HOME/.config/
 ln -s $HOME/dotfiles/.config/zellij $HOME/.config/
+ln -s $HOME/dotfiles/.config/hypr $HOME/.config/
 
 # vscode
 if [ $(uname) = "Linux" ]; then
@@ -54,14 +51,8 @@ ln -s $HOME/dotfiles/.config/code/keybindings.json $CODE_PATH
 if [ $(uname) = "Linux" ]; then
   echo "=== Linux only ==="
   ln -s $HOME/dotfiles/.config/xremap/  $HOME/.config/
-  ln -s $HOME/dotfiles/.config/xkeysnail  $HOME/.config/
-  ln -s $HOME/dotfiles/.config/systemd/user/xkeysnail.service $HOME/.config/systemd/user/
-  ln -s $HOME/dotfiles/.config/systemd/user/imwheel.service $HOME/.config/systemd/user/
   ln -s $HOME/dotfiles/.config/systemd/user/xremap.service $HOME/.config/systemd/user/
   ln -s $HOME/dotfiles/.gitconfig.credential.linux $HOME/.gitconfig.credential
-  # for ubuntu
-  # sudo ln -s $HOME/dotfiles/etc/kernel-update.path /etc/systemd/system/
-  # sudo ln -s $HOME/dotfiles/etc/kernel-update.service /etc/systemd/system/
 fi
 
 if [ $(uname) = "Darwin" ]; then
@@ -80,4 +71,4 @@ if [ $(uname) = "Darwin" ]; then
   defaults write -g ApplePressAndHoldEnabled -bool false
 fi
 
-# TODO homebrew, homebrew-cask, yay
+# TODO homebrew, homebrew-cask, paru
