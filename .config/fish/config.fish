@@ -387,3 +387,6 @@ if test -r ~/.safe-chain/scripts/init-fish.fish; and command -v safe-chain > /de
 end
 
 
+if status --is-interactive; and command -v starship > /dev/null
+  starship init fish | source
+end
