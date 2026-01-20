@@ -238,7 +238,8 @@ function go_install_binaries
     'github.com/pwaller/goimports-update-ignore@latest' \
     'github.com/onsi/ginkgo/v2/ginkgo@latest' \
     'github.com/kisielk/godepgraph@latest' \
-    'mvdan.cc/gofumpt@latest'
+    'mvdan.cc/gofumpt@latest' \
+    'github.com/d-kuro/gwq/cmd/gwq@latest'
   pushd $HOME
   for uri in $GO_BINARIES
     echo "go install $uri ..."
