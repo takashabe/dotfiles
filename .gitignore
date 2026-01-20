@@ -79,6 +79,7 @@ _build.json
 .codex/*
 !.codex/AGENTS.md
 !.codex/config.toml
+!.codex/skills/
 
 ## wkit
 .wkit.yaml
