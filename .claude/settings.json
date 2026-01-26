@@ -1,6 +1,7 @@
 {
   "cleanupPeriodDays": 30,
   "includeCoAuthoredBy": false,
+  "defaultMode": "acceptEdits",
   "permissions": {
     "allow": [
       "Bash",
