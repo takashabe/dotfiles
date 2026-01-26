@@ -16,122 +16,269 @@ theme "tokyo-night"
 default_mode "locked"
 // キーバインディング設定
 keybinds {
-    // 全モード共通: 解除キーなど
-    shared_except "locked" {
+  // 全モード共通: 解除キーなど
+  shared_except "locked" {
+    bind "Esc" {
+      SwitchToMode "Locked"
+    }
+    bind "Enter" {
+      SwitchToMode "Locked"
+    }
+    bind "Ctrl c" {
+      SwitchToMode "Locked"
+    }
+  }
+  // 通常モード (Locked)
+  // tmuxの Prefix (C-t) を押すと "tmux" モード (操作モード) に移行します
+  locked {
+    bind "Ctrl t" {
+      SwitchToMode "Tmux"
+    }
+  }
+  // ---------------------------------------------------
+  // Tmuxモード (Prefix: Ctrl+t 押下時)
+  // ---------------------------------------------------
+  tmux {
+    // --- 基本操作 ---
+    bind "Esc" {
+      SwitchToMode "Locked"
+    }
+    bind "Enter" {
+      SwitchToMode "Locked"
+    }
+    bind "Ctrl t" {
+      SwitchToMode "Locked"
+    }
+    // --- ペイン操作 ---
+    bind "|" {
+      NewPane "Right"
+      SwitchToMode "Locked"
+    }
+    bind "-" {
+      NewPane "Down"
+      SwitchToMode "Locked"
+    }
+    bind "x" {
+      CloseFocus
+      SwitchToMode "Locked"
+    }
+    // ペイン削除        // 移動 (Vim風)
+    bind "h" {
+      MoveFocus "Left"
+    }
+    bind "l" {
+      MoveFocus "Right"
+    }
+    bind "j" {
+      MoveFocus "Down"
+    }
+    bind "k" {
+      MoveFocus "Up"
+    }
+    // --- ウィンドウ(タブ)操作 ---
+    bind "c" {
+      NewTab
+      SwitchToMode "Locked"
+    }
+    bind "k" {
+      CloseTab
+      SwitchToMode "Locked"
+    }
+    // ウィンドウ削除(tmux互換)        bind "p" {
+    GoToPreviousTab
+  }
+  bind "n" {
+    GoToNextTab
+  }
+  // --- タブ選択モードへ (Prefix + w) ---
+  bind "w" {
+    SwitchToMode "Tab"
+  }
+  // --- セッション操作 (Prefix + s) ---
+  // 自作fzfスクリプトを使用
+  bind "s" {
+    Run "bash" "-c" "~/.config/zellij/scripts/z-sessionizer.sh" {
+      floating true
+      close_on_exit true
+      width "50%"
+      height "50%"
+      x "25%"
+      y "25%"
+    }
+    SwitchToMode "Locked"
+  }
+  // --- その他 ---
+  bind "[" {
+    SwitchToMode "Scroll"
+  }
+  bind "d" {
+    Detach
+  }
+  // --- 番号ジャンプ (tmux互換: Prefix + 数字 で即移動) ---
+  bind "1" {
+    GoToTab 1
+    SwitchToMode "Locked"
+  }
+  bind "2" {
+    GoToTab 2
+    SwitchToMode "Locked"
+  }
+  bind "3" {
+    GoToTab 3
+    SwitchToMode "Locked"
+  }
+  bind "4" {
+    GoToTab 4
+    SwitchToMode "Locked"
+  }
+  bind "5" {
+    GoToTab 5
+    SwitchToMode "Locked"
+  }
+  bind "6" {
+    GoToTab 6
+    SwitchToMode "Locked"
+  }
+  bind "7" {
+    GoToTab 7
+    SwitchToMode "Locked"
+  }
+  bind "8" {
+    GoToTab 8
+    SwitchToMode "Locked"
+  }
+  bind "9" {
+    GoToTab 9
+    SwitchToMode "Locked"
+  }
+}
+// ---------------------------------------------------
+// Tab選択モード (Prefix + w で遷移)
+// ---------------------------------------------------
+tab {
+  // 終了/確定
+  bind "Esc" {
+    SwitchToMode "Locked"
+  }
+  bind "Enter" {
+    SwitchToMode "Locked"
+  }
+  bind "Ctrl t" {
+    SwitchToMode "Locked"
+  }
+  // 移動 (h/l でタブバーを移動)
+  bind "h" {
+    GoToPreviousTab
+  }
+  bind "l" {
+    GoToNextTab
+  }
+  bind "Left" {
+    GoToPreviousTab
+  }
+  bind "Right" {
+    GoToNextTab
+  }
+  // 移動 + タブ自体の並び替え (Shift + h/l)
+  bind "H" {
+    MoveTab "Left"
+  }
+  bind "L" {
+    MoveTab "Right"
+  }
+  // 各種操作
+  bind "n" {
+    NewTab
+    SwitchToMode "Locked"
+  }
+  // 新規作成        bind "x" {
+  CloseTab
+  SwitchToMode "Locked"
+}
+// 現在のタブを削除        bind "r" {
+SwitchToMode "RenameTab"
+TabNameInput 0
+        }
+        // リネーム        // 番号ジャンプ (タブモードから数字で確定移動)
+        bind "1" {
+          GoToTab 1
+          SwitchToMode "Locked"
+        }
+        bind "2" {
+          GoToTab 2
+          SwitchToMode "Locked"
+        }
+        bind "3" {
+          GoToTab 3
+          SwitchToMode "Locked"
+        }
+        bind "4" {
+          GoToTab 4
+          SwitchToMode "Locked"
+        }
+        bind "5" {
+          GoToTab 5
+          SwitchToMode "Locked"
+        }
+        bind "6" {
+          GoToTab 6
+          SwitchToMode "Locked"
+        }
+        bind "7" {
+          GoToTab 7
+          SwitchToMode "Locked"
+        }
+        bind "8" {
+          GoToTab 8
+          SwitchToMode "Locked"
+        }
+        bind "9" {
+          GoToTab 9
+          SwitchToMode "Locked"
+        }
+      }
+      // リネーム入力モード (rを押したとき用)
+      renametab {
         bind "Esc" {
-            SwitchToMode "Locked"
+          UndoRenameTab
+          SwitchToMode "Tab"
         }
         bind "Enter" {
-            SwitchToMode "Locked"
+          SwitchToMode "Locked"
         }
-        bind "Ctrl c" {
-            SwitchToMode "Locked"
-        }
-    }
-    // 通常モード (Locked)
-    // tmuxの Prefix (C-t) を押すと "tmux" モード (操作モード) に移行します
-    locked {
-        bind "Ctrl t" {
-            SwitchToMode "Tmux"
-        }
-    }
-    // Tmuxモード (Prefixを押した後の状態)
-    // ここで .tmux.conf のキーバインドを再現します
-    tmux {
-        // --- ペイン操作 ---
-        // bind | split-window -h
-        bind "|" {
-            NewPane "Right"
-            SwitchToMode "Locked"
-        }
-        // bind - split-window
-        bind "-" {
-            NewPane "Down"
-            SwitchToMode "Locked"
-        }
-        // bind h select-pane -t :.- (前のペイン)
-        bind "h" {
-            MoveFocus "Left"
-        }
-        // Zellijは方向指定が基本ですがLeft/Rightで代用        // bind l select-pane -t :.+ (次のペイン)
-        bind "l" {
-            MoveFocus "Right"
-        }
-        bind "j" {
-            MoveFocus "Down"
-        }
-        bind "k" {
-            MoveFocus "Up"
-        }
-        // bind k confirm-before "kill-window" (ここではペイン削除に割り当て)
-        bind "k" {
-            CloseFocus
-            SwitchToMode "Locked"
-        }
-        // --- ウィンドウ(タブ)操作 ---
-        // bind c new-window
-        bind "c" {
-            NewTab
-            SwitchToMode "Locked"
-        }
-        // ウィンドウ移動 (p: previous, n: next)
-        bind "p" {
-            GoToPreviousTab
-        }
-        bind "n" {
-            GoToNextTab
-        }
-        // --- コピーモードへ ---
-        // bind [ copy-mode
-        bind "[" {
-            SwitchToMode "Scroll"
-        }
-        // --- その他 ---
-        // bind w: セッションマネージャーをフローティングで開く
-        bind "w" {
-            LaunchOrFocusPlugin "session-manager" {
-                floating true
-                move_to_focused_tab true
-            }
-            SwitchToMode "Locked"
-        }
-        // デタッチ
-        bind "d" {
-            Detach
-        }
-    }
-    // スクロール/コピーモード (tmuxの copy-mode-vi 相当)
-    scroll {
+      }
+      // スクロール/コピーモード (tmuxの copy-mode-vi 相当)
+      scroll {
         bind "Esc" {
-            SwitchToMode "Locked"
+          SwitchToMode "Locked"
         }
         bind "j" {
-            ScrollDown
+          ScrollDown
         }
         bind "k" {
-            ScrollUp
+          ScrollUp
         }
         bind "Ctrl f" {
-            PageScrollDown
+          PageScrollDown
         }
         bind "Ctrl b" {
-            PageScrollUp
+          PageScrollUp
         }
         // v で選択開始 (Visual mode)
         bind "v" {
-            EditScrollback
-            SwitchToMode "Locked"
+          EditScrollback
+          SwitchToMode "Locked"
         }
         // Zellijはエディタで開くのが強力        // または簡易コピーなら
         bind "Space" {
-            SwitchToMode "EnterSearch"
+          SwitchToMode "EnterSearch"
         }
+      }
     }
-}
-// UI設定
-ui {
-    pane_frames {
+    // UI設定
+    ui {
+      pane_frames {
         hide_session_name true
+      }
     }
-}
 
