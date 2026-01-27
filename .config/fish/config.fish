@@ -236,7 +236,8 @@ function go_install_binaries
     'github.com/pwaller/goimports-update-ignore@latest' \
     'github.com/onsi/ginkgo/v2/ginkgo@latest' \
     'github.com/kisielk/godepgraph@latest' \
-    'mvdan.cc/gofumpt@latest'
+    'mvdan.cc/gofumpt@latest' \
+    'github.com/d-kuro/gwq/cmd/gwq@latest'
   pushd $HOME
   for uri in $GO_BINARIES
     echo "go install $uri ..."
@@ -274,8 +275,7 @@ function fish_user_key_bindings
   bind \cu fzf_z
   bind \co wrap_fzf_file
   bind \cg fzf_cd
-
-  bind "[1;2F" kill-line
+  bind \ck kill-line
 end
 
 # direnv
@@ -380,3 +380,12 @@ function __postexec_notify_on_long_running_commands --on-event fish_postexec
 end
 
 string match -q "$TERM_PROGRAM" "kiro" and . (kiro --locate-shell-integration-path fish)
+
+if test -r ~/.safe-chain/scripts/init-fish.fish; and command -v safe-chain > /dev/null
+  source ~/.safe-chain/scripts/init-fish.fish # Safe-chain Fish initialization script
+end
+
+
+if status --is-interactive; and command -v starship > /dev/null
+  starship init fish | source
+end

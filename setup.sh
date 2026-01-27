@@ -10,6 +10,7 @@ ln -s $HOME/dotfiles/.yabairc $HOME/
 ln -s $HOME/dotfiles/.skhdrc $HOME/
 ln -s $HOME/dotfiles/.myclirc $HOME/
 ln -s $HOME/dotfiles/.codex $HOME/
+ln -s $HOME/dotfiles/.claude $HOME/
 
 ## $HOME/bin
 mkdir $HOME/bin
@@ -34,6 +35,7 @@ ln -s $HOME/dotfiles/.config/tmuxp $HOME/.config/
 ln -s $HOME/dotfiles/.config/bat $HOME/.config/
 ln -s $HOME/dotfiles/.config/mcphub $HOME/.config/
 ln -s $HOME/dotfiles/.config/gitui $HOME/.config/
+ln -s $HOME/dotfiles/.config/zellij $HOME/.config/
 ln -s $HOME/dotfiles/.config/hypr $HOME/.config/
 
 # vscode

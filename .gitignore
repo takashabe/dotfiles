@@ -70,11 +70,16 @@ _build.json
 **/.serena/
 **/.spec-workflow/
 **/.prompt
+.claude/*
+!.claude/CLAUDE.md
+!.claude/settings.json
+!.claude/scripts/
 
 # codex cli
 .codex/*
 !.codex/AGENTS.md
 !.codex/config.toml
+!.codex/skills/
 
 ## wkit
 .wkit.yaml

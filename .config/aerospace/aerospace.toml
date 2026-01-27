@@ -102,6 +102,9 @@ run = 'move-node-to-workspace 3'
 [[on-window-detected]]
 if.app-id = 'notion.id'
 run = 'move-node-to-workspace 3'
+[[on-window-detected]]
+if.app-id = 'com.macpomodoro'
+run = 'move-node-to-workspace 3'
 
 
 [[on-window-detected]]

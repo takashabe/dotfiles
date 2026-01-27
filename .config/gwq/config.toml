@@ -1,0 +1,14 @@
+[naming]
+template = '{{.Host}}/{{.Owner}}/{{.Repository}}={{.Branch}}'
+sanitize_chars = { "/" = "-", ":" = "-" }
+
+[worktree]
+# ghqと揃える
+basedir = '~/dev/src'
+
+[finder]
+preview = true
+
+[ui]
+icons = true
+tilde_home = true

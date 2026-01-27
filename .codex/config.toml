@@ -1,5 +1,5 @@
 # reference: https://github.com/openai/codex/blob/main/docs/config.md
-model = "gpt-5.1-codex-max"
+model = "gpt-5.2-codex"
 model_verbosity = "medium"
 sandbox_mode = "workspace-write"
 approval_policy = "on-failure"
@@ -7,6 +7,7 @@ approval_policy = "on-failure"
 # 何の設定か分からないので保留
 # file_opener = "cursor" # or vscode
 notify = ["bash","-lc","afplay /System/Library/Sounds/Ping.aiff"]
+model_reasoning_effort = "medium"
 
 [sandbox_workspace_write]
 network_access = true
@@ -39,3 +40,6 @@ bearer_token_env_var = "GITHUB_PAT_CODEX"
 
 [notice]
 "hide_gpt-5.1-codex-max_migration_prompt" = true
+
+[notice.model_migrations]
+"gpt-5.1-codex-max" = "gpt-5.2-codex"

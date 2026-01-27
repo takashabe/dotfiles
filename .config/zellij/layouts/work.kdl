@@ -1,0 +1,55 @@
+layout {
+    // 共通のテンプレート（ステータスバーなど）
+    default_tab_template {
+        pane size=1 borderless=true {
+            plugin location="zellij:tab-bar"
+        }
+        children
+        pane size=2 borderless=true {
+            plugin location="zellij:status-bar"
+        }
+    }
+
+    // Window 1: development
+    tab name="development" focus=true {
+        pane cwd="~/dev/src/github.com/CastingONE/castingone"
+    }
+
+    // Window 2: backend
+    // layout: even-horizontal (横並び3分割)
+    tab name="backend" {
+        pane split_direction="vertical" {
+            pane cwd="~/dev/src/github.com/CastingONE/castingone/go/tenant" {
+                command "bash"
+                args "-c" "air 2>&1 | humanlog"
+            }
+            pane cwd="~/dev/src/github.com/CastingONE/castingone/go/messenger" {
+                command "bash"
+                args "-c" "air 2>&1 | humanlog"
+            }
+            pane cwd="~/dev/src/github.com/CastingONE/castingone"
+        }
+    }
+
+    // Window 3: frontend
+    // layout: even-horizontal
+    tab name="frontend" {
+        pane split_direction="vertical" {
+            pane cwd="~/dev/src/github.com/CastingONE/casone-lite-web-nextjs/apps/tenant" {
+                // npm run dev を実行した状態で待機
+                command "bash"
+                args "-c" "npm install && npm run dev"
+            }
+            pane cwd="~/dev/src/github.com/CastingONE/casone-lite-web-nextjs/apps/staff" {
+                command "bash"
+                args "-c" "npm install && npm run dev"
+            }
+            pane cwd="~/dev/src/github.com/CastingONE/casone-lite-web-nextjs"
+        }
+    }
+
+    // Window 4: review
+    tab name="review" {
+        pane cwd="~/dev/src/github.com/CastingONE/castingone/.git/.wkit-worktrees/local/review"
+    }
+}
