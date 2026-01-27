@@ -1,13 +1,12 @@
 [Unit]
 Description = xremap
+After       = default.target
 
 [Service]
-KillMode    = process
-ExecStart   = /usr/bin/xremap /home/takashabe/.config/xremap/config.yaml
-ExecStop    = /usr/bin/killall xremap
-Type        = simple
-Restart     = always
-Environment = DISPLAY=:0
+Type      = simple
+KillMode  = process
+ExecStart = /usr/bin/xremap /home/takashabe/.config/xremap/config.yaml
+Restart   = always
 
 [Install]
 WantedBy = default.target

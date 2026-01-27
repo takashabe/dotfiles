@@ -1,20 +1,26 @@
+# for wayland. https://github.com/xremap/xremap?tab=readme-ov-file#keypress_delay_ms
+keypress_delay_ms: 20
+
+# Note: application_id is the class from `hyptctl clients`
+
 keymap:
   - name: fake Emacs(macOS)
     application:
-      not: [Alacritty, Code]
-    exact_match: true
+      not: [Alacritty, Code, com.mitchellh.ghostty]
+    exact_match: false
     remap:
       # Cursor
-      CTRL_L-b: left
-      CTRL_L-f: right
-      CTRL_L-p: up
-      CTRL_L-n: down
-      CTRL_L-h: backspace
+      # C-b: left
+      C-b: right
+      C-f: right
+      C-p: up
+      C-n: down
+      C-h: backspace
       # Beginning/End of line
-      CTRL_L-a: home
-      CTRL_L-e: end
+      C-a: home
+      C-e: end
       # kill line
-      CTRL_L-k: [Shift-end, CTRL-x]
+      C-k: [Shift-end, CTRL-x]
       # macOS like
       Super-x: CTRL-x
       Super-c: CTRL-c
@@ -26,7 +32,7 @@ keymap:
       Super-w: CTRL-w
   - name: ESC+IME off for vim
     application:
-      only: [Alacritty, Code]
+      only: [Alacritty, Code, com.mitchellh.ghostty]
     exact_match: true
     remap:
       ESC: [esc, hanja]
