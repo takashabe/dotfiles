@@ -51,6 +51,15 @@ if [ $(uname) = "Linux" ]; then
   ln -s $HOME/dotfiles/.config/xremap/  $HOME/.config/
   ln -s $HOME/dotfiles/.config/systemd/user/xremap.service $HOME/.config/systemd/user/
   ln -s $HOME/dotfiles/.gitconfig.credential.linux $HOME/.gitconfig.credential
+
+  # /etc
+  sudo mkdir -p /etc/greetd
+  sudo ln -s $HOME/dotfiles/etc/greetd/config.toml /etc/greetd/config.toml
+  ## xremap
+  sudo modprobe uinput
+  sudo cp $HOME/dotfiles/etc/modules-load.d/uinput.conf /etc/modules-load.d/uinput.conf
+  # symbolic link だと動かないためコピーする
+  sudo cp $HOME/dotfiles/etc/udev/rules.d/99-input.rules /etc/udev/rules.d/
 fi
 
 if [ $(uname) = "Darwin" ]; then
