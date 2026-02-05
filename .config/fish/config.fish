@@ -383,7 +383,10 @@ if test -r ~/.safe-chain/scripts/init-fish.fish; and command -v safe-chain > /de
   source ~/.safe-chain/scripts/init-fish.fish # Safe-chain Fish initialization script
 end
 
-
 if status --is-interactive; and command -v starship > /dev/null
   starship init fish | source
+end
+
+if status --is-interactive; and command -q git; and git wt -h &>/dev/null
+  git wt --init fish | source
 end
