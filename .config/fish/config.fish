@@ -379,8 +379,6 @@ function __postexec_notify_on_long_running_commands --on-event fish_postexec
   end
 end
 
-string match -q "$TERM_PROGRAM" "kiro" and . (kiro --locate-shell-integration-path fish)
-
 if test -r ~/.safe-chain/scripts/init-fish.fish; and command -v safe-chain > /dev/null
   source ~/.safe-chain/scripts/init-fish.fish # Safe-chain Fish initialization script
 end
