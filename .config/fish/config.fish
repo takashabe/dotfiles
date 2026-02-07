@@ -104,7 +104,7 @@ end
 
 # git worktree listをfzfで選択してcdする
 function gwl
-  fzf_wkit_list_cd
+  fzf_git_wt
 end
 
 # git worktreeとブランチを同時に作成する
