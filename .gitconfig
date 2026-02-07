@@ -43,3 +43,8 @@
   repo = /Users/takashabe/dotfiles
   repo = /Users/takashabe/dev/src/github.com/qmk/qmk_firmware
   repo = /Users/takashabe/dev/src/github.com/takashabe/qmk_firmware
+[wt]
+  basedir = .git/git-wt
+  copy = .envrc
+  copy = compose.override.yaml
+  copy = .env.local
