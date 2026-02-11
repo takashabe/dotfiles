@@ -283,7 +283,7 @@ direnv hook fish | source
 
 #### general function
 function reload_config
-  exec fish
+  source $HOME/.config/fish/config.fish
 end
 function edit_config
   $EDITOR ~/dotfiles/.config/fish/config.fish
