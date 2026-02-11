@@ -77,7 +77,6 @@ binds {
   Super+Shift+Q { quit; }
   Super+F { maximize-column; }
 
-
   Alt+H { focus-column-left; }
   Alt+L { focus-column-right; }
   Alt+K { focus-window-up; }
@@ -95,6 +94,10 @@ binds {
 
   Super+Shift+R { switch-preset-column-width; }
 
+  // カラム内にwindowを統合/分離する (縦置きモニタで上下分割に使う)
+  Super+Comma { consume-or-expel-window-left; }
+  Super+Period { consume-or-expel-window-right; }
+
   Super+1 { focus-workspace "ws1"; }
   Super+2 { focus-workspace "ws2"; }
   Super+3 { focus-workspace "ws3"; }
@@ -111,6 +114,21 @@ screenshot-path "~/Pictures/Screenshots/%Y-%m-%d %H-%M-%S.png"
 
 hotkey-overlay {
   skip-at-startup
+}
+
+window-rule {
+  match app-id=r#"^Slack$"#
+  open-on-workspace "ws3"
+}
+
+window-rule {
+  match app-id=r#"^vivaldi-lpiiknacbombkbjcmblabngmfnbahijj-Default$"#
+  open-on-workspace "ws3"
+}
+
+window-rule {
+  match app-id=r#"^obsidian$"#
+  open-on-workspace "ws3"
 }
 
 workspace "ws1" { open-on-output "DP-1"; }
