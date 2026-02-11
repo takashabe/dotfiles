@@ -171,7 +171,7 @@ set -x BAT_THEME "TwoDark"
 set -x GOOGLE_APPLICATION_CREDENTIALS "$HOME/.config/gcloud/application_default_credentials.json"
 if status --is-interactive
   if test (uname) = "Linux"
-    source "/opt/google-cloud-sdk/path.fish.inc"
+    source "/opt/google-cloud-cli/path.fish.inc"
   else
     source "$(brew --prefix)/share/google-cloud-sdk/path.fish.inc"
   end
@@ -248,7 +248,7 @@ end
 
 # Rust
 set -x PATH $HOME/.cargo/bin $PATH
-if status --is-interactive
+if status --is-interactive; and test -r "$HOME/.cargo/env.fish"
   source "$HOME/.cargo/env.fish"
 end
 
@@ -313,12 +313,6 @@ function msleep
   osascript -e 'tell application "Finder" to sleep'
 end
 
-## Xorg
-if status --is-interactive; and test (uname) = "Linux"
-  xset m 1/2 4
-  xset r rate 200 60
-end
-
 function rolling_update
   paru -Syyu --noconfirm && go_install_binaries
 end
@@ -340,7 +334,9 @@ set -x TF_CLI_ARGS_apply "--parallelism=254"
 set fish_greeting
 
 # Load local env, functions and so on.
-source $HOME/.config/fish/conf.d/local.fish
+if status --is-interactive; and test -r $HOME/.config/fish/conf.d/local.fish
+  source $HOME/.config/fish/conf.d/local.fish
+end
 
 # tab completion very slow...  may be fix next-release. (3.1.3?)
 # https://github.com/fish-shell/fish-shell/issues/7511
