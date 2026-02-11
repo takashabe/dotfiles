@@ -8,6 +8,7 @@ approval_policy = "on-failure"
 # file_opener = "cursor" # or vscode
 notify = ["bash","-lc","afplay /System/Library/Sounds/Ping.aiff"]
 model_reasoning_effort = "medium"
+personality = "pragmatic"
 
 [sandbox_workspace_write]
 network_access = true

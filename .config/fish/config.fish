@@ -104,7 +104,7 @@ end
 
 # git worktree listをfzfで選択してcdする
 function gwl
-  fzf_wkit_list_cd
+  fzf_git_wt
 end
 
 # git worktreeとブランチを同時に作成する
@@ -375,13 +375,14 @@ function __postexec_notify_on_long_running_commands --on-event fish_postexec
   end
 end
 
-string match -q "$TERM_PROGRAM" "kiro" and . (kiro --locate-shell-integration-path fish)
-
 if test -r ~/.safe-chain/scripts/init-fish.fish; and command -v safe-chain > /dev/null
   source ~/.safe-chain/scripts/init-fish.fish # Safe-chain Fish initialization script
 end
 
-
 if status --is-interactive; and command -v starship > /dev/null
   starship init fish | source
+end
+
+if status --is-interactive; and command -q git; and git wt -h &>/dev/null
+  git wt --init fish | source
 end
