@@ -37,6 +37,9 @@ ln -s $HOME/dotfiles/.config/mcphub $HOME/.config/
 ln -s $HOME/dotfiles/.config/gitui $HOME/.config/
 ln -s $HOME/dotfiles/.config/zellij $HOME/.config/
 ln -s $HOME/dotfiles/.config/hypr $HOME/.config/
+ln -s $HOME/dotfiles/.config/niri $HOME/.config/
+ln -s $HOME/dotfiles/.config/ironbar $HOME/.config/
+ln -s $HOME/dotfiles/.config/environment.d $HOME/.config/
 
 # vscode
 if [ $(uname) = "Linux" ]; then

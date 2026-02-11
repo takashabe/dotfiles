@@ -1,0 +1,65 @@
+position = "top"
+height = 24
+
+[[start]]
+type = "menu"
+label = "󱓞"
+
+[[start]]
+type = "workspaces"
+
+[[center]]
+type = "focused"
+icon_size = 16
+
+[[end]]
+type = "sys_info"
+format = [
+    "{cpu_percent}% ",
+    "{memory_percent}% ",
+]
+
+[end.interval]
+cpu = 1
+
+[[end]]
+type = "tray"
+
+[[end]]
+type = "clock"
+
+[[end]]
+type = "custom"
+name = "power-menu"
+class = "power-menu"
+
+[[end.bar]]
+type = "button"
+name = "power-btn"
+label = ""
+on_click = "popup:toggle"
+
+[[end.popup]]
+type = "box"
+orientation = "vertical"
+
+[[end.popup.widgets]]
+type = "label"
+name = "header"
+label = "Power menu"
+
+[[end.popup.widgets]]
+type = "box"
+name = "buttons"
+
+[[end.popup.widgets.widgets]]
+type = "button"
+class = "power-btn"
+label = "<span>󰐥</span>"
+on_click = "!shutdown now"
+
+[[end.popup.widgets.widgets]]
+type = "button"
+class = "power-btn"
+label = "<span>󰜉</span>"
+on_click = "!reboot"

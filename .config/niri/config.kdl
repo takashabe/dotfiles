@@ -1,0 +1,119 @@
+// niri configuration with greed-d base styling and local keybinds
+
+environment {
+  GTK_IM_MODULE "fcitx"
+  QT_IM_MODULE "fcitx"
+  XMODIFIERS "@im=fcitx"
+}
+
+spawn-at-startup "ironbar"
+spawn-at-startup "systemctl" "--user" "start" "pipewire" "pipewire-pulse" "wireplumber"
+spawn-at-startup "fcitx5" "-d" "--replace"
+spawn-at-startup "ghostty"
+
+output "DP-1" {
+  mode "3840x2160@60.0"
+  position x=2160 y=1680
+  scale 1
+}
+
+output "HDMI-A-1" {
+  mode "3840x2160@60.0"
+  position x=6000 y=0
+  transform "270"
+  scale 1
+}
+
+input {
+  keyboard {
+    xkb {
+      layout "us"
+    }
+    repeat-delay 140
+    repeat-rate 50
+  }
+
+  touchpad {
+    // natural-scroll
+  }
+}
+
+layout {
+  // 常にfocusしたwindowを中央に配置する. 挙動がウザいようなら"on-overflow"に戻す
+  center-focused-column "always"
+  preset-column-widths {
+    proportion 0.5
+    proportion 0.95
+    proportion 1.0
+  }
+  default-column-width {
+    proportion 0.95
+  }
+
+
+  gaps 8
+  border {
+    off
+  }
+  focus-ring {
+    width 1
+    active-color "#cba6f7"
+    inactive-color "#45475A"
+  }
+  shadow {
+    on
+    softness 20
+    spread 7
+    offset x=-1 y=-5
+    color "#0009"
+  }
+
+  struts {}
+}
+
+binds {
+  // Super+Return { spawn "ghostty"; }
+  Super+D { spawn "rofi" "-show" "drun"; }
+  Super+Shift+Q { quit; }
+  Super+F { maximize-column; }
+
+
+  Alt+H { focus-column-left; }
+  Alt+L { focus-column-right; }
+  Alt+K { focus-window-up; }
+  Alt+J { focus-window-down; }
+
+  Super+Shift+H { move-column-left; }
+  Super+Shift+L { move-column-right; }
+  Super+Shift+K { move-window-up; }
+  Super+Shift+J { move-window-down; }
+
+  Super+Ctrl+H { set-column-width "-50"; }
+  Super+Ctrl+L { set-column-width "+50"; }
+  Super+Ctrl+K { set-window-height "-50"; }
+  Super+Ctrl+J { set-window-height "+50"; }
+
+  Super+Shift+R { switch-preset-column-width; }
+
+  Super+1 { focus-workspace "ws1"; }
+  Super+2 { focus-workspace "ws2"; }
+  Super+3 { focus-workspace "ws3"; }
+  Super+4 { focus-workspace "ws4"; }
+
+  Super+Shift+1 { move-window-to-workspace "ws1"; }
+  Super+Shift+2 { move-window-to-workspace "ws2"; }
+  Super+Shift+3 { move-window-to-workspace "ws3"; }
+  Super+Shift+4 { move-window-to-workspace "ws4"; }
+}
+
+prefer-no-csd
+screenshot-path "~/Pictures/Screenshots/%Y-%m-%d %H-%M-%S.png"
+
+hotkey-overlay {
+  skip-at-startup
+}
+
+workspace "ws1" { open-on-output "DP-1"; }
+workspace "ws2" { open-on-output "DP-1"; }
+workspace "ws3" { open-on-output "HDMI-A-1"; }
+workspace "ws4" { open-on-output "HDMI-A-1"; }
