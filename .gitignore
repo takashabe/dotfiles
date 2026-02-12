@@ -74,6 +74,13 @@ _build.json
 !.claude/CLAUDE.md
 !.claude/settings.json
 !.claude/scripts/
+!.claude/skills/
+!.claude/plugins/
+.claude/plugins/cache/
+.claude/plugins/marketplaces/
+.claude/plugins/install-counts-cache.json
+!.claude/hooks/
+!.claude/commands/
 
 # codex cli
 .codex/*

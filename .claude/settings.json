@@ -1,7 +1,6 @@
 {
   "cleanupPeriodDays": 30,
   "includeCoAuthoredBy": false,
-  "defaultMode": "acceptEdits",
   "permissions": {
     "allow": [
       "Bash",
@@ -73,6 +72,21 @@
       "Bash(rm -rf ~/*)",
       "Bash(sudo:*)",
       "Bash(yum install:*)"
+    ],
+    "defaultMode": "default"
+  },
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "ExitPlanMode",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "$HOME/.claude/hooks/require-codex-review-before-plan-exit.sh",
+            "timeout": 10
+          }
+        ]
+      }
     ]
   },
   "enabledPlugins": {
@@ -80,7 +94,10 @@
     "context7@claude-plugins-official": true,
     "code-review@claude-plugins-official": true,
     "pr-review-toolkit@claude-plugins-official": true,
-    "feature-dev@claude-plugins-official": true
+    "feature-dev@claude-plugins-official": true,
+    "typescript-lsp@claude-plugins-official": true,
+    "example-skills@anthropic-agent-skills": true
   },
-  "language": "Japanese"
+  "language": "Japanese",
+  "defaultMode": "acceptEdits"
 }

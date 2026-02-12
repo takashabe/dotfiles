@@ -1,0 +1,75 @@
+{
+  "version": 2,
+  "plugins": {
+    "gopls-lsp@claude-plugins-official": [
+      {
+        "scope": "user",
+        "installPath": "/Users/takashabe/.claude/plugins/cache/claude-plugins-official/gopls-lsp/1.0.0",
+        "version": "1.0.0",
+        "installedAt": "2026-01-08T14:08:54.965Z",
+        "lastUpdated": "2026-01-08T14:08:54.965Z",
+        "gitCommitSha": "aa1a2bea45d48a769b855856bfe31b8016a204ee"
+      }
+    ],
+    "context7@claude-plugins-official": [
+      {
+        "scope": "user",
+        "installPath": "/Users/takashabe/.claude/plugins/cache/claude-plugins-official/context7/2cd88e7947b7",
+        "version": "2cd88e7947b7",
+        "installedAt": "2026-01-09T10:09:08.349Z",
+        "lastUpdated": "2026-02-07T01:12:50.423Z",
+        "gitCommitSha": "aa1a2bea45d48a769b855856bfe31b8016a204ee"
+      }
+    ],
+    "code-review@claude-plugins-official": [
+      {
+        "scope": "user",
+        "installPath": "/Users/takashabe/.claude/plugins/cache/claude-plugins-official/code-review/2cd88e7947b7",
+        "version": "2cd88e7947b7",
+        "installedAt": "2026-01-09T10:24:33.116Z",
+        "lastUpdated": "2026-02-07T01:12:50.420Z",
+        "gitCommitSha": "aa1a2bea45d48a769b855856bfe31b8016a204ee"
+      }
+    ],
+    "pr-review-toolkit@claude-plugins-official": [
+      {
+        "scope": "user",
+        "installPath": "/Users/takashabe/.claude/plugins/cache/claude-plugins-official/pr-review-toolkit/2cd88e7947b7",
+        "version": "2cd88e7947b7",
+        "installedAt": "2026-01-09T10:24:45.657Z",
+        "lastUpdated": "2026-02-07T01:12:50.414Z",
+        "gitCommitSha": "aa1a2bea45d48a769b855856bfe31b8016a204ee"
+      }
+    ],
+    "feature-dev@claude-plugins-official": [
+      {
+        "scope": "user",
+        "installPath": "/Users/takashabe/.claude/plugins/cache/claude-plugins-official/feature-dev/2cd88e7947b7",
+        "version": "2cd88e7947b7",
+        "installedAt": "2026-01-13T03:02:15.178Z",
+        "lastUpdated": "2026-02-07T01:12:50.403Z",
+        "gitCommitSha": "aa1a2bea45d48a769b855856bfe31b8016a204ee"
+      }
+    ],
+    "typescript-lsp@claude-plugins-official": [
+      {
+        "scope": "user",
+        "installPath": "/Users/takashabe/.claude/plugins/cache/claude-plugins-official/typescript-lsp/1.0.0",
+        "version": "1.0.0",
+        "installedAt": "2026-02-09T01:42:16.066Z",
+        "lastUpdated": "2026-02-09T01:42:16.066Z",
+        "gitCommitSha": "2cd88e7947b7382e045666abee790c7f55f669f3"
+      }
+    ],
+    "example-skills@anthropic-agent-skills": [
+      {
+        "scope": "user",
+        "installPath": "/Users/takashabe/.claude/plugins/cache/anthropic-agent-skills/example-skills/1ed29a03dc85",
+        "version": "1ed29a03dc85",
+        "installedAt": "2026-02-12T15:58:45.333Z",
+        "lastUpdated": "2026-02-12T15:58:45.333Z",
+        "gitCommitSha": "1ed29a03dc852d30fa6ef2ca53a67dc2c2c2c563"
+      }
+    ]
+  }
+}
