@@ -1,5 +1,5 @@
 # reference: https://github.com/openai/codex/blob/main/docs/config.md
-model = "gpt-5.2-codex"
+model = "gpt-5.3-codex"
 model_verbosity = "medium"
 sandbox_mode = "workspace-write"
 approval_policy = "on-failure"
@@ -44,3 +44,4 @@ bearer_token_env_var = "GITHUB_PAT_CODEX"
 
 [notice.model_migrations]
 "gpt-5.1-codex-max" = "gpt-5.2-codex"
+"gpt-5.2-codex" = "gpt-5.3-codex"
