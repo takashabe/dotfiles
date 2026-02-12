@@ -81,14 +81,157 @@ function gpull
   git pull origin (git branch --show-current)
 end
 
+# ルート/ワークツリー双方で、リモート削除済みかつマージ済みのブランチ/ワークツリーを掃除する
 function gfetchprune
+  set -l dry_run 0
+  for arg in $argv
+    switch $arg
+      case --dry-run -n
+        set dry_run 1
+      case '*'
+        echo "Usage: gfetchprune [--dry-run|-n]"
+        return 1
+    end
+  end
+
+  set -l repo_root (git rev-parse --show-toplevel 2>/dev/null)
+  or begin
+    echo "not a git repository"
+    return 1
+  end
+
   git fetch origin --prune
-  # PROTECT_BRANCHES defines at loacl.fish
-  set -l worktree_branches (git worktree list | awk '{print $NF}' | sed 's/\[//' | sed 's/\]//' | string join '|')
-  if git branch --merge | grep -E -v "\*|^  ($PROTECT_BRANCHES)\$" | grep -v -E "^  ($worktree_branches)\$"
-    git branch --merge | grep -E -v "\*|^  ($PROTECT_BRANCHES)\$" | grep -v -E "^  ($worktree_branches)\$" | xargs git branch -d
-  else
-    echo 'already updated'
+  # PROTECT_BRANCHES defined in local.fish
+  set -l protect_re $PROTECT_BRANCHES
+
+  set -l default_branch (git symbolic-ref --quiet --short refs/remotes/origin/HEAD | string replace 'origin/' '')
+  if test -z "$default_branch"
+    if git show-ref --verify --quiet refs/heads/main
+      set default_branch main
+    else if git show-ref --verify --quiet refs/heads/master
+      set default_branch master
+    end
+  end
+
+  if test -z "$default_branch"
+    echo "default branch not found (origin/HEAD, main, master)"
+    return 1
+  end
+
+  set -l merge_target "refs/remotes/origin/$default_branch"
+  if not git show-ref --verify --quiet $merge_target
+    set merge_target "refs/heads/$default_branch"
+  end
+
+  if not git show-ref --verify --quiet $merge_target
+    echo "merge target not found: $merge_target"
+    return 1
+  end
+
+  set -l current_wt (git rev-parse --show-toplevel)
+  set -l worktree_entries
+  set -l wt_path ""
+  set -l wt_branch ""
+  for line in (git worktree list --porcelain)
+    if string match -q 'worktree *' -- $line
+      if test -n "$wt_path"
+        set -a worktree_entries "$wt_path\t$wt_branch"
+      end
+      set wt_path (string replace 'worktree ' '' -- $line)
+      set wt_branch ""
+    else if string match -q 'branch refs/heads/*' -- $line
+      set wt_branch (string replace 'branch refs/heads/' '' -- $line)
+    else if string match -q 'branch (null)' -- $line
+      set wt_branch ""
+    end
+  end
+  if test -n "$wt_path"
+    set -a worktree_entries "$wt_path\t$wt_branch"
+  end
+
+  set -l targets_branches
+  set -l targets_worktrees
+
+  for entry in $worktree_entries
+    set -l parts (string split -m1 "\t" -- $entry)
+    set -l path $parts[1]
+    set -l branch $parts[2]
+
+    if test -z "$branch"
+      continue
+    end
+    if test "$path" = "$current_wt"
+      continue
+    end
+    if test "$branch" = "$default_branch"
+      continue
+    end
+    string match -qr "^($protect_re)\$" -- $branch; and continue
+
+    set -l upstream (git for-each-ref --format='%(upstream:short)' refs/heads/$branch)
+    if test -z "$upstream"
+      continue
+    end
+
+    set -l track (git for-each-ref --format='%(upstream:trackshort)' refs/heads/$branch)
+    string match -q '*gone*' -- $track; or continue
+
+    git merge-base --is-ancestor $branch $merge_target; or continue
+
+    set -a targets_worktrees $path
+    set -a targets_branches $branch
+  end
+
+  # worktree未使用のブランチも削除対象にする
+  for entry in (git for-each-ref --format='%(refname:short)' refs/heads)
+    set -l branch $entry
+    if test "$branch" = "$default_branch"
+      continue
+    end
+    string match -qr "^($protect_re)\$" -- $branch; and continue
+
+    # worktree使用中は除外
+    for wt_entry in $worktree_entries
+      set -l wt_parts (string split -m1 "\t" -- $wt_entry)
+      if test "$branch" = "$wt_parts[2]"
+        set branch ""
+        break
+      end
+    end
+    if test -z "$branch"
+      continue
+    end
+
+    set -l upstream (git for-each-ref --format='%(upstream:short)' refs/heads/$branch)
+    if test -z "$upstream"
+      continue
+    end
+    set -l track (git for-each-ref --format='%(upstream:trackshort)' refs/heads/$branch)
+    string match -q '*gone*' -- $track; or continue
+    git merge-base --is-ancestor $branch $merge_target; or continue
+
+    set -a targets_branches $branch
+  end
+
+  if test (count $targets_worktrees) -eq 0; and test (count $targets_branches) -eq 0
+    echo "already updated"
+    return
+  end
+
+  for path in $targets_worktrees
+    if test $dry_run -eq 1
+      echo "[dry-run] git worktree remove -f -- $path"
+    else
+      git worktree remove -f -- $path
+    end
+  end
+
+  for branch in $targets_branches
+    if test $dry_run -eq 1
+      echo "[dry-run] git branch -d -- $branch"
+    else
+      git branch -d -- $branch
+    end
   end
 end
 
