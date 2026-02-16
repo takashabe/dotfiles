@@ -75,6 +75,7 @@
     ],
     "defaultMode": "default"
   },
+  "model": "opus",
   "hooks": {
     "PreToolUse": [
       {
@@ -89,6 +90,10 @@
       }
     ]
   },
+  "statusLine": {
+    "type": "command",
+    "command": "~/.claude/scripts/statusline.sh"
+  },
   "enabledPlugins": {
     "gopls-lsp@claude-plugins-official": true,
     "context7@claude-plugins-official": true,
@@ -99,5 +104,6 @@
     "example-skills@anthropic-agent-skills": true
   },
   "language": "Japanese",
-  "defaultMode": "acceptEdits"
+  "defaultMode": "acceptEdits",
+  "fastMode": true
 }
