@@ -79,7 +79,12 @@ git push -u origin <branch-name>
 gh pr view --json number 2>/dev/null
 ```
 
-PRが存在しなければ作成。デフォルトのベースブランチは `dev`（ユーザー指示がある場合はそちらに従う）。
+PRが存在しなければ作成。
+
+**ベースブランチの決定（MUST）:**
+1. `gh api repos/{owner}/{repo}/branches --jq '.[] | select(.protected) | .name'` でprotected branchの一覧を取得する
+2. AskUserQuestionToolで選択肢として提示し、ユーザーに選択させる（featブランチ等はOtherで手動入力）
+3. `--base` フラグは必ず指定する。省略は禁止
 
 PR bodyはリポジトリのテンプレートに従う:
 1. Step 1で取得した `.github/PULL_REQUEST_TEMPLATE.md` の構造を使用
@@ -87,7 +92,7 @@ PR bodyはリポジトリのテンプレートに従う:
 3. テンプレートが存在しない場合は、変更の要約をシンプルに記述する
 
 ```bash
-gh pr create --base dev --title "<conventional commitと同形式>" --body "$(cat <<'EOF'
+gh pr create --base <ユーザーが選択したブランチ> --title "<conventional commitと同形式>" --body "$(cat <<'EOF'
 <テンプレートのセクション構造に従って記述>
 EOF
 )"
