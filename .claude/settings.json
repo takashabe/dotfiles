@@ -101,9 +101,13 @@
     "pr-review-toolkit@claude-plugins-official": true,
     "feature-dev@claude-plugins-official": true,
     "typescript-lsp@claude-plugins-official": true,
-    "example-skills@anthropic-agent-skills": true
+    "example-skills@anthropic-agent-skills": true,
+    "skill-codex@skill-codex": true,
+    "dig@kuu-marketplace": true,
+    "fix-ci@kuu-marketplace": true,
+    "deslop@kuu-marketplace": true
   },
   "language": "Japanese",
-  "defaultMode": "acceptEdits",
-  "fastMode": true
+  "fastMode": true,
+  "defaultMode": "acceptEdits"
 }

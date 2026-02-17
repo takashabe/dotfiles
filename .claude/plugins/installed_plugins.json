@@ -70,6 +70,46 @@
         "lastUpdated": "2026-02-12T15:58:45.333Z",
         "gitCommitSha": "1ed29a03dc852d30fa6ef2ca53a67dc2c2c2c563"
       }
+    ],
+    "skill-codex@skill-codex": [
+      {
+        "scope": "user",
+        "installPath": "/Users/takashabe/.claude/plugins/cache/skill-codex/skill-codex/1.1.0",
+        "version": "1.1.0",
+        "installedAt": "2026-02-16T11:52:54.301Z",
+        "lastUpdated": "2026-02-16T11:52:54.301Z",
+        "gitCommitSha": "d733c4f8a82213faa63566c9914d6144608964da"
+      }
+    ],
+    "dig@kuu-marketplace": [
+      {
+        "scope": "user",
+        "installPath": "/Users/takashabe/.claude/plugins/cache/kuu-marketplace/dig/1.0.0",
+        "version": "1.0.0",
+        "installedAt": "2026-02-17T03:54:09.842Z",
+        "lastUpdated": "2026-02-17T03:54:09.842Z",
+        "gitCommitSha": "a4da9358cc7b810e3ecec4f5f6b0b329eddce1c7"
+      }
+    ],
+    "fix-ci@kuu-marketplace": [
+      {
+        "scope": "user",
+        "installPath": "/Users/takashabe/.claude/plugins/cache/kuu-marketplace/fix-ci/1.0.1",
+        "version": "1.0.1",
+        "installedAt": "2026-02-17T03:54:19.262Z",
+        "lastUpdated": "2026-02-17T03:54:19.262Z",
+        "gitCommitSha": "a4da9358cc7b810e3ecec4f5f6b0b329eddce1c7"
+      }
+    ],
+    "deslop@kuu-marketplace": [
+      {
+        "scope": "user",
+        "installPath": "/Users/takashabe/.claude/plugins/cache/kuu-marketplace/deslop/1.0.0",
+        "version": "1.0.0",
+        "installedAt": "2026-02-17T03:54:56.612Z",
+        "lastUpdated": "2026-02-17T03:54:56.612Z",
+        "gitCommitSha": "a4da9358cc7b810e3ecec4f5f6b0b329eddce1c7"
+      }
     ]
   }
 }
