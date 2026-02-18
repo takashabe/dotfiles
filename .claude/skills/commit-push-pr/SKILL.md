@@ -1,6 +1,6 @@
 ---
 name: commit-push-pr
-description: uncommittedな変更をconventional commit形式で意味のある小さい粒度でコミットし、pushしてPRテンプレートに沿ったPRを作成する。「コミットしてPR作って」「commit push PR」「変更をまとめてPR出して」などのリクエストで発動する。PRが既に存在する場合はコミットとpushのみ行う。
+description: uncommittedな変更をconventional commit形式で意味のある小さい粒度でコミットし、pushしてPRテンプレートに沿ったPRを作成する。「コミットしてPR作って」「commit push PR」「変更をまとめてPR出して」などのリクエストで発動する。PRが既に存在する場合はコミットとpushを行い、descriptionと実装に乖離があれば追記形式で更新する。
 ---
 
 # Commit, Push & PR
@@ -82,7 +82,7 @@ gh pr view --json number 2>/dev/null
 PRが存在しなければ作成。
 
 **ベースブランチの決定（MUST）:**
-1. `gh api repos/{owner}/{repo}/branches --jq '.[] | select(.protected) | .name'` でprotected branchの一覧を取得する
+1. `gh api repos/$(gh repo view --json nameWithOwner -q .nameWithOwner)/branches --jq '.[] | select(.protected) | .name'` でprotected branchの一覧を取得する
 2. AskUserQuestionToolで選択肢として提示し、ユーザーに選択させる（featブランチ等はOtherで手動入力）
 3. `--base` フラグは必ず指定する。省略は禁止
 
@@ -98,7 +98,31 @@ EOF
 )"
 ```
 
-PRが既に存在する場合はpushのみで完了とし、PR URLを表示する。
+PRが既に存在する場合は、pushに加えてdescriptionの追記更新を行う:
+
+1. `gh pr view --json body,baseRefName` で現在のdescriptionとベースブランチを取得
+2. `git diff <baseRefName>...HEAD` で現在の全体差分を確認し、今回pushした変更内容を把握
+3. 現在のdescriptionが実装内容をカバーしているか判断
+4. 乖離がある場合、既存のdescriptionは**一切変更せず**、末尾に追記する:
+   - 当日の `## 追記（YYYY-MM-DD）` セクションが既に存在する場合は、そのセクション内に箇条書きを追加する
+   - 存在しない場合は新規セクションを作成する
+
+```markdown
+## 追記（YYYY-MM-DD）
+
+- <変更内容の箇条書き>
+```
+
+5. `gh pr edit --body` で更新
+
+```bash
+gh pr edit <pr-number> --body "$(cat <<'EOF'
+<既存のbody全文（当日セクションがあればそこに追記済み）>
+EOF
+)"
+```
+
+6. 乖離がない場合は追記不要。PR URLのみ表示する。
 
 ### Step 7: 結果報告
 
