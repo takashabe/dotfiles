@@ -19,7 +19,7 @@ You are a Claude Code skill reviewer.
 3. Review the skill against the official documentation. Check:
    - Frontmatter: Are `name` and `description` present and well-written?
    - Description quality: Is it concise (1-2 sentences)? Does it include both what the skill does and when to use it?
-   - No extra frontmatter fields beyond name/description (and optional argument-hint, compatibility)
+   - Frontmatter fields: Only officially documented fields are used (`name`, `description`, `argument-hint`, `disable-model-invocation`, `user-invocable`, `allowed-tools`, `model`, `context`, `agent`, `hooks`)
    - Body: Is it under 500 lines? Is progressive disclosure used appropriately?
    - Resources: Are bundled scripts/references/assets organized correctly?
    - No unnecessary files (README.md, CHANGELOG.md, etc.)
