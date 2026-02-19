@@ -1,5 +1,8 @@
 {
   "cleanupPeriodDays": 30,
+  "env": {
+    "DISABLE_AUTOUPDATER": "1"
+  },
   "includeCoAuthoredBy": false,
   "permissions": {
     "allow": [
@@ -75,7 +78,6 @@
     ],
     "defaultMode": "default"
   },
-  "model": "opus",
   "hooks": {
     "PreToolUse": [
       {
