@@ -60,6 +60,9 @@ _build.json
 ## lazygit
 .config/lazygit/state.yml
 
+## neovim
+.config/nvim/lazy-lock.json
+
 # aider
 .aider.*
 !.aider.conf.yml
