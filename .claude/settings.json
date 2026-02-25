@@ -112,5 +112,6 @@
   },
   "language": "Japanese",
   "fastMode": true,
+  "plansDirectory": ".plans",
   "defaultMode": "acceptEdits"
 }
