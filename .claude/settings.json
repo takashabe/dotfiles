@@ -7,19 +7,21 @@
   "permissions": {
     "allow": [
       "Bash",
-      "Edit(**)",
+      "Edit",
+      "Write",
+      "Read",
       "Glob(**)",
       "GlobTool(**)",
       "Grep(**)",
       "GrepTool(**)",
       "LS(**)",
       "MultiEdit(**)",
-      "Read(**)",
       "TodoRead",
       "TodoWrite(**)",
       "WebFetch(domain:*)",
       "WebSearch",
-      "Write(**)"
+      "mcp__serena__*",
+      "mcp__plugin_context7_context7__*"
     ],
     "deny": [
       "Bash(bash:*)",
@@ -65,7 +67,6 @@
       "Bash(git config:*)",
       "Bash(git rebase:*)",
       "Bash(git reset --hard:*)",
-      "Bash(git restore:*)",
       "Bash(mkfs:*)",
       "Bash(npm install -g:*)",
       "Bash(pip install:*)",

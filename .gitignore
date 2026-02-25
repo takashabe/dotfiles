@@ -60,6 +60,9 @@ _build.json
 ## lazygit
 .config/lazygit/state.yml
 
+## neovim
+.config/nvim/lazy-lock.json
+
 # aider
 .aider.*
 !.aider.conf.yml
@@ -78,6 +81,7 @@ _build.json
 !.claude/plugins/
 .claude/plugins/cache/
 .claude/plugins/marketplaces/
+.claude/plugins/blocklist.json
 .claude/plugins/install-counts-cache.json
 .claude/plugins/installed_plugins.json
 .claude/plugins/known_marketplaces.json
