@@ -93,6 +93,7 @@ _build.json
 !.codex/AGENTS.md
 !.codex/config.toml
 !.codex/skills/
+.codex/skills/.system/
 !.codex/prompts/
 
 ## wkit
