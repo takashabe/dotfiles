@@ -76,6 +76,7 @@ alias gst 'git status'
 alias gb 'git branch'
 alias gc 'git commit -v'
 alias gpush 'git push origin HEAD'
+alias gpw 'fzf_gh_pr_wt'
 
 function gpull
   git pull origin (git branch --show-current)
