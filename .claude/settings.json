@@ -142,7 +142,17 @@
     "skill-codex@skill-codex": true,
     "dig@kuu-marketplace": true,
     "fix-ci@kuu-marketplace": true,
-    "deslop@kuu-marketplace": true
+    "deslop@kuu-marketplace": true,
+    "side-fork@pokutuna-plugins": true,
+    "cloud-logging@pokutuna-plugins": true
+  },
+  "extraKnownMarketplaces": {
+    "pokutuna-plugins": {
+      "source": {
+        "source": "git",
+        "url": "https://github.com/pokutuna/claude-plugins.git"
+      }
+    }
   },
   "language": "Japanese",
   "plansDirectory": ".plans",
