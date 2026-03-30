@@ -473,12 +473,14 @@ return {
   -- treesitter
   {
     "nvim-treesitter/nvim-treesitter",
+    branch = "main",
+    lazy = false,
     build = ":TSUpdate",
     config = function()
       require("plugins.config.treesitter")
     end,
   },
-  { "nvim-treesitter/nvim-treesitter-context" },
+  -- { "nvim-treesitter/nvim-treesitter-context" },
 
   -- Editor
   {
@@ -635,9 +637,9 @@ return {
     -- stylua: ignore
     keys = {
       { "s",     mode = { "n" },      function() require("flash").jump() end,              desc = "Flash" },
-      { "S",     mode = { "n" },      function() require("flash").treesitter() end,        desc = "Flash Treesitter" },
+      -- { "S",     mode = { "n" },      function() require("flash").treesitter() end,        desc = "Flash Treesitter" },
       { "r",     mode = "o",          function() require("flash").remote() end,            desc = "Remote Flash" },
-      { "R",     mode = { "o", "x" }, function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
+      -- { "R",     mode = { "o", "x" }, function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
       { "<c-s>", mode = { "c" },      function() require("flash").toggle() end,            desc = "Toggle Flash Search" },
     },
   },
