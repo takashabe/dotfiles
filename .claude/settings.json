@@ -115,16 +115,6 @@
           }
         ]
       }
-    ],
-    "Stop": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "terminal-notifier -title 'Claude Code stopped' -message \"${CLAUDE_PROJECT_DIR}\" -sound default"
-          }
-        ]
-      }
     ]
   },
   "statusLine": {
