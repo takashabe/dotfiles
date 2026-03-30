@@ -144,13 +144,20 @@
     "fix-ci@kuu-marketplace": true,
     "deslop@kuu-marketplace": true,
     "side-fork@pokutuna-plugins": true,
-    "cloud-logging@pokutuna-plugins": true
+    "cloud-logging@pokutuna-plugins": true,
+    "notion-workflow@castingone-claude-plugins": true
   },
   "extraKnownMarketplaces": {
     "pokutuna-plugins": {
       "source": {
         "source": "git",
         "url": "https://github.com/pokutuna/claude-plugins.git"
+      }
+    },
+    "castingone-claude-plugins": {
+      "source": {
+        "source": "git",
+        "url": "https://github.com/castingone/castingone-claude-plugins.git"
       }
     }
   },
