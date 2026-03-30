@@ -16,7 +16,7 @@ network_access = true
 
 [tui]
 notifications = ["agent-turn-complete","approval-requested"]
-status_line = ["model-with-reasoning", "git-branch", "context-remaining", "five-hour-limit", "weekly-limit"]
+status_line = ["model-with-reasoning", "git-branch", "context-remaining", "five-hour-limit", "weekly-limit", "fast-mode"]
 
 [shell_environment_policy]
 inherit = "core"
