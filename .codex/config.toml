@@ -7,7 +7,7 @@ approval_policy = "never"
 # 何の設定か分からないので保留
 # file_opener = "cursor" # or vscode
 notify = ["bash","-lc","afplay /System/Library/Sounds/Ping.aiff"]
-model_reasoning_effort = "high"
+model_reasoning_effort = "medium"
 personality = "pragmatic"
 service_tier = "fast"
 
