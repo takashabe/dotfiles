@@ -162,6 +162,5 @@
     }
   },
   "language": "Japanese",
-  "plansDirectory": ".plans",
-  "defaultMode": "acceptEdits"
+  "plansDirectory": ".plans"
 }
