@@ -87,6 +87,7 @@ _build.json
 .claude/plugins/known_marketplaces.json
 !.claude/hooks/
 !.claude/commands/
+.plans/*
 
 # codex cli
 .codex/*
