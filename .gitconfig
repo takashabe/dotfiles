@@ -44,7 +44,7 @@
   repo = /Users/takashabe/dev/src/github.com/qmk/qmk_firmware
   repo = /Users/takashabe/dev/src/github.com/takashabe/qmk_firmware
 [wt]
-  basedir = .git/git-wt
+  basedir = ../.worktrees/{gitroot}
   copy = .envrc
   copy = compose.override.yaml
   copy = .env.local
