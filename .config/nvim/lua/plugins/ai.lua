@@ -35,7 +35,8 @@ return {
       },
       {
         "<leader>aa",
-        function() require("sidekick.cli").toggle() end,
+        function() require("sidekick.cli").toggle({ focus = true }) end,
+        mode = { "n", "v" },
         desc = "Sidekick Toggle CLI",
       },
       {
@@ -53,7 +54,7 @@ return {
       },
       {
         "<leader>av",
-        function() require("sidekick.cli").send({ msg = "{selection}" }) end,
+        function() require("sidekick.cli").send({ selection = true }) end,
         mode = { "x" },
         desc = "Send Visual Selection",
       },
