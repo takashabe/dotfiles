@@ -19,13 +19,11 @@ windows:
     layout: even-horizontal
     panes:
       - shell_command:
-          - cd apps/tenant
-          - npm install
-          - npm run dev
+          - npm ci --ignore-scripts
+          - npm run prepare
+          - npm w:tenant run dev
       - shell_command:
-          - cd apps/staff
-          - npm install
-          - npm run dev
+          - npm w:staff run dev
       - shell_command:
           - pwd
   - review:
