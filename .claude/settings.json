@@ -1,7 +1,7 @@
 {
   "cleanupPeriodDays": 30,
   "env": {
-    "DISABLE_AUTOUPDATER": "1",
+    "DISABLE_AUTOUPDATER": "0",
     "ENABLE_CLAUDEAI_MCP_SERVERS": "false"
   },
   "includeCoAuthoredBy": false,
@@ -152,5 +152,8 @@
     }
   },
   "language": "Japanese",
-  "plansDirectory": ".plans"
+  "plansDirectory": ".plans",
+  "enableAllProjectMcpServers": false,
+  "outputStyle": "Explanatory",
+  "prefersReducedMotion": false
 }
