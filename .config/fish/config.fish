@@ -531,3 +531,4 @@ end
 if status --is-interactive; and command -q git; and git wt -h &>/dev/null
   git wt --init fish | source
 end
+source ~/.safe-chain/scripts/init-fish.fish # Safe-chain Fish initialization script
