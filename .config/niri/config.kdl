@@ -6,10 +6,9 @@ environment {
   XMODIFIERS "@im=fcitx"
 }
 
-spawn-at-startup "ironbar"
 spawn-at-startup "systemctl" "--user" "start" "pipewire" "pipewire-pulse" "wireplumber"
-spawn-at-startup "ghostty"
 spawn-at-startup "qs" "-c" "noctalia-shell"
+spawn-at-startup "ghostty"
 
 output "DP-1" {
   mode "3840x2160@60.0"
@@ -74,7 +73,7 @@ layout {
 
 binds {
   // Super+Return { spawn "ghostty"; }
-  Super+D { spawn "rofi" "-show" "drun"; }
+  Super+D { spawn "qs" "msg" "-c" "noctalia-shell" "launcher" "toggle"; }
   Super+Space { spawn "bash" "/home/takashabe/bin/niri-action.sh"; }
   Super+Shift+Q { quit; }
   Super+F { maximize-column; }
