@@ -49,13 +49,12 @@ vim.api.nvim_create_autocmd("FileType", {
       return
     end
 
-    -- 2. ユーザー提案の最適解: get_parser の戻り値で安全にハンドリング
-    -- パーサーが存在しない場合、内部の npcall によって nil とエラー文字列が返る（クラッシュしない）
-    local parser, _ = vim.treesitter.get_parser(args.buf, lang)
+    -- 2. pcall で安全にパーサー取得を試みる
+    -- 0.11: パーサーが無い場合 error を throw する
+    -- 0.12: パーサーが無い場合 nil を返す（pcall + nil チェックで両対応）
+    local ok, parser = pcall(vim.treesitter.get_parser, args.buf, lang)
 
-    -- 3. パーサーが正常に取得（作成）できた場合のみ start を実行
-    -- start 内部の assert を確実に通過できる
-    if parser then
+    if ok and parser then
       vim.treesitter.start(args.buf, lang)
     end
   end,
