@@ -82,6 +82,7 @@
     ],
     "defaultMode": "default"
   },
+  "enableAllProjectMcpServers": false,
   "hooks": {
     "PreToolUse": [
       {
@@ -135,7 +136,8 @@
     "deslop@kuu-marketplace": true,
     "side-fork@pokutuna-plugins": true,
     "cloud-logging@pokutuna-plugins": true,
-    "notion-workflow@castingone-claude-plugins": true
+    "notion-workflow@castingone-claude-plugins": true,
+    "lua-lsp@claude-plugins-official": true
   },
   "extraKnownMarketplaces": {
     "pokutuna-plugins": {
@@ -151,9 +153,8 @@
       }
     }
   },
+  "outputStyle": "Explanatory",
   "language": "Japanese",
   "plansDirectory": ".plans",
-  "enableAllProjectMcpServers": false,
-  "outputStyle": "Explanatory",
   "prefersReducedMotion": false
 }
