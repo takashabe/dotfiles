@@ -60,6 +60,7 @@ if [ $(uname) = "Linux" ]; then
   # /etc
   sudo mkdir -p /etc/greetd
   sudo ln -s $HOME/dotfiles/etc/greetd/config.toml /etc/greetd/config.toml
+  sudo ln -s $HOME/dotfiles/etc/sysctl.d/* /etc/sysctl.d/
   ## xremap
   sudo modprobe uinput
   sudo cp $HOME/dotfiles/etc/modules-load.d/uinput.conf /etc/modules-load.d/uinput.conf
