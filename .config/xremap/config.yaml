@@ -7,7 +7,7 @@ keymap:
   - name: fake Emacs(macOS)
     application:
       not: [Alacritty, Code, com.mitchellh.ghostty]
-    exact_match: false
+    exact_match: true
     remap:
       # Cursor
       # C-b: left
@@ -30,6 +30,7 @@ keymap:
       Super-t: CTRL-t
       Super-r: CTRL-r
       Super-w: CTRL-w
+      Super-p: CTRL-p
   - name: ESC+IME off for vim
     application:
       only: [Alacritty, Code, com.mitchellh.ghostty]

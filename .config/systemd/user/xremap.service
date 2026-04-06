@@ -1,12 +1,12 @@
 [Unit]
-Description = xremap
-After       = default.target
+Description=xremap key remapper
+After=graphical-session.target
 
 [Service]
-Type      = simple
-KillMode  = process
-ExecStart = /usr/bin/xremap /home/takashabe/.config/xremap/config.yaml
-Restart   = always
+Type=simple
+ExecStart=/usr/bin/xremap %h/.config/xremap/config.yaml
+Restart=on-failure
+RestartSec=3
 
 [Install]
-WantedBy = default.target
+WantedBy=graphical-session.target
