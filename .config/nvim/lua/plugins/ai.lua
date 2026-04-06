@@ -48,7 +48,36 @@ return {
       },
       {
         "<leader>at",
-        function() require("sidekick.cli").send({ msg = "{this}" }) end,
+        (function()
+          local function is_file_buf(b)
+            return vim.bo[b].buftype == "" and vim.fn.filereadable(vim.api.nvim_buf_get_name(b)) == 1
+          end
+
+          local function send_position(win)
+            local buf = vim.api.nvim_win_get_buf(win)
+            local name = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(buf), ":~:.")
+            local row, col = unpack(vim.api.nvim_win_get_cursor(win))
+            local ref = ("@%s :L%d:C%d"):format(name, row, col + 1)
+            require("sidekick.cli").send({ msg = ref, this = false })
+          end
+
+          return function()
+            local buf = vim.api.nvim_get_current_buf()
+            if is_file_buf(buf) then
+              send_position(vim.api.nvim_get_current_win())
+              return
+            end
+            -- 非ファイルバッファ: タブ内からファイルバッファを探す
+            for _, win in ipairs(vim.api.nvim_tabpage_list_wins(0)) do
+              if is_file_buf(vim.api.nvim_win_get_buf(win)) then
+                send_position(win)
+                return
+              end
+            end
+            -- フォールバック: ビジュアル選択なら送れる
+            require("sidekick.cli").send({ msg = "{this}" })
+          end
+        end)(),
         mode = { "x", "n" },
         desc = "Send This",
       },
