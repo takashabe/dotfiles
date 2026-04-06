@@ -10,6 +10,8 @@ spawn-at-startup "ironbar"
 spawn-at-startup "systemctl" "--user" "start" "pipewire" "pipewire-pulse" "wireplumber"
 spawn-at-startup "fcitx5" "-d" "--replace"
 spawn-at-startup "ghostty"
+spawn-at-startup "systemctl" "--user" "start" "xremap"
+spawn-at-startup "qs" "-c" "noctalia-shell"
 
 output "DP-1" {
   mode "3840x2160@60.0"
@@ -40,8 +42,9 @@ input {
 
 layout {
   // 常にfocusしたwindowを中央に配置する. 挙動がウザいようなら"on-overflow"に戻す
-  center-focused-column "always"
+  center-focused-column "on-overflow"
   preset-column-widths {
+    proportion 0.3
     proportion 0.5
     proportion 0.95
     proportion 1.0
@@ -74,6 +77,7 @@ layout {
 binds {
   // Super+Return { spawn "ghostty"; }
   Super+D { spawn "rofi" "-show" "drun"; }
+  Super+Space { spawn "bash" "/home/takashabe/bin/niri-action.sh"; }
   Super+Shift+Q { quit; }
   Super+F { maximize-column; }
 
@@ -111,6 +115,10 @@ binds {
 
 prefer-no-csd
 screenshot-path "~/Pictures/Screenshots/%Y-%m-%d %H-%M-%S.png"
+
+animations {
+  slowdown 0.5
+}
 
 hotkey-overlay {
   skip-at-startup
