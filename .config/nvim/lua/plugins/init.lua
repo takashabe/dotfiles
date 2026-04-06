@@ -816,9 +816,26 @@ return {
         map("n", "<leader>ghb", function() gs.blame_line({ full = true }) end, "Blame Line")
         map("n", "<leader>ghB", function() gs.blame() end, "Blame Buffer")
         map("n", "<leader>ghd", gs.diffthis, "Diff This")
-        map("n", "<leader>ghD", function() gs.diffthis("~") end, "Diff This ~")
+        map("n", "<leader>ghD", "<cmd>CodeDiff<cr>", "CodeDiff")
         map({ "o", "x" }, "ih", ":<C-U>Gitsigns select_hunk<CR>", "GitSigns Select Hunk")
       end,
+    },
+  },
+  {
+    "esmuellert/codediff.nvim",
+    cmd = "CodeDiff",
+    opts = {
+      explorer = {
+        position = "left",
+        width = 40,
+        view_mode = "tree",
+        indent_markers = true,
+        flatten_dirs = false,
+        focus_on_select = true,
+      },
+      diff = {
+        compute_moves = true,
+      },
     },
   },
 
