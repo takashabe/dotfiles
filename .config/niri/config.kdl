@@ -8,9 +8,7 @@ environment {
 
 spawn-at-startup "ironbar"
 spawn-at-startup "systemctl" "--user" "start" "pipewire" "pipewire-pulse" "wireplumber"
-spawn-at-startup "fcitx5" "-d" "--replace"
 spawn-at-startup "ghostty"
-spawn-at-startup "systemctl" "--user" "start" "xremap"
 spawn-at-startup "qs" "-c" "noctalia-shell"
 
 output "DP-1" {
