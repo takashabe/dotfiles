@@ -39,6 +39,7 @@ ln -s $HOME/dotfiles/.config/zellij $HOME/.config/
 ln -s $HOME/dotfiles/.config/hypr $HOME/.config/
 ln -s $HOME/dotfiles/.config/niri $HOME/.config/
 ln -s $HOME/dotfiles/.config/ironbar $HOME/.config/
+ln -s $HOME/dotfiles/.config/noctalia $HOME/.config/
 ln -s $HOME/dotfiles/.config/environment.d $HOME/.config/
 
 # vscode
