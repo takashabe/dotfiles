@@ -21,9 +21,9 @@ windows:
       - shell_command:
           - npm ci --ignore-scripts
           - npm run prepare
-          - npm w:tenant run dev
+          - npm run w:tenant dev
       - shell_command:
-          - npm w:staff run dev
+          - npm run w:staff dev
       - shell_command:
           - pwd
   - review:
