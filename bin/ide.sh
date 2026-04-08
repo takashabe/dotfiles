@@ -18,3 +18,9 @@ elif [ "$work_pane_count" -eq 3 ]; then
   tmux select-pane -t "$bottom_left_pane"
   tmux resize-pane -y 30%
 fi
+
+# Resize sidebar to 15% width
+sidebar_pane=$(tmux list-panes -F '#{pane_id}|#{@pane_role}' | grep '|sidebar$' | cut -d'|' -f1)
+if [ -n "$sidebar_pane" ]; then
+  tmux resize-pane -t "$sidebar_pane" -x 15%
+fi
