@@ -2,14 +2,19 @@
 
 set -euo pipefail
 
+# Count sidebar panes marked by tmux-agent-sidebar (@pane_role=sidebar)
+sidebar_count=$(tmux list-panes -F '#{@pane_role}' | grep -c '^sidebar$' || true)
 pane_count=$(tmux list-panes | wc -l)
+work_pane_count=$((pane_count - sidebar_count))
 
-if [ $pane_count -eq 1 ]; then
-  # If there is only 1 pane, create 2 panes at the bottom.
-  tmux split-window -v -l 30%
+if [ "$work_pane_count" -eq 1 ]; then
+  # Find the main (non-sidebar) pane and create IDE layout
+  main_pane=$(tmux list-panes -F '#{pane_id}|#{@pane_role}' | grep -v '|sidebar$' | head -1 | cut -d'|' -f1)
+  tmux split-window -v -l 30% -t "$main_pane"
   tmux split-window -h
-elif [ $pane_count -eq 3 ]; then
-  # If there are already 3 panes, adjust the size of the bottom panes.
-  tmux select-pane -t 1
+elif [ "$work_pane_count" -eq 3 ]; then
+  # Find the bottom-left pane (2nd non-sidebar pane) and adjust size
+  bottom_left_pane=$(tmux list-panes -F '#{pane_id}|#{@pane_role}' | grep -v '|sidebar$' | sed -n '2p' | cut -d'|' -f1)
+  tmux select-pane -t "$bottom_left_pane"
   tmux resize-pane -y 30%
 fi
