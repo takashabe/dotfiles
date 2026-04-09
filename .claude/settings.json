@@ -226,7 +226,7 @@
         "source": "git",
         "url": "https://github.com/castingone/castingone-claude-plugins.git"
       },
-      "autoUpdate": true
+      "autoUpdate": false
     }
   },
   "outputStyle": "Explanatory",
