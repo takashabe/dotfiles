@@ -31,4 +31,15 @@ return {
       })
     end,
   },
+  {
+    "okm321/mo.nvim",
+    ft = { "markdown" },
+    cmd = { "MoAdd", "MoAddDir", "MoPick", "MoStatus", "MoWatch", "MoRestart", "MoShutdown", "MoClear" },
+    opts = {},
+    keys = {
+      { "<leader>mo", "<cmd>MoAdd<cr>", desc = "Add to mo" },
+      { "<leader>mp", "<cmd>MoPick<cr>", desc = "Pick files for mo" },
+      { "<leader>ms", "<cmd>MoStatus<cr>", desc = "mo status" },
+    },
+  },
 }
