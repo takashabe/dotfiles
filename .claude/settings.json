@@ -80,7 +80,7 @@
       "Bash(sudo:*)",
       "Bash(yum install:*)"
     ],
-    "defaultMode": "default"
+    "defaultMode": "auto"
   },
   "enableAllProjectMcpServers": false,
   "hooks": {
@@ -212,7 +212,8 @@
     "notion-workflow@castingone-claude-plugins": true,
     "lua-lsp@claude-plugins-official": true,
     "backend-workflow@castingone-claude-plugins": true,
-    "git@castingone-claude-plugins": true
+    "git@castingone-claude-plugins": true,
+    "release-workflow@castingone-claude-plugins": true
   },
   "extraKnownMarketplaces": {
     "pokutuna-plugins": {
@@ -231,6 +232,8 @@
   },
   "outputStyle": "Explanatory",
   "language": "Japanese",
+  "effortLevel": "xhigh",
   "plansDirectory": ".plans",
-  "prefersReducedMotion": false
+  "prefersReducedMotion": false,
+  "skipAutoPermissionPrompt": true
 }
