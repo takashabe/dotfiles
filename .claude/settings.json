@@ -80,7 +80,7 @@
       "Bash(sudo:*)",
       "Bash(yum install:*)"
     ],
-    "defaultMode": "default"
+    "defaultMode": "auto"
   },
   "enableAllProjectMcpServers": false,
   "hooks": {
@@ -232,6 +232,8 @@
   },
   "outputStyle": "Explanatory",
   "language": "Japanese",
+  "effortLevel": "xhigh",
   "plansDirectory": ".plans",
-  "prefersReducedMotion": false
+  "prefersReducedMotion": false,
+  "skipAutoPermissionPrompt": true
 }
