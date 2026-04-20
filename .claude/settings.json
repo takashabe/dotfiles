@@ -212,7 +212,8 @@
     "notion-workflow@castingone-claude-plugins": true,
     "lua-lsp@claude-plugins-official": true,
     "backend-workflow@castingone-claude-plugins": true,
-    "git@castingone-claude-plugins": true
+    "git@castingone-claude-plugins": true,
+    "release-workflow@castingone-claude-plugins": true
   },
   "extraKnownMarketplaces": {
     "pokutuna-plugins": {
