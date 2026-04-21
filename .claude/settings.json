@@ -85,16 +85,6 @@
   "enableAllProjectMcpServers": false,
   "hooks": {
     "PreToolUse": [
-      {
-        "matcher": "ExitPlanMode",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "$HOME/.claude/hooks/require-codex-review-before-plan-exit.sh",
-            "timeout": 10
-          }
-        ]
-      }
     ],
     "PostToolUse": [
       {
@@ -232,8 +222,8 @@
   },
   "outputStyle": "Explanatory",
   "language": "Japanese",
-  "effortLevel": "xhigh",
   "plansDirectory": ".plans",
   "prefersReducedMotion": false,
-  "skipAutoPermissionPrompt": true
+  "skipAutoPermissionPrompt": true,
+  "effortLevel": "high"
 }

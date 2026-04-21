@@ -50,6 +50,8 @@ go.work
 go.work.sum
 .air.toml
 coverage.html
+.gocache/
+.golangci-cache/
 
 ## alacritty
 .config/alacritty/alacritty.yml
