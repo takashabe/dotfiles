@@ -84,8 +84,7 @@
   },
   "enableAllProjectMcpServers": false,
   "hooks": {
-    "PreToolUse": [
-    ],
+    "PreToolUse": [],
     "PostToolUse": [
       {
         "matcher": "Write|Edit|MultiEdit",
@@ -203,7 +202,8 @@
     "lua-lsp@claude-plugins-official": true,
     "backend-workflow@castingone-claude-plugins": true,
     "git@castingone-claude-plugins": true,
-    "release-workflow@castingone-claude-plugins": true
+    "release-workflow@castingone-claude-plugins": true,
+    "slack@claude-plugins-official": true
   },
   "extraKnownMarketplaces": {
     "pokutuna-plugins": {
@@ -222,8 +222,13 @@
   },
   "outputStyle": "Explanatory",
   "language": "Japanese",
+  "effortLevel": "xhigh",
   "plansDirectory": ".plans",
   "prefersReducedMotion": false,
+  "theme": "dark-daltonized",
+  "terminalProgressBarEnabled": false,
+  "agentPushNotifEnabled": true,
   "skipAutoPermissionPrompt": true,
-  "effortLevel": "high"
+  "tui": "fullscreen",
+  "viewMode": "focus"
 }

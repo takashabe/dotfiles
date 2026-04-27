@@ -48,3 +48,4 @@
   copy = .envrc
   copy = compose.override.yaml
   copy = .env.local
+  copy = .env.default.local
