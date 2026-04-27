@@ -81,6 +81,7 @@ _build.json
 !.claude/scripts/
 !.claude/skills/
 !.claude/plugins/
+!.claude/rules/
 .claude/plugins/cache/
 .claude/plugins/marketplaces/
 .claude/plugins/blocklist.json
