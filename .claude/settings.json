@@ -84,8 +84,7 @@
   },
   "enableAllProjectMcpServers": false,
   "hooks": {
-    "PreToolUse": [
-    ],
+    "PreToolUse": [],
     "PostToolUse": [
       {
         "matcher": "Write|Edit|MultiEdit",
@@ -223,8 +222,13 @@
   },
   "outputStyle": "Explanatory",
   "language": "Japanese",
+  "effortLevel": "xhigh",
   "plansDirectory": ".plans",
   "prefersReducedMotion": false,
+  "theme": "dark-daltonized",
+  "terminalProgressBarEnabled": false,
+  "agentPushNotifEnabled": true,
   "skipAutoPermissionPrompt": true,
-  "effortLevel": "high"
+  "tui": "fullscreen",
+  "viewMode": "focus"
 }
