@@ -203,7 +203,8 @@
     "lua-lsp@claude-plugins-official": true,
     "backend-workflow@castingone-claude-plugins": true,
     "git@castingone-claude-plugins": true,
-    "release-workflow@castingone-claude-plugins": true
+    "release-workflow@castingone-claude-plugins": true,
+    "slack@claude-plugins-official": true
   },
   "extraKnownMarketplaces": {
     "pokutuna-plugins": {
