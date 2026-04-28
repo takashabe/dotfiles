@@ -546,6 +546,18 @@ return {
     },
   },
   {
+    "mikavilpas/yazi.nvim",
+    event = "VeryLazy",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    keys = {
+      { "<leader>fy", "<cmd>Yazi<cr>", desc = "Yazi (current file)" },
+      { "<leader>fY", "<cmd>Yazi cwd<cr>", desc = "Yazi (cwd)" },
+    },
+    opts = {
+      open_for_directories = false,
+    },
+  },
+  {
     "kylechui/nvim-surround",
     event = "VeryLazy",
     config = function()
