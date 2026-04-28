@@ -504,7 +504,6 @@ return {
   -- Editor
   {
     "nvim-neo-tree/neo-tree.nvim",
-    tag = "3.34", -- 3.35からrevealが効かなくなった？
     dependencies = {
       "nvim-lua/plenary.nvim",
       "nvim-tree/nvim-web-devicons",
