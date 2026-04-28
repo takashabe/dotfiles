@@ -512,11 +512,12 @@ return {
       "3rd/image.nvim",
     },
     keys = {
-      { "<leader>e", "<cmd>Neotree filesystem reveal left<cr>", desc = "Neo-tree File Explorer" },
+      { "<leader>e", "<cmd>Neotree filesystem reveal<cr>", desc = "Neo-tree File Explorer (float)" },
     },
     opts = {
       -- TODO: git_status周りの設定
       window = {
+        position = "float",
         mappings = {
           ["P"] = {
             "toggle_preview",
