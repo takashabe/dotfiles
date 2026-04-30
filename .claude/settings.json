@@ -66,7 +66,6 @@
       "Bash(gh workflow disable:*)",
       "Bash(gh workflow enable:*)",
       "Bash(gh workflow run:*)",
-      "Bash(git checkout:*)",
       "Bash(git config:*)",
       "Bash(git rebase:*)",
       "Bash(git reset --hard:*)",
