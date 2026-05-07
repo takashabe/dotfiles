@@ -146,3 +146,15 @@ vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
   pattern = "*.tf",
   command = "set filetype=terraform",
 })
+
+-- ===============================
+-- 外部変更の自動検知
+-- ===============================
+-- Claude Code / sidekick.nvim 経由の disk 書き換えをバッファへ反映する。
+-- FocusGained: tmux focus-events on なので pane / window フォーカス復帰時に発火。
+-- CursorHold/I: フォーカスを保ったまま外部書き換えが入った場合のフォロー。
+opt.autoread = true
+vim.api.nvim_create_autocmd({ "FocusGained", "CursorHold", "CursorHoldI" }, {
+  pattern = "*",
+  command = "silent! checktime",
+})
