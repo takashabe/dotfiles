@@ -4,6 +4,8 @@ require("nvim-treesitter").install({
   "cmake",
   "diff",
   "fish",
+  "bash",
+  "kdl",
   "go",
   "gomod",
   "gowork",
