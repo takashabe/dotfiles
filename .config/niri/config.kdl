@@ -4,6 +4,7 @@ environment {
   GTK_IM_MODULE "fcitx"
   QT_IM_MODULE "fcitx"
   XMODIFIERS "@im=fcitx"
+  HSA_OVERRIDE_GFX_VERSION "10.3.0"
 }
 
 spawn-at-startup "systemctl" "--user" "start" "pipewire" "pipewire-pulse" "wireplumber"
@@ -28,8 +29,8 @@ input {
     xkb {
       layout "us"
     }
-    repeat-delay 140
-    repeat-rate 50
+    repeat-delay 150
+    repeat-rate 60
   }
 
   touchpad {
@@ -43,11 +44,11 @@ layout {
   preset-column-widths {
     proportion 0.3
     proportion 0.5
-    proportion 0.95
+    proportion 0.98
     proportion 1.0
   }
   default-column-width {
-    proportion 0.95
+    proportion 0.98
   }
 
 
@@ -93,6 +94,7 @@ binds {
   Super+Ctrl+K { set-window-height "-50"; }
   Super+Ctrl+J { set-window-height "+50"; }
 
+  // カラム幅をプリセットでtoggleする
   Super+Shift+R { switch-preset-column-width; }
 
   // カラム内にwindowを統合/分離する (縦置きモニタで上下分割に使う)
