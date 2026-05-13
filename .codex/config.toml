@@ -19,7 +19,7 @@ notifications = ["agent-turn-complete","approval-requested"]
 status_line = ["model-with-reasoning", "git-branch", "context-remaining", "five-hour-limit", "weekly-limit", "fast-mode"]
 
 [tui.model_availability_nux]
-"gpt-5.5" = 1
+"gpt-5.5" = 4
 
 [shell_environment_policy]
 inherit = "core"
@@ -31,6 +31,7 @@ experimental_use_rmcp_client = true
 
 [notice]
 "hide_gpt-5.1-codex-max_migration_prompt" = true
+fast_default_opt_out = true
 
 [notice.model_migrations]
 "gpt-5.1-codex-max" = "gpt-5.2-codex"
