@@ -2,12 +2,38 @@
 name: parallel-code-review
 description: code-review plugin と codex review を並列実行し、結果をマージ表示するコードレビュースキル
 user-invocable: true
+allowed-tools: [Bash, Task, Skill, Read, Grep, Glob]
 ---
 
 # Parallel Code Review
 
 Claude 多観点レビューと codex review を並列実行し、結果をマージ表示する。
 Opus 4.7 / Codex 5.5 を想定した構成。
+
+## READ-ONLY ポリシー（厳守）
+
+この Skill は **完全に読み取り専用** として動作する。以下の操作は禁止する。違反する判断をした場合は実行せずユーザーに報告すること。
+
+### 禁止する操作
+
+- **ファイル変更系ツール**: `Write` / `Edit` / `NotebookEdit` の使用禁止（frontmatter `allowed-tools` でも遮断済み）
+- **Git の状態変更**: `git commit` / `git push` / `git checkout`（ブランチ切替を含む） / `git reset` / `git rebase` / `git merge` / `git stash` / `git tag` / `git branch -d|-D`
+- **GitHub の書き込み**: `gh pr create` / `gh pr edit` / `gh pr comment` / `gh pr review` / `gh pr merge` / `gh pr close` / `gh issue create|edit|comment|close` / `gh api ... -X POST|PUT|PATCH|DELETE`
+- **シェル副作用**: 出力リダイレクト（`>` / `>>` / `tee`）、ファイル削除・移動（`rm` / `mv` / `mkdir` の書き込み系）、外部ネットワーク書き込み（`curl -X POST` 等）
+- **codex の書き込み系**: `codex exec` 等の編集系サブコマンドは禁止（`codex review` のみ許可）
+- **Task サブエージェントへの委譲時も同じ制約を伝達**: 起動するエージェントのプロンプトに「READ-ONLY モード。書き込み禁止」を明記する
+
+### 許可される操作
+
+- 読み取り系 Bash: `git status` / `git diff` / `git log` / `git blame` / `gh pr view` / `gh pr diff` / `gh pr list` / `ls` / `cat` / `find`（変更を伴わないもの）
+- `codex review` の実行（読み取り専用レビュー出力のみ）
+- `Task` での読み取り系サブエージェント起動
+- `Skill` での `code-review:code-review` plugin 呼び出し
+- ファイル `Read` / `Grep` / `Glob`
+
+### 出力先
+
+レビュー結果はすべて **ユーザーへの表示** にとどめる。PR コメント・PR description・Issue 等への自動投稿は行わない。
 
 ## 前提
 
