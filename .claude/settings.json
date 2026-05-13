@@ -220,14 +220,15 @@
     }
   },
   "outputStyle": "Explanatory",
+  "viewMode": "focus",
   "language": "Japanese",
   "effortLevel": "xhigh",
   "plansDirectory": ".plans",
+  "tui": "fullscreen",
   "prefersReducedMotion": false,
   "theme": "dark-daltonized",
   "terminalProgressBarEnabled": false,
   "agentPushNotifEnabled": true,
   "skipAutoPermissionPrompt": true,
-  "tui": "fullscreen",
-  "viewMode": "focus"
+  "inputNeededNotifEnabled": true
 }
