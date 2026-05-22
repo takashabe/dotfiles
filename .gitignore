@@ -88,6 +88,7 @@ _build.json
 .claude/plugins/install-counts-cache.json
 .claude/plugins/installed_plugins.json
 .claude/plugins/known_marketplaces.json
+.claude/plugins/plugin-catalog-cache.json
 !.claude/hooks/
 !.claude/commands/
 .plans/*

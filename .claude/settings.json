@@ -202,7 +202,8 @@
     "backend-workflow@castingone-claude-plugins": true,
     "git@castingone-claude-plugins": true,
     "release-workflow@castingone-claude-plugins": true,
-    "slack@claude-plugins-official": true
+    "slack@claude-plugins-official": true,
+    "parallel-code-review@takashabe-plugins": true
   },
   "extraKnownMarketplaces": {
     "pokutuna-plugins": {
@@ -217,6 +218,12 @@
         "url": "https://github.com/castingone/castingone-claude-plugins.git"
       },
       "autoUpdate": false
+    },
+    "takashabe-plugins": {
+      "source": {
+        "source": "github",
+        "repo": "takashabe/claude-plugins"
+      }
     }
   },
   "outputStyle": "Explanatory",
@@ -228,7 +235,7 @@
   "prefersReducedMotion": false,
   "theme": "dark-daltonized",
   "terminalProgressBarEnabled": false,
+  "inputNeededNotifEnabled": true,
   "agentPushNotifEnabled": true,
-  "skipAutoPermissionPrompt": true,
-  "inputNeededNotifEnabled": true
+  "skipAutoPermissionPrompt": true
 }
