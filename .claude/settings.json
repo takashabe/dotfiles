@@ -203,6 +203,7 @@
     "git@castingone-claude-plugins": true,
     "release-workflow@castingone-claude-plugins": true,
     "slack@claude-plugins-official": true,
+    "cloudflare@cloudflare": true,
     "parallel-code-review@takashabe-plugins": true
   },
   "extraKnownMarketplaces": {
@@ -218,6 +219,12 @@
         "url": "https://github.com/castingone/castingone-claude-plugins.git"
       },
       "autoUpdate": false
+    },
+    "cloudflare": {
+      "source": {
+        "source": "github",
+        "repo": "cloudflare/skills"
+      }
     },
     "takashabe-plugins": {
       "source": {
