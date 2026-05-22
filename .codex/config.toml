@@ -9,7 +9,6 @@ approval_policy = "never"
 notify = ["bash","-lc","afplay /System/Library/Sounds/Ping.aiff"]
 model_reasoning_effort = "xhigh"
 personality = "pragmatic"
-service_tier = "fast"
 
 [sandbox_workspace_write]
 network_access = true
