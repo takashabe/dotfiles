@@ -15,6 +15,15 @@ return {
             nav_right = false,
           },
         },
+        -- sidekick が :terminal 経路で claude code を起動すると、claude の tmux passthrough シーケンスが Neovim 側で文字列として漏れる。$TMUX を 空にして非 tmux 経路を使わせることで抑制する。
+        -- 副作用: tmux 経由の OSC 52 クリップボード連携などは効かなくなる。
+        tools = {
+          claude = {
+            env = {
+              TMUX = false,
+            },
+          },
+        },
       },
       nes = {
         enabled = false,
