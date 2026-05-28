@@ -91,7 +91,7 @@ _build.json
 .claude/plugins/plugin-catalog-cache.json
 !.claude/hooks/
 !.claude/commands/
-.plans/*
+**/.plans/*
 
 # codex cli
 .codex/*
