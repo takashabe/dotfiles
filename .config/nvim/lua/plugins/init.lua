@@ -74,6 +74,13 @@ return {
       words = { enabled = true },
     },
     keys = {
+      {
+        "<c-,>",
+        function()
+          Snacks.zen.zoom()
+        end,
+        desc = "Toggle Zoom",
+      },
       -- Top Pickers & Explorer
       {
         "<leader><space>",

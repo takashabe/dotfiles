@@ -1,3 +1,42 @@
+-- sidekick 本体に最大化機能がないため自前で用意する
+-- float と split で退避値の型（win_config / 整数）が異なるため sk_restore は any
+---@class sidekick.cli.Terminal.maximizable : sidekick.cli.Terminal
+---@field sk_restore? any
+---@param t sidekick.cli.Terminal.maximizable
+local function maximize(t)
+  local win = t.win
+  if not win or not vim.api.nvim_win_is_valid(win) then
+    return
+  end
+  if t:is_float() then
+    if t.sk_restore then
+      vim.api.nvim_win_set_config(win, t.sk_restore)
+      t.sk_restore = nil
+    else
+      t.sk_restore = vim.api.nvim_win_get_config(win)
+      vim.api.nvim_win_set_config(win, {
+        relative = "editor",
+        row = 0,
+        col = 0,
+        width = vim.o.columns - 2,
+        height = vim.o.lines - 2,
+      })
+    end
+    return
+  end
+  -- left/right split は幅、top/bottom は高さが winfix される軸
+  local vertical = t.opts.layout == "top" or t.opts.layout == "bottom"
+  local get = vertical and vim.api.nvim_win_get_height or vim.api.nvim_win_get_width
+  local set = vertical and vim.api.nvim_win_set_height or vim.api.nvim_win_set_width
+  if t.sk_restore then
+    set(win, t.sk_restore)
+    t.sk_restore = nil
+  else
+    t.sk_restore = get(win)
+    set(win, vertical and vim.o.lines or vim.o.columns)
+  end
+end
+
 return {
   {
     "folke/sidekick.nvim",
@@ -13,6 +52,12 @@ return {
             nav_down = false,
             nav_up = false,
             nav_right = false,
+            maximize = {
+              "<c-,>",
+              maximize,
+              mode = "nt",
+              desc = "Sidekick: Toggle maximize",
+            },
           },
         },
         -- sidekick が :terminal 経路で claude code を起動すると、claude の tmux passthrough シーケンスが Neovim 側で文字列として漏れる。$TMUX を 空にして非 tmux 経路を使わせることで抑制する。
