@@ -1,5 +1,4 @@
 local mason = require("mason")
-local lspconfig = require("lspconfig")
 local mason_lspconfig = require("mason-lspconfig")
 
 mason.setup()
@@ -46,6 +45,15 @@ vim.lsp.config("yamlls", {
       },
       validate = true,
       completion = true,
+    },
+  },
+})
+vim.lsp.config("lua_ls", {
+  settings = {
+    Lua = {
+      diagnostics = {
+        globals = { "vim" },
+      },
     },
   },
 })
