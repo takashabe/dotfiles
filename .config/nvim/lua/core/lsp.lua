@@ -29,8 +29,13 @@ vim.diagnostic.config({
 vim.api.nvim_create_autocmd("BufWritePre", {
   pattern = { "*.go" },
   callback = function()
+    local clients = vim.lsp.get_clients({ bufnr = 0, method = "textDocument/codeAction" })
+    if #clients == 0 then
+      return
+    end
+
     -- インポートの整理
-    local params = vim.lsp.util.make_range_params()
+    local params = vim.lsp.util.make_range_params(0, clients[1].offset_encoding)
     params.context = { only = { "source.organizeImports" } }
 
     local result = vim.lsp.buf_request_sync(0, "textDocument/codeAction", params, 1000)
