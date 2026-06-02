@@ -52,6 +52,8 @@ return {
             nav_down = false,
             nav_up = false,
             nav_right = false,
+            -- terminal 側のデフォルトは <c-.> が hide なので無効化し、グローバルの focus マップに委ねる
+            hide_ctrl_dot = false,
             maximize = {
               "<c-,>",
               maximize,
