@@ -382,7 +382,8 @@ function go_install_binaries
     'github.com/kisielk/godepgraph@latest' \
     'mvdan.cc/gofumpt@latest' \
     'github.com/d-kuro/gwq/cmd/gwq@latest' \
-    'github.com/k1LoW/tcmux@latest'
+    'github.com/k1LoW/tcmux@latest' \
+    'github.com/fe3dback/go-arch-lint@latest'
   pushd $HOME
   for uri in $GO_BINARIES
     echo "go install $uri ..."
