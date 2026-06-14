@@ -239,6 +239,7 @@
   "plansDirectory": ".plans",
   "tui": "fullscreen",
   "prefersReducedMotion": false,
+  "skipWorkflowUsageWarning": true,
   "theme": "dark-daltonized",
   "terminalProgressBarEnabled": false,
   "inputNeededNotifEnabled": true,
