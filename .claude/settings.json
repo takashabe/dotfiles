@@ -204,7 +204,8 @@
     "release-workflow@castingone-claude-plugins": true,
     "slack@claude-plugins-official": true,
     "cloudflare@cloudflare": true,
-    "parallel-code-review@takashabe-plugins": true
+    "parallel-code-review@takashabe-plugins": true,
+    "superpowers@claude-plugins-official": true
   },
   "extraKnownMarketplaces": {
     "pokutuna-plugins": {
