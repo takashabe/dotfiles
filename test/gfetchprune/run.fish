@@ -92,5 +92,11 @@ gfp_assert "merged-dirty は skip-dirty" test (gfp_cat_of feat/merged-dirty $row
 gfp_assert "merged-untracked は confirm-untracked" test (gfp_cat_of feat/merged-untracked $rows) = confirm-untracked
 gfp_assert "review-slot は protect-path" test (gfp_cat_of feat/review-slot $rows) = protect-path
 
+set -l out (gfetchprune 2>&1 | string collect)
+gfp_assert "出力に削除予定見出し" "string match -q '*削除予定*' -- '$out'"
+gfp_assert "出力に gone-only 要確認" "string match -q '*gone-unmerged*' -- '$out'"
+gfp_assert "出力に保護(push無)" "string match -q '*local-merged*' -- '$out'"
+gfp_assert "コピーファイル注意を表示" "string match -q '*.env.local*' -- '$out'"
+
 rm -rf (dirname "$GFP_WORK")
 test $GFP_FAILS -eq 0

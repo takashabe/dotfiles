@@ -200,6 +200,35 @@ function __gfp_emit_decision --argument-names branch path merge_target kind
     end
 end
 
+# rows のうち category=cat の行を見出し付きで表示する(rows は末尾可変長で受ける)
+function __gfp_section --argument-names title cat
+    set -l hits
+    for r in $argv[3..-1]
+        set -l f (string split \t -- $r)
+        test "$f[1]" = "$cat"; and set -a hits "  $f[2]  ($f[3])  $f[4]"
+    end
+    if test (count $hits) -gt 0
+        echo "$title: "(count $hits)
+        printf '%s\n' $hits
+    end
+end
+
+function __gfp_render
+    set -l rows $argv
+    __gfp_section "削除予定 worktree(merged+push済み)" delete-wt $rows
+    __gfp_section "削除予定 branch(worktree なし)" delete-branch $rows
+    __gfp_section "要確認: gone-only(リモート削除済み・未マージ固有コミットあり) [--include-gone-unmerged]" confirm-gone $rows
+    __gfp_section "要確認: untracked のみ dirty [--include-untracked-dirty]" confirm-untracked $rows
+    __gfp_section "保護(push 無の merged)" protect-nopush $rows
+    __gfp_section "スキップ: 保護ブランチ" protect-branch $rows
+    __gfp_section "スキップ: 保護パス" protect-path $rows
+    __gfp_section "スキップ: dirty(作業中)" skip-dirty $rows
+    __gfp_section "スキップ: カレント worktree" skip-current $rows
+    __gfp_section "detached(手動確認推奨)" detached $rows
+    __gfp_section "残す: 未マージ" keep-unmerged $rows
+    echo "注意: worktree 削除時、git wt がコピーした .env.local 等の ignored ファイルも一緒に消えます。"
+end
+
 function gfetchprune --description 'push済み・マージ済みの worktree/branch を安全に掃除する(既定 dry-run、--execute で実削除)'
     set -l explicit_dry 0
     set -l execute 0
@@ -247,6 +276,21 @@ function gfetchprune --description 'push済み・マージ済みの worktree/bra
         return 1
     end
 
-    # 後続タスクで classify / render / execute を追加する
+    set -l rows (__gfp_classify $default $merge_target)
+
+    if test (count $rows) -eq 0
+        echo "already updated"
+        return 0
+    end
+
+    if test $do_execute -eq 0
+        __gfp_render $rows
+        echo ""
+        echo "実削除するには: gfetchprune --execute"
+        return 0
+    end
+
+    # 実削除は次タスクで実装する
+    __gfp_render $rows
     return 0
 end
