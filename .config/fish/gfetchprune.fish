@@ -22,6 +22,10 @@ function __gfp_merge_target --argument-names default
     return 1
 end
 
+function __gfp_branch_meta
+    git for-each-ref --format='%(refname:short)\t%(upstream:short)\t%(upstream:track)\t%(objectname)' refs/heads
+end
+
 function gfetchprune --description 'push済み・マージ済みの worktree/branch を安全に掃除する(既定 dry-run、--execute で実削除)'
     set -l explicit_dry 0
     set -l execute 0

@@ -51,5 +51,11 @@ gfp_assert "fetch 失敗で exit1" "not gfetchprune >/dev/null 2>&1"
 popd >/dev/null
 rm -rf (dirname "$broken")
 
+# gone は track(長形式)で検出できる(trackshort では不可)
+set -l gline (__gfp_branch_meta | string match -e 'feat/merged-gone')
+gfp_assert "merged-gone の track が gone" "string match -q '*gone*' -- '$gline'"
+set -l uline (__gfp_branch_meta | string match -e 'feat/unmerged-pushed')
+gfp_assert "unmerged-pushed は gone でない" "not string match -q '*gone*' -- '$uline'"
+
 rm -rf (dirname "$GFP_WORK")
 test $GFP_FAILS -eq 0
