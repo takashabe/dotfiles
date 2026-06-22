@@ -74,5 +74,23 @@ gfp_assert "clean を判定" test (__gfp_worktree_dirty_kind "$root/wt/merged-pu
 gfp_assert "tracked 変更を判定" test (__gfp_worktree_dirty_kind "$root/wt/merged-dirty") = tracked
 gfp_assert "untracked を判定" test (__gfp_worktree_dirty_kind "$root/wt/merged-untracked") = untracked
 
+set -l rows (__gfp_classify main refs/remotes/origin/main)
+# fish では "$list" が空白結合され壊れるので、br を先頭・rows を残余引数で受ける
+function gfp_cat_of --argument-names br
+    for r in $argv[2..-1]
+        set -l p (string split \t -- $r)
+        test "$p[2]" = "$br"; and echo $p[1]; and return 0
+    end
+end
+gfp_assert "merged-pushed は delete-wt" test (gfp_cat_of feat/merged-pushed $rows) = delete-wt
+gfp_assert "merged-gone は delete-wt" test (gfp_cat_of feat/merged-gone $rows) = delete-wt
+gfp_assert "gone-unmerged は confirm-gone" test (gfp_cat_of feat/gone-unmerged $rows) = confirm-gone
+gfp_assert "unmerged-pushed は keep-unmerged" test (gfp_cat_of feat/unmerged-pushed $rows) = keep-unmerged
+gfp_assert "local-merged は protect-nopush" test (gfp_cat_of feat/local-merged $rows) = protect-nopush
+gfp_assert "stg は protect-branch" test (gfp_cat_of stg $rows) = protect-branch
+gfp_assert "merged-dirty は skip-dirty" test (gfp_cat_of feat/merged-dirty $rows) = skip-dirty
+gfp_assert "merged-untracked は confirm-untracked" test (gfp_cat_of feat/merged-untracked $rows) = confirm-untracked
+gfp_assert "review-slot は protect-path" test (gfp_cat_of feat/review-slot $rows) = protect-path
+
 rm -rf (dirname "$GFP_WORK")
 test $GFP_FAILS -eq 0
