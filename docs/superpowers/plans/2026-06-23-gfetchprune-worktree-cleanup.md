@@ -242,7 +242,7 @@ Expected: 3 つの assertion がすべて `ok`、終了コード 0。
 
 ```bash
 git add .config/fish/gfetchprune.fish .config/fish/config.fish test/gfetchprune/
-git commit -m "feat(fish): gfetchprune を conf.d へ移設し dry-run 既定の引数解析を追加"
+git commit -m "feat(fish): gfetchprune を専用ファイルへ切り出し dry-run 既定の引数解析を追加"
 ```
 
 ---
