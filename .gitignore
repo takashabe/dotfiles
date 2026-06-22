@@ -71,6 +71,7 @@ _build.json
 !.aider.model.settings.yml
 
 # claude code
+**/CLAUDE.local.md
 **/.claude/settings.local.json
 **/.serena/
 **/.spec-workflow/
