@@ -1,4 +1,14 @@
 set -g gfp_protect_branches main master stg qa dev develop staging production prod
+set -g gfp_protect_worktree_paths '*/.wkit-worktrees/review'
+
+function __gfp_is_protected_path --argument-names path
+    for pat in $gfp_protect_worktree_paths $PROTECT_WORKTREE_PATHS
+        if string match -q -- $pat $path
+            return 0
+        end
+    end
+    return 1
+end
 
 function __gfp_is_protected_branch --argument-names branch
     test -z "$branch"; and return 1

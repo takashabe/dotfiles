@@ -66,5 +66,8 @@ gfp_assert "リスト PROTECT_BRANCHES が効く" "__gfp_is_protected_branch kee
 set -e PROTECT_BRANCHES
 gfp_assert "空 PROTECT_BRANCHES で誤保護しない" "not __gfp_is_protected_branch ''"
 
+gfp_assert "review パスは保護" "__gfp_is_protected_path $GFP_WORK/.git/.wkit-worktrees/review"
+gfp_assert "通常 worktree は非保護" "not __gfp_is_protected_path /tmp/wt/merged-pushed"
+
 rm -rf (dirname "$GFP_WORK")
 test $GFP_FAILS -eq 0
