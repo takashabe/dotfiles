@@ -135,5 +135,18 @@ gfp_assert "include-untracked-dirty で merged-untracked worktree 削除" "not c
 popd >/dev/null
 rm -rf (dirname "$fx2")
 
+set -l fx3 (gfp_make_fixture)
+pushd "$fx3" >/dev/null
+git fetch origin --prune --quiet
+# gone-unmerged の worktree を tracked-dirty にする(既存の追跡ファイルを変更)
+echo dirty-change >"$fx3/../wt/gone-unmerged/base.txt"
+gfetchprune --include-gone-unmerged --execute >/dev/null
+set -l left3 (git worktree list --porcelain | grep '^branch ' | string replace 'branch refs/heads/' '')
+gfp_assert "dirty な gone worktree は force されず残る" "contains feat/gone-unmerged $left3"
+set -l brs3 (git branch --format='%(refname:short)')
+gfp_assert "dirty gone worktree の branch も残る(削除されない)" "contains feat/gone-unmerged $brs3"
+popd >/dev/null
+rm -rf (dirname "$fx3")
+
 rm -rf (dirname "$GFP_WORK")
 test $GFP_FAILS -eq 0

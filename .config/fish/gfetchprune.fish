@@ -244,9 +244,10 @@ function __gfp_execute --argument-names merge_target include_gone include_untrac
         test "$cat" = confirm-gone -a "$include_gone" = 1; and set do 1
         test $do -eq 1; or continue
 
-        # confirm-* カテゴリは汚れを含む可能性があるため --force が必要
         set -l force_flag
-        if string match -q 'confirm-*' -- $cat
+        # confirm-untracked は untracked のみ確定済みで --include-untracked-dirty で明示同意済み。
+        # confirm-gone は dirty 未確認(tracked 変更が残りうる)ため force せず、git の拒否を安全弁にする。
+        if test "$cat" = confirm-untracked
             set force_flag --force
         end
         if git worktree remove $force_flag $path
