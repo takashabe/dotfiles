@@ -229,6 +229,63 @@ function __gfp_render
     echo "注意: worktree 削除時、git wt がコピーした .env.local 等の ignored ファイルも一緒に消えます。"
 end
 
+function __gfp_execute --argument-names merge_target include_gone include_untracked
+    set -l rows $argv[4..-1]
+    set -l removed_branches
+
+    # 1) worktree 削除(merged+push済み)。-f なし。失敗したらそのブランチは消さない
+    for r in $rows
+        set -l f (string split \t -- $r)
+        set -l cat $f[1]; set -l br $f[2]; set -l path $f[3]
+        set -l do 0
+        test "$cat" = delete-wt; and set do 1
+        test "$cat" = confirm-untracked -a "$include_untracked" = 1; and set do 1
+        test "$cat" = confirm-gone -a "$include_gone" = 1; and set do 1
+        test $do -eq 1; or continue
+
+        if git worktree remove $path
+            set -a removed_branches (printf '%s\t%s' $br $cat)
+        else
+            echo "skip(remove 失敗): $path"
+        end
+    end
+
+    # 2) ブランチ削除。worktree なし削除候補 + worktree 削除済みのもの
+    for r in $rows
+        set -l f (string split \t -- $r)
+        set -l cat $f[1]; set -l br $f[2]
+        set -l do 0
+        test "$cat" = delete-branch; and set do 1
+        test $do -eq 1; or continue
+        __gfp_delete_branch $br $merge_target 0
+    end
+    for rb in $removed_branches
+        set -l p (string split \t -- $rb)
+        set -l br $p[1]; set -l cat $p[2]
+        set -l gone_flag 0
+        test "$cat" = confirm-gone; and set gone_flag 1
+        __gfp_delete_branch $br $merge_target $gone_flag
+    end
+end
+
+# is-ancestor を削除直前に再確認してから -d→-D。gone-only(gone_flag=1)は -D 直行
+function __gfp_delete_branch --argument-names branch merge_target gone_flag
+    if test "$gone_flag" = 1
+        git branch -D $branch
+        return
+    end
+    if not git merge-base --is-ancestor $branch $merge_target 2>/dev/null
+        echo "skip(再検証で未マージ): $branch"
+        return
+    end
+    if git branch -d $branch 2>/dev/null
+        return
+    end
+    # -d は HEAD 基準で誤拒否しうる。origin merged は再確認済みなので -D。
+    echo "merged 確認済みのため -D: $branch"
+    git branch -D $branch
+end
+
 function gfetchprune --description 'push済み・マージ済みの worktree/branch を安全に掃除する(既定 dry-run、--execute で実削除)'
     set -l explicit_dry 0
     set -l execute 0
@@ -290,7 +347,6 @@ function gfetchprune --description 'push済み・マージ済みの worktree/bra
         return 0
     end
 
-    # 実削除は次タスクで実装する
-    __gfp_render $rows
+    __gfp_execute $merge_target $include_gone $include_untracked $rows
     return 0
 end

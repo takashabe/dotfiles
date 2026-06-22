@@ -49,6 +49,7 @@ function gfp_make_fixture
     echo changed >"$root/wt/merged-dirty/base.txt"
     git -C "$work" worktree add --quiet "$root/wt/merged-untracked" feat/merged-untracked
     echo junk >"$root/wt/merged-untracked/untracked.txt"
+    git -C "$work" worktree add --quiet "$root/wt/stg" stg
     git -C "$work" worktree add --quiet "$work/.git/.wkit-worktrees/review" feat/review-slot
     git -C "$work" worktree add --quiet --detach "$root/wt/detached"
 

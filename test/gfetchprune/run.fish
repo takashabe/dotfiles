@@ -98,5 +98,22 @@ gfp_assert "出力に gone-only 要確認" "string match -q '*gone-unmerged*' --
 gfp_assert "出力に保護(push無)" "string match -q '*local-merged*' -- '$out'"
 gfp_assert "コピーファイル注意を表示" "string match -q '*.env.local*' -- '$out'"
 
+set -l ex (gfp_make_fixture)
+pushd "$ex" >/dev/null
+git fetch origin --prune --quiet
+gfetchprune --execute >/dev/null
+set -l left (git worktree list --porcelain | grep '^branch ' | string replace 'branch refs/heads/' '')
+gfp_assert "merged-pushed worktree は削除された" "not contains feat/merged-pushed $left"
+gfp_assert "merged-gone worktree は削除された" "not contains feat/merged-gone $left"
+gfp_assert "stg は保護され残る" "contains stg $left"
+gfp_assert "gone-unmerged は既定で残る" "contains feat/gone-unmerged $left"
+gfp_assert "merged-dirty は残る" "contains feat/merged-dirty $left"
+gfp_assert "review-slot は保護され残る" "contains feat/review-slot $left"
+set -l brs (git branch --format='%(refname:short)')
+gfp_assert "merged-pushed branch も削除" "not contains feat/merged-pushed $brs"
+gfp_assert "local-merged branch は残る(push無保護)" "contains feat/local-merged $brs"
+popd >/dev/null
+rm -rf (dirname "$ex")
+
 rm -rf (dirname "$GFP_WORK")
 test $GFP_FAILS -eq 0
