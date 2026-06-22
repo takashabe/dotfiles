@@ -1,3 +1,9 @@
+# gfetchprune: カレント repo の push 済み・マージ済み worktree/branch を安全に掃除する。
+# 対象: git wt 管理下(../.worktrees/{gitroot})と wkit(.git/.wkit-worktrees/)の両方。
+# 既定 dry-run。実削除は --execute。
+# 保護: gfp_protect_branches(+ PROTECT_BRANCHES 完全一致)/ gfp_protect_worktree_paths(+ PROTECT_WORKTREE_PATHS glob)。
+# 設定例(local.fish): set -g PROTECT_BRANCHES my-keep-branch ; set -g PROTECT_WORKTREE_PATHS '*/sandbox'
+
 set -g gfp_protect_branches main master stg qa dev develop staging production prod
 set -g gfp_protect_worktree_paths '*/.wkit-worktrees/review'
 
