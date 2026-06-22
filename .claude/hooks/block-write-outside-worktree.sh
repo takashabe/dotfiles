@@ -35,6 +35,16 @@ case "$resolved" in
   "$TOPLEVEL_REAL"|"$TOPLEVEL_REAL"/*) exit 0 ;;
 esac
 
+# worktree 外でも許可する harness 管理領域。
+# この制約は追跡対象のソースを worktree に隔離する目的であり、gitignore された
+# 永続メモリとスクラッチ領域はその対象外。memory は ~/.claude（dotfiles への
+# シンボリックリンク）配下にあり pwd -P で実体パスへ正規化されるため、$HOME 起点
+# ではなくパスグロブで判定する。
+case "$resolved" in
+  */.claude/projects/*/memory/*) exit 0 ;;
+  /private/tmp/claude-*/scratchpad/*|/tmp/claude-*/scratchpad/*) exit 0 ;;
+esac
+
 cat >&2 <<MSG
 Write blocked: worktree 外への書き込みを検出しました。
 
