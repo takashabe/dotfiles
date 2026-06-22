@@ -1,3 +1,27 @@
+function __gfp_default_branch
+    set -l d (git symbolic-ref --quiet --short refs/remotes/origin/HEAD 2>/dev/null | string replace 'origin/' '')
+    if test -n "$d"
+        echo $d
+        return 0
+    end
+    for cand in main master
+        if git show-ref --verify --quiet "refs/remotes/origin/$cand"
+            echo $cand
+            return 0
+        end
+    end
+    return 1
+end
+
+function __gfp_merge_target --argument-names default
+    set -l ref "refs/remotes/origin/$default"
+    if git show-ref --verify --quiet $ref
+        echo $ref
+        return 0
+    end
+    return 1
+end
+
 function gfetchprune --description 'push済み・マージ済みの worktree/branch を安全に掃除する(既定 dry-run、--execute で実削除)'
     set -l explicit_dry 0
     set -l execute 0
@@ -26,6 +50,17 @@ function gfetchprune --description 'push済み・マージ済みの worktree/bra
 
     if not git rev-parse --show-toplevel >/dev/null 2>&1
         echo "not a git repository"
+        return 1
+    end
+
+    set -l default (__gfp_default_branch)
+    if test -z "$default"
+        echo "default branch not found. try: git remote set-head origin --auto"
+        return 1
+    end
+    set -l merge_target (__gfp_merge_target $default)
+    if test -z "$merge_target"
+        echo "origin/$default not found. try: git remote set-head origin --auto && git fetch origin"
         return 1
     end
 
