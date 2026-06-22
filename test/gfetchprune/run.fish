@@ -115,5 +115,25 @@ gfp_assert "local-merged branch は残る(push無保護)" "contains feat/local-m
 popd >/dev/null
 rm -rf (dirname "$ex")
 
+set -l fx1 (gfp_make_fixture)
+pushd "$fx1" >/dev/null
+git fetch origin --prune --quiet
+gfetchprune --include-gone-unmerged --execute >/dev/null
+set -l left1 (git worktree list --porcelain | grep '^branch ' | string replace 'branch refs/heads/' '')
+gfp_assert "include-gone-unmerged で gone-unmerged worktree 削除" "not contains feat/gone-unmerged $left1"
+set -l brs1 (git branch --format='%(refname:short)')
+gfp_assert "include-gone-unmerged で gone-unmerged branch も -D" "not contains feat/gone-unmerged $brs1"
+popd >/dev/null
+rm -rf (dirname "$fx1")
+
+set -l fx2 (gfp_make_fixture)
+pushd "$fx2" >/dev/null
+git fetch origin --prune --quiet
+gfetchprune --include-untracked-dirty --execute >/dev/null
+set -l left2 (git worktree list --porcelain | grep '^branch ' | string replace 'branch refs/heads/' '')
+gfp_assert "include-untracked-dirty で merged-untracked worktree 削除" "not contains feat/merged-untracked $left2"
+popd >/dev/null
+rm -rf (dirname "$fx2")
+
 rm -rf (dirname "$GFP_WORK")
 test $GFP_FAILS -eq 0

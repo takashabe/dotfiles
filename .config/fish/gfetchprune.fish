@@ -3,6 +3,8 @@
 # 既定 dry-run。実削除は --execute。
 # 保護: gfp_protect_branches(+ PROTECT_BRANCHES 完全一致)/ gfp_protect_worktree_paths(+ PROTECT_WORKTREE_PATHS glob)。
 # 設定例(local.fish): set -g PROTECT_BRANCHES my-keep-branch ; set -g PROTECT_WORKTREE_PATHS '*/sandbox'
+# 既知制限: --include-gone-unmerged は worktree を持つ gone ブランチのみ削除する。worktree なしの gone ブランチは
+#   dry-run で表示されるが削除しない(誤削除回避のためデータを保持する方向に倒している)。
 
 set -g gfp_protect_branches main master stg qa dev develop staging production prod
 set -g gfp_protect_worktree_paths '*/.wkit-worktrees/review'
@@ -57,7 +59,6 @@ function __gfp_worktree_dirty_kind --argument-names path
         echo clean
         return 0
     end
-    # tracked 変更/staged が 1 つでもあれば tracked(作業中)。すべて untracked(??)なら untracked。
     for line in $st
         if not string match -qr '^\?\?' -- $line
             echo tracked
@@ -76,7 +77,6 @@ end
 function __gfp_classify --argument-names default merge_target
     set -l current_wt (git rev-parse --show-toplevel)
 
-    # worktree 一覧をパース: path \t branch(detached は空)
     set -l wt_paths
     set -l wt_branches
     set -l p ""
@@ -98,7 +98,6 @@ function __gfp_classify --argument-names default merge_target
         set -a wt_branches $b
     end
 
-    # ブランチメタを連想引き用に展開
     set -l meta_branch
     set -l meta_up
     set -l meta_track
@@ -111,7 +110,6 @@ function __gfp_classify --argument-names default merge_target
 
     set -l seen_branches
 
-    # pass 1: worktree を持つエントリ
     for i in (seq (count $wt_paths))
         set -l path $wt_paths[$i]
         set -l branch $wt_branches[$i]
@@ -151,7 +149,6 @@ function __gfp_classify --argument-names default merge_target
         __gfp_emit_decision $branch $path $merge_target wt $up $track
     end
 
-    # pass 2: worktree を持たないブランチ
     for i in (seq (count $meta_branch))
         set -l branch $meta_branch[$i]
         contains -- $branch $seen_branches; and continue
@@ -160,15 +157,8 @@ function __gfp_classify --argument-names default merge_target
             printf '%s\t%s\t%s\t%s\n' protect-branch $branch '-' ''
             continue
         end
-        set -l up ""
-        set -l track ""
-        for j in (seq (count $meta_branch))
-            if test "$meta_branch[$j]" = "$branch"
-                set up $meta_up[$j]
-                set track $meta_track[$j]
-                break
-            end
-        end
+        set -l up $meta_up[$i]
+        set -l track $meta_track[$i]
         __gfp_emit_decision $branch '-' $merge_target nowt $up $track
     end
 end
@@ -193,12 +183,10 @@ function __gfp_emit_decision --argument-names branch path merge_target kind up t
         end
         return
     end
-    # merged
     if test $pushed -eq 0
         printf '%s\t%s\t%s\t%s\n' protect-nopush $branch $path ''
         return
     end
-    # merged + pushed: worktree があれば dirty を評価
     if test "$kind" = wt
         set -l dk (__gfp_worktree_dirty_kind $path)
         if test "$dk" = tracked
@@ -247,7 +235,6 @@ function __gfp_execute --argument-names merge_target include_gone include_untrac
     set -l rows $argv[4..-1]
     set -l removed_branches
 
-    # 1) worktree 削除(merged+push済み)。-f なし。失敗したらそのブランチは消さない
     for r in $rows
         set -l f (string split \t -- $r)
         set -l cat $f[1]; set -l br $f[2]; set -l path $f[3]
@@ -257,14 +244,18 @@ function __gfp_execute --argument-names merge_target include_gone include_untrac
         test "$cat" = confirm-gone -a "$include_gone" = 1; and set do 1
         test $do -eq 1; or continue
 
-        if git worktree remove $path
+        # confirm-* カテゴリは汚れを含む可能性があるため --force が必要
+        set -l force_flag
+        if string match -q 'confirm-*' -- $cat
+            set force_flag --force
+        end
+        if git worktree remove $force_flag $path
             set -a removed_branches (printf '%s\t%s' $br $cat)
         else
             echo "skip(remove 失敗): $path"
         end
     end
 
-    # 2) ブランチ削除。worktree なし削除候補 + worktree 削除済みのもの
     for r in $rows
         set -l f (string split \t -- $r)
         set -l cat $f[1]; set -l br $f[2]
