@@ -241,7 +241,8 @@
       "source": {
         "source": "github",
         "repo": "takashabe/claude-plugins"
-      }
+      },
+      "autoUpdate": true
     }
   },
   "viewMode": "focus",
