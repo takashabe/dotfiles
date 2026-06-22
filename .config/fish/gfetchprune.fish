@@ -133,7 +133,16 @@ function __gfp_classify --argument-names default merge_target
             continue
         end
 
-        __gfp_emit_decision $branch $path $merge_target wt
+        set -l up ""
+        set -l track ""
+        for j in (seq (count $meta_branch))
+            if test "$meta_branch[$j]" = "$branch"
+                set up $meta_up[$j]
+                set track $meta_track[$j]
+                break
+            end
+        end
+        __gfp_emit_decision $branch $path $merge_target wt $up $track
     end
 
     # pass 2: worktree を持たないブランチ
@@ -145,22 +154,21 @@ function __gfp_classify --argument-names default merge_target
             printf '%s\t%s\t%s\t%s\n' protect-branch $branch '-' ''
             continue
         end
-        __gfp_emit_decision $branch '-' $merge_target nowt
+        set -l up ""
+        set -l track ""
+        for j in (seq (count $meta_branch))
+            if test "$meta_branch[$j]" = "$branch"
+                set up $meta_up[$j]
+                set track $meta_track[$j]
+                break
+            end
+        end
+        __gfp_emit_decision $branch '-' $merge_target nowt $up $track
     end
 end
 
 # merged/pushed/gone と dirty を評価して 1 行 emit する
-function __gfp_emit_decision --argument-names branch path merge_target kind
-    set -l up ""
-    set -l track ""
-    for m in (__gfp_branch_meta)
-        set -l f (string split \t -- $m)
-        if test "$f[1]" = "$branch"
-            set up $f[2]
-            set track $f[3]
-            break
-        end
-    end
+function __gfp_emit_decision --argument-names branch path merge_target kind up track
     set -l gone 0
     string match -q '*gone*' -- $track; and set gone 1
     set -l pushed 0
