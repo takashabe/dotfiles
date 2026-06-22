@@ -29,5 +29,5 @@ gfp_assert "-x -n は dry-run 優先" test $before -eq $after2
 # 未知引数は exit 1
 gfp_assert "未知引数で Usage 終了" "not gfetchprune --bogus >/dev/null 2>&1"
 
-rm -rf (dirname (dirname "$GFP_WORK"))
+rm -rf (dirname "$GFP_WORK")
 test $GFP_FAILS -eq 0

@@ -177,7 +177,7 @@ gfp_assert "-x -n は dry-run 優先" test $before -eq $after2
 # 未知引数は exit 1
 gfp_assert "未知引数で Usage 終了" "not gfetchprune --bogus >/dev/null 2>&1"
 
-rm -rf (dirname (dirname "$GFP_WORK"))
+rm -rf (dirname "$GFP_WORK")  # = mktemp の $root。dirname を2回かけると $TMPDIR ルートを消すので1回
 test $GFP_FAILS -eq 0
 ```
 
@@ -350,7 +350,7 @@ git -C "$broken" remote set-url origin /nonexistent/path.git
 pushd "$broken" >/dev/null
 gfp_assert "fetch 失敗で exit1" "not gfetchprune >/dev/null 2>&1"
 popd >/dev/null
-rm -rf (dirname (dirname "$broken"))
+rm -rf (dirname "$broken")
 ```
 
 - [ ] **Step 2: テスト実行で失敗を確認**
@@ -908,7 +908,7 @@ set -l brs (git branch --format='%(refname:short)')
 gfp_assert "merged-pushed branch も削除" "not contains feat/merged-pushed $brs"
 gfp_assert "local-merged branch は残る(push無保護)" "contains feat/local-merged $brs"
 popd >/dev/null
-rm -rf (dirname (dirname "$ex"))
+rm -rf (dirname "$ex")
 ```
 
 - [ ] **Step 2: テスト実行で失敗を確認**
