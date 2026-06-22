@@ -247,7 +247,7 @@
   },
   "viewMode": "focus",
   "language": "Japanese",
-  "effortLevel": "high",
+  "effortLevel": "xhigh",
   "plansDirectory": ".plans",
   "tui": "fullscreen",
   "prefersReducedMotion": false,
