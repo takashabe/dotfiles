@@ -152,7 +152,17 @@ source (status dirname)/fixture.fish
 
 set -g GFP_FAILS 0
 function gfp_assert --argument-names desc
-    if eval $argv[2..-1]
+    # 条件は2形態で渡される: 単一文字列(not やリダイレクトを含む→eval 必須)と
+    # 複数語(各要素を直接コマンド実行=空白を含む値も保てて安全)。両者を分けて扱う。
+    set -l ok 0
+    if test (count $argv) -eq 2
+        eval $argv[2]; and set ok 1
+    else
+        if $argv[2..-1]
+            set ok 1
+        end
+    end
+    if test $ok -eq 1
         echo "  ok: $desc"
     else
         echo "FAIL: $desc"
