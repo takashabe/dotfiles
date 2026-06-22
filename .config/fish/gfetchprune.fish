@@ -1,3 +1,16 @@
+set -g gfp_protect_branches main master stg qa dev develop staging production prod
+
+function __gfp_is_protected_branch --argument-names branch
+    test -z "$branch"; and return 1
+    if contains -- $branch $gfp_protect_branches $PROTECT_BRANCHES
+        return 0
+    end
+    if string match -q 'release/*' -- $branch
+        return 0
+    end
+    return 1
+end
+
 function __gfp_default_branch
     set -l d (git symbolic-ref --quiet --short refs/remotes/origin/HEAD 2>/dev/null | string replace 'origin/' '')
     if test -n "$d"

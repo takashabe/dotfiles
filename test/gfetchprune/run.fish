@@ -57,5 +57,14 @@ gfp_assert "merged-gone の track が gone" "string match -q '*gone*' -- '$gline
 set -l uline (__gfp_branch_meta | string match -e 'feat/unmerged-pushed')
 gfp_assert "unmerged-pushed は gone でない" "not string match -q '*gone*' -- '$uline'"
 
+gfp_assert "stg は保護" "__gfp_is_protected_branch stg"
+gfp_assert "release/x は保護" "__gfp_is_protected_branch release/2026-q2"
+gfp_assert "feat/foo は非保護" "not __gfp_is_protected_branch feat/foo"
+# PROTECT_BRANCHES がリストでも完全一致で効く・空でも壊れない
+set -g PROTECT_BRANCHES keepme other
+gfp_assert "リスト PROTECT_BRANCHES が効く" "__gfp_is_protected_branch keepme"
+set -e PROTECT_BRANCHES
+gfp_assert "空 PROTECT_BRANCHES で誤保護しない" "not __gfp_is_protected_branch ''"
+
 rm -rf (dirname "$GFP_WORK")
 test $GFP_FAILS -eq 0
