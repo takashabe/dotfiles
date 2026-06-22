@@ -69,5 +69,10 @@ gfp_assert "空 PROTECT_BRANCHES で誤保護しない" "not __gfp_is_protected_
 gfp_assert "review パスは保護" "__gfp_is_protected_path $GFP_WORK/.git/.wkit-worktrees/review"
 gfp_assert "通常 worktree は非保護" "not __gfp_is_protected_path /tmp/wt/merged-pushed"
 
+set -l root (dirname "$GFP_WORK")
+gfp_assert "clean を判定" test (__gfp_worktree_dirty_kind "$root/wt/merged-pushed") = clean
+gfp_assert "tracked 変更を判定" test (__gfp_worktree_dirty_kind "$root/wt/merged-dirty") = tracked
+gfp_assert "untracked を判定" test (__gfp_worktree_dirty_kind "$root/wt/merged-untracked") = untracked
+
 rm -rf (dirname "$GFP_WORK")
 test $GFP_FAILS -eq 0

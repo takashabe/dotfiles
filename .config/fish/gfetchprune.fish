@@ -45,6 +45,22 @@ function __gfp_merge_target --argument-names default
     return 1
 end
 
+function __gfp_worktree_dirty_kind --argument-names path
+    set -l st (git -C $path status --porcelain 2>/dev/null)
+    if test -z "$st"
+        echo clean
+        return 0
+    end
+    # tracked 変更/staged が 1 つでもあれば tracked(作業中)。すべて untracked(??)なら untracked。
+    for line in $st
+        if not string match -qr '^\?\?' -- $line
+            echo tracked
+            return 0
+        end
+    end
+    echo untracked
+end
+
 function __gfp_branch_meta
     git for-each-ref --format='%(refname:short)\t%(upstream:short)\t%(upstream:track)\t%(objectname)' refs/heads
 end
