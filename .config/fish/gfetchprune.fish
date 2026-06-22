@@ -62,8 +62,9 @@ function __gfp_worktree_dirty_kind --argument-names path
 end
 
 function __gfp_branch_meta
-    git for-each-ref --format='%(refname:short)|%(upstream:short)|%(upstream:track)|%(objectname)' refs/heads \
-        | string replace -a '|' (printf '\t')
+    # for-each-ref は --format 内の \t をタブに展開しないため、実タブを変数で埋め込む
+    set -l tab (printf '\t')
+    git for-each-ref --format="%(refname:short)$tab%(upstream:short)$tab%(upstream:track)$tab%(objectname)" refs/heads
 end
 
 function __gfp_classify --argument-names default merge_target
