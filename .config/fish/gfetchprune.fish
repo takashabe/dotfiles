@@ -64,6 +64,11 @@ function gfetchprune --description 'push済み・マージ済みの worktree/bra
         return 1
     end
 
-    # 後続タスクで fetch / classify / render / execute を追加する
+    if not git fetch origin --prune
+        echo "git fetch origin --prune failed: aborting"
+        return 1
+    end
+
+    # 後続タスクで classify / render / execute を追加する
     return 0
 end

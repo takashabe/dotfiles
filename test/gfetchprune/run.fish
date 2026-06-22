@@ -43,5 +43,13 @@ gfp_assert "default branch は main" test (__gfp_default_branch) = main
 gfp_assert "merge_target は origin/main" test (__gfp_merge_target main) = refs/remotes/origin/main
 gfp_assert "merge_target 不在は exit1" "not __gfp_merge_target nonexistent >/dev/null 2>&1"
 
+# origin を壊して fetch 失敗時に exit1 することを確認(別 fixture)
+set -l broken (gfp_make_fixture)
+git -C "$broken" remote set-url origin /nonexistent/path.git
+pushd "$broken" >/dev/null
+gfp_assert "fetch 失敗で exit1" "not gfetchprune >/dev/null 2>&1"
+popd >/dev/null
+rm -rf (dirname "$broken")
+
 rm -rf (dirname "$GFP_WORK")
 test $GFP_FAILS -eq 0
