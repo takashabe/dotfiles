@@ -421,7 +421,9 @@ Expected: 2 件 `FAIL`(関数未定義)。
 
 ```fish
 function __gfp_branch_meta
-    git for-each-ref --format='%(refname:short)\t%(upstream:short)\t%(upstream:track)\t%(objectname)' refs/heads
+    # for-each-ref は --format 内の \t をタブに展開しないため、実タブを変数で埋め込む
+    set -l tab (printf '\t')
+    git for-each-ref --format="%(refname:short)$tab%(upstream:short)$tab%(upstream:track)$tab%(objectname)" refs/heads
 end
 ```
 
