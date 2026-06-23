@@ -1,28 +1,6 @@
 -- お試しプラグインを置く場所. プラグインの処遇が決まったらこのファイルから移動すること
 return {
   {
-    "hat0uma/csvview.nvim",
-    ---@module "csvview"
-    ---@type CsvView.Options
-    opts = {
-      parser = { comments = { "#", "//" } },
-      keymaps = {
-        -- Text objects for selecting fields
-        textobject_field_inner = { "if", mode = { "o", "x" } },
-        textobject_field_outer = { "af", mode = { "o", "x" } },
-        -- Excel-like navigation:
-        -- Use <Tab> and <S-Tab> to move horizontally between fields.
-        -- Use <Enter> and <S-Enter> to move vertically between rows and place the cursor at the end of the field.
-        -- Note: In terminals, you may need to enable CSI-u mode to use <S-Tab> and <S-Enter>.
-        jump_next_field_end = { "<Tab>", mode = { "n", "v" } },
-        jump_prev_field_end = { "<S-Tab>", mode = { "n", "v" } },
-        jump_next_row = { "<Enter>", mode = { "n", "v" } },
-        jump_prev_row = { "<S-Enter>", mode = { "n", "v" } },
-      },
-    },
-    cmd = { "CsvViewEnable", "CsvViewDisable", "CsvViewToggle" },
-  },
-  {
     "Wansmer/treesj",
     keys = { "<space>m", "<space>j", "<space>s" },
     dependencies = { "nvim-treesitter/nvim-treesitter" }, -- if you install parsers with `nvim-treesitter`
@@ -30,16 +8,5 @@ return {
       require("treesj").setup({--[[ your config ]]
       })
     end,
-  },
-  {
-    "okm321/mo.nvim",
-    ft = { "markdown" },
-    cmd = { "MoAdd", "MoAddDir", "MoPick", "MoStatus", "MoWatch", "MoRestart", "MoShutdown", "MoClear" },
-    opts = {},
-    keys = {
-      { "<leader>mo", "<cmd>MoAdd<cr>", desc = "Add to mo" },
-      { "<leader>mp", "<cmd>MoPick<cr>", desc = "Pick files for mo" },
-      { "<leader>ms", "<cmd>MoStatus<cr>", desc = "mo status" },
-    },
   },
 }
