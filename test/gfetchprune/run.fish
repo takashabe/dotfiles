@@ -2,6 +2,10 @@
 source (status dirname)/../../.config/fish/gfetchprune.fish
 source (status dirname)/fixture.fish
 
+# local.fish 相当: パス保護は repo 既定を持たず PROTECT_WORKTREE_PATHS で設定する。
+# review 枠保護を検証するアサーションはこの設定に依存する。
+set -g PROTECT_WORKTREE_PATHS '*/keep-worktrees/slot'
+
 set -g GFP_FAILS 0
 function gfp_assert --argument-names desc
     # 条件は2形態で渡される: 単一文字列(not やリダイレクトを含む→eval 必須)と
@@ -66,7 +70,7 @@ gfp_assert "リスト PROTECT_BRANCHES が効く" "__gfp_is_protected_branch kee
 set -e PROTECT_BRANCHES
 gfp_assert "空 PROTECT_BRANCHES で誤保護しない" "not __gfp_is_protected_branch ''"
 
-gfp_assert "review パスは保護" "__gfp_is_protected_path $GFP_WORK/.git/.wkit-worktrees/review"
+gfp_assert "保護パスは保護(PROTECT_WORKTREE_PATHS 一致)" "__gfp_is_protected_path $GFP_WORK/.git/keep-worktrees/slot"
 gfp_assert "通常 worktree は非保護" "not __gfp_is_protected_path /tmp/wt/merged-pushed"
 
 set -l root (dirname "$GFP_WORK")

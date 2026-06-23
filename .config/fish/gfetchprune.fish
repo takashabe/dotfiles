@@ -1,13 +1,16 @@
 # gfetchprune: カレント repo の push 済み・マージ済み worktree/branch を安全に掃除する。
 # 対象: git wt 管理下(../.worktrees/{gitroot})と wkit(.git/.wkit-worktrees/)の両方。
 # 既定 dry-run。実削除は --execute。
-# 保護: gfp_protect_branches(+ PROTECT_BRANCHES 完全一致)/ gfp_protect_worktree_paths(+ PROTECT_WORKTREE_PATHS glob)。
-# 設定例(local.fish): set -g PROTECT_BRANCHES my-keep-branch ; set -g PROTECT_WORKTREE_PATHS '*/sandbox'
+# 保護: ブランチ=gfp_protect_branches(repo 既定) + PROTECT_BRANCHES(完全一致で追加)。
+#       worktree パス=PROTECT_WORKTREE_PATHS のみ(パスは環境固有のため repo 既定なし)。
+# 設定例(local.fish): set -g PROTECT_BRANCHES my-keep-branch ; set -g PROTECT_WORKTREE_PATHS '*/sandbox' '*/persistent/*'
 # 既知制限: --include-gone-unmerged は worktree を持つ gone ブランチのみ削除する。worktree なしの gone ブランチは
 #   dry-run で表示されるが削除しない(誤削除回避のためデータを保持する方向に倒している)。
 
 set -g gfp_protect_branches main master stg qa dev develop staging production prod
-set -g gfp_protect_worktree_paths '*/.wkit-worktrees/review'
+# worktree パスは環境固有のため repo 既定を持たない。マシンごとに local.fish で
+# PROTECT_WORKTREE_PATHS を設定する(例: set -g PROTECT_WORKTREE_PATHS '*/sandbox')。
+set -g gfp_protect_worktree_paths
 
 function __gfp_is_protected_path --argument-names path
     for pat in $gfp_protect_worktree_paths $PROTECT_WORKTREE_PATHS
