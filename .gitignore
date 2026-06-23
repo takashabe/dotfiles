@@ -109,3 +109,4 @@ _build.json
 
 ## temp
 out-*/
+.superpowers/
