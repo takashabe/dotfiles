@@ -142,6 +142,15 @@
             "command": "bash ~/.tmux/plugins/tmux-agent-sidebar/hook.sh claude stop"
           }
         ]
+      },
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash ~/.claude/hooks/self-audit-comments.sh"
+          }
+        ]
       }
     ],
     "StopFailure": [
@@ -247,7 +256,7 @@
   },
   "viewMode": "focus",
   "language": "Japanese",
-  "effortLevel": "xhigh",
+  "effortLevel": "high",
   "plansDirectory": ".plans",
   "tui": "fullscreen",
   "prefersReducedMotion": false,
