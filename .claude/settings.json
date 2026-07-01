@@ -101,6 +101,10 @@
           {
             "type": "command",
             "command": "jq -r '.tool_input.file_path | select(endswith(\".go\"))' | xargs -r goimports -w --"
+          },
+          {
+            "type": "command",
+            "command": "bash ~/.claude/hooks/self-audit-comments.sh"
           }
         ]
       },
@@ -140,15 +144,6 @@
           {
             "type": "command",
             "command": "bash ~/.tmux/plugins/tmux-agent-sidebar/hook.sh claude stop"
-          }
-        ]
-      },
-      {
-        "matcher": "",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "bash ~/.claude/hooks/self-audit-comments.sh"
           }
         ]
       }
