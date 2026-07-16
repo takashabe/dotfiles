@@ -48,3 +48,17 @@ trust_level = "trusted"
 
 [plugins."github@openai-curated"]
 enabled = true
+
+[hooks.state]
+
+[hooks.state."/Users/takashabe/.codex/hooks.json:post_tool_use:0:0"]
+trusted_hash = "sha256:ff5f388525b989bc93457d57b8e1d9b72eb500db6d3266b9f131fcc04e9a7f49"
+
+[hooks.state."/Users/takashabe/.codex/hooks.json:session_start:0:0"]
+trusted_hash = "sha256:d6a30cd52fbfa63a852f7c4c125e8e1fc776c150787b9bbd0c30de587a999ab4"
+
+[hooks.state."/Users/takashabe/.codex/hooks.json:user_prompt_submit:0:0"]
+trusted_hash = "sha256:bb7dab1782aeea7e280e688e624a929f936b443f81061540c8907e1162f0e0fd"
+
+[hooks.state."/Users/takashabe/.codex/hooks.json:stop:0:0"]
+trusted_hash = "sha256:bb3e98a2e28bda26845eadd315e3003b40210803f405847d46fbe2a071b59824"
