@@ -1,5 +1,5 @@
 # reference: https://github.com/openai/codex/blob/main/docs/config.md
-model = "gpt-5.5"
+model = "gpt-5.6-terra"
 model_verbosity = "medium"
 sandbox_mode = "workspace-write"
 approval_policy = "never"
@@ -7,7 +7,7 @@ approval_policy = "never"
 # 何の設定か分からないので保留
 # file_opener = "cursor" # or vscode
 notify = ["bash","-lc","afplay /System/Library/Sounds/Ping.aiff"]
-model_reasoning_effort = "xhigh"
+model_reasoning_effort = "medium"
 personality = "pragmatic"
 
 [sandbox_workspace_write]
@@ -15,10 +15,12 @@ network_access = true
 
 [tui]
 notifications = ["agent-turn-complete","approval-requested"]
-status_line = ["model-with-reasoning", "git-branch", "context-remaining", "five-hour-limit", "weekly-limit", "fast-mode"]
+status_line = ["model-with-reasoning", "context-remaining", "five-hour-limit", "weekly-limit", "pull-request-number"]
+status_line_use_colors = true
 
 [tui.model_availability_nux]
 "gpt-5.5" = 4
+"gpt-5.6-sol" = 4
 
 [shell_environment_policy]
 inherit = "core"
