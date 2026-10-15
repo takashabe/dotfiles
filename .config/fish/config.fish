@@ -308,7 +308,7 @@ function msleep
 end
 
 function rolling_update
-  paru -Syyu --noconfirm && go_install_binaries
+  paru -Syu --noconfirm && go_install_binaries
 end
 
 ## Terraform
@@ -345,27 +345,34 @@ if status --is-interactive; and test (uname) = "Darwin"
 end
 
 # コマンド実行時間が一定時間を超えていればnotificationを表示
-function __postexec_notify_on_long_running_commands --on-event fish_postexec
-  # インタラクティブなコマンドは通知しない
-  set --function interactive_commands vi vim nvim man less zed pgcli psql tig lg lazygit ld lazydocker
-  set --function command (string split ' ' $argv[1])
-  if contains $command $interactive_commands
-    return
-  end
-
-  # 通知するコマンドの実行時間が閾値を超えた場合に通知を行う (milliseconds)
-  set -l threshold_duration 10000
-  set -l display_cmd_length 20
-  if test $CMD_DURATION -gt $threshold_duration
-    # 実行コマンドの先頭30文字を通知する
-    set -l full_command (string join ' ' $argv)
-    set -l display_command (string sub -s 1 -l $display_cmd_length $full_command)
-    if test (string length $full_command) -gt $display_cmd_length
-      set display_command (string join '' $display_command '...')
+if status --is-interactive
+  function __postexec_notify_on_long_running_commands --on-event fish_postexec
+    # インタラクティブなコマンドは通知しない
+    set --function interactive_commands vi vim nvim man less zed pgcli psql tig lg lazygit ld lazydocker
+    set --function command (string split ' ' $argv[1])
+    if contains $command $interactive_commands
+      return
     end
-    set -l duration_in_seconds (math "floor($CMD_DURATION / 1000)")
-    set -l notification_message "'$display_command' finished. took $duration_in_seconds s"
-    osascript -e "display notification \"$notification_message\" with title \"Command Notification\""
+
+    # 通知するコマンドの実行時間が閾値を超えた場合に通知を行う (milliseconds)
+    set -l threshold_duration 10000
+    set -l display_cmd_length 20
+    if test $CMD_DURATION -gt $threshold_duration
+      # 実行コマンドの先頭30文字を通知する
+      set -l full_command (string join ' ' $argv)
+      set -l display_command (string sub -s 1 -l $display_cmd_length $full_command)
+      if test (string length $full_command) -gt $display_cmd_length
+        set display_command (string join '' $display_command '...')
+      end
+      set -l duration_in_seconds (math "floor($CMD_DURATION / 1000)")
+      set -l notification_message "'$display_command' finished. took $duration_in_seconds s"
+      switch (uname)
+        case Darwin
+          osascript -e "display notification \"$notification_message\" with title \"Command Notification\""
+        case Linux
+          command -q notify-send; and notify-send -a fish "Command Notification" "$notification_message"
+      end
+    end
   end
 end
 
