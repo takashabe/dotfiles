@@ -1,0 +1,106 @@
+# Noctalia v5 設定。settings.json は v4 (quickshell 版) 用で v5 は読まない。
+# 全項目のデフォルト値: https://github.com/noctalia-dev/noctalia/blob/main/example.toml
+
+[shell]
+telemetry_enabled = false
+avatar_path       = "~/.face"
+clipboard_enabled = false
+
+[shell.animation]
+enabled = false
+
+[shell.panel]
+launcher_placement       = "floating"
+launcher_position        = "center"
+control_center_placement = "attached"
+
+[shell.launcher]
+categories    = true
+sort_by_usage = true
+
+[theme]
+mode    = "light"
+source  = "builtin"
+builtin = "Noctalia"
+
+[lockscreen]
+enabled             = true
+lock_before_suspend = true
+
+# ── Bar ───────────────────────────────────────────────────────────────────────
+
+[bar.main]
+position           = "top"
+background_opacity = 0.93
+radius             = 12
+margin_ends        = 4
+margin_edge        = 4
+widget_spacing     = 6
+
+start  = ["launcher", "clock", "cpu", "cpu-temp", "ram", "active_window", "media"]
+center = ["workspaces"]
+end    = ["tray", "notifications", "battery", "volume", "brightness", "control-center"]
+
+[widget.clock]
+format         = "{:%H:%M %a, %b %d}"
+tooltip_format = "{:%A, %B %d, %Y}"
+
+[widget.cpu]
+type          = "sysmon"
+stat          = "cpu_usage"
+visualization = "none"
+
+[widget.cpu-temp]
+type          = "sysmon"
+stat          = "cpu_temp"
+visualization = "none"
+
+[widget.ram]
+type          = "sysmon"
+stat          = "ram_used"
+visualization = "none"
+
+[widget.active_window]
+max_length   = 145
+title_scroll = "on_hover"
+
+[widget.media]
+artist_first       = true
+max_length         = 145
+title_scroll       = "on_hover"
+hide_when_no_media = true
+
+[widget.workspaces]
+label_source              = "id"
+max_label_chars           = 2
+labels_only_when_occupied = true
+focused_color             = "primary"
+occupied_color            = "secondary"
+empty_color               = "secondary"
+
+[widget.tray]
+drawer       = true
+hide_passive = false
+
+[widget.battery]
+display_mode = "graphic"
+show_label   = false
+
+[widget.volume]
+show_label = false
+
+[widget.volume.actions]
+middle = "exec pwvucontrol || pavucontrol"
+
+[widget.brightness]
+show_label = false
+
+# ── Dock ──────────────────────────────────────────────────────────────────────
+
+[dock]
+enabled           = true
+position          = "bottom"
+auto_hide         = true
+reserve_space     = false
+show_dots         = false
+launcher_position = "none"

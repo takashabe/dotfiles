@@ -11,7 +11,7 @@ environment {
 }
 
 spawn-at-startup "systemctl" "--user" "start" "pipewire" "pipewire-pulse" "wireplumber"
-spawn-at-startup "qs" "-c" "noctalia-shell"
+spawn-at-startup "noctalia"
 spawn-at-startup "ghostty"
 
 output "DP-1" {
@@ -77,9 +77,10 @@ layout {
 
 binds {
   // Super+Return { spawn "ghostty"; }
-  Super+D { spawn "qs" "msg" "-c" "noctalia-shell" "launcher" "toggle"; }
+  Super+D { spawn-sh "noctalia msg panel-toggle launcher"; }
   Super+Space { spawn "bash" "/home/takashabe/bin/niri-action.sh"; }
-  Super+Shift+Q { quit; }
+  Super+Q { close-window; }
+  Super+Ctrl+Shift+Q { quit; }
   Super+Shift+F { maximize-column; }
   Super+Ctrl+F { fullscreen-window; }
 
@@ -125,6 +126,19 @@ animations {
 
 hotkey-overlay {
   skip-at-startup
+}
+
+// noctalia の設定ウィンドウをフローティングにする
+window-rule {
+  match app-id="dev.noctalia.Noctalia"
+  open-floating true
+  default-column-width { fixed 1080; }
+  default-window-height { fixed 920; }
+}
+
+debug {
+  // noctalia の通知アクションとウィンドウアクティベーションを許可する
+  honor-xdg-activation-with-invalid-serial
 }
 
 window-rule {
