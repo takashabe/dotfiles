@@ -80,7 +80,8 @@ binds {
   Super+D { spawn "qs" "msg" "-c" "noctalia-shell" "launcher" "toggle"; }
   Super+Space { spawn "bash" "/home/takashabe/bin/niri-action.sh"; }
   Super+Shift+Q { quit; }
-  Super+F { maximize-column; }
+  Super+Shift+F { maximize-column; }
+  Super+Ctrl+F { fullscreen-window; }
 
   Alt+H { focus-column-left; }
   Alt+L { focus-column-right; }
