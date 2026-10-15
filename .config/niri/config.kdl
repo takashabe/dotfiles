@@ -7,7 +7,6 @@ environment {
   GTK_IM_MODULE "fcitx"
   QT_IM_MODULE "fcitx"
   XMODIFIERS "@im=fcitx"
-  HSA_OVERRIDE_GFX_VERSION "10.3.0"
 }
 
 spawn-at-startup "systemctl" "--user" "start" "pipewire" "pipewire-pulse" "wireplumber"
