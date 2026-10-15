@@ -250,6 +250,9 @@
   "viewMode": "focus",
   "language": "Japanese",
   "effortLevel": "high",
+  "modelSettings": {
+    "claude-opus-5-5": {}
+  },
   "plansDirectory": ".plans",
   "tui": "fullscreen",
   "prefersReducedMotion": false,
@@ -258,6 +261,5 @@
   "terminalProgressBarEnabled": false,
   "inputNeededNotifEnabled": true,
   "agentPushNotifEnabled": true,
-  "skipAutoPermissionPrompt": true,
-  "model": "claude-fable-5[1m]"
+  "skipAutoPermissionPrompt": true
 }
