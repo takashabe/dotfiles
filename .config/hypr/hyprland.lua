@@ -4,12 +4,12 @@
 require("monitors")
 require("workspaces")
 require("window")
+require("shell")
 
 local terminal    = "ghostty"
 local fileManager = "nautilus"
-local menu        = "rofi -show drun"
 
--- 自動起動。バーや通知などのシェルは DMS / noctalia を使う場合にここへ追加する
+-- 自動起動。デスクトップシェルの起動は shell.lua 側で行う
 hl.on("hyprland.start", function()
   hl.exec_cmd("systemctl --user start pipewire pipewire-pulse wireplumber")
   hl.exec_cmd("fcitx5 -d --replace")
@@ -110,7 +110,6 @@ hl.gesture({ fingers = 3, direction = "horizontal", action = "workspace" })
 local mainMod = "SUPER"
 
 hl.bind(mainMod .. " + RETURN", hl.dsp.exec_cmd(terminal))
-hl.bind(mainMod .. " + D",      hl.dsp.exec_cmd(menu))
 hl.bind(mainMod .. " + E",      hl.dsp.exec_cmd(fileManager))
 hl.bind(mainMod .. " + Q",      hl.dsp.window.close())
 hl.bind(mainMod .. " + CTRL + SHIFT + Q", hl.dsp.exit()) -- niri と同じ組み合わせにして誤爆を防ぐ

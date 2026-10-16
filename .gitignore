@@ -110,3 +110,6 @@ _build.json
 ## temp
 out-*/
 .superpowers/
+
+## hyprland (DMS が生成・管理するファイル)
+.config/hypr/dms/
