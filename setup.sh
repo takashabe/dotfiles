@@ -62,6 +62,9 @@ if [ $(uname) = "Linux" ]; then
   sudo mkdir -p /etc/greetd
   sudo ln -s $HOME/dotfiles/etc/greetd/config.toml /etc/greetd/config.toml
   sudo ln -s $HOME/dotfiles/etc/sysctl.d/* /etc/sysctl.d/
+  ## network, time
+  sudo ln -sf $HOME/dotfiles/etc/nftables.conf /etc/nftables.conf
+  sudo systemctl enable --now nftables systemd-timesyncd
   ## xremap
   sudo modprobe uinput
   sudo cp $HOME/dotfiles/etc/modules-load.d/uinput.conf /etc/modules-load.d/uinput.conf
