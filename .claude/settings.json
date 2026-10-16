@@ -177,6 +177,16 @@
             "command": "bash ~/.tmux/plugins/tmux-agent-sidebar/hook.sh claude session-start"
           }
         ]
+      },
+      {
+        "matcher": "^(startup|resume|clear|compact|fork)$",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash '/home/takashabe/.claude/hooks/herdr-agent-state.sh' session",
+            "timeout": 10
+          }
+        ]
       }
     ],
     "SessionEnd": [

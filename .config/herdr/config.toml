@@ -1,0 +1,21 @@
+[keys]
+prefix = "ctrl+t"
+
+# pane 移動は tmux と同じく prefix+hjkl / prefix+矢印、prefix+o で巡回、prefix+; で直前の pane
+focus_pane_left = ["prefix+h", "prefix+left"]
+focus_pane_down = ["prefix+j", "prefix+down"]
+focus_pane_up = ["prefix+k", "prefix+up"]
+focus_pane_right = ["prefix+l", "prefix+right"]
+cycle_pane_next = ["prefix+tab", "prefix+o"]
+last_pane = "prefix+;"
+# prefix+o を pane 巡回に譲るため通知ジャンプを移動
+open_notification_target = "prefix+shift+o"
+
+# 分割とデタッチは tmux 設定 (prefix+| / prefix+- / prefix+d) に合わせる
+split_vertical = ["prefix+v", "prefix+|"]
+split_horizontal = "prefix+minus"
+detach = "prefix+d"
+
+# workspace は 1 つで tab を作業単位にする運用なので、tmux の prefix+w 相当として Goto picker を開く
+goto = ["prefix+g", "prefix+w"]
+workspace_picker = "prefix+shift+s"

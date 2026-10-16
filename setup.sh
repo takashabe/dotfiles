@@ -41,6 +41,7 @@ ln -s $HOME/dotfiles/.config/niri $HOME/.config/
 ln -s $HOME/dotfiles/.config/ironbar $HOME/.config/
 ln -s $HOME/dotfiles/.config/noctalia $HOME/.config/
 ln -s $HOME/dotfiles/.config/environment.d $HOME/.config/
+mkdir -p $HOME/.config/herdr && ln -s $HOME/dotfiles/.config/herdr/config.toml $HOME/.config/herdr/
 
 # vscode
 if [ $(uname) = "Linux" ]; then
