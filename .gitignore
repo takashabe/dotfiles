@@ -91,6 +91,7 @@ _build.json
 .claude/plugins/known_marketplaces.json
 .claude/plugins/plugin-catalog-cache.json
 .claude/plugins/.last_inuse_sweep
+.claude/plugins/synced/*/
 !.claude/hooks/
 !.claude/commands/
 **/.plans/*
