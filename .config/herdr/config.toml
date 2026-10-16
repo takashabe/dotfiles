@@ -1,3 +1,28 @@
+onboarding = false
+
+[theme]
+# ghostty の TokyoNight Night に合わせる
+name = "tokyo-night"
+
+[ui]
+# tmux と同じく隣接 pane で区切り線を共有し、外周の枠も描かない
+pane_gaps = false
+pane_outer_borders = false
+
+# tab bar 右端を tmux の status-right 相当に使う。command は /bin/sh -lc で実行され出力の最終行だけが表示される。
+# 失敗や空出力ではエントリごと消えるので、ブランチと通知は「無いときは何も出さない」ように書く。
+# workspace のブランチはサイドバーに出るため、ここではアクティブ pane の cwd のブランチを出す (worktree 運用向け)。
+# 日時は tmux-tokyo-night の datetime プラグインと同じ書式
+tab_bar_right = [
+  { type = "zoom" },
+  { type = "command", command = 'cd "$HERDR_ACTIVE_PANE_CWD" 2>/dev/null && b=$(git branch --show-current 2>/dev/null) && [ -n "$b" ] && echo " $b"', interval_seconds = 5, timeout_seconds = 2 },
+  { type = "command", command = 'echo "load $(cut -d" " -f1-3 /proc/loadavg) /$(nproc)"', interval_seconds = 5, timeout_seconds = 2 },
+  { type = "command", command = 'free -h | awk "/^Mem/{print \"mem \" \$3 \"/\" \$2}"', interval_seconds = 10, timeout_seconds = 2 },
+  { type = "command", command = 'n=$(gh api "notifications?per_page=100" --jq length 2>/dev/null) && [ "$n" -gt 0 ] && echo "󰂚 $n"', interval_seconds = 300, timeout_seconds = 10 },
+  { type = "datetime", format = "%Y-%m-%d %H:%M" },
+]
+tab_bar_right_separator = " | "
+
 [keys]
 prefix = "ctrl+t"
 
