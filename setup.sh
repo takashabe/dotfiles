@@ -57,6 +57,7 @@ if [ $(uname) = "Linux" ]; then
   echo "=== Linux only ==="
   ln -s $HOME/dotfiles/.config/xremap/  $HOME/.config/
   ln -s $HOME/dotfiles/.config/systemd/user/xremap.service $HOME/.config/systemd/user/
+  ln -s $HOME/dotfiles/.config/systemd/user/hyprland-session.target $HOME/.config/systemd/user/
   ln -s $HOME/dotfiles/.gitconfig.credential.linux $HOME/.gitconfig.credential
 
   # /etc

@@ -10,10 +10,18 @@ local terminal    = "ghostty"
 local fileManager = "nautilus"
 
 -- 自動起動。デスクトップシェルの起動は shell.lua 側で行う
+-- 0.56 の Hyprland は graphical-session.target を起動しないため、niri.service と同じように
+-- hyprland-session.target 経由で起動し、xremap など WantedBy=graphical-session.target のユニットを動かす
+-- https://wiki.hypr.land/Useful-Utilities/Systemd-start/#hyprland-sessiontarget
 hl.on("hyprland.start", function()
+  hl.exec_cmd("systemctl --user start hyprland-session.target")
   hl.exec_cmd("systemctl --user start pipewire pipewire-pulse wireplumber")
   hl.exec_cmd("fcitx5 -d --replace")
   hl.exec_cmd("1password --silent")
+end)
+
+hl.on("hyprland.shutdown", function()
+  os.execute("systemctl --user stop graphical-session.target")
 end)
 
 hl.env("XCURSOR_SIZE", "24")
