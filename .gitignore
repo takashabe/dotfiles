@@ -114,3 +114,6 @@ out-*/
 
 ## hyprland (DMS が生成・管理するファイル)
 .config/hypr/dms/
+
+## ghostty (setup.sh が OS ごとに張る symlink)
+.config/ghostty/os

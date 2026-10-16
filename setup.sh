@@ -58,6 +58,7 @@ if [ $(uname) = "Linux" ]; then
   ln -s $HOME/dotfiles/.config/xremap/  $HOME/.config/
   ln -s $HOME/dotfiles/.config/systemd/user/xremap.service $HOME/.config/systemd/user/
   ln -s $HOME/dotfiles/.config/systemd/user/hyprland-session.target $HOME/.config/systemd/user/
+  ln -sfn linux $HOME/dotfiles/.config/ghostty/os
   ln -s $HOME/dotfiles/.gitconfig.credential.linux $HOME/.gitconfig.credential
 
   # /etc
@@ -86,6 +87,7 @@ if [ $(uname) = "Darwin" ]; then
   ln -s $HOME/dotfiles/.gitconfig.credential.darwin $HOME/.gitconfig.credential
   ln -s $HOME/dotfiles/.config/sketchybar/  $HOME/.config/
   ln -s $HOME/dotfiles/.config/aerospace/ $HOME/.config/
+  ln -sfn darwin $HOME/dotfiles/.config/ghostty/os
   # enable key repeat for vscode. https://twismik0.hatenablog.com/entry/2017/08/14/115502
   defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool false
   defaults write com.microsoft.VSCodeInsiders ApplePressAndHoldEnabled -bool false

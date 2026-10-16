@@ -1,0 +1,13 @@
+command = /opt/homebrew/bin/fish
+
+font-size = 16
+
+# titlebarのスタイルを設定する
+# non-native-fullscreenを有効にする場合、ネイティブのタブは使えなくなる
+# macos-non-native-fullscreen = false
+# macos-titlebar-style = transparent
+# tmuxを使うならこっちの設定がスッキリしていて良い
+macos-non-native-fullscreen = true
+macos-titlebar-style = hidden
+
+auto-update-channel = stable

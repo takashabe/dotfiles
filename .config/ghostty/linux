@@ -1,0 +1,9 @@
+command = /usr/bin/fish
+
+font-size = 14
+
+# macOS風のコピー/ペースト
+keybind = super+c=copy_to_clipboard
+keybind = super+v=paste_from_clipboard
+# Linux 既定の ctrl+enter=toggle_fullscreen を無効化する (Enter と押し間違えて全画面になるのを防ぐ)
+keybind = ctrl+enter=unbind

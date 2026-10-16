@@ -1,6 +1,5 @@
 # https://ghostty.org/docs/config
-
-command = /opt/homebrew/bin/fish
+# OS 固有の設定は linux / darwin に置き、setup.sh が張る os の symlink 経由で末尾から読み込む
 
 shell-integration = fish
 
@@ -11,7 +10,7 @@ font-family = "UDEV Gothic 35NF"
 # font-family = "Moralerspace Krypton HWNF"
 # font-family = "Moralerspace Neon HWNF"
 # font-family = "Moralerspace Radon HWNF"
-font-size = 16
+# font-size は OS ごとに linux / darwin で設定する
 
 # リガチャを無効にする
 font-feature = -calt
@@ -29,26 +28,15 @@ cursor-opacity = 0.8
 cursor-style = block
 cursor-style-blink = false
 
-# titlebarのスタイルを設定する
-# non-native-fullscreenを有効にする場合、ネイティブのタブは使えなくなる
-# macos-non-native-fullscreen = false
-# macos-titlebar-style = transparent
-# tmuxを使うならこっちの設定がスッキリしていて良い
-macos-non-native-fullscreen = true
-macos-titlebar-style = hidden
-
 mouse-hide-while-typing = true
 # 標準のマウススクロールが遅いので早くする
 mouse-scroll-multiplier = 4
 
 copy-on-select = true
 
-# keybind = ctrl+t>n=new_tab
-# keybind = ctrl+t>shift+backslash=new_split:right
-# keybind = ctrl+t>minus=new_split:down
+# super + "+" (行末コメントは値の一部として読まれるため、コメントは必ず別行に書く)
 keybind = super+shift+equal=increase_font_size:1
 keybind = super+minus=decrease_font_size:1
-# Linux 既定の ctrl+enter=toggle_fullscreen を無効化する (Enter と押し間違えて全画面になるのを防ぐ)
-keybind = ctrl+enter=unbind
+keybind = super+0=reset_font_size
 
-auto-update-channel = stable
+config-file = ?os
