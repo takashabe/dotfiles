@@ -1,0 +1,11 @@
+-- ワークスペースとモニタの対応。3, 4 を縦置きの HDMI-A-1 に、それ以外を DP-2 に置く
+hl.workspace_rule({ workspace = "1",  monitor = "DP-2", default = true })
+hl.workspace_rule({ workspace = "2",  monitor = "DP-2" })
+hl.workspace_rule({ workspace = "3",  monitor = "HDMI-A-1", default = true })
+hl.workspace_rule({ workspace = "4",  monitor = "HDMI-A-1" })
+hl.workspace_rule({ workspace = "5",  monitor = "DP-2" })
+hl.workspace_rule({ workspace = "6",  monitor = "DP-2" })
+hl.workspace_rule({ workspace = "7",  monitor = "DP-2" })
+hl.workspace_rule({ workspace = "8",  monitor = "DP-2" })
+hl.workspace_rule({ workspace = "9",  monitor = "DP-2" })
+hl.workspace_rule({ workspace = "10", monitor = "DP-2" })
