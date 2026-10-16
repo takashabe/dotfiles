@@ -1,0 +1,14 @@
+// Noctalia をデスクトップシェルとして使う (niri-shell noctalia で選択)
+spawn-at-startup "noctalia"
+
+binds {
+  Super+D { spawn-sh "noctalia msg panel-toggle launcher"; }
+}
+
+// noctalia の設定ウィンドウをフローティングにする
+window-rule {
+  match app-id="dev.noctalia.Noctalia"
+  open-floating true
+  default-column-width { fixed 1080; }
+  default-window-height { fixed 920; }
+}

@@ -1,0 +1,18 @@
+// DankMaterialShell をデスクトップシェルとして使う (niri-shell dms で選択)
+spawn-at-startup "dms" "run"
+
+binds {
+  Super+D { spawn "dms" "ipc" "call" "spotlight" "toggle"; }
+}
+
+// overview の背景に DMS の壁紙を描画させる
+layer-rule {
+  match namespace="^quickshell$"
+  place-within-backdrop true
+}
+
+// DMS の設定ウィンドウ等をフローティングにする
+window-rule {
+  match app-id=r#"^com\.danklinux\.dms$"#
+  open-floating true
+}

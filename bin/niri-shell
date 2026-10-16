@@ -1,0 +1,42 @@
+#!/bin/bash
+# niri-shell - niri で使うデスクトップシェル (noctalia / dms) を切り替える
+# Usage: niri-shell [noctalia|dms]
+#   引数なしで現在の選択を表示する
+set -euo pipefail
+
+link="$HOME/.config/niri/shell.kdl"
+current=$(basename "$(readlink "$link")" .kdl)
+
+target="${1:-}"
+case "$target" in
+  "")
+    echo "current: $current"
+    exit 0
+    ;;
+  noctalia|dms) ;;
+  *)
+    echo "usage: niri-shell [noctalia|dms]" >&2
+    exit 1
+    ;;
+esac
+
+if [ "$target" = "$current" ]; then
+  echo "already using $target"
+  exit 0
+fi
+
+# include 先を差し替える。niri は include の変更を検知して自動で設定をリロードする
+ln -sfn "shell/$target.kdl" "$link"
+
+# 実行中のシェルを止めて選択したシェルを起動する
+case "$current" in
+  noctalia) pkill -x noctalia || true ;;
+  dms) dms kill || true ;;
+esac
+
+case "$target" in
+  noctalia) niri msg action spawn -- noctalia ;;
+  dms) niri msg action spawn -- dms run ;;
+esac
+
+echo "switched to $target"
