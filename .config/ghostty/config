@@ -48,5 +48,7 @@ copy-on-select = true
 # keybind = ctrl+t>minus=new_split:down
 keybind = super+shift+equal=increase_font_size:1
 keybind = super+minus=decrease_font_size:1
+# Linux 既定の ctrl+enter=toggle_fullscreen を無効化する (Enter と押し間違えて全画面になるのを防ぐ)
+keybind = ctrl+enter=unbind
 
 auto-update-channel = stable
