@@ -1,6 +1,7 @@
 -- niri と同じく、コミュニケーション系と Obsidian は縦モニタの 3 番で開く
+-- 別ワークスペースへ送るウィンドウには workspaces.lua の行高さルールが効かないため、ここでも高さ半分を指定する
 local function open_on(workspace, class)
-  hl.window_rule({ match = { class = class }, workspace = workspace .. " silent" })
+  hl.window_rule({ match = { class = class }, workspace = workspace .. " silent", scrolling_width = 0.5 })
 end
 
 open_on(3, "^Slack$")

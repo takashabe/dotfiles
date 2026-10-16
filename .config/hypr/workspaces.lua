@@ -4,3 +4,8 @@ hl.workspace_rule({ workspace = "1", monitor = "DP-2",     default = true, layou
 hl.workspace_rule({ workspace = "2", monitor = "DP-2",                     layout = "scrolling" })
 hl.workspace_rule({ workspace = "3", monitor = "HDMI-A-1", default = true, layout = "scrolling", layout_opts = { direction = "down" } })
 hl.workspace_rule({ workspace = "4", monitor = "HDMI-A-1",                 layout = "scrolling", layout_opts = { direction = "down" } })
+
+-- 縦モニタでは新しい行を高さ半分で開き、上下に 2 つ並べる
+for _, ws in ipairs({ 3, 4 }) do
+  hl.window_rule({ match = { workspace = ws }, scrolling_width = 0.5 })
+end
