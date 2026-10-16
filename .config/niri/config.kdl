@@ -13,6 +13,7 @@ environment {
 
 spawn-at-startup "systemctl" "--user" "start" "pipewire" "pipewire-pulse" "wireplumber"
 spawn-at-startup "ghostty"
+spawn-at-startup "1password" "--silent"
 
 output "DP-1" {
   mode "3840x2160@60.0"

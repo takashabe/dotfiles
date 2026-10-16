@@ -65,6 +65,9 @@ if [ $(uname) = "Linux" ]; then
   ## network, time
   sudo ln -sf $HOME/dotfiles/etc/nftables.conf /etc/nftables.conf
   sudo systemctl enable --now nftables systemd-timesyncd
+  ## 1password
+  # ブラウザ検証のため root 所有である必要があり、symbolic link だと動かないためコピーする
+  sudo install -D -o root -g root -m 755 $HOME/dotfiles/etc/1password/custom_allowed_browsers /etc/1password/custom_allowed_browsers
   ## xremap
   sudo modprobe uinput
   sudo cp $HOME/dotfiles/etc/modules-load.d/uinput.conf /etc/modules-load.d/uinput.conf

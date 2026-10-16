@@ -4,6 +4,7 @@
 [user]
   email = i@takashabe.dev
   name = takashabe
+  signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMX/GvslRir6E5g8QOWL478p2odkSGtj32D9ISvJP+BQ
 [color]
   ui = true
 [core]
@@ -27,10 +28,16 @@
   tool = vimdiff
 [ghq]
   root = ~/dev/src
+[url "git@github.com:"]
+  insteadOf = https://github.com/
 [include]
   path = ~/.gitconfig.credential
 [pull]
   rebase = false
+[gpg]
+  format = ssh
+[commit]
+  gpgsign = true
 [scalar]
   repo = /Users/takashabe/dev/src/github.com/CastingONE/castingone
   repo = /Users/takashabe/dev/src/github.com/CastingONE/review-castingone

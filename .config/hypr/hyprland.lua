@@ -13,6 +13,7 @@ local fileManager = "nautilus"
 hl.on("hyprland.start", function()
   hl.exec_cmd("systemctl --user start pipewire pipewire-pulse wireplumber")
   hl.exec_cmd("fcitx5 -d --replace")
+  hl.exec_cmd("1password --silent")
 end)
 
 hl.env("XCURSOR_SIZE", "24")

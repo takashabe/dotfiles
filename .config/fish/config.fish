@@ -114,6 +114,11 @@ end
 # for not supported 256-color
 alias ssh 'env TERM=xterm ssh'
 
+# 1Password SSH agent
+if test (uname) = "Linux"
+  set -x SSH_AUTH_SOCK $HOME/.1password/agent.sock
+end
+
 # less
 set -x LESS '-R'
 set -x LESSOPEN '| /usr/local/bin/src-hilite-lesspipe.sh %s'
