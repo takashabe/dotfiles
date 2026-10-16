@@ -127,7 +127,7 @@ hl.bind(mainMod .. " + RETURN", hl.dsp.exec_cmd(terminal))
 hl.bind(mainMod .. " + E",      hl.dsp.exec_cmd(fileManager))
 hl.bind(mainMod .. " + Q",      hl.dsp.window.close())
 hl.bind(mainMod .. " + CTRL + SHIFT + Q", hl.dsp.exit()) -- niri と同じ組み合わせにして誤爆を防ぐ
-hl.bind(mainMod .. " + V",      hl.dsp.window.float({ action = "toggle" }))
+hl.bind(mainMod .. " + SHIFT + V", hl.dsp.window.float({ action = "toggle" })) -- Super+V は xremap が Ctrl+V に変換するため衝突を避ける
 hl.bind(mainMod .. " + SHIFT + F", hl.dsp.layout("colresize 1.0"))   -- niri の maximize-column
 hl.bind(mainMod .. " + CTRL + F",  hl.dsp.window.fullscreen())
 
