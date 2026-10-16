@@ -1,4 +1,4 @@
-# Noctalia v5 設定。settings.json は v4 (quickshell 版) 用で v5 は読まない。
+# Noctalia v5 設定。
 # 全項目のデフォルト値: https://github.com/noctalia-dev/noctalia/blob/main/example.toml
 
 [shell]
