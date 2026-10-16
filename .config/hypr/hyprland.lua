@@ -36,7 +36,7 @@ hl.config({
   -- niri 風のスクロールレイアウト https://wiki.hypr.land/Configuring/Layouts/Scrolling-Layout/
   -- 列幅プリセットは niri の preset-column-widths に合わせる
   scrolling = {
-    column_width             = 0.5,
+    column_width             = 0.98, -- niri の default-column-width と同じ。新しい列はほぼ全幅で開き、既存の列は横へ押し出される
     explicit_column_widths   = "0.3, 0.5, 0.98, 1.0",
     fullscreen_on_one_column = true,
   },
