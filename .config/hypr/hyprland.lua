@@ -30,7 +30,15 @@ hl.config({
     },
     resize_on_border = false,
     allow_tearing    = false,
-    layout           = "dwindle",
+    layout           = "scrolling",
+  },
+
+  -- niri 風のスクロールレイアウト https://wiki.hypr.land/Configuring/Layouts/Scrolling-Layout/
+  -- 列幅プリセットは niri の preset-column-widths に合わせる
+  scrolling = {
+    column_width             = 0.5,
+    explicit_column_widths   = "0.3, 0.5, 0.98, 1.0",
+    fullscreen_on_one_column = true,
   },
 
   decoration = {
@@ -54,12 +62,9 @@ hl.config({
 
   animations = { enabled = true },
 
+  -- 縦モニタを上下分割に戻すときのための dwindle 設定
   dwindle = {
     preserve_split = true,
-  },
-
-  master = {
-    new_status = "master",
   },
 
   misc = {
@@ -114,20 +119,38 @@ hl.bind(mainMod .. " + E",      hl.dsp.exec_cmd(fileManager))
 hl.bind(mainMod .. " + Q",      hl.dsp.window.close())
 hl.bind(mainMod .. " + CTRL + SHIFT + Q", hl.dsp.exit()) -- niri と同じ組み合わせにして誤爆を防ぐ
 hl.bind(mainMod .. " + V",      hl.dsp.window.float({ action = "toggle" }))
-hl.bind(mainMod .. " + P",      hl.dsp.window.pseudo())
-hl.bind(mainMod .. " + J",      hl.dsp.layout("togglesplit")) -- dwindle のみ
+hl.bind(mainMod .. " + SHIFT + F", hl.dsp.layout("colresize 1.0"))   -- niri の maximize-column
+hl.bind(mainMod .. " + CTRL + F",  hl.dsp.window.fullscreen())
 
--- フォーカス移動 (vim 風)
+-- フォーカス移動 (vim 風)。左右はモニタ境界をまたぐ
 hl.bind("ALT + h", hl.dsp.focus({ direction = "left" }))
 hl.bind("ALT + l", hl.dsp.focus({ direction = "right" }))
 hl.bind("ALT + k", hl.dsp.focus({ direction = "up" }))
 hl.bind("ALT + j", hl.dsp.focus({ direction = "down" }))
 
--- ワークスペース切替と移動 (Super+0 は 10)
-for i = 1, 10 do
-  local key = i % 10
-  hl.bind(mainMod .. " + " .. key,         hl.dsp.focus({ workspace = i }))
-  hl.bind(mainMod .. " + SHIFT + " .. key, hl.dsp.window.move({ workspace = i }))
+-- 列の入れ替えと、列内でのウィンドウ移動
+hl.bind(mainMod .. " + SHIFT + H", hl.dsp.layout("swapcol l"))
+hl.bind(mainMod .. " + SHIFT + L", hl.dsp.layout("swapcol r"))
+hl.bind(mainMod .. " + SHIFT + K", hl.dsp.window.move({ direction = "up" }))
+hl.bind(mainMod .. " + SHIFT + J", hl.dsp.window.move({ direction = "down" }))
+
+-- 列幅とウィンドウ高さの増減
+hl.bind(mainMod .. " + CTRL + H", hl.dsp.layout("colresize -0.1"))
+hl.bind(mainMod .. " + CTRL + L", hl.dsp.layout("colresize +0.1"))
+hl.bind(mainMod .. " + CTRL + K", hl.dsp.window.resize({ x = 0, y = -50, relative = true }))
+hl.bind(mainMod .. " + CTRL + J", hl.dsp.window.resize({ x = 0, y = 50,  relative = true }))
+
+-- 列幅をプリセットで切り替える (niri の switch-preset-column-width)
+hl.bind(mainMod .. " + SHIFT + R", hl.dsp.layout("colresize +conf"))
+
+-- 隣の列にウィンドウを統合する / 列から分離する (niri の consume-or-expel-window)
+hl.bind(mainMod .. " + comma",  hl.dsp.layout("consume_or_expel prev"))
+hl.bind(mainMod .. " + period", hl.dsp.layout("consume_or_expel next"))
+
+-- ワークスペース切替と移動
+for i = 1, 4 do
+  hl.bind(mainMod .. " + " .. i,         hl.dsp.focus({ workspace = i }))
+  hl.bind(mainMod .. " + SHIFT + " .. i, hl.dsp.window.move({ workspace = i }))
 end
 
 -- マウスドラッグで移動とリサイズ
