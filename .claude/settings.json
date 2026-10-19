@@ -268,6 +268,7 @@
   "prefersReducedMotion": false,
   "skipWorkflowUsageWarning": true,
   "theme": "dark-daltonized",
+  "switchModelsOnFlag": false,
   "terminalProgressBarEnabled": false,
   "inputNeededNotifEnabled": true,
   "agentPushNotifEnabled": true,
