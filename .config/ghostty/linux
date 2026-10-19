@@ -1,4 +1,6 @@
 command = /usr/bin/fish
+# ログインシェルは bash のままなので SHELL を上書きする (herdr などが SHELL を見て pane のシェルを決めるため)
+env = SHELL=/usr/bin/fish
 
 font-size = 14
 
