@@ -26,3 +26,7 @@ hl.window_rule({
   match = { class = "^$", title = "^$", xwayland = true, float = true, fullscreen = false, pin = false },
   no_focus = true,
 })
+
+-- 画面共有のピッカーはフローティングで中央に出す
+-- スクロールレイアウトだと新しい列として画面外に置かれ、ピッカーが出ていることに気づけない
+hl.window_rule({ match = { class = "^hyprland-share-picker$" }, float = true, center = true })
