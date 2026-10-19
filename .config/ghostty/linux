@@ -9,3 +9,5 @@ keybind = super+c=copy_to_clipboard
 keybind = super+v=paste_from_clipboard
 # Linux 既定の ctrl+enter=toggle_fullscreen を無効化する (Enter と押し間違えて全画面になるのを防ぐ)
 keybind = ctrl+enter=unbind
+# Linux 既定の ctrl+,=open_config を無効化する (nvim 側の C-, を使うため。既定のままだと text/plain の既定アプリである DMS Notepad が開く)
+keybind = ctrl+,=unbind
