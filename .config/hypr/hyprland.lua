@@ -79,6 +79,7 @@ hl.config({
   misc = {
     force_default_wallpaper = -1,
     disable_hyprland_logo   = false,
+    focus_on_activate       = true, -- 既定では activate 要求が urgent 扱いで終わり、リンクを開いたブラウザなどへフォーカスが移らない
   },
 
   input = {
