@@ -60,6 +60,7 @@ if [ $(uname) = "Linux" ]; then
   ln -s $HOME/dotfiles/.config/systemd/user/hyprland-session.target $HOME/.config/systemd/user/
   ln -sfn linux $HOME/dotfiles/.config/ghostty/os
   ln -s $HOME/dotfiles/.gitconfig.credential.linux $HOME/.gitconfig.credential
+  ln -s $HOME/dotfiles/.config/paru $HOME/.config/
 
   # /etc
   sudo mkdir -p /etc/greetd

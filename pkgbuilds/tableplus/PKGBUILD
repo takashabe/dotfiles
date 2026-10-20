@@ -1,0 +1,39 @@
+# Maintainer: Lucas Saliés Brum <sistematico at gmail dot com>
+# Contributor: Ethan Reece <aur at ethanreece dot com>
+# Contributor: Loopsmark <loopsmark at merkur dot pm>
+# Contributor: Winston Astrachan <winston dot astrachan at gmail dot com>
+# Contributor: Henry Pham <huy at tableplus dot com>
+
+pkgname=tableplus
+_debver=2.0.2-320
+pkgver=${_debver%-*}
+pkgrel=1
+pkgdesc='Modern, native, and friendly GUI tool for relational databases'
+arch=('x86_64' 'aarch64')
+url='https://tableplus.com/'
+license=('custom')
+options=('!strip' '!debug')
+depends=('gtk3' 'gtksourceview3' 'libgee' 'json-glib' 'libsecret' 'krb5' 'gnome-keyring')
+source=('LICENSE')
+source_x86_64=("tableplus_${_debver}_amd64.deb::https://deb.tableplus.com/debian/24/pool/main/t/tableplus/tableplus_${_debver}_amd64.deb")
+source_aarch64=("tableplus_${_debver}_arm64.deb::https://deb.tableplus.com/debian/24-arm/pool/main/t/tableplus/tableplus_${_debver}_arm64.deb")
+sha256sums=('76f924b1ebad5309ccf0dd7f3fe3d1b57ff3088b208a603900b0e240fdb5debb')
+sha256sums_x86_64=('5028e7be56606db756836fea1a7debb4ec77dd7cda7c3e191901c21dd14c94d2')
+sha256sums_aarch64=('bcbf7135c597d37816b0bf4330975fcf986e975f4be7b3786f0b9c9a2ba30de3')
+
+prepare() {
+    tar -xf "${srcdir}/data.tar.zst"
+    sed -i 's|^Exec=/usr/local/bin/tableplus|Exec=/usr/bin/tableplus|' "${srcdir}/opt/tableplus/tableplus.desktop"
+}
+
+package() {
+    install -d "${pkgdir}/opt"
+    cp -a "${srcdir}/opt/tableplus" "${pkgdir}/opt/"
+    rm "${pkgdir}/opt/tableplus/tableplus.desktop"
+
+    install -d "${pkgdir}/usr/bin"
+    printf '#!/bin/sh\nexec /opt/tableplus/tableplus "$@"\n' > "${pkgdir}/usr/bin/tableplus"
+    chmod 755 "${pkgdir}/usr/bin/tableplus"
+    install -Dm644 "${srcdir}/opt/tableplus/tableplus.desktop" -t "${pkgdir}/usr/share/applications/"
+    install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+}

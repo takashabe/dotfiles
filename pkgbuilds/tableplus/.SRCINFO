@@ -1,0 +1,25 @@
+pkgbase = tableplus
+	pkgdesc = Modern, native, and friendly GUI tool for relational databases
+	pkgver = 2.0.2
+	pkgrel = 1
+	url = https://tableplus.com/
+	arch = x86_64
+	arch = aarch64
+	license = custom
+	depends = gtk3
+	depends = gtksourceview3
+	depends = libgee
+	depends = json-glib
+	depends = libsecret
+	depends = krb5
+	depends = gnome-keyring
+	options = !strip
+	options = !debug
+	source = LICENSE
+	sha256sums = 76f924b1ebad5309ccf0dd7f3fe3d1b57ff3088b208a603900b0e240fdb5debb
+	source_x86_64 = tableplus_2.0.2-320_amd64.deb::https://deb.tableplus.com/debian/24/pool/main/t/tableplus/tableplus_2.0.2-320_amd64.deb
+	sha256sums_x86_64 = 5028e7be56606db756836fea1a7debb4ec77dd7cda7c3e191901c21dd14c94d2
+	source_aarch64 = tableplus_2.0.2-320_arm64.deb::https://deb.tableplus.com/debian/24-arm/pool/main/t/tableplus/tableplus_2.0.2-320_arm64.deb
+	sha256sums_aarch64 = bcbf7135c597d37816b0bf4330975fcf986e975f4be7b3786f0b9c9a2ba30de3
+
+pkgname = tableplus

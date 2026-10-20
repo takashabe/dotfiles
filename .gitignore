@@ -117,3 +117,9 @@ out-*/
 
 ## ghostty (setup.sh が OS ごとに張る symlink)
 .config/ghostty/os
+
+## pkgbuilds (makepkg の生成物)
+pkgbuilds/*/src/
+pkgbuilds/*/pkg/
+pkgbuilds/*/*.pkg.tar.*
+pkgbuilds/*/*.deb
