@@ -32,6 +32,11 @@ keymap:
       Super-w: CTRL-w
       Super-p: CTRL-p
       Super-l: CTRL-l
+      Super-equal: CTRL-equal
+      Super-Shift-equal: CTRL-equal
+      Super-minus: CTRL-minus
+      Super-0: CTRL-0
+      Super-enter: CTRL-enter
   - name: ESC+IME off for vim
     application:
       only: [Alacritty, Code, com.mitchellh.ghostty]
