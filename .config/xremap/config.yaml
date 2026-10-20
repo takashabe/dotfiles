@@ -22,6 +22,7 @@ keymap:
       # kill line
       C-k: [Shift-end, CTRL-x]
       # macOS like
+      Super-a: CTRL-a
       Super-x: CTRL-x
       Super-c: CTRL-c
       Super-v: CTRL-v
