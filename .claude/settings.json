@@ -259,6 +259,12 @@
         "repo": "takashabe/claude-plugins"
       },
       "autoUpdate": true
+    },
+    "kuu-marketplace": {
+      "source": {
+        "source": "github",
+        "repo": "fumiya-kume/claude-code"
+      }
     }
   },
   "viewMode": "focus",
