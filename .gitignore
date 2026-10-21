@@ -90,6 +90,7 @@ _build.json
 .claude/plugins/installed_plugins.json
 .claude/plugins/known_marketplaces.json
 .claude/plugins/plugin-catalog-cache.json
+.claude/plugins/plugin-directory-cache-v2.json
 .claude/plugins/.last_inuse_sweep
 .claude/plugins/synced/*/
 !.claude/hooks/
