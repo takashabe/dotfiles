@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Screenshot (Satty)
+Comment=Capture a region and annotate it with Satty
+Keywords=screenshot;capture;satty;grim;slurp;
+Exec=/home/takashabe/.config/hypr/scripts/screenshot.sh
+Icon=applets-screenshooter
+Type=Application
+Categories=Utility;

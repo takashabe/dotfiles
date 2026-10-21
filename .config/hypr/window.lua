@@ -30,3 +30,6 @@ hl.window_rule({
 -- 画面共有のピッカーはフローティングで中央に出す
 -- スクロールレイアウトだと新しい列として画面外に置かれ、ピッカーが出ていることに気づけない
 hl.window_rule({ match = { class = "^hyprland-share-picker$" }, float = true, center = true })
+
+-- Satty も同じ理由でフローティングにする
+hl.window_rule({ match = { class = "^com\\.gabm\\.satty$" }, float = true, center = true })

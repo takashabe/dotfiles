@@ -61,6 +61,7 @@ if [ $(uname) = "Linux" ]; then
   ln -sfn linux $HOME/dotfiles/.config/ghostty/os
   ln -s $HOME/dotfiles/.gitconfig.credential.linux $HOME/.gitconfig.credential
   ln -s $HOME/dotfiles/.config/paru $HOME/.config/
+  mkdir -p $HOME/.local/share/applications && ln -s $HOME/dotfiles/.local/share/applications/screenshot.desktop $HOME/.local/share/applications/
 
   # /etc
   sudo mkdir -p /etc/greetd
