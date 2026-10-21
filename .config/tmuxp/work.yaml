@@ -8,10 +8,10 @@ windows:
     panes:
       - shell_command:
           - cd go/tenant
-          - air 2>&1 | humanlog
+          - air 2>&1 | if test (uname) = Linux; hl -P; else; humanlog; end
       - shell_command:
           - cd go/messenger
-          - air 2>&1 | humanlog
+          - air 2>&1 | if test (uname) = Linux; hl -P; else; humanlog; end
       - shell_command:
           - pwd
   - frontend:
