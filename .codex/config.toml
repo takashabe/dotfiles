@@ -48,6 +48,9 @@ trust_level = "trusted"
 [projects."/Users/takashabe/dev/src/github.com/CastingONE/sandbox"]
 trust_level = "trusted"
 
+[projects."/home/takashabe/dev/src/github.com/CastingONE/castingone"]
+trust_level = "trusted"
+
 [plugins."github@openai-curated"]
 enabled = true
 
