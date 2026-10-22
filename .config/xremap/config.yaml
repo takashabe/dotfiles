@@ -10,8 +10,7 @@ keymap:
     exact_match: true
     remap:
       # Cursor
-      # C-b: left
-      C-b: right
+      C-b: left
       C-f: right
       C-p: up
       C-n: down
