@@ -176,9 +176,9 @@ for i = 1, 4 do
   hl.bind(mainMod .. " + SHIFT + " .. i, hl.dsp.window.move({ workspace = i }))
 end
 
--- マウスドラッグで移動とリサイズ
-hl.bind(mainMod .. " + mouse:272", hl.dsp.window.drag(),   { mouse = true })
-hl.bind(mainMod .. " + mouse:273", hl.dsp.window.resize(), { mouse = true })
+-- マウスドラッグで移動とリサイズ。Super+クリックは xremap が Ctrl+クリックに変換するため Alt を併用する
+hl.bind(mainMod .. " + ALT + mouse:272", hl.dsp.window.drag(),   { mouse = true })
+hl.bind(mainMod .. " + ALT + mouse:273", hl.dsp.window.resize(), { mouse = true })
 
 -- メディアキー
 hl.bind("XF86AudioRaiseVolume",  hl.dsp.exec_cmd("wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+"), { locked = true, repeating = true })
