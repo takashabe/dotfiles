@@ -18,6 +18,17 @@ hl.on("hyprland.start", function()
   hl.exec_cmd("systemctl --user start pipewire pipewire-pulse wireplumber")
   hl.exec_cmd("fcitx5 -d --replace")
   hl.exec_cmd("1password --silent")
+
+  -- 後から開くときは今いるワークスペースに出したいので、class ルールではなく起動時だけ効く exec ルールで置く。
+  -- exec ルールは PID で照合するため、プロセスを渡し替える gtk-launch を挟まず直接起動する
+  hl.exec_cmd("ghostty --gtk-single-instance=true", { workspace = "1 silent" })
+  hl.exec_cmd("/opt/zen-browser-bin/zen-bin",       { workspace = "1 silent" })
+  hl.exec_cmd("spotify",                            { workspace = "1 silent" })
+
+  -- 配置は window.lua の class ルールが決めるので、起動フラグを持つデスクトップエントリ経由で起動する
+  for _, app in ipairs({ "slack", "chrome-odhdeommofkpfnffhlpjhbeiedldfelj-Default", "obsidian", "todoist" }) do
+    hl.exec_cmd("gtk-launch " .. app)
+  end
 end)
 
 hl.on("hyprland.shutdown", function()

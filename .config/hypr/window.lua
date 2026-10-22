@@ -5,7 +5,7 @@ local function open_on(workspace, class)
 end
 
 open_on(3, "^Slack$")
-open_on(3, "^obsidian$")
+open_on(3, "^md\\.obsidian\\.Obsidian$")
 open_on(3, "^todoist$")
 open_on(3, "^chrome-odhdeommofkpfnffhlpjhbeiedldfelj-Default$") -- Gather (Chrome PWA)
 
