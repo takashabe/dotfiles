@@ -1,95 +1,127 @@
 #!/bin/bash
 
+DOTFILES=$HOME/dotfiles
+
+# ln -sf だと既存の実ファイルを黙って置き換えて手元の設定を失うため、シンボリックリンク以外は警告してスキップする
+# dest が / で終わる場合はそのディレクトリ配下に src と同名で張る
+link() {
+  local sudo=()
+  if [ "$1" = "--sudo" ]; then
+    sudo=(sudo)
+    shift
+  fi
+  local src=${1%/} dest=$2
+  case $dest in
+    */) dest=$dest$(basename "$src") ;;
+  esac
+
+  if [ -L "$dest" ]; then
+    local current
+    current=$(readlink "$dest")
+    [ "${current%/}" = "$src" ] && return 0
+    "${sudo[@]}" ln -sfn "$src" "$dest"
+  elif [ -e "$dest" ]; then
+    echo "WARN: skipped $dest (exists and is not a symlink)" >&2
+  else
+    local parent
+    parent=$(dirname "$dest")
+    [ -d "$parent" ] || "${sudo[@]}" mkdir -p "$parent"
+    "${sudo[@]}" ln -s "$src" "$dest"
+  fi
+}
+
 ## .rc files for home directory
-ln -s $HOME/dotfiles/.tmux.conf $HOME/
-ln -s $HOME/dotfiles/.gitconfig $HOME/
-ln -s $HOME/dotfiles/.gitignore $HOME/
-ln -s $HOME/dotfiles/.tigrc $HOME/
-ln -s $HOME/dotfiles/.terraformrc $HOME/
-ln -s $HOME/dotfiles/.yabairc $HOME/
-ln -s $HOME/dotfiles/.skhdrc $HOME/
-ln -s $HOME/dotfiles/.myclirc $HOME/
-ln -s $HOME/dotfiles/.codex $HOME/
-ln -s $HOME/dotfiles/.claude $HOME/
+link "$DOTFILES/.tmux.conf" "$HOME/"
+link "$DOTFILES/.gitconfig" "$HOME/"
+link "$DOTFILES/.gitignore" "$HOME/"
+link "$DOTFILES/.tigrc" "$HOME/"
+link "$DOTFILES/.terraformrc" "$HOME/"
+link "$DOTFILES/.yabairc" "$HOME/"
+link "$DOTFILES/.skhdrc" "$HOME/"
+link "$DOTFILES/.myclirc" "$HOME/"
+link "$DOTFILES/.codex" "$HOME/"
+link "$DOTFILES/.claude" "$HOME/"
 
 ## $HOME/bin
-mkdir $HOME/bin
-ln -s $HOME/dotfiles/bin/* $HOME/bin/
+for f in "$DOTFILES"/bin/*; do
+  link "$f" "$HOME/bin/"
+done
 
 # $HOME/.config
-ln -s $HOME/dotfiles/.config/fish/config.fish $HOME/.config/fish/
-ln -s $HOME/dotfiles/.config/karabiner $HOME/.config/
-ln -s $HOME/dotfiles/.config/nvim $HOME/.config/
-ln -s $HOME/dotfiles/.config/tmux $HOME/.config/
-ln -s $HOME/dotfiles/.config/alacritty $HOME/.config/
-ln -s $HOME/dotfiles/.config/rofi $HOME/.config/
-ln -s $HOME/dotfiles/.config/i3 $HOME/.config/
-ln -s $HOME/dotfiles/.config/i3blocks $HOME/.config/
-ln -s $HOME/dotfiles/.config/Xresources.d $HOME/.config/
-ln -s $HOME/dotfiles/.config/fontconfig $HOME/.config/
-ln -s $HOME/dotfiles/.config/wezterm $HOME/.config/
-ln -s $HOME/dotfiles/.config/go $HOME/.config/
-ln -s $HOME/dotfiles/.config/lazygit $HOME/.config/
-ln -s $HOME/dotfiles/.config/ghostty $HOME/.config/
-ln -s $HOME/dotfiles/.config/tmuxp $HOME/.config/
-ln -s $HOME/dotfiles/.config/bat $HOME/.config/
-ln -s $HOME/dotfiles/.config/mcphub $HOME/.config/
-ln -s $HOME/dotfiles/.config/gitui $HOME/.config/
-ln -s $HOME/dotfiles/.config/zellij $HOME/.config/
-ln -s $HOME/dotfiles/.config/hypr $HOME/.config/
-ln -s $HOME/dotfiles/.config/niri $HOME/.config/
-ln -s $HOME/dotfiles/.config/ironbar $HOME/.config/
-ln -s $HOME/dotfiles/.config/noctalia $HOME/.config/
-ln -s $HOME/dotfiles/.config/environment.d $HOME/.config/
-mkdir -p $HOME/.config/herdr && ln -s $HOME/dotfiles/.config/herdr/config.toml $HOME/.config/herdr/
+link "$DOTFILES/.config/fish/config.fish" "$HOME/.config/fish/"
+link "$DOTFILES/.config/karabiner" "$HOME/.config/"
+link "$DOTFILES/.config/nvim" "$HOME/.config/"
+link "$DOTFILES/.config/tmux" "$HOME/.config/"
+link "$DOTFILES/.config/alacritty" "$HOME/.config/"
+link "$DOTFILES/.config/rofi" "$HOME/.config/"
+link "$DOTFILES/.config/i3" "$HOME/.config/"
+link "$DOTFILES/.config/i3blocks" "$HOME/.config/"
+link "$DOTFILES/.config/Xresources.d" "$HOME/.config/"
+link "$DOTFILES/.config/fontconfig" "$HOME/.config/"
+link "$DOTFILES/.config/wezterm" "$HOME/.config/"
+link "$DOTFILES/.config/go" "$HOME/.config/"
+link "$DOTFILES/.config/lazygit" "$HOME/.config/"
+link "$DOTFILES/.config/ghostty" "$HOME/.config/"
+link "$DOTFILES/.config/tmuxp" "$HOME/.config/"
+link "$DOTFILES/.config/bat" "$HOME/.config/"
+link "$DOTFILES/.config/mcphub" "$HOME/.config/"
+link "$DOTFILES/.config/gitui" "$HOME/.config/"
+link "$DOTFILES/.config/zellij" "$HOME/.config/"
+link "$DOTFILES/.config/hypr" "$HOME/.config/"
+link "$DOTFILES/.config/niri" "$HOME/.config/"
+link "$DOTFILES/.config/ironbar" "$HOME/.config/"
+link "$DOTFILES/.config/noctalia" "$HOME/.config/"
+link "$DOTFILES/.config/environment.d" "$HOME/.config/"
+link "$DOTFILES/.config/herdr/config.toml" "$HOME/.config/herdr/"
 
 # vscode
-if [ $(uname) = "Linux" ]; then
+if [ "$(uname)" = "Linux" ]; then
   CODE_PATH=$HOME/.config/Code/User/
 else
-  CODE_PATH=$HOME/Library/Application\ Support/Code/User/
+  CODE_PATH="$HOME/Library/Application Support/Code/User/"
 fi
-ln -s $HOME/dotfiles/.config/code/vsicons.settings.json $CODE_PATH
-ln -s $HOME/dotfiles/.config/code/settings.json $CODE_PATH
-ln -s $HOME/dotfiles/.config/code/keybindings.json $CODE_PATH
+link "$DOTFILES/.config/code/vsicons.settings.json" "$CODE_PATH"
+link "$DOTFILES/.config/code/settings.json" "$CODE_PATH"
+link "$DOTFILES/.config/code/keybindings.json" "$CODE_PATH"
 
-if [ $(uname) = "Linux" ]; then
+if [ "$(uname)" = "Linux" ]; then
   echo "=== Linux only ==="
-  ln -s $HOME/dotfiles/.config/xremap/  $HOME/.config/
-  ln -s $HOME/dotfiles/.config/systemd/user/xremap.service $HOME/.config/systemd/user/
-  ln -s $HOME/dotfiles/.config/systemd/user/hyprland-session.target $HOME/.config/systemd/user/
-  ln -sfn linux $HOME/dotfiles/.config/ghostty/os
-  ln -s $HOME/dotfiles/.gitconfig.credential.linux $HOME/.gitconfig.credential
-  ln -s $HOME/dotfiles/.config/paru $HOME/.config/
-  mkdir -p $HOME/.local/share/applications && ln -s $HOME/dotfiles/.local/share/applications/screenshot.desktop $HOME/.local/share/applications/
+  link "$DOTFILES/.config/xremap/" "$HOME/.config/"
+  link "$DOTFILES/.config/systemd/user/xremap.service" "$HOME/.config/systemd/user/"
+  link "$DOTFILES/.config/systemd/user/hyprland-session.target" "$HOME/.config/systemd/user/"
+  ln -sfn linux "$DOTFILES/.config/ghostty/os"
+  link "$DOTFILES/.gitconfig.credential.linux" "$HOME/.gitconfig.credential"
+  link "$DOTFILES/.config/paru" "$HOME/.config/"
+  link "$DOTFILES/.local/share/applications/screenshot.desktop" "$HOME/.local/share/applications/"
 
   # /etc
-  sudo mkdir -p /etc/greetd
-  sudo ln -s $HOME/dotfiles/etc/greetd/config.toml /etc/greetd/config.toml
-  sudo ln -s $HOME/dotfiles/etc/sysctl.d/* /etc/sysctl.d/
+  link --sudo "$DOTFILES/etc/greetd/config.toml" /etc/greetd/config.toml
+  for f in "$DOTFILES"/etc/sysctl.d/*; do
+    link --sudo "$f" /etc/sysctl.d/
+  done
   ## network, time
-  sudo ln -sf $HOME/dotfiles/etc/nftables.conf /etc/nftables.conf
+  sudo ln -sf "$DOTFILES/etc/nftables.conf" /etc/nftables.conf
   sudo systemctl enable --now nftables systemd-timesyncd
   ## 1password
   # ブラウザ検証のため root 所有である必要があり、symbolic link だと動かないためコピーする
-  sudo install -D -o root -g root -m 755 $HOME/dotfiles/etc/1password/custom_allowed_browsers /etc/1password/custom_allowed_browsers
+  sudo install -D -o root -g root -m 755 "$DOTFILES/etc/1password/custom_allowed_browsers" /etc/1password/custom_allowed_browsers
   ## xremap
   sudo modprobe uinput
-  sudo cp $HOME/dotfiles/etc/modules-load.d/uinput.conf /etc/modules-load.d/uinput.conf
+  sudo cp "$DOTFILES/etc/modules-load.d/uinput.conf" /etc/modules-load.d/uinput.conf
   # symbolic link だと動かないためコピーする
-  sudo cp $HOME/dotfiles/etc/udev/rules.d/99-input.rules /etc/udev/rules.d/
+  sudo cp "$DOTFILES/etc/udev/rules.d/99-input.rules" /etc/udev/rules.d/
 fi
 
-if [ $(uname) = "Darwin" ]; then
+if [ "$(uname)" = "Darwin" ]; then
   echo "=== macOS only ==="
   # -int 1 == 15ms
   defaults write -g InitialKeyRepeat -int 10
   defaults write -g KeyRepeat -int 1
   # settings
-  ln -s $HOME/dotfiles/.gitconfig.credential.darwin $HOME/.gitconfig.credential
-  ln -s $HOME/dotfiles/.config/sketchybar/  $HOME/.config/
-  ln -s $HOME/dotfiles/.config/aerospace/ $HOME/.config/
-  ln -sfn darwin $HOME/dotfiles/.config/ghostty/os
+  link "$DOTFILES/.gitconfig.credential.darwin" "$HOME/.gitconfig.credential"
+  link "$DOTFILES/.config/sketchybar/" "$HOME/.config/"
+  link "$DOTFILES/.config/aerospace/" "$HOME/.config/"
+  ln -sfn darwin "$DOTFILES/.config/ghostty/os"
   # enable key repeat for vscode. https://twismik0.hatenablog.com/entry/2017/08/14/115502
   defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool false
   defaults write com.microsoft.VSCodeInsiders ApplePressAndHoldEnabled -bool false
