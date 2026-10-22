@@ -37,6 +37,9 @@ keymap:
       Super-minus: CTRL-minus
       Super-0: CTRL-0
       Super-enter: CTRL-enter
+      # Cmd+クリック相当。Hyprland 側のウィンドウ移動/リサイズは Super+Alt+マウスに退避している
+      Super-BTN_LEFT: CTRL-BTN_LEFT
+      Super-Shift-BTN_LEFT: CTRL-Shift-BTN_LEFT
   - name: ESC+IME off for vim
     application:
       only: [Alacritty, Code, com.mitchellh.ghostty]

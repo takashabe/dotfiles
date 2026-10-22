@@ -5,7 +5,7 @@ After=graphical-session.target
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/xremap --watch=device,config %h/.config/xremap/config.yaml
+ExecStart=/usr/bin/xremap --mouse --watch=device,config %h/.config/xremap/config.yaml
 Restart=on-failure
 RestartSec=3
 
