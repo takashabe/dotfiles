@@ -6,7 +6,7 @@ keypress_delay_ms: 20
 keymap:
   - name: fake Emacs(macOS)
     application:
-      not: [Alacritty, Code, com.mitchellh.ghostty]
+      not: [Alacritty, Code, com.mitchellh.ghostty, md.obsidian.Obsidian]
     exact_match: true
     remap:
       # Cursor
