@@ -24,17 +24,38 @@ end
 hl.on("monitor.focused", apply_focus_fit)
 hl.on("config.reloaded", function() apply_focus_fit(hl.get_active_monitor()) end)
 
+-- 縦モニタでは 1 行 1 窓に戻す。列の構成は Lua から読めないので、各窓で expel を窓の数だけ試す。
+-- expel は列末尾の窓を現在の列の直後へ出すため、元の並び順は保たれる
+local function split_rows(ws)
+  local tiled = {}
+  for _, w in ipairs(hl.get_workspace_windows(ws)) do
+    if not w.floating then table.insert(tiled, w) end
+  end
+  for _, w in ipairs(tiled) do
+    hl.dispatch(hl.dsp.focus({ window = w }))
+    for _ = 2, #tiled do
+      hl.dispatch(hl.dsp.layout("expel"))
+    end
+  end
+end
+
 -- reload では既存の列幅が戻らないため、表示中のワークスペースの列幅を既定値に揃え直す。
 -- colresize all はフォーカス中のワークスペースにしか効かないので、モニタを順にフォーカスして回る
 function tiling_restart()
-  local active = hl.get_active_monitor()
+  local active_mon = hl.get_active_monitor()
+  local active_win = hl.get_active_window()
   for _, mon in ipairs(hl.get_monitors()) do
     local width = is_portrait(mon) and PORTRAIT_ROW_HEIGHT or hl.get_config("scrolling.column_width")
     hl.dispatch(hl.dsp.focus({ monitor = mon.name }))
+    if is_portrait(mon) and mon.active_workspace then
+      split_rows(mon.active_workspace)
+    end
     hl.dispatch(hl.dsp.layout("colresize all " .. width))
   end
-  if active then
-    hl.dispatch(hl.dsp.focus({ monitor = active.name }))
+  if active_win then
+    hl.dispatch(hl.dsp.focus({ window = active_win }))
+  elseif active_mon then
+    hl.dispatch(hl.dsp.focus({ monitor = active_mon.name }))
   end
 end
 
