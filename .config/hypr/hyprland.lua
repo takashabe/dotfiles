@@ -2,7 +2,7 @@
 -- https://wiki.hypr.land/Configuring/Start/
 
 require("monitors")
-require("workspaces")
+local workspaces = require("workspaces")
 require("window")
 require("shell")
 
@@ -54,11 +54,11 @@ hl.config({
   },
 
   -- niri 風のスクロールレイアウト https://wiki.hypr.land/Configuring/Layouts/Scrolling-Layout/
-  -- 列幅プリセットは niri の preset-column-widths に合わせる
   scrolling = {
-    column_width             = 0.98, -- niri の default-column-width と同じ。新しい列はほぼ全幅で開き、既存の列は横へ押し出される
+    column_width             = 0.98, -- niri の default-column-width と同じ
     explicit_column_widths   = "0.3, 0.5, 0.98, 1.0",
     fullscreen_on_one_column = true,
+    focus_fit_method         = 0, -- 0 = center。既定の fit だと列が画面端に寄る
   },
 
   decoration = {
@@ -151,11 +151,19 @@ hl.bind("ALT + l", hl.dsp.focus({ direction = "right" }))
 hl.bind("ALT + k", hl.dsp.focus({ direction = "up" }))
 hl.bind("ALT + j", hl.dsp.focus({ direction = "down" }))
 
--- 列の入れ替えと、列内でのウィンドウ移動
-hl.bind(mainMod .. " + SHIFT + H", hl.dsp.layout("swapcol l"))
-hl.bind(mainMod .. " + SHIFT + L", hl.dsp.layout("swapcol r"))
-hl.bind(mainMod .. " + SHIFT + K", hl.dsp.window.move({ direction = "up" }))
-hl.bind(mainMod .. " + SHIFT + J", hl.dsp.window.move({ direction = "down" }))
+-- 列の入れ替えと、列内でのウィンドウ移動。
+-- 縦モニタは列が上下に積まれるため、上下キーで列を入れ替え、左右キーで列内を移動する。
+-- 縦モニタで window.move の上下を使うと、隣の列へ合流して横並びになってしまう
+local function by_orientation(landscape, portrait)
+  return function()
+    local mon = hl.get_active_monitor()
+    hl.dispatch((mon and workspaces.is_portrait(mon)) and portrait or landscape)
+  end
+end
+hl.bind(mainMod .. " + SHIFT + H", by_orientation(hl.dsp.layout("swapcol l"), hl.dsp.window.move({ direction = "left" })))
+hl.bind(mainMod .. " + SHIFT + L", by_orientation(hl.dsp.layout("swapcol r"), hl.dsp.window.move({ direction = "right" })))
+hl.bind(mainMod .. " + SHIFT + K", by_orientation(hl.dsp.window.move({ direction = "up" }), hl.dsp.layout("swapcol l")))
+hl.bind(mainMod .. " + SHIFT + J", by_orientation(hl.dsp.window.move({ direction = "down" }), hl.dsp.layout("swapcol r")))
 
 -- 列幅とウィンドウ高さの増減
 hl.bind(mainMod .. " + CTRL + H", hl.dsp.layout("colresize -0.1"))

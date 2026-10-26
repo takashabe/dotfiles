@@ -94,6 +94,7 @@ if [ "$(uname)" = "Linux" ]; then
   link "$DOTFILES/.gitconfig.credential.linux" "$HOME/.gitconfig.credential"
   link "$DOTFILES/.config/paru" "$HOME/.config/"
   link "$DOTFILES/.local/share/applications/screenshot.desktop" "$HOME/.local/share/applications/"
+  link "$DOTFILES/.local/share/applications/tiling-restart.desktop" "$HOME/.local/share/applications/"
 
   # /etc
   link --sudo "$DOTFILES/etc/greetd/config.toml" /etc/greetd/config.toml

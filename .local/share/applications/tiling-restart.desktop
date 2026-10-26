@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=tiling_restart
+Comment=Reset scrolling layout column widths to defaults
+Keywords=hyprland;tiling;restart;layout;reset;
+Exec=/home/takashabe/.config/hypr/scripts/tiling-restart.sh
+Icon=view-refresh
+Type=Application
+Categories=Utility;
