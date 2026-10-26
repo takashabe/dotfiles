@@ -73,6 +73,7 @@ link "$DOTFILES/.config/ironbar" "$HOME/.config/"
 link "$DOTFILES/.config/noctalia" "$HOME/.config/"
 link "$DOTFILES/.config/environment.d" "$HOME/.config/"
 link "$DOTFILES/.config/herdr/config.toml" "$HOME/.config/herdr/"
+link "$DOTFILES/.config/vivaldi-stable.conf" "$HOME/.config/"
 
 # vscode
 if [ "$(uname)" = "Linux" ]; then
