@@ -53,19 +53,33 @@ printf '%s\n' "$COMMAND" | sed -E 's/(&&|\|\||;|\||&|\(|\)|\{|\}|`|\$\(|\n)/\n/g
   while [ $i -lt ${#words[@]} ]; do
     w=${words[$i]}
     case "$w" in
-      env|sudo|command|nohup|time|exec|nice|builtin|timeout|doas|!)
+      env|sudo|doas|command|nohup|time|exec|nice|builtin|timeout|!)
+        # 値を取るオプションはラッパーごとに違うので、別々に読み飛ばす
+        case "$w" in
+          env) valued='-u|-C|-S|--unset|--chdir|--split-string' ;;
+          sudo) valued='-u|-g|-C|-h|-p|-U|-r|-t|-D|-T|--user|--group|--close-from|--host|--prompt|--other-user|--role|--type|--chdir|--command-timeout' ;;
+          doas) valued='-u|-C' ;;
+          nice) valued='-n|--adjustment' ;;
+          timeout) valued='-s|-k|--signal|--kill-after' ;;
+          *) valued='' ;;
+        esac
         i=$((i+1))
         while [ $i -lt ${#words[@]} ]; do
-          case "${words[$i]}" in
-            -u|-g|-n|-C|-S|-s|-k|--user|--group|--adjust|--chdir|--signal|--kill-after) i=$((i+2)) ;;
-            -*) i=$((i+1)) ;;
+          o=${words[$i]}
+          # env -S は値をコマンド行として再解釈するので、この hook では追えない
+          case "$w:$o" in env:-S|env:-S*|env:--split-string|env:--split-string=*)
+            block "env -S / --split-string は値をコマンドとして再解釈するため実行しません" "$seg" ;;
+          esac
+          case "$o" in
+            --*=*) i=$((i+1)) ;;
+            -*) if [ -n "$valued" ] && printf '%s\n' "$o" | grep -Eqx -e "$valued"; then i=$((i+2)); else i=$((i+1)); fi ;;
             *) break ;;
           esac
         done
         if [ "$w" = "timeout" ]; then
           case "${words[$i]:-}" in [0-9]*) i=$((i+1)) ;; esac
         fi ;;
-      GIT_CONFIG*=*|GIT_DIR=*|GIT_WORK_TREE=*|GIT_ALTERNATE*=*) git_env_override=1; i=$((i+1)) ;;
+      GIT_*=*) git_env_override=1; i=$((i+1)) ;;
       [A-Za-z_]*=*) i=$((i+1)) ;;
       *) break ;;
     esac
@@ -73,9 +87,16 @@ printf '%s\n' "$COMMAND" | sed -E 's/(&&|\|\||;|\||&|\(|\)|\{|\}|`|\$\(|\n)/\n/g
   [ $i -ge ${#words[@]} ] && continue
   cmd=${words[$i]##*/}
 
-  # GIT_CONFIG_* や GIT_DIR で設定や対象リポジトリを差し替えられると、以降の判定が成り立たない
-  if [ "$cmd" = "git" ] && [ $git_env_override -eq 1 ]; then
-    block "GIT_CONFIG_* / GIT_DIR / GIT_WORK_TREE を付けた git は、設定や対象リポジトリを判定できないため実行しません" "$seg"
+  # export 済みの GIT_* は後続セグメントの git に効くので、ここで覚えておく
+  case "$cmd" in
+    export|declare|typeset|readonly|set)
+      if printf '%s\n' "${words[*]:$((i+1))}" | grep -Eq '(^|[[:space:]])GIT_[A-Z_]*='; then git_env_exported=1; fi
+      continue ;;
+  esac
+
+  # GIT_* で設定や対象リポジトリを差し替えられると、以降の判定が成り立たない
+  if [ "$cmd" = "git" ] && { [ $git_env_override -eq 1 ] || [ "${git_env_exported:-0}" -eq 1 ]; }; then
+    block "GIT_* 環境変数を付けた git は、設定や対象リポジトリを判定できないため実行しません" "$seg"
   fi
 
   # 別のインタプリタに文字列を渡す形は中身を解析できないので、push / merge を含むなら fail-closed にする
@@ -127,7 +148,8 @@ printf '%s\n' "$COMMAND" | sed -E 's/(&&|\|\||;|\||&|\(|\)|\{|\}|`|\$\(|\n)/\n/g
     # alias が別の alias を指すこともあるので、展開を辿り切るまで見る（循環対策で上限を置く）
     name=$sub
     depth=0
-    while [ $depth -lt 8 ]; do
+    visited=" "
+    while :; do
       expansion=$(git -C "$dir" config --get "alias.$name" 2>/dev/null || true)
       [ -z "$expansion" ] && break
       if printf '%s\n' "$expansion" | grep -Eq '(^|[^[:alnum:]_-])push([^[:alnum:]_-]|$)|^!'; then
@@ -135,6 +157,10 @@ printf '%s\n' "$COMMAND" | sed -E 's/(&&|\|\||;|\||&|\(|\)|\{|\}|`|\$\(|\n)/\n/g
       fi
       name=${expansion%% *}
       depth=$((depth+1))
+      # 循環や深すぎる連鎖は展開を追い切れないので fail-closed にする
+      case "$visited" in *" $name "*) block "alias '$sub' の展開が循環しているため実行しません" "$seg" ;; esac
+      [ $depth -ge 8 ] && block "alias '$sub' の展開が深すぎて追い切れないため実行しません" "$seg"
+      visited="$visited$name "
     done
     continue
   fi
