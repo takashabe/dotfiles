@@ -41,15 +41,61 @@ current_branch() {
   git -C "$1" rev-parse --abbrev-ref HEAD 2>/dev/null || true
 }
 
-# 引用符の中や echo の引数に同じ文字列が現れても誤検知しないよう、コマンド語の位置だけを見る。
-# "git" push や git\ push のような引用・エスケープで語を崩す形は、先に剥がしてから比較する。
-printf '%s\n' "$COMMAND" | sed -E 's/(&&|\|\||;|\||&|\(|\)|\{|\}|`|\$\(|\n)/\n/g; s/["'"'"'\\]//g' | while IFS= read -r seg; do
+# ヒアドキュメントの本文は設定ファイルやメッセージであってコマンドではないので、分割前に落とす
+strip_heredocs() {
+  awk '
+    inhd { if ($0 == delim) inhd = 0; next }
+    {
+      if (match($0, /<<-?[ \t]*["\x27]?[A-Za-z_][A-Za-z0-9_]*["\x27]?/)) {
+        delim = substr($0, RSTART, RLENGTH)
+        sub(/^<<-?[ \t]*["\x27]?/, "", delim); sub(/["\x27]?$/, "", delim)
+        inhd = 1
+      }
+      print
+    }'
+}
+
+# 引用符で囲まれた複数語（コミットメッセージや PR 本文）はコマンドではないので落とす。
+# 一方で "git" push や git\ push のように語を崩すための引用は剥がして語に戻し、
+# 引用符の中のコマンド置換は実行経路なので残す。
+strip_quotes() {
+  awk '
+    BEGIN { RS = "\0" }
+    {
+      s = $0; n = length(s); out = ""; i = 1
+      while (i <= n) {
+        c = substr(s, i, 1)
+        if (c == "\\") { out = out substr(s, i + 1, 1); i += 2; continue }
+        if (c == "\x27" || c == "\"") {
+          j = i + 1
+          while (j <= n) {
+            d = substr(s, j, 1)
+            if (c == "\"" && d == "\\") { j += 2; continue }
+            if (d == c) break
+            j++
+          }
+          body = substr(s, i + 1, j - i - 1)
+          if (body !~ /[ \t\n]/ || body ~ /\$\(|`/) out = out body
+          i = j + 1
+          continue
+        }
+        out = out c; i++
+      }
+      printf "%s", out
+    }'
+}
+
+CLEANED=$(printf '%s\n' "$COMMAND" | strip_heredocs | strip_quotes)
+mentions_git_env=0
+printf '%s\n' "$CLEANED" | grep -Eq '(^|[^[:alnum:]_])GIT_[A-Z_]+' && mentions_git_env=1
+
+# echo の引数などに同じ文字列が現れても誤検知しないよう、コマンド語の位置だけを見る。
+printf '%s\n' "$CLEANED" | sed -E 's/(&&|\|\||;|\||&|\(|\)|\{|\}|`|\$\(|\n)/\n/g' | while IFS= read -r seg; do
   # 変数展開は行わず、引数の文字列だけを見る（eval は使わない）
   read -r -a words <<<"$seg"
   [ ${#words[@]} -eq 0 ] && continue
 
   i=0
-  git_env_override=0
   while [ $i -lt ${#words[@]} ]; do
     w=${words[$i]}
     case "$w" in
@@ -67,9 +113,12 @@ printf '%s\n' "$COMMAND" | sed -E 's/(&&|\|\||;|\||&|\(|\)|\{|\}|`|\$\(|\n)/\n/g
         while [ $i -lt ${#words[@]} ]; do
           o=${words[$i]}
           # env -S は値をコマンド行として再解釈するので、この hook では追えない
-          case "$w:$o" in env:-S|env:-S*|env:--split-string|env:--split-string=*)
-            block "env -S / --split-string は値をコマンドとして再解釈するため実行しません" "$seg" ;;
-          esac
+          if [ "$w" = "env" ]; then
+            case "$o" in
+              --*) long_opt_is "$o" "split-string" && block "env -S / --split-string は値をコマンドとして再解釈するため実行しません" "$seg" ;;
+              -*S*) block "env -S / --split-string は値をコマンドとして再解釈するため実行しません" "$seg" ;;
+            esac
+          fi
           case "$o" in
             --*=*) i=$((i+1)) ;;
             -*) if [ -n "$valued" ] && printf '%s\n' "$o" | grep -Eqx -e "$valued"; then i=$((i+2)); else i=$((i+1)); fi ;;
@@ -79,7 +128,6 @@ printf '%s\n' "$COMMAND" | sed -E 's/(&&|\|\||;|\||&|\(|\)|\{|\}|`|\$\(|\n)/\n/g
         if [ "$w" = "timeout" ]; then
           case "${words[$i]:-}" in [0-9]*) i=$((i+1)) ;; esac
         fi ;;
-      GIT_*=*) git_env_override=1; i=$((i+1)) ;;
       [A-Za-z_]*=*) i=$((i+1)) ;;
       *) break ;;
     esac
@@ -87,16 +135,18 @@ printf '%s\n' "$COMMAND" | sed -E 's/(&&|\|\||;|\||&|\(|\)|\{|\}|`|\$\(|\n)/\n/g
   [ $i -ge ${#words[@]} ] && continue
   cmd=${words[$i]##*/}
 
-  # export 済みの GIT_* は後続セグメントの git に効くので、ここで覚えておく
-  case "$cmd" in
-    export|declare|typeset|readonly|set)
-      if printf '%s\n' "${words[*]:$((i+1))}" | grep -Eq '(^|[[:space:]])GIT_[A-Z_]*='; then git_env_exported=1; fi
-      continue ;;
-  esac
+  # ラッパーのオプション解釈がずれて git / gh を引数と見なすと素通りするので、
+  # 残りの語に git / gh があるのにコマンド語がそれ以外なら fail-closed にする
+  if [ $i -gt 0 ] && [ "$cmd" != "git" ] && [ "$cmd" != "gh" ]; then
+    for rest in "${words[@]:1}"; do
+      case "${rest##*/}" in git|gh) block "ラッパー越しの $cmd の引数に git / gh が現れたため、解析できず実行しません" "$seg" ;; esac
+    done
+  fi
 
-  # GIT_* で設定や対象リポジトリを差し替えられると、以降の判定が成り立たない
-  if [ "$cmd" = "git" ] && { [ $git_env_override -eq 1 ] || [ "${git_env_exported:-0}" -eq 1 ]; }; then
-    block "GIT_* 環境変数を付けた git は、設定や対象リポジトリを判定できないため実行しません" "$seg"
+  # GIT_* は代入・export・set -a のどこで効いてもその後の判定が成り立たないので、
+  # 個別に追わず、コマンド全体に GIT_* が現れる git は止める
+  if [ "$cmd" = "git" ] && [ $mentions_git_env -eq 1 ]; then
+    block "GIT_* 環境変数に触れるコマンドでの git は、設定や対象リポジトリを判定できないため実行しません" "$seg"
   fi
 
   # 別のインタプリタに文字列を渡す形は中身を解析できないので、push / merge を含むなら fail-closed にする
