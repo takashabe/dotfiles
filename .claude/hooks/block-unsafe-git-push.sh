@@ -44,20 +44,24 @@ current_branch() {
 # ヒアドキュメントの本文は設定ファイルやメッセージであってコマンドではないので、分割前に落とす
 strip_heredocs() {
   awk '
-    inhd { if ($0 == delim) inhd = 0; next }
+    inhd { line = $0; if (dash) sub(/^\t+/, "", line); if (line == delim) inhd = 0; next }
     {
-      if (match($0, /<<-?[ \t]*["\x27]?[A-Za-z_][A-Za-z0-9_]*["\x27]?/)) {
+      # <<< の here-string を heredoc と取り違えないよう、直前が < でない << だけを見る
+      if (match($0, /(^|[^<])<<-?[ \t]*["\x27]?[A-Za-z_][A-Za-z0-9_]*["\x27]?/)) {
         delim = substr($0, RSTART, RLENGTH)
-        sub(/^<<-?[ \t]*["\x27]?/, "", delim); sub(/["\x27]?$/, "", delim)
+        dash = (delim ~ /<<-/)
+        sub(/^.?<<-?[ \t]*["\x27]?/, "", delim); sub(/["\x27]?$/, "", delim)
         inhd = 1
       }
       print
     }'
 }
 
-# 引用符で囲まれた複数語（コミットメッセージや PR 本文）はコマンドではないので落とす。
-# 一方で "git" push や git\ push のように語を崩すための引用は剥がして語に戻し、
-# 引用符の中のコマンド置換は実行経路なので残す。
+# 引用符で囲まれた複数語（コミットメッセージや PR 本文）はコマンドではないので、
+# 内部の空白を区切り文字に置き換えて 1 語に畳む。落とさないのは、
+# -c 'alias.p=push --force' のような引数の中身を検査で見失わないため。
+# "git" push や git\ push のように語を崩すための引用は剥がして語に戻し、
+# 引用符の中のコマンド置換は実行経路なので展開したまま残す。
 strip_quotes() {
   awk '
     BEGIN { RS = "\0" }
@@ -75,7 +79,8 @@ strip_quotes() {
             j++
           }
           body = substr(s, i + 1, j - i - 1)
-          if (body !~ /[ \t\n]/ || body ~ /\$\(|`/) out = out body
+          if (body !~ /\$\(|`/) gsub(/[ \t\n]+/, "\x1f", body)
+          out = out body
           i = j + 1
           continue
         }
@@ -86,8 +91,9 @@ strip_quotes() {
 }
 
 CLEANED=$(printf '%s\n' "$COMMAND" | strip_heredocs | strip_quotes)
+# 整形で落ちた部分に紛れた GIT_* も拾うため、生のコマンドを見る
 mentions_git_env=0
-printf '%s\n' "$CLEANED" | grep -Eq '(^|[^[:alnum:]_])GIT_[A-Z_]+' && mentions_git_env=1
+printf '%s\n' "$COMMAND" | grep -Eq '(^|[^[:alnum:]_])GIT_[A-Z_]+' && mentions_git_env=1
 
 # echo の引数などに同じ文字列が現れても誤検知しないよう、コマンド語の位置だけを見る。
 printf '%s\n' "$CLEANED" | sed -E 's/(&&|\|\||;|\||&|\(|\)|\{|\}|`|\$\(|\n)/\n/g' | while IFS= read -r seg; do
