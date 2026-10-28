@@ -94,6 +94,15 @@
             "command": "bash ~/.claude/hooks/block-write-outside-worktree.sh"
           }
         ]
+      },
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash ~/.claude/hooks/block-claude-attribution.sh"
+          }
+        ]
       }
     ],
     "PostToolUse": [
