@@ -82,7 +82,7 @@
     ],
     "defaultMode": "auto"
   },
-  "model": "opus",
+  "model": "fable",
   "enableAllProjectMcpServers": false,
   "hooks": {
     "PreToolUse": [
@@ -101,6 +101,10 @@
           {
             "type": "command",
             "command": "bash ~/.claude/hooks/block-claude-attribution.sh"
+          },
+          {
+            "type": "command",
+            "command": "bash ~/.claude/hooks/block-unsafe-git-push.sh"
           }
         ]
       }
