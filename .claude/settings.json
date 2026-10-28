@@ -104,7 +104,7 @@
           },
           {
             "type": "command",
-            "command": "bash ~/.claude/hooks/block-unsafe-git-push.sh"
+            "command": "bash ~/.claude/hooks/block-git-hook-bypass.sh"
           }
         ]
       }

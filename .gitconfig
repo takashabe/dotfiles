@@ -8,6 +8,7 @@
 [color]
   ui = true
 [core]
+  hooksPath = ~/dotfiles/.config/git/hooks
   quotepath = false
   excludesfile = ~/.gitignore
   pager = delta
