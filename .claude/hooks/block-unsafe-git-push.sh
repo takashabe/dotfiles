@@ -30,66 +30,87 @@ MSG
   exit 2
 }
 
-# 引用符の中や echo の引数に同じ文字列が現れても誤検知しないよう、セグメント先頭に限定する。
-printf '%s\n' "$COMMAND" | sed -E 's/(&&|\|\||;|\|)/\n/g' | while IFS= read -r seg; do
-  if printf '%s\n' "$seg" | grep -Eq '^[[:space:]]*gh[[:space:]]+pr[[:space:]]+merge([[:space:]]|$)'; then
-    block "gh pr merge はエージェントからは実行しません" "$seg"
-  fi
-  printf '%s\n' "$seg" | grep -Eq '^[[:space:]]*git([[:space:]]+-C[[:space:]]+[^[:space:]]+)?[[:space:]]+push([[:space:]]|$)' || continue
-
+# 引用符の中や echo の引数に同じ文字列が現れても誤検知しないよう、コマンド語の位置だけを見る。
+printf '%s\n' "$COMMAND" | sed -E 's/(&&|\|\||;|\||&|\(|\)|`|\$\()/\n/g' | while IFS= read -r seg; do
   # 変数展開は行わず、引数の文字列だけを見る（eval は使わない）
   read -r -a words <<<"$seg"
-  dir="."
-  args=()
-  seen_push=0
+  [ ${#words[@]} -eq 0 ] && continue
+
   i=0
   while [ $i -lt ${#words[@]} ]; do
-    w=${words[$i]}
-    if [ $seen_push -eq 0 ]; then
-      if [ "$w" = "-C" ]; then i=$((i+1)); dir=${words[$i]:-.}; fi
-      [ "$w" = "push" ] && seen_push=1
-    else
-      args+=("$w")
-    fi
-    i=$((i+1))
-  done
-
-  for a in "${args[@]}"; do
-    case "$a" in
-      --force|-f|--force=*) block "force push は実行しません" "$seg" ;;
-      --delete|-d) block "リモートブランチの削除は実行しません" "$seg" ;;
-      --mirror|--prune) block "mirror / prune push は実行しません" "$seg" ;;
+    case "${words[$i]}" in
+      env|sudo|command|nohup|time|exec|nice|xargs) i=$((i+1)) ;;
+      [A-Za-z_]*=*) i=$((i+1)) ;;
+      *) break ;;
     esac
   done
+  [ $i -ge ${#words[@]} ] && continue
+  cmd=${words[$i]##*/}
 
-  # 位置引数（オプション以外）から remote と refspec を取り出す
+  if [ "$cmd" = "gh" ] && [ "${words[$((i+1))]:-}" = "pr" ] && [ "${words[$((i+2))]:-}" = "merge" ]; then
+    block "gh pr merge はエージェントからは実行しません" "$seg"
+  fi
+  [ "$cmd" = "git" ] || continue
+
+  dir="."
+  i=$((i+1))
+  sub=""
+  while [ $i -lt ${#words[@]} ]; do
+    w=${words[$i]}
+    case "$w" in
+      -C) i=$((i+1)); dir=${words[$i]:-.} ;;
+      -c|--git-dir|--work-tree|--namespace|--exec-path) i=$((i+1)) ;;
+      -*) ;;
+      *) sub=$w; break ;;
+    esac
+    i=$((i+1))
+  done
+  [ "$sub" = "push" ] || continue
+  args=("${words[@]:$((i+1))}")
+
   positional=()
   skip_next=0
+  tags_only=0
   for a in "${args[@]}"; do
     if [ $skip_next -eq 1 ]; then skip_next=0; continue; fi
     case "$a" in
-      -o|--push-option|--receive-pack|--exec|--repo) skip_next=1 ;;
-      -*) ;;
+      --tags) tags_only=1 ;;
+      --force|--force=*) block "force push は実行しません" "$seg" ;;
+      --delete) block "リモートブランチの削除は実行しません" "$seg" ;;
+      --mirror|--prune|--all|--branches) block "mirror / prune / all / branches push は実行しません" "$seg" ;;
+      --force-with-lease|--force-with-lease=*|--force-if-includes) ;;
+      --*) case "$a" in --push-option|--receive-pack|--exec|--repo) skip_next=1 ;; esac ;;
+      -o) skip_next=1 ;;
+      -*)
+        # -fu のような束でも force / delete を見逃さないため、文字単位で見る
+        case "${a#-}" in
+          *f*) block "force push は実行しません" "$seg" ;;
+          *d*) block "リモートブランチの削除は実行しません" "$seg" ;;
+        esac ;;
       *) positional+=("$a") ;;
     esac
   done
 
-  dest=""
+  dests=()
   if [ ${#positional[@]} -ge 2 ]; then
-    refspec=${positional[1]}
-    case "$refspec" in
-      :*) block "refspec ':branch' によるリモートブランチの削除は実行しません" "$seg" ;;
-      *:*) dest=${refspec#*:} ;;
-      *) dest=$refspec ;;
-    esac
-    dest=${dest#refs/heads/}
-    dest=${dest#+}
-  else
-    dest=$(git -C "$dir" rev-parse --abbrev-ref HEAD 2>/dev/null || true)
+    # 複数 refspec のうち 1 つでも共有ブランチを指せば止める
+    for refspec in "${positional[@]:1}"; do
+      case "$refspec" in
+        +*) block "refspec '+' による force push は実行しません" "$seg" ;;
+        :*) block "refspec ':branch' によるリモートブランチの削除は実行しません" "$seg" ;;
+        *:*) d=${refspec#*:} ;;
+        HEAD) d=$(git -C "$dir" rev-parse --abbrev-ref HEAD 2>/dev/null || true) ;;
+        *) d=$refspec ;;
+      esac
+      dests+=("${d#refs/heads/}")
+    done
+  elif [ $tags_only -eq 0 ]; then
+    dests+=("$(git -C "$dir" rev-parse --abbrev-ref HEAD 2>/dev/null || true)")
   fi
-  [ -z "$dest" ] || [ "$dest" = "HEAD" ] && continue
 
-  printf '%s\n' "$dest" | grep -Eq "$PROTECTED" || continue
-
-  block "共有ブランチ '$dest' への直接 push は実行しません" "$seg"
+  for dest in "${dests[@]}"; do
+    [ -z "$dest" ] || [ "$dest" = "HEAD" ] && continue
+    printf '%s\n' "$dest" | grep -Eq "$PROTECTED" || continue
+    block "共有ブランチ '$dest' への直接 push は実行しません" "$seg"
+  done
 done
