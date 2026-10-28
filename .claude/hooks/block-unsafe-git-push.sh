@@ -49,15 +49,34 @@ printf '%s\n' "$COMMAND" | sed -E 's/(&&|\|\||;|\||&|\(|\)|\{|\}|`|\$\(|\n)/\n/g
   [ ${#words[@]} -eq 0 ] && continue
 
   i=0
+  git_env_override=0
   while [ $i -lt ${#words[@]} ]; do
-    case "${words[$i]}" in
-      env|sudo|command|nohup|time|exec|nice|builtin|!) i=$((i+1)) ;;
+    w=${words[$i]}
+    case "$w" in
+      env|sudo|command|nohup|time|exec|nice|builtin|timeout|doas|!)
+        i=$((i+1))
+        while [ $i -lt ${#words[@]} ]; do
+          case "${words[$i]}" in
+            -u|-g|-n|-C|-S|-s|-k|--user|--group|--adjust|--chdir|--signal|--kill-after) i=$((i+2)) ;;
+            -*) i=$((i+1)) ;;
+            *) break ;;
+          esac
+        done
+        if [ "$w" = "timeout" ]; then
+          case "${words[$i]:-}" in [0-9]*) i=$((i+1)) ;; esac
+        fi ;;
+      GIT_CONFIG*=*|GIT_DIR=*|GIT_WORK_TREE=*|GIT_ALTERNATE*=*) git_env_override=1; i=$((i+1)) ;;
       [A-Za-z_]*=*) i=$((i+1)) ;;
       *) break ;;
     esac
   done
   [ $i -ge ${#words[@]} ] && continue
   cmd=${words[$i]##*/}
+
+  # GIT_CONFIG_* や GIT_DIR で設定や対象リポジトリを差し替えられると、以降の判定が成り立たない
+  if [ "$cmd" = "git" ] && [ $git_env_override -eq 1 ]; then
+    block "GIT_CONFIG_* / GIT_DIR / GIT_WORK_TREE を付けた git は、設定や対象リポジトリを判定できないため実行しません" "$seg"
+  fi
 
   # 別のインタプリタに文字列を渡す形は中身を解析できないので、push / merge を含むなら fail-closed にする
   case "$cmd" in
@@ -81,17 +100,18 @@ printf '%s\n' "$COMMAND" | sed -E 's/(&&|\|\||;|\||&|\(|\)|\{|\}|`|\$\(|\n)/\n/g
     w=${words[$i]}
     case "$w" in
       -C) i=$((i+1)); dir=${words[$i]:-.} ;;
-      -c|--config-env)
-        i=$((i+1))
+      -c|--config-env|-c*|--config-env=*)
+        case "$w" in
+          -c|--config-env) i=$((i+1)); key=${words[$i]:-} ;;
+          --config-env=*) key=${w#--config-env=} ;;
+          *) key=${w#-c} ;;
+        esac
+        # git の設定キーは大文字小文字を区別しないので、小文字に揃えてから比較する
+        key=${key,,}
         # alias や push 先の設定を一時的に上書きすると、この hook の判定が成り立たなくなる
-        case "${words[$i]:-}" in
-          alias.*|push.*|remote.*|url.*|branch.*|core.hooksPath*|core.hookspath*|credential.*)
-            block "git -c による alias / push 先 / 認証設定の上書きは実行しません" "$seg" ;;
-        esac ;;
-      -c*|--config-env=*)
-        case "${w#-c}" in
-          alias.*|push.*|remote.*|url.*|branch.*|core.hooksPath*|core.hookspath*|credential.*|=*)
-            block "git -c による alias / push 先 / 認証設定の上書きは実行しません" "$seg" ;;
+        case "$key" in
+          alias.*|push.*|remote.*|url.*|branch.*|include.*|includeif.*|core.hookspath*|credential.*|=*|"")
+            block "git -c による alias / push 先 / include / 認証設定の上書きは実行しません" "$seg" ;;
         esac ;;
       --git-dir|--work-tree|--namespace|--exec-path|--git-dir=*|--work-tree=*|--namespace=*|--exec-path=*)
         block "git --git-dir / --work-tree / --exec-path 付きの実行は、対象リポジトリを判定できないため行いません" "$seg" ;;
@@ -104,10 +124,18 @@ printf '%s\n' "$COMMAND" | sed -E 's/(&&|\|\||;|\||&|\(|\)|\{|\}|`|\$\(|\n)/\n/g
 
   # 組み込みでないサブコマンドは alias の可能性がある。展開先に push が含まれるなら fail-closed にする
   if [ "$sub" != "push" ]; then
-    expansion=$(git -C "$dir" config --get "alias.$sub" 2>/dev/null || true)
-    if printf '%s\n' "$expansion" | grep -Eq '(^|[^[:alnum:]_-])push([^[:alnum:]_-]|$)|^!'; then
-      block "alias '$sub' の展開先に push またはシェル実行が含まれるため実行しません" "$seg"
-    fi
+    # alias が別の alias を指すこともあるので、展開を辿り切るまで見る（循環対策で上限を置く）
+    name=$sub
+    depth=0
+    while [ $depth -lt 8 ]; do
+      expansion=$(git -C "$dir" config --get "alias.$name" 2>/dev/null || true)
+      [ -z "$expansion" ] && break
+      if printf '%s\n' "$expansion" | grep -Eq '(^|[^[:alnum:]_-])push([^[:alnum:]_-]|$)|^!'; then
+        block "alias '$sub' の展開先に push またはシェル実行が含まれるため実行しません" "$seg"
+      fi
+      name=${expansion%% *}
+      depth=$((depth+1))
+    done
     continue
   fi
   args=("${words[@]:$((i+1))}")
