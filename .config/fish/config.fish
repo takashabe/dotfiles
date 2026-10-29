@@ -60,6 +60,12 @@ set -x FZF_CD_MAX_DEPTH 5
 # postgres
 set -x PATH /opt/homebrew/opt/libpq/bin $PATH
 
+# mole
+# mole の keg には mo -> mole の symlink も入っており、k1LoW/mo を優先させるため末尾に追加する
+if test (uname) = "Darwin"
+  set -x PATH $PATH /opt/homebrew/opt/mole/bin
+end
+
 # git, github
 # alias git 'hub'
 alias g 'git'
