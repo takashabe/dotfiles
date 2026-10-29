@@ -106,9 +106,6 @@ _build.json
 .codex/skills/.system/
 !.codex/prompts/
 
-## wkit
-.wkit.yaml
-
 ## temp
 out-*/
 .superpowers/
