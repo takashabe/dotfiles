@@ -134,7 +134,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "terminal-notifier -title 'Claude Code sent notification' -message \"${CLAUDE_PROJECT_DIR}\" -sound default"
+            "command": "bash ~/.claude/hooks/notify.sh"
           }
         ]
       },
@@ -196,7 +196,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "bash '/home/takashabe/.claude/hooks/herdr-agent-state.sh' session",
+            "command": "bash ~/.claude/hooks/herdr-agent-state.sh session",
             "timeout": 10
           }
         ]
