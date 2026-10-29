@@ -66,6 +66,12 @@ _build.json
 ## neovim
 .config/nvim/lazy-lock.json
 
+## karabiner
+.config/karabiner/automatic_backups/
+
+## vscode settings backup
+.config/code/*.bk
+
 # aider
 .aider.*
 !.aider.conf.yml
@@ -93,7 +99,9 @@ _build.json
 .claude/plugins/plugin-catalog-cache.json
 .claude/plugins/plugin-directory-cache-v2.json
 .claude/plugins/.last_inuse_sweep
-.claude/plugins/synced/*/
+.claude/plugins/synced/
+.claude/plugins/store/
+.claude/skills/synced/
 !.claude/hooks/
 !.claude/commands/
 **/.plans/*
