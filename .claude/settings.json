@@ -82,7 +82,7 @@
     ],
     "defaultMode": "auto"
   },
-  "model": "fable",
+  "model": "opus",
   "enableAllProjectMcpServers": false,
   "hooks": {
     "PreToolUse": [
