@@ -24,7 +24,8 @@ hl.on("hyprland.start", function()
   hl.exec_cmd("ghostty --gtk-single-instance=true", { workspace = "1 silent" })
   hl.exec_cmd("vivaldi",                            { workspace = "1 silent" })
   hl.exec_cmd("spotify",                            { workspace = "1 silent" })
-  hl.exec_cmd("claude-desktop",                     { workspace = "1 silent" })
+  -- workspaces.lua の行高さルールは別ワークスペースへ送る窓に効かないため、ここで指定する
+  hl.exec_cmd("claude-desktop",                     { workspace = "3 silent", scrolling_width = 0.5 })
 
   -- 配置は window.lua の class ルールが決めるので、起動フラグを持つデスクトップエントリ経由で起動する
   for _, app in ipairs({ "slack", "chrome-odhdeommofkpfnffhlpjhbeiedldfelj-Default", "obsidian", "todoist" }) do
