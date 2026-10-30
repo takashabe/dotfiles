@@ -7,7 +7,7 @@ end
 open_on(3, "^Slack$")
 open_on(3, "^md\\.obsidian\\.Obsidian$")
 open_on(3, "^todoist$")
-open_on(3, "^chrome-odhdeommofkpfnffhlpjhbeiedldfelj-Default$") -- Gather (Chrome PWA)
+open_on(3, "^vivaldi-bgmffbpnoliblnmnjcdgipfbhdjpapjc-Default$") -- Gather (Vivaldi PWA)
 
 -- ファイルマネージャと表計算はフローティングで開く
 hl.window_rule({ match = { class = "^(org.gnome.Nautilus|dolphin|thunar)$" }, float = true })
