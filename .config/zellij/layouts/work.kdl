@@ -47,9 +47,4 @@ layout {
             pane cwd="~/dev/src/github.com/CastingONE/casone-lite-web-nextjs"
         }
     }
-
-    // Window 4: review
-    tab name="review" {
-        pane cwd="~/dev/src/github.com/CastingONE/castingone/.git/.wkit-worktrees/local/review"
-    }
 }

@@ -35,15 +35,6 @@ set -x XDG_DATA_HOME $HOME/.local/share
 set -x XDG_CACHE_HOME $HOME/.cache
 set -x XDG_CONFIG_HOME $HOME/.config
 
-## Prompt
-set -x PROMPT_ICON "🐟"
-set -x PROMPT_ERROR_ICON "🍣"
-set -x PROMPT_ENABLE_K8S_CONTEXT 1
-set -x PROMPT_ENABLE_K8S_NAMESPACE 0
-set -x PROMPT_ENABLE_GCLOUD_PROJECT 1
-set -x PROMPT_SHOW_ERR_STATUS 1
-set -x GIT_WORKTREE_PREFIX ".git/.wkit-worktrees/"
-
 ## claude-code
 set -x PATH $HOME/.claude/local $PATH
 
@@ -68,6 +59,12 @@ set -x FZF_CD_MAX_DEPTH 5
 
 # postgres
 set -x PATH /opt/homebrew/opt/libpq/bin $PATH
+
+# mole
+# mole の keg には mo -> mole の symlink も入っており、k1LoW/mo を優先させるため末尾に追加する
+if test (uname) = "Darwin"
+  set -x PATH $PATH /opt/homebrew/opt/mole/bin
+end
 
 # git, github
 # alias git 'hub'
@@ -97,18 +94,6 @@ end
 # git worktree listをfzfで選択してcdする
 function gwl
   fzf_git_wt
-end
-
-# git worktreeとブランチを同時に作成する
-function gwa
-  if test (count $argv) -eq 0
-    echo "Usage: gwa <branch-name>"
-    return 1
-  end
-
-  wkit add $argv[1]
-  cd (command wkit switch $argv[1])
-  commandline -f repaint
 end
 
 # for not supported 256-color

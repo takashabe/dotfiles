@@ -61,9 +61,16 @@ _build.json
 
 ## lazygit
 .config/lazygit/state.yml
+.config/lazygit/github_pull_requests.json
 
 ## neovim
 .config/nvim/lazy-lock.json
+
+## karabiner
+.config/karabiner/automatic_backups/
+
+## vscode settings backup
+.config/code/*.bk
 
 # aider
 .aider.*
@@ -92,7 +99,9 @@ _build.json
 .claude/plugins/plugin-catalog-cache.json
 .claude/plugins/plugin-directory-cache-v2.json
 .claude/plugins/.last_inuse_sweep
-.claude/plugins/synced/*/
+.claude/plugins/synced/
+.claude/plugins/store/
+.claude/skills/synced/
 !.claude/hooks/
 !.claude/commands/
 **/.plans/*
@@ -105,9 +114,6 @@ _build.json
 !.codex/skills/
 .codex/skills/.system/
 !.codex/prompts/
-
-## wkit
-.wkit.yaml
 
 ## temp
 out-*/
