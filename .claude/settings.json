@@ -101,6 +101,10 @@
           {
             "type": "command",
             "command": "bash ~/.claude/hooks/block-claude-attribution.sh"
+          },
+          {
+            "type": "command",
+            "command": "bash ~/.claude/hooks/block-git-hook-bypass.sh"
           }
         ]
       }

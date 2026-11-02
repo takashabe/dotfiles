@@ -1,0 +1,66 @@
+#!/bin/bash
+# グローバル pre-push hook（core.hooksPath で全リポジトリに適用）
+#
+# エージェントの shell（CLAUDECODE が立つ）からの push に限って、共有ブランチへの更新・
+# force push・ブランチ削除を止める。push される refs を標準入力で受け取るので、
+# コマンド文字列の解釈に依存せず、alias や別プロセス経由でも同じ判定になる。
+# 人の操作には触れない。
+#
+# core.hooksPath を設定するとリポジトリ側の .git/hooks が読まれなくなるため、
+# 最後にリポジトリ側の pre-push へ委譲する。
+
+set -euo pipefail
+
+INPUT=$(cat)
+
+delegate_repo_hook() {
+  local repo_hook
+  # --git-path hooks は core.hooksPath を反映して自分自身を返すので、.git 直下を直接見る。
+  # linked worktree では hooks は共通ディレクトリ側にあるため --git-common-dir を使う
+  repo_hook=$(git rev-parse --git-common-dir 2>/dev/null)/hooks/pre-push
+  [ -x "$repo_hook" ] || return 0
+  [ "$(readlink -f "$repo_hook")" = "$(readlink -f "$0")" ] && return 0
+  printf '%s' "$INPUT" | "$repo_hook" "$@"
+}
+
+if [ -z "${CLAUDECODE:-}" ]; then
+  delegate_repo_hook "$@"
+  exit 0
+fi
+
+PROTECTED='^(main|master|trunk|dev|develop|development|qa|uat|stg|staging|preprod|prod|production|release|release/.*|hotfix/.*)$'
+
+block() {
+  cat >&2 <<MSG
+pre-push blocked: $1
+
+  ref: $2
+共有ブランチへの直接 push、force push、ブランチ削除はエージェントからは行わない方針です。
+必要ならユーザーに理由を伝え、ユーザー自身に実行してもらってください。
+MSG
+  exit 1
+}
+
+while read -r local_ref local_sha remote_ref remote_sha; do
+  [ -n "${remote_ref:-}" ] || continue
+
+  case "$local_sha" in
+    *[!0]*) ;;
+    *) block "リモートブランチの削除は実行しません" "$remote_ref" ;;
+  esac
+
+  branch=${remote_ref#refs/heads/}
+  if [ "$branch" != "$remote_ref" ] && printf '%s\n' "$branch" | grep -Eq "$PROTECTED"; then
+    block "共有ブランチ '$branch' への直接 push は実行しません" "$remote_ref"
+  fi
+
+  # リモート側の先端が手元の履歴に含まれない push は、force でしか通らない
+  case "$remote_sha" in
+    *[!0]*)
+      if ! git merge-base --is-ancestor "$remote_sha" "$local_sha" 2>/dev/null; then
+        block "non-fast-forward な push（force push）は実行しません" "$remote_ref"
+      fi ;;
+  esac
+done <<<"$INPUT"
+
+delegate_repo_hook "$@"
