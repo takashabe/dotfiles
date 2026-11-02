@@ -102,6 +102,9 @@ if [ "$(uname)" = "Linux" ]; then
     link --sudo "$f" /etc/sysctl.d/
   done
   ## network, time
+  for f in "$DOTFILES"/etc/NetworkManager/conf.d/*; do
+    link --sudo "$f" /etc/NetworkManager/conf.d/
+  done
   sudo ln -sf "$DOTFILES/etc/nftables.conf" /etc/nftables.conf
   sudo systemctl enable --now nftables systemd-timesyncd
   ## 1password
