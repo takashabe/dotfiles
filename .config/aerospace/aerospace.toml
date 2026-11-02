@@ -1,4 +1,5 @@
-start-at-login = true
+# OmniWM (.config/omniwm) に移行したため、同時に起動して競合しないよう自動起動を止めている
+start-at-login = false
 
 after-login-command = []
 after-startup-command = ['layout accordion --window-id 9']

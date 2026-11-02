@@ -125,7 +125,8 @@ if [ "$(uname)" = "Darwin" ]; then
   # settings
   link "$DOTFILES/.gitconfig.credential.darwin" "$HOME/.gitconfig.credential"
   link "$DOTFILES/.config/sketchybar/" "$HOME/.config/"
-  link "$DOTFILES/.config/aerospace/" "$HOME/.config/"
+  # OmniWM は設定ファイルの横に shell.toml やバックアップを作るため、ディレクトリではなくファイル単位で張る
+  link "$DOTFILES/.config/omniwm/settings.toml" "$HOME/.config/omniwm/"
   ln -sfn darwin "$DOTFILES/.config/ghostty/os"
   # enable key repeat for vscode. https://twismik0.hatenablog.com/entry/2017/08/14/115502
   defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool false
