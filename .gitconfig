@@ -57,5 +57,3 @@
   copy = .env.default.local
   copy = CLAUDE.local.md
   copy = .plans/
-[gpg "ssh"]
-	program = /Applications/1Password.app/Contents/MacOS/op-ssh-sign
