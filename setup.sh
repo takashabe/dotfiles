@@ -74,6 +74,7 @@ link "$DOTFILES/.config/noctalia" "$HOME/.config/"
 link "$DOTFILES/.config/environment.d" "$HOME/.config/"
 link "$DOTFILES/.config/herdr/config.toml" "$HOME/.config/herdr/"
 link "$DOTFILES/.config/vivaldi-stable.conf" "$HOME/.config/"
+link "$DOTFILES/.config/starship.toml" "$HOME/.config/"
 
 # vscode
 if [ "$(uname)" = "Linux" ]; then
