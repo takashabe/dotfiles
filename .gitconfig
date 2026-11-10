@@ -29,8 +29,8 @@
   tool = vimdiff
 [ghq]
   root = ~/dev/src
-[url "git@github.com:"]
-  insteadOf = https://github.com/
+# github.com の取得プロトコル (url.*.insteadOf) と pack.threads は OS ごとに最適値が
+# 違うので ~/.gitconfig.credential (setup.sh が OS 別に link する) 側に置く
 [include]
   path = ~/.gitconfig.credential
 [pull]
