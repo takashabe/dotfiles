@@ -4,10 +4,12 @@ local function open_on(workspace, class)
   hl.window_rule({ match = { class = class }, workspace = workspace .. " silent", scrolling_width = 0.5 })
 end
 
-open_on(3, "^Slack$")
+-- Slack は起動方法によって class が Slack / slack のどちらにもなる
+open_on(3, "^[Ss]lack$")
 open_on(3, "^md\\.obsidian\\.Obsidian$")
 open_on(3, "^todoist$")
-open_on(3, "^vivaldi-bgmffbpnoliblnmnjcdgipfbhdjpapjc-Default$") -- Gather (Vivaldi PWA)
+-- Gather (Chrome PWA)。Chrome は Wayland ネイティブなら chrome-*、XWayland なら crx_* を class にする
+open_on(3, "^(chrome-lpiiknacbombkbjcmblabngmfnbahijj-Default|crx_lpiiknacbombkbjcmblabngmfnbahijj)$")
 
 -- ファイルマネージャと表計算はフローティングで開く
 hl.window_rule({ match = { class = "^(org.gnome.Nautilus|dolphin|thunar)$" }, float = true })
