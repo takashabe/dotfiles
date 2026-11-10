@@ -236,7 +236,8 @@
     "slack@claude-plugins-official": true,
     "cloudflare@cloudflare": true,
     "parallel-code-review@takashabe-plugins": true,
-    "mattpocock-skills@claude-plugins-official": true
+    "mattpocock-skills@claude-plugins-official": true,
+    "gopls-lsp@claude-plugins-official": true
   },
   "extraKnownMarketplaces": {
     "pokutuna-plugins": {
