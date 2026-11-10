@@ -277,7 +277,9 @@
   "language": "Japanese",
   "effortLevel": "high",
   "modelSettings": {
-    "claude-opus-5-5": {}
+    "claude-opus-5-5": {
+      "effortLevel": "high"
+    }
   },
   "plansDirectory": ".plans",
   "tui": "fullscreen",
