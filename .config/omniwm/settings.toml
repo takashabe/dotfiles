@@ -55,18 +55,18 @@ followsMouse = true
 followsWindowToMonitor = false
 lockModifier = "off"
 moveCrossesMonitorAtEdge = false
-moveMouseToFocusedWindow = false
+moveMouseToFocusedWindow = true
 raiseOnMouseFocus = false
 
 [gaps]
 fullscreenUsesOuterGaps = false
-size = 10.0
+size = 20.0
 
 [gaps.outer]
-bottom = 20.0
-left = 20.0
-right = 20.0
-top = 20.0
+bottom = 0.0
+left = 0.0
+right = 0.0
+top = 0.0
 
 [general]
 animationSpeed = 1.0
