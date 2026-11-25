@@ -53,6 +53,18 @@ function gfp_make_fixture
     git -C "$work" worktree add --quiet "$work/.git/keep-worktrees/slot" feat/review-slot
     git -C "$work" worktree add --quiet --detach "$root/wt/detached"
 
+    # push 無の merged で、最終更新から日数が経ったもの・reflog の無いもの
+    set -l old_date (math (date +%s) - 30 \* 86400)" +0000"
+    GIT_COMMITTER_DATE=$old_date git -C "$work" branch feat/stale-wt main
+    GIT_COMMITTER_DATE=$old_date git -C "$work" worktree add --quiet "$root/wt/stale-wt" feat/stale-wt
+    GIT_COMMITTER_DATE=$old_date git -C "$work" branch feat/stale-nowt main
+    # 古いブランチを今日 worktree に出したもの(worktree HEAD の reflog だけが新しい)
+    GIT_COMMITTER_DATE=$old_date git -C "$work" branch feat/revived-wt main
+    git -C "$work" worktree add --quiet "$root/wt/revived-wt" feat/revived-wt
+    git -C "$work" -c core.logAllRefUpdates=false branch feat/nolog-wt main
+    git -C "$work" -c core.logAllRefUpdates=false worktree add --quiet "$root/wt/nolog-wt" feat/nolog-wt
+    git -C "$work" -c core.logAllRefUpdates=false branch feat/nolog-nowt main
+
     echo "$work"
 end
 
