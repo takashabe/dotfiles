@@ -13,16 +13,15 @@ tmux_ide() {
 
   if [ "$work_pane_count" -eq 1 ]; then
     # Find the main (non-sidebar) pane and create IDE layout
-    local main_pane
+    local main_pane bottom_pane
     main_pane=$(tmux list-panes -F '#{pane_id}|#{@pane_role}' | grep -v '|sidebar$' | head -1 | cut -d'|' -f1)
-    tmux split-window -v -l 30% -t "$main_pane"
-    tmux split-window -h
+    bottom_pane=$(tmux split-window -d -v -l 30% -t "$main_pane" -P -F '#{pane_id}')
+    tmux split-window -d -h -t "$bottom_pane"
   elif [ "$work_pane_count" -eq 3 ]; then
     # Find the bottom-left pane (2nd non-sidebar pane) and adjust size
     local bottom_left_pane
     bottom_left_pane=$(tmux list-panes -F '#{pane_id}|#{@pane_role}' | grep -v '|sidebar$' | sed -n '2p' | cut -d'|' -f1)
-    tmux select-pane -t "$bottom_left_pane"
-    tmux resize-pane -y 30%
+    tmux resize-pane -t "$bottom_left_pane" -y 30%
   fi
 
   # Resize sidebar to 15% width
