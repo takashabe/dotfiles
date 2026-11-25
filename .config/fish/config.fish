@@ -73,7 +73,15 @@ alias gst 'git status'
 alias gb 'git branch'
 alias gc 'git commit -v'
 alias gpush 'git push origin HEAD'
-alias gpw 'fzf_gh_pr_wt'
+
+function gpw --wraps fzf_gh_pr_wt
+  set -l before $PWD
+  fzf_gh_pr_wt $argv
+  # fzf_gh_pr_wt はキャンセル時も git wt 失敗時も 0 を返すため、worktree へ移れたかは cd の有無で判定する
+  if test "$PWD" != "$before"; and begin; set -q TMUX; or test "$HERDR_ENV" = 1; end
+    ide.sh
+  end
+end
 
 function gpull
   git pull origin (git branch --show-current)
