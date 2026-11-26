@@ -35,6 +35,10 @@ set -x XDG_DATA_HOME $HOME/.local/share
 set -x XDG_CACHE_HOME $HOME/.cache
 set -x XDG_CONFIG_HOME $HOME/.config
 
+## agent notes
+# 未設定だと impl-loop plugin が実行記録を worktree の中に書き、worktree と一緒に消える
+set -x AGENT_NOTES_DIR $XDG_DATA_HOME/agent-notes
+
 ## claude-code
 set -x PATH $HOME/.claude/local $PATH
 
