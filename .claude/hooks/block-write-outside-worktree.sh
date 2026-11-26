@@ -45,6 +45,15 @@ case "$resolved" in
   /private/tmp/claude-*/scratchpad/*|/tmp/claude-*/scratchpad/*) exit 0 ;;
 esac
 
+# 計画や実行記録はリポジトリ単位で worktree の外に置く（AGENTS.md「作業メモ・計画の置き場」）。
+# これも追跡対象のソースではない。
+NOTES_ROOT="${AGENT_NOTES_DIR:-${XDG_DATA_HOME:-$HOME/.local/share}/agent-notes}"
+case "$resolved" in
+  # 親ディレクトリが未作成だと上で正規化されず、`..` で置き場の外へ抜けられる
+  */../*|*/..) ;;
+  "$NOTES_ROOT"/*) exit 0 ;;
+esac
+
 cat >&2 <<MSG
 Write blocked: worktree 外への書き込みを検出しました。
 

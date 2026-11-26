@@ -12,6 +12,8 @@ personality = "pragmatic"
 
 [sandbox_workspace_write]
 network_access = true
+# AGENTS.md「作業メモ・計画の置き場」はワークスペースの外にあり、許可しないと書き込みが黙って失敗する
+writable_roots = ["~/.local/share/agent-notes"]
 
 [tui]
 notifications = ["agent-turn-complete","approval-requested"]
