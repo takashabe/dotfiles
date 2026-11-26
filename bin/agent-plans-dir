@@ -1,0 +1,108 @@
+#!/usr/bin/env bash
+# usage: agent-plans-dir [--main | --all]
+#
+# 計画・設計メモの置き場を出力する。リポジトリの外に置くのは、worktree を消しても
+# 残し、リポジトリの差分に混ぜないため。場所の組み立てを各エージェントに任せると
+# ぶれるので、このコマンドに固定している。
+#
+# 既定では worktree ごとのディレクトリを返す。ブランチで分けると、1つの worktree で
+# ブランチを替えながら進める作業のたびに計画が見えなくなる。
+# --main はメインの worktree の置き場を返す。写しを各 worktree に配ると別々に育って
+# 食い違うので、複数の worktree で使う計画は1か所に置いて共有する。
+set -euo pipefail
+
+usage="usage: agent-plans-dir [--main | --all]"
+
+die() {
+  printf 'agent-plans-dir: %s\n' "$*" >&2
+  exit 1
+}
+
+sanitize() {
+  printf '%s' "$1" | tr -c 'A-Za-z0-9._/-' '_' | tr -s '/'
+}
+
+reject_dots() {
+  case "/$1/" in
+    */../* | */./*) die "パスに使えない名前: $1" ;;
+  esac
+}
+
+physical() {
+  (cd "$1" && pwd -P)
+}
+
+repo_key() {
+  local url key host path
+  url=$(git remote get-url origin 2>/dev/null || true)
+  url=${url%/}
+  url=${url%.git}
+  key=""
+  case "$url" in
+    *://*)
+      key=${url#*://}
+      key=${key#*@}
+      host=${key%%/*}
+      path=${key#*/}
+      key="${host%%:*}/$path"
+      ;;
+    /* | "") ;;
+    *:*)
+      key=${url#*@}
+      key="${key%%:*}/${key#*:}"
+      ;;
+  esac
+  if [ -z "$key" ]; then
+    key="local/$(basename "${common_dir%/.git}")"
+  fi
+  key=$(sanitize "$key")
+  key=${key#/}
+  reject_dots "$key"
+  printf '%s\n' "$key"
+}
+
+# linked worktree の名前（パスの末尾から付く）がメインの _main と重ならないよう、
+# _ で始まる名前には _ を1つ足す。
+worktree_name() {
+  local git_dir name
+  git_dir=$(physical "$(git rev-parse --git-dir)")
+  if [ "$git_dir" = "$common_dir" ]; then
+    printf '_main\n'
+    return
+  fi
+  name=$(sanitize "$(basename "$git_dir")")
+  case "$name" in
+    _*) name="_$name" ;;
+  esac
+  printf '%s\n' "$name"
+}
+
+[ $# -le 1 ] || die "$usage"
+scope=${1:-}
+case "$scope" in
+  "" | --main | --all) ;;
+  *) die "$usage" ;;
+esac
+
+git rev-parse --show-toplevel >/dev/null 2>&1 || die "git リポジトリの作業ツリーの中で実行する"
+common_dir=$(physical "$(git rev-parse --git-common-dir)")
+
+root=${AGENT_NOTES_DIR:-${XDG_DATA_HOME:-$HOME/.local/share}/agent-notes}
+case "$root" in
+  "~") root=$HOME ;;
+  "~/"*) root="$HOME/${root#\~/}" ;;
+esac
+[[ $root == /* ]] || die "AGENT_NOTES_DIR は絶対パスか ~/ で始まるパスにする: $root"
+
+dir="$root/$(repo_key)/plans"
+case "$scope" in
+  "")
+    name=$(worktree_name)
+    reject_dots "$name"
+    dir="$dir/$name"
+    ;;
+  --main) dir="$dir/_main" ;;
+esac
+
+mkdir -p "$dir"
+printf '%s\n' "$dir"
