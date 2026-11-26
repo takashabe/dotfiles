@@ -45,10 +45,11 @@ disable-model-invocation: true
 `$ARGUMENTS` のパスを優先。未指定なら以下の順で探索:
 
 1. 作業ディレクトリ直下の `PLAN.md` / `plan.md`
-2. `.plans/` 配下の最も直近更新された `.md`
-3. プロジェクトルート（`git rev-parse --show-toplevel`）配下の `PLAN.md`
+2. `agent-plans-dir` が出力するディレクトリにある、最も直近更新された `.md`
+3. `agent-plans-dir --main` が出力するディレクトリにある、最も直近更新された `.md`（複数の worktree で使う計画はここにある）
+4. プロジェクトルート（`git rev-parse --show-toplevel`）配下の `PLAN.md`
 
-一意に決まらなければユーザーに確認する。勝手に新規ファイルを作らない。確定後 `Read` で全文読み（トリアージに必要）、絶対パスを `$PLAN_PATH` に記録。要求仕様/元ネタの doc がプラン内で参照されていれば、そのパスも控える（discovery プロンプトに渡す）。
+どれにも無ければ、`agent-plans-dir --all` が出力するディレクトリの下から直近更新の `.md` を5件まで挙げて、ユーザーに選んでもらう（ほかの worktree で書かれた計画はここにある）。一意に決まらなければユーザーに確認する。勝手に新規ファイルを作らない。確定後 `Read` で全文読み（トリアージに必要）、絶対パスを `$PLAN_PATH` に記録。要求仕様/元ネタの doc がプラン内で参照されていれば、そのパスも控える（discovery プロンプトに渡す）。
 
 ## Step 2: discovery（多レンズ1パス）
 

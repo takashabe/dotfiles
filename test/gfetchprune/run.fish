@@ -95,6 +95,28 @@ gfp_assert "stg は protect-branch" test (gfp_cat_of stg $rows) = protect-branch
 gfp_assert "merged-dirty は skip-dirty" test (gfp_cat_of feat/merged-dirty $rows) = skip-dirty
 gfp_assert "merged-untracked は confirm-untracked" test (gfp_cat_of feat/merged-untracked $rows) = confirm-untracked
 gfp_assert "review-slot は protect-path" test (gfp_cat_of feat/review-slot $rows) = protect-path
+gfp_assert "最終更新が古い push 無 merged の worktree は delete-wt" test (gfp_cat_of feat/stale-wt $rows) = delete-wt
+gfp_assert "最終更新が古い push 無 merged の branch は delete-branch" test (gfp_cat_of feat/stale-nowt $rows) = delete-branch
+gfp_assert "古いブランチでも今日 worktree に出したものは protect-nopush" test (gfp_cat_of feat/revived-wt $rows) = protect-nopush
+gfp_assert "reflog の無い worktree は protect-nopush" test (gfp_cat_of feat/nolog-wt $rows) = protect-nopush
+gfp_assert "reflog の無い worktree は reflog なしと表示" string match -q '*feat/nolog-wt*reflog なし*' -- $rows
+gfp_assert "reflog の無い worktree 無し branch は delete-branch" test (gfp_cat_of feat/nolog-nowt $rows) = delete-branch
+
+set -g GFP_STALE_DAYS 60
+set -l rows_long (__gfp_classify main refs/remotes/origin/main)
+gfp_assert "GFP_STALE_DAYS を超えない間は protect-nopush" test (gfp_cat_of feat/stale-wt $rows_long) = protect-nopush
+set -g GFP_STALE_DAYS abc
+gfp_assert "数値でない GFP_STALE_DAYS は既定値" test (__gfp_stale_days) = 7
+set -e GFP_STALE_DAYS
+
+set -l saved_url (git remote get-url origin)
+git remote set-url origin git@github.com:acme/widgets.git
+gfp_assert "ssh 形式の github remote を解釈" test (string join / (__gfp_github_repo)) = acme/widgets
+git remote set-url origin https://github.com/acme/widgets
+gfp_assert "https 形式(.git なし)の github remote を解釈" test (string join / (__gfp_github_repo)) = acme/widgets
+git remote set-url origin $saved_url
+gfp_assert "github 以外の remote は対象外" test (count (__gfp_github_repo)) -eq 0
+gfp_assert "github 以外の remote では PR 取得が対象外(2)" "__gfp_fetch_prs feat/x; test \$status -eq 2"
 
 set -l out (gfetchprune 2>&1 | string collect)
 gfp_assert "出力に削除予定見出し" "string match -q '*削除予定*' -- '$out'"
@@ -116,6 +138,9 @@ gfp_assert "review-slot は保護され残る" "contains feat/review-slot $left"
 set -l brs (git branch --format='%(refname:short)')
 gfp_assert "merged-pushed branch も削除" "not contains feat/merged-pushed $brs"
 gfp_assert "local-merged branch は残る(push無保護)" "contains feat/local-merged $brs"
+gfp_assert "stale-wt の worktree と branch は削除" "not contains feat/stale-wt $left; and not contains feat/stale-wt $brs"
+gfp_assert "stale-nowt branch は削除" "not contains feat/stale-nowt $brs"
+gfp_assert "nolog-wt は残る" "contains feat/nolog-wt $left"
 popd >/dev/null
 rm -rf (dirname "$ex")
 
@@ -151,6 +176,51 @@ set -l brs3 (git branch --format='%(refname:short)')
 gfp_assert "dirty gone worktree の branch も残る(削除されない)" "contains feat/gone-unmerged $brs3"
 popd >/dev/null
 rm -rf (dirname "$fx3")
+
+# PR 再判定: GitHub への問い合わせを差し替えて判定ロジックだけを検証する
+functions -c __gfp_fetch_prs __gfp_fetch_prs_orig
+set -l fx4 (gfp_make_fixture)
+pushd "$fx4" >/dev/null
+git fetch origin --prune --quiet
+set -g GFP_PR_UNMERGED_TIP (git rev-parse feat/unmerged-pushed)
+set -g GFP_PR_MAIN_TIP (git rev-parse main)
+function __gfp_fetch_prs
+    printf '%s\t%s\t%s\t%s\t%s\n' feat/unmerged-pushed 101 MERGED $GFP_PR_UNMERGED_TIP main
+    printf '%s\t%s\t%s\t%s\t%s\n' feat/gone-unmerged 102 MERGED $GFP_PR_MAIN_TIP main
+    printf '%s\t%s\t%s\t%s\t%s\n' feat/gone-unmerged 103 CLOSED $GFP_PR_MAIN_TIP main
+end
+set -l prow (__gfp_apply_pr_state main (__gfp_classify main refs/remotes/origin/main))
+gfp_assert "tip を含む MERGED PR がある未マージ branch は delete-branch" test (gfp_cat_of feat/unmerged-pushed $prow) = delete-branch
+gfp_assert "tip を含まない MERGED PR しか無い gone は confirm-gone のまま" test (gfp_cat_of feat/gone-unmerged $prow) = confirm-gone
+set -l gone_row (string match -e 'feat/gone-unmerged' -- $prow)
+gfp_assert "confirm-gone に PR 状態を併記" "string match -q '*#102 MERGED(tip が PR head に含まれない)*#103 CLOSED*' -- '$gone_row'"
+
+function __gfp_fetch_prs
+    printf '%s\t%s\t%s\t%s\t%s\n' feat/unmerged-pushed 104 MERGED $GFP_PR_UNMERGED_TIP feat/parent
+end
+set -l prow_stack (__gfp_apply_pr_state main (__gfp_classify main refs/remotes/origin/main))
+gfp_assert "base が default 以外の MERGED は根拠にしない" test (gfp_cat_of feat/unmerged-pushed $prow_stack) = keep-unmerged
+
+function __gfp_fetch_prs
+    return 1
+end
+set -l base_rows (__gfp_classify main refs/remotes/origin/main)
+set -l prow_fail (__gfp_apply_pr_state main $base_rows 2>/dev/null)
+gfp_assert "PR 取得失敗時は分類を変えない" test (string join \n $prow_fail | string collect) = (string join \n $base_rows | string collect)
+
+__gfp_delete_branch feat/unmerged-pushed refs/remotes/origin/main 0 $GFP_PR_MAIN_TIP >/dev/null
+gfp_assert "PR 判定後に tip が変わった branch は削除しない" "contains feat/unmerged-pushed (git branch --format='%(refname:short)')"
+
+function __gfp_fetch_prs
+    printf '%s\t%s\t%s\t%s\t%s\n' feat/unmerged-pushed 101 MERGED $GFP_PR_UNMERGED_TIP main
+end
+gfetchprune --execute >/dev/null
+gfp_assert "PR マージ済みの未マージ branch は --execute で削除" "not contains feat/unmerged-pushed (git branch --format='%(refname:short)')"
+popd >/dev/null
+rm -rf (dirname "$fx4")
+functions -e __gfp_fetch_prs
+functions -c __gfp_fetch_prs_orig __gfp_fetch_prs
+set -e GFP_PR_UNMERGED_TIP GFP_PR_MAIN_TIP
 
 rm -rf (dirname "$GFP_WORK")
 test $GFP_FAILS -eq 0

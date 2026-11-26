@@ -26,7 +26,12 @@ MSG
 matches() { printf '%s\n' "$NORMALIZED" | grep -Eiq -e "$1"; }
 has_git() { matches '(^|[^[:alnum:]_-])git([^[:alnum:]_-]|$)'; }
 
-if matches 'hookspath'; then
+# pre-push は push でしか走らないので、repo の hook を外した fetch / merge / commit は安全弁を減らさない
+# 引用符で値とサブコマンドを 1 語にまとめた形を素通しさせないため、除外は剥がす前の文字列に対して行う
+WITHOUT_HOOKLESS_PULL=$(printf '%s\n' "$COMMAND" |
+  sed -E 's#(^|[^[:alnum:]_-])git[[:space:]]+-c[[:space:]]+core\.hookspath=/dev/null[[:space:]]+(fetch|merge|commit)([^[:alnum:]_-]|$)#\1\3#Ig' |
+  tr -d "'\"\\\\\$")
+if printf '%s\n' "$WITHOUT_HOOKLESS_PULL" | grep -Eiq -e 'hookspath'; then
   block "core.hooksPath の変更・上書きは、push の安全弁を無効にするため実行しません"
 fi
 

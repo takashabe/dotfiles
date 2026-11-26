@@ -56,4 +56,3 @@
   copy = .env.local
   copy = .env.default.local
   copy = CLAUDE.local.md
-  copy = .plans/

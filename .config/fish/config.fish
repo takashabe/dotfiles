@@ -35,6 +35,10 @@ set -x XDG_DATA_HOME $HOME/.local/share
 set -x XDG_CACHE_HOME $HOME/.cache
 set -x XDG_CONFIG_HOME $HOME/.config
 
+## agent notes
+# 未設定だと impl-loop plugin が実行記録を worktree の中に書き、worktree と一緒に消える
+set -x AGENT_NOTES_DIR $XDG_DATA_HOME/agent-notes
+
 ## claude-code
 set -x PATH $HOME/.claude/local $PATH
 
@@ -73,7 +77,15 @@ alias gst 'git status'
 alias gb 'git branch'
 alias gc 'git commit -v'
 alias gpush 'git push origin HEAD'
-alias gpw 'fzf_gh_pr_wt'
+
+function gpw --wraps fzf_gh_pr_wt
+  set -l before $PWD
+  fzf_gh_pr_wt $argv
+  # fzf_gh_pr_wt はキャンセル時も git wt 失敗時も 0 を返すため、worktree へ移れたかは cd の有無で判定する
+  if test "$PWD" != "$before"; and begin; set -q TMUX; or test "$HERDR_ENV" = 1; end
+    ide.sh
+  end
+end
 
 function gpull
   git pull origin (git branch --show-current)
