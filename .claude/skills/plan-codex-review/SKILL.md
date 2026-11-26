@@ -6,7 +6,7 @@ user-invocable: true
 disable-model-invocation: true
 context: fork
 agent: general-purpose
-allowed-tools: Read, Glob, Grep, Bash(codex *), Bash(ls *), Bash(mktemp *), Bash(cat *), Bash(wc *), Bash(pwd), Bash(dirname *), Bash(git ls-files *), Bash(git rev-parse *)
+allowed-tools: Read, Glob, Grep, Bash(codex *), Bash(ls *), Bash(mktemp *), Bash(cat *), Bash(wc *), Bash(pwd), Bash(dirname *), Bash(git ls-files *), Bash(git rev-parse *), Bash(agent-plans-dir), Bash(agent-plans-dir *)
 ---
 
 # Plan Codex Review
@@ -18,10 +18,11 @@ Claude Code の plan mode で作成したプランを、別系統の LLM であ�
 `$ARGUMENTS` で渡されたパスを優先する。未指定の場合は以下の順で候補を探索する:
 
 1. 現在の作業ディレクトリ直下の `PLAN.md` / `plan.md`
-2. `.plans/` 配下の最も直近更新された `.md`
-3. プロジェクトルート（`git rev-parse --show-toplevel`）配下の `PLAN.md`
+2. `agent-plans-dir` が出力するディレクトリにある、最も直近更新された `.md`
+3. `agent-plans-dir --main` が出力するディレクトリにある、最も直近更新された `.md`（複数の worktree で使う計画はここにある）
+4. プロジェクトルート（`git rev-parse --show-toplevel`）配下の `PLAN.md`
 
-候補が 0 件または複数あって一意に決まらない場合は、ユーザーに「どのファイルをレビューしますか？」と確認する。勝手に新規ファイルを作らない。
+候補が 0 件または複数あって一意に決まらない場合は、ユーザーに「どのファイルをレビューしますか？」と確認する。0 件のときは、`agent-plans-dir --all` が出力するディレクトリの下から直近更新の `.md` を5件まで候補として添える（ほかの worktree で書かれた計画はここにある）。勝手に新規ファイルを作らない。
 
 確定後、`wc -l` でサイズを把握し、2000 行を超える場合はユーザーに「長大ですが続行しますか？」と確認する。
 
